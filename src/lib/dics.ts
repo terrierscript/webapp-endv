@@ -13,8 +13,10 @@ export const searchIndex = (word: string) => {
   const a = JSON.parse(fs.readFileSync(`dic/index/${dig}.json`).toString())
   return a[word]
 }
+
 export const searchData = (offset: string) => {
   const dig = w2dg(offset)
   const a = JSON.parse(fs.readFileSync(`dic/data/${dig}.json`).toString())
   return a[offset]
 }
+
