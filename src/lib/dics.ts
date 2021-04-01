@@ -3,7 +3,6 @@ import md5 from "md5"
 
 const w2dg = (l) => {
   const digest = md5(l)
-  console.log(digest,l)
   const k = digest.slice(0, 2)
   return k
 }
@@ -14,8 +13,8 @@ export const searchIndex = (word: string) => {
   return a[word]
 }
 
-export const searchData = (offset: string) => {
-  const dig = w2dg(offset)
+export const searchData = (offset: string|number) => {
+  const dig = w2dg(offset.toString())
   const a = JSON.parse(fs.readFileSync(`dic/data/${dig}.json`).toString())
   return a[offset]
 }
