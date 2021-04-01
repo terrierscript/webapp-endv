@@ -18,4 +18,3 @@ export const searchData = (offset: string|number) => {
   const a = JSON.parse(fs.readFileSync(`dic/data/${dig}.json`).toString())
   return a[offset]
 }
-
