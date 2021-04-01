@@ -9,7 +9,7 @@ export const getDictionary = async (): Promise<Dictionary> => {
     return dictionary
   }
   console.log("initialize dictionary")
-  const _dictionary = new Dictionary(wordnet.get("3.0"))
+  const _dictionary = new Dictionary(wordnet.get("3.1"))
   await _dictionary.init()
   dictionary = _dictionary
   return dictionary
