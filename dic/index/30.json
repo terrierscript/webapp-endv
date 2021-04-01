@@ -1,10 +1,99 @@
-[
-  {
-    "lemma": "55th",
+{
+  "alas": {
+    "lemma": "alas",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      43179
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "apparently": {
+    "lemma": "apparently",
+    "pos": "adverb",
+    "offsetCount": 2,
+    "offsets": [
+      40353,
+      39730
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "conjointly": {
+    "lemma": "conjointly",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      117989
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "eastwards": {
+    "lemma": "eastwards",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      325528
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "flatly": {
+    "lemma": "flatly",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      87676
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "gratis": {
+    "lemma": "gratis",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      2215939
+      1714713
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -19,68 +108,53 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "acidimetric",
-    "pos": "adjective",
-    "offsetCount": 1,
+  "hereunder": {
+    "lemma": "hereunder",
+    "pos": "adverb",
+    "offsetCount": 2,
     "offsets": [
-      2611981
+      357692,
+      33624
     ],
     "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 2,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "arbitral",
-    "pos": "adjective",
+  "1790s": {
+    "lemma": "1790s",
+    "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      2648381
+      15176521
     ],
     "offsetData": [],
     "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Pertainym (pertains to noun)",
+        "symbol": "Hypernym",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "noun"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "archosaurian",
+  "acapnia": {
+    "lemma": "acapnia",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      1698322
+      14065647
     ],
     "offsetData": [],
-    "pointerCount": 4,
+    "pointerCount": 2,
     "pointers": [
       {
         "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
         "offset": 0,
         "pos": "noun"
       },
@@ -94,7 +168,88 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "admiral_nimitz": {
+    "lemma": "admiral_nimitz",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      11227919
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "adolescence": {
+    "lemma": "adolescence",
+    "pos": "noun",
+    "offsetCount": 2,
+    "offsets": [
+      15172810,
+      14450314
+    ],
+    "offsetData": [],
+    "pointerCount": 4,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part holonym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part meronym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "adversary": {
+    "lemma": "adversary",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      9792668
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "asphyxiate": {
     "lemma": "asphyxiate",
     "pos": "verb",
     "offsetCount": 3,
@@ -136,7 +291,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "attract": {
     "lemma": "attract",
     "pos": "verb",
     "offsetCount": 3,
@@ -178,7 +333,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "auscultate": {
     "lemma": "auscultate",
     "pos": "verb",
     "offsetCount": 1,
@@ -203,101 +358,12 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "alas",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      43179
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "apparently",
-    "pos": "adverb",
-    "offsetCount": 2,
-    "offsets": [
-      40353,
-      39730
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "conjointly",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      117989
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "eastwards",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      325528
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "flatly",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      87676
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "gratis",
+  "55th": {
+    "lemma": "55th",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      1714713
+      2215939
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -312,153 +378,52 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "hereunder",
-    "pos": "adverb",
-    "offsetCount": 2,
-    "offsets": [
-      357692,
-      33624
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 2,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "1790s",
-    "pos": "noun",
+  "acidimetric": {
+    "lemma": "acidimetric",
+    "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      15176521
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "acapnia",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      14065647
+      2611981
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Hypernym",
+        "symbol": "Pertainym (pertains to noun)",
         "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
+        "pos": "adjective"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "admiral_nimitz",
-    "pos": "noun",
+  "arbitral": {
+    "lemma": "arbitral",
+    "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      11227919
+      2648381
     ],
     "offsetData": [],
     "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Hypernym",
+        "symbol": "Pertainym (pertains to noun)",
         "offset": 0,
-        "pos": "noun"
+        "pos": "adjective"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "adolescence",
-    "pos": "noun",
-    "offsetCount": 2,
-    "offsets": [
-      15172810,
-      14450314
-    ],
-    "offsetData": [],
-    "pointerCount": 4,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part holonym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part meronym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "adversary",
+  "archosaurian": {
+    "lemma": "archosaurian",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      9792668
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "athenian",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      9730528
+      1698322
     ],
     "offsetData": [],
     "pointerCount": 4,
@@ -488,89 +453,60 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "atypical",
-    "pos": "adjective",
-    "offsetCount": 2,
-    "offsets": [
-      2479427,
-      1601391
-    ],
-    "offsetData": [],
-    "pointerCount": 5,
-    "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Also see",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Attribute",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "beery",
-    "pos": "adjective",
+  "limitedly": {
+    "lemma": "limitedly",
+    "pos": "adverb",
     "offsetCount": 1,
     "offsets": [
-      801588
+      131535
     ],
     "offsetData": [],
-    "pointerCount": 2,
+    "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Similar to",
+        "symbol": "Derived from adjective",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "adverb"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "bibliopolic",
-    "pos": "adjective",
+  "off-hand": {
+    "lemma": "off-hand",
+    "pos": "adverb",
     "offsetCount": 1,
     "offsets": [
-      2673745
+      260899
     ],
     "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
+    "pointerCount": 0,
+    "pointers": [],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "blown",
-    "pos": "adjective",
-    "offsetCount": 2,
+  "on_the_coattails": {
+    "lemma": "on_the_coattails",
+    "pos": "adverb",
+    "offsetCount": 1,
     "offsets": [
-      1567202,
-      269614
+      120252
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "out_of_sight": {
+    "lemma": "out_of_sight",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2527874
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -581,51 +517,183 @@
         "pos": "adjective"
       }
     ],
-    "senseCount": 2,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "bronchiolar",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2960111
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
     "senseCount": 1,
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "caffeinic",
-    "pos": "adjective",
+  "peculiarly": {
+    "lemma": "peculiarly",
+    "pos": "adverb",
+    "offsetCount": 3,
+    "offsets": [
+      249967,
+      35878,
+      84573
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 3,
+    "tagSenseCount": 3,
+    "isComment": false
+  },
+  "recognizably": {
+    "lemma": "recognizably",
+    "pos": "adverb",
     "offsetCount": 1,
     "offsets": [
-      2684449
+      425915
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Pertainym (pertains to noun)",
+        "symbol": "Antonym",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "adverb"
+      },
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "reservedly": {
+    "lemma": "reservedly",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      443542
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "agrostis_nebulosa": {
+    "lemma": "agrostis_nebulosa",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      12127708
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "alban_berg": {
+    "lemma": "alban_berg",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      10865685
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "alcides": {
+    "lemma": "alcides",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      9601183
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "alpha-adrenergic_receptor": {
+    "lemma": "alpha-adrenergic_receptor",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      5616866
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part holonym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "alpine_scurvy": {
+    "lemma": "alpine_scurvy",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      14224355
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "chew": {
     "lemma": "chew",
     "pos": "noun",
     "offsetCount": 2,
@@ -661,7 +729,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "come_around": {
     "lemma": "come_around",
     "pos": "verb",
     "offsetCount": 2,
@@ -687,7 +755,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "confront": {
     "lemma": "confront",
     "pos": "verb",
     "offsetCount": 4,
@@ -730,7 +798,7 @@
     "tagSenseCount": 4,
     "isComment": false
   },
-  {
+  "contemn": {
     "lemma": "contemn",
     "pos": "verb",
     "offsetCount": 1,
@@ -755,7 +823,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cool_down": {
     "lemma": "cool_down",
     "pos": "verb",
     "offsetCount": 3,
@@ -787,7 +855,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "date_from": {
     "lemma": "date_from",
     "pos": "verb",
     "offsetCount": 1,
@@ -812,7 +880,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "declassify": {
     "lemma": "declassify",
     "pos": "verb",
     "offsetCount": 1,
@@ -842,210 +910,15 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "limitedly",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      131535
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "off-hand",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      260899
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "on_the_coattails",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      120252
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "out_of_sight",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2527874
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "peculiarly",
-    "pos": "adverb",
-    "offsetCount": 3,
-    "offsets": [
-      249967,
-      35878,
-      84573
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 3,
-    "tagSenseCount": 3,
-    "isComment": false
-  },
-  {
-    "lemma": "recognizably",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      425915
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "adverb"
-      },
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "reservedly",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      443542
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "agrostis_nebulosa",
+  "athenian": {
+    "lemma": "athenian",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      12127708
+      9730528
     ],
     "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "alban_berg",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      10865685
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "alcides",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      9601183
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "alpha-adrenergic_receptor",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      5616866
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
+    "pointerCount": 4,
     "pointers": [
       {
         "symbol": "Hypernym",
@@ -1053,68 +926,12 @@
         "pos": "noun"
       },
       {
-        "symbol": "Part holonym",
+        "symbol": "Hyponym",
         "offset": 0,
         "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "alpine_scurvy",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      14224355
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
+      },
       {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "centrosomic",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2699000
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "chaldean",
-    "pos": "noun",
-    "offsetCount": 2,
-    "offsets": [
-      9925418,
-      9661306
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
+        "symbol": "Member holonym",
         "offset": 0,
         "pos": "noun"
       },
@@ -1124,19 +941,55 @@
         "pos": "noun"
       }
     ],
-    "senseCount": 2,
+    "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "choosey",
+  "atypical": {
+    "lemma": "atypical",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      2479427,
+      1601391
+    ],
+    "offsetData": [],
+    "pointerCount": 5,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Also see",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Attribute",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "beery": {
+    "lemma": "beery",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      987442
+      801588
     ],
     "offsetData": [],
-    "pointerCount": 1,
+    "pointerCount": 2,
     "pointers": [
       {
         "symbol": "Similar to",
@@ -1148,12 +1001,12 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "choric",
+  "bibliopolic": {
+    "lemma": "bibliopolic",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      2885847
+      2673745
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -1168,33 +1021,13 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "clandestine",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1710918
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "claustrophobic",
+  "blown": {
+    "lemma": "blown",
     "pos": "adjective",
     "offsetCount": 2,
     "offsets": [
-      560838,
-      79946
+      1567202,
+      269614
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -1206,21 +1039,41 @@
       }
     ],
     "senseCount": 2,
-    "tagSenseCount": 0,
+    "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "competitory",
+  "bronchiolar": {
+    "lemma": "bronchiolar",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      514412
+      2960111
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Similar to",
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "caffeinic": {
+    "lemma": "caffeinic",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2684449
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
         "offset": 0,
         "pos": "adjective"
       }
@@ -1229,12 +1082,114 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "comprehensive",
+  "superbly": {
+    "lemma": "superbly",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      184576
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "this_night": {
+    "lemma": "this_night",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      79765
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "touchily": {
+    "lemma": "touchily",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      481981
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "two_times": {
+    "lemma": "two_times",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      484504
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "validly": {
+    "lemma": "validly",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      494248
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Derived from adjective",
+        "offset": 0,
+        "pos": "adverb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "wherever": {
+    "lemma": "wherever",
+    "pos": "adverb",
+    "offsetCount": 1,
+    "offsets": [
+      497575
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "ambulatory_plague": {
+    "lemma": "ambulatory_plague",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      7212549
+      14162815
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -1249,92 +1204,57 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "constituted",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1639189
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "cosher",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      429141
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "cosmogonic",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2714174
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "credentialled",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      343653
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "crying",
+  "amended_return": {
+    "lemma": "amended_return",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      869874
+      6560982
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "american_baptist_convention": {
+    "lemma": "american_baptist_convention",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      8106763
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member meronym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "amine": {
+    "lemma": "amine",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      14763183
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -1359,18 +1279,113 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "darwinian",
+  "ammonium_alum": {
+    "lemma": "ammonium_alum",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      10011869
+      14652485
     ],
     "offsetData": [],
-    "pointerCount": 2,
+    "pointerCount": 1,
     "pointers": [
       {
         "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "anaphor": {
+    "lemma": "anaphor",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      6298530
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "anchovy_pear_tree": {
+    "lemma": "anchovy_pear_tree",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      12348045
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member holonym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part meronym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "antarctic_circle": {
+    "lemma": "antarctic_circle",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      8511686
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "antiferromagnetism": {
+    "lemma": "antiferromagnetism",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      11500040
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
         "offset": 0,
         "pos": "noun"
       },
@@ -1384,27 +1399,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "deep-mined",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1507826
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "dishearten": {
     "lemma": "dishearten",
     "pos": "verb",
     "offsetCount": 1,
@@ -1434,7 +1429,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "domesticate": {
     "lemma": "domesticate",
     "pos": "verb",
     "offsetCount": 3,
@@ -1466,7 +1461,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "draw_away": {
     "lemma": "draw_away",
     "pos": "verb",
     "offsetCount": 2,
@@ -1492,7 +1487,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "drop_off": {
     "lemma": "drop_off",
     "pos": "verb",
     "offsetCount": 5,
@@ -1526,7 +1521,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "elegise": {
     "lemma": "elegise",
     "pos": "verb",
     "offsetCount": 1,
@@ -1546,7 +1541,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "entice": {
     "lemma": "entice",
     "pos": "verb",
     "offsetCount": 1,
@@ -1576,154 +1571,33 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "superbly",
-    "pos": "adverb",
+  "centrosomic": {
+    "lemma": "centrosomic",
+    "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      184576
+      2699000
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Derived from adjective",
+        "symbol": "Pertainym (pertains to noun)",
         "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "this_night",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      79765
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "touchily",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      481981
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
+        "pos": "adjective"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "two_times",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      484504
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "validly",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      494248
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Derived from adjective",
-        "offset": 0,
-        "pos": "adverb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "wherever",
-    "pos": "adverb",
-    "offsetCount": 1,
-    "offsets": [
-      497575
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "ambulatory_plague",
+  "chaldean": {
+    "lemma": "chaldean",
     "pos": "noun",
-    "offsetCount": 1,
+    "offsetCount": 2,
     "offsets": [
-      14162815
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "amended_return",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      6560982
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "american_baptist_convention",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      8106763
+      9925418,
+      9661306
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -1734,7 +1608,128 @@
         "pos": "noun"
       },
       {
-        "symbol": "Member meronym",
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "choosey": {
+    "lemma": "choosey",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      987442
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "choric": {
+    "lemma": "choric",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2885847
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "clandestine": {
+    "lemma": "clandestine",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1710918
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "claustrophobic": {
+    "lemma": "claustrophobic",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      560838,
+      79946
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "competitory": {
+    "lemma": "competitory",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      514412
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "comprehensive": {
+    "lemma": "comprehensive",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      7212549
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
         "offset": 0,
         "pos": "noun"
       }
@@ -1743,12 +1738,92 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "amine",
+  "constituted": {
+    "lemma": "constituted",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1639189
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "cosher": {
+    "lemma": "cosher",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      429141
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "cosmogonic": {
+    "lemma": "cosmogonic",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2714174
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "credentialled": {
+    "lemma": "credentialled",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      343653
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "crying": {
+    "lemma": "crying",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      14763183
+      869874
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -1773,18 +1848,23 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "ammonium_alum",
+  "darwinian": {
+    "lemma": "darwinian",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      14652485
+      10011869
     ],
     "offsetData": [],
-    "pointerCount": 1,
+    "pointerCount": 2,
     "pointers": [
       {
         "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
         "offset": 0,
         "pos": "noun"
       }
@@ -1793,32 +1873,63 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "anaphor",
-    "pos": "noun",
+  "deep-mined": {
+    "lemma": "deep-mined",
+    "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      6298530
+      1507826
     ],
     "offsetData": [],
     "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Hypernym",
+        "symbol": "Similar to",
         "offset": 0,
-        "pos": "noun"
+        "pos": "adjective"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "anchovy_pear_tree",
+  "antitype": {
+    "lemma": "antitype",
+    "pos": "noun",
+    "offsetCount": 2,
+    "offsets": [
+      5935996,
+      5849538
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "apios_americana": {
+    "lemma": "apios_americana",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      12348045
+      12527884
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -1843,12 +1954,12 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "antarctic_circle",
+  "arbitrageur": {
+    "lemma": "arbitrageur",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      8511686
+      9823223
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -1863,12 +1974,12 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "antiferromagnetism",
+  "armored_scale": {
+    "lemma": "armored_scale",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      11500040
+      2252167
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -1884,7 +1995,7 @@
         "pos": "noun"
       },
       {
-        "symbol": "Derivationally related form",
+        "symbol": "Member holonym",
         "offset": 0,
         "pos": "noun"
       }
@@ -1893,132 +2004,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "dilettante",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      10007234
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "duncish",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      442219
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "eastern",
-    "pos": "adjective",
-    "offsetCount": 5,
-    "offsets": [
-      827539,
-      830498,
-      827400,
-      829153,
-      827233
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Attribute",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 5,
-    "tagSenseCount": 3,
-    "isComment": false
-  },
-  {
-    "lemma": "edgy",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2415166
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "excitable",
-    "pos": "adjective",
-    "offsetCount": 2,
-    "offsets": [
-      921893,
-      2111557
-    ],
-    "offsetData": [],
-    "pointerCount": 4,
-    "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "fork_over": {
     "lemma": "fork_over",
     "pos": "verb",
     "offsetCount": 1,
@@ -2043,7 +2029,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "glycerolize": {
     "lemma": "glycerolize",
     "pos": "verb",
     "offsetCount": 1,
@@ -2073,7 +2059,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "hoe": {
     "lemma": "hoe",
     "pos": "noun",
     "offsetCount": 1,
@@ -2108,7 +2094,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "initialize": {
     "lemma": "initialize",
     "pos": "verb",
     "offsetCount": 2,
@@ -2134,7 +2120,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jinx": {
     "lemma": "jinx",
     "pos": "noun",
     "offsetCount": 2,
@@ -2160,22 +2146,16 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "antitype",
+  "dilettante": {
+    "lemma": "dilettante",
     "pos": "noun",
-    "offsetCount": 2,
+    "offsetCount": 1,
     "offsets": [
-      5935996,
-      5849538
+      10007234
     ],
     "offsetData": [],
-    "pointerCount": 3,
+    "pointerCount": 2,
     "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "noun"
-      },
       {
         "symbol": "Hypernym",
         "offset": 0,
@@ -2187,98 +2167,116 @@
         "pos": "noun"
       }
     ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "duncish": {
+    "lemma": "duncish",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      442219
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "eastern": {
+    "lemma": "eastern",
+    "pos": "adjective",
+    "offsetCount": 5,
+    "offsets": [
+      827539,
+      830498,
+      827400,
+      829153,
+      827233
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Attribute",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 5,
+    "tagSenseCount": 3,
+    "isComment": false
+  },
+  "edgy": {
+    "lemma": "edgy",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2415166
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "excitable": {
+    "lemma": "excitable",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      921893,
+      2111557
+    ],
+    "offsetData": [],
+    "pointerCount": 4,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
     "senseCount": 2,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "apios_americana",
+  "asperula": {
+    "lemma": "asperula",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      12527884
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part meronym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "arbitrageur",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      9823223
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "armored_scale",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2252167
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "five",
-    "pos": "noun",
-    "offsetCount": 3,
-    "offsets": [
-      13766661,
-      8096729,
-      3358629
+      12682181
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -2299,36 +2297,36 @@
         "pos": "noun"
       }
     ],
-    "senseCount": 3,
-    "tagSenseCount": 1,
+    "senseCount": 1,
+    "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "foetid",
-    "pos": "adjective",
+  "atomic_number_114": {
+    "lemma": "atomic_number_114",
+    "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      1057333
+      14684362
     ],
     "offsetData": [],
     "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Similar to",
+        "symbol": "Hypernym",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "noun"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "funicular",
+  "awfulness": {
+    "lemma": "awfulness",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      2938025
+      4789380
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -2339,7 +2337,7 @@
         "pos": "noun"
       },
       {
-        "symbol": "Part meronym",
+        "symbol": "Hyponym",
         "offset": 0,
         "pos": "noun"
       },
@@ -2350,111 +2348,35 @@
       }
     ],
     "senseCount": 1,
-    "tagSenseCount": 0,
+    "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "garmentless",
-    "pos": "adjective",
+  "b.th.u.": {
+    "lemma": "b.th.u.",
+    "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      461135
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "gaussian",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      3039519
+      13749057
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Pertainym (pertains to noun)",
+        "symbol": "Hypernym",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part holonym",
+        "offset": 0,
+        "pos": "noun"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "grungy",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      422169
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "hangdog",
-    "pos": "adjective",
-    "offsetCount": 2,
-    "offsets": [
-      155850,
-      79852
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "hard-bitten",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2457696
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "madden": {
     "lemma": "madden",
     "pos": "verb",
     "offsetCount": 3,
@@ -2481,7 +2403,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "misdirect": {
     "lemma": "misdirect",
     "pos": "verb",
     "offsetCount": 3,
@@ -2513,7 +2435,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "nol.pros.": {
     "lemma": "nol.pros.",
     "pos": "verb",
     "offsetCount": 1,
@@ -2533,7 +2455,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "objurgate": {
     "lemma": "objurgate",
     "pos": "verb",
     "offsetCount": 2,
@@ -2564,7 +2486,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "oversee": {
     "lemma": "oversee",
     "pos": "verb",
     "offsetCount": 1,
@@ -2594,12 +2516,14 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "asperula",
+  "five": {
+    "lemma": "five",
     "pos": "noun",
-    "offsetCount": 1,
+    "offsetCount": 3,
     "offsets": [
-      12682181
+      13766661,
+      8096729,
+      3358629
     ],
     "offsetData": [],
     "pointerCount": 3,
@@ -2620,91 +2544,16 @@
         "pos": "noun"
       }
     ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "atomic_number_114",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      14684362
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "awfulness",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      4789380
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
+    "senseCount": 3,
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "b.th.u.",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      13749057
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "hypersensitised",
+  "foetid": {
+    "lemma": "foetid",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      2369499
+      1057333
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -2719,12 +2568,62 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "hypophysial",
+  "funicular": {
+    "lemma": "funicular",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2938025
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part meronym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "garmentless": {
+    "lemma": "garmentless",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      3023100
+      461135
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "gaussian": {
+    "lemma": "gaussian",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      3039519
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -2739,18 +2638,18 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "idiomatical",
+  "grungy": {
+    "lemma": "grungy",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      3015866
+      422169
     ],
     "offsetData": [],
     "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Pertainym (pertains to noun)",
+        "symbol": "Similar to",
         "offset": 0,
         "pos": "adjective"
       }
@@ -2759,12 +2658,33 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "improving",
+  "hangdog": {
+    "lemma": "hangdog",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      155850,
+      79852
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "hard-bitten": {
+    "lemma": "hard-bitten",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      2496786
+      2457696
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -2779,127 +2699,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "instinct",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      5630506
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "itsy-bitsy",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1395585
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "ivied",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1706593
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "ptyalize",
-    "pos": "verb",
-    "offsetCount": 1,
-    "offsets": [
-      101710
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "verb"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "verb"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "rampage",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      555578
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "balaena_mysticetus": {
     "lemma": "balaena_mysticetus",
     "pos": "noun",
     "offsetCount": 1,
@@ -2924,7 +2724,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "balenciaga": {
     "lemma": "balenciaga",
     "pos": "noun",
     "offsetCount": 1,
@@ -2944,7 +2744,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "balloonfish": {
     "lemma": "balloonfish",
     "pos": "noun",
     "offsetCount": 1,
@@ -2969,7 +2769,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "bass_guitar": {
     "lemma": "bass_guitar",
     "pos": "noun",
     "offsetCount": 1,
@@ -2989,7 +2789,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "battle_of_the_somme": {
     "lemma": "battle_of_the_somme",
     "pos": "noun",
     "offsetCount": 2,
@@ -3015,7 +2815,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "bawler": {
     "lemma": "bawler",
     "pos": "noun",
     "offsetCount": 2,
@@ -3046,7 +2846,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "beach_ball": {
     "lemma": "beach_ball",
     "pos": "noun",
     "offsetCount": 1,
@@ -3066,12 +2866,67 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "leaflike",
+  "ptyalize": {
+    "lemma": "ptyalize",
+    "pos": "verb",
+    "offsetCount": 1,
+    "offsets": [
+      101710
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "verb"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "verb"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "rampage": {
+    "lemma": "rampage",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      555578
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "hypersensitised": {
+    "lemma": "hypersensitised",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      1706996
+      2369499
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -3086,12 +2941,52 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "lettered",
+  "hypophysial": {
+    "lemma": "hypophysial",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      833590
+      3023100
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "idiomatical": {
+    "lemma": "idiomatical",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      3015866
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "improving": {
+    "lemma": "improving",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2496786
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -3106,12 +3001,57 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "lightproof",
+  "instinct": {
+    "lemma": "instinct",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      5630506
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "itsy-bitsy": {
+    "lemma": "itsy-bitsy",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      435979
+      1395585
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "ivied": {
+    "lemma": "ivied",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1706593
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -3126,27 +3066,162 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "marked-up",
-    "pos": "adjective",
+  "bee_killer": {
+    "lemma": "bee_killer",
+    "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      1408416
+      2198771
     ],
     "offsetData": [],
-    "pointerCount": 1,
+    "pointerCount": 2,
     "pointers": [
       {
-        "symbol": "Similar to",
+        "symbol": "Hypernym",
         "offset": 0,
-        "pos": "adjective"
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member holonym",
+        "offset": 0,
+        "pos": "noun"
       }
     ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "beech_marten": {
+    "lemma": "beech_marten",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2453308
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "benjamin_spock": {
+    "lemma": "benjamin_spock",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      11331618
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "berycomorphi": {
+    "lemma": "berycomorphi",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      1452722
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member holonym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member meronym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "beta_software": {
+    "lemma": "beta_software",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      6579319
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "birth_pangs": {
+    "lemma": "birth_pangs",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      14354238
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "biz": {
+    "lemma": "biz",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      584126
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "schnorr": {
     "lemma": "schnorr",
     "pos": "verb",
     "offsetCount": 1,
@@ -3166,7 +3241,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "shuttlecock": {
     "lemma": "shuttlecock",
     "pos": "noun",
     "offsetCount": 1,
@@ -3191,7 +3266,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "speak_up": {
     "lemma": "speak_up",
     "pos": "verb",
     "offsetCount": 2,
@@ -3217,7 +3292,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "spear_up": {
     "lemma": "spear_up",
     "pos": "verb",
     "offsetCount": 1,
@@ -3237,7 +3312,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sportscast": {
     "lemma": "sportscast",
     "pos": "noun",
     "offsetCount": 1,
@@ -3257,7 +3332,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "stabilise": {
     "lemma": "stabilise",
     "pos": "verb",
     "offsetCount": 3,
@@ -3294,7 +3369,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "strike": {
     "lemma": "strike",
     "pos": "noun",
     "offsetCount": 6,
@@ -3329,7 +3404,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "substitute": {
     "lemma": "substitute",
     "pos": "noun",
     "offsetCount": 3,
@@ -3366,12 +3441,92 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "bee_killer",
+  "leaflike": {
+    "lemma": "leaflike",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1706996
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "lettered": {
+    "lemma": "lettered",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      833590
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "lightproof": {
+    "lemma": "lightproof",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      435979
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "marked-up": {
+    "lemma": "marked-up",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1408416
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "bottle_gourd": {
+    "lemma": "bottle_gourd",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      2198771
+      12186645
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -3391,302 +3546,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "beech_marten",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2453308
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "benjamin_spock",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      11331618
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "berycomorphi",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      1452722
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member meronym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "beta_software",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      6579319
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "birth_pangs",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      14354238
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "biz",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      584126
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "negligible",
-    "pos": "adjective",
-    "offsetCount": 2,
-    "offsets": [
-      1499757,
-      2513039
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "nonretractable",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2014871
-    ],
-    "offsetData": [],
-    "pointerCount": 0,
-    "pointers": [],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "omissible",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1863350
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "on_the_fence",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      689633
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "orthostatic",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1239589
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "ossiferous",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      3150213
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "paramilitary",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      8224130
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "particoloured",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      400039
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "tarry": {
     "lemma": "tarry",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3706,7 +3566,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tattoo": {
     "lemma": "tattoo",
     "pos": "noun",
     "offsetCount": 3,
@@ -3733,7 +3593,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "trash": {
     "lemma": "trash",
     "pos": "noun",
     "offsetCount": 4,
@@ -3766,7 +3626,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "twine": {
     "lemma": "twine",
     "pos": "noun",
     "offsetCount": 1,
@@ -3796,7 +3656,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "unbosom": {
     "lemma": "unbosom",
     "pos": "verb",
     "offsetCount": 1,
@@ -3816,7 +3676,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "yammer": {
     "lemma": "yammer",
     "pos": "verb",
     "offsetCount": 2,
@@ -3842,12 +3702,252 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "bottle_gourd",
+  "negligible": {
+    "lemma": "negligible",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      1499757,
+      2513039
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 2,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "nonretractable": {
+    "lemma": "nonretractable",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      2014871
+    ],
+    "offsetData": [],
+    "pointerCount": 0,
+    "pointers": [],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "omissible": {
+    "lemma": "omissible",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1863350
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "on_the_fence": {
+    "lemma": "on_the_fence",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      689633
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "orthostatic": {
+    "lemma": "orthostatic",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1239589
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "ossiferous": {
+    "lemma": "ossiferous",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      3150213
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "paramilitary": {
+    "lemma": "paramilitary",
     "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      12186645
+      8224130
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "particoloured": {
+    "lemma": "particoloured",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      400039
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "brake_cylinder": {
+    "lemma": "brake_cylinder",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2893237
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part holonym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "brown_bear": {
+    "lemma": "brown_bear",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2134788
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Hyponym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Member holonym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "brown_betty": {
+    "lemma": "brown_betty",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      7634196
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "brush-tailed_phalanger": {
+    "lemma": "brush-tailed_phalanger",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      1884498
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -3867,7 +3967,52 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "buchenwald": {
+    "lemma": "buchenwald",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2912868
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Part holonym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "burp_gun": {
+    "lemma": "burp_gun",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      2927066
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "phrasal": {
     "lemma": "phrasal",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3887,7 +4032,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pilosebaceous": {
     "lemma": "pilosebaceous",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3907,7 +4052,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "polygenic": {
     "lemma": "polygenic",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3927,7 +4072,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "preclusive": {
     "lemma": "preclusive",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3947,7 +4092,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "presymptomatic": {
     "lemma": "presymptomatic",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3967,7 +4112,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pretorial": {
     "lemma": "pretorial",
     "pos": "adjective",
     "offsetCount": 1,
@@ -3987,7 +4132,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "prokaryotic": {
     "lemma": "prokaryotic",
     "pos": "adjective",
     "offsetCount": 1,
@@ -4012,7 +4157,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "provocative": {
     "lemma": "provocative",
     "pos": "adjective",
     "offsetCount": 2,
@@ -4043,7 +4188,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "quits": {
     "lemma": "quits",
     "pos": "adjective",
     "offsetCount": 1,
@@ -4063,7 +4208,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ratified": {
     "lemma": "ratified",
     "pos": "adjective",
     "offsetCount": 1,
@@ -4083,7 +4228,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "recuperative": {
     "lemma": "recuperative",
     "pos": "adjective",
     "offsetCount": 1,
@@ -4103,253 +4248,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "brake_cylinder",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2893237
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "brown_bear",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2134788
-    ],
-    "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Hyponym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "brown_betty",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      7634196
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "brush-tailed_phalanger",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      1884498
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Member holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "buchenwald",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2912868
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Part holonym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "burp_gun",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      2927066
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "romansh",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      6980848
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "screw-loose",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      2085034
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
-    "lemma": "self-sufficing",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      732883
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "shallow-draught",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      3147276
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Pertainym (pertains to noun)",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "sizeable",
-    "pos": "adjective",
-    "offsetCount": 2,
-    "offsets": [
-      1386320,
-      627250
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 2,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
+  "bushman's_poison": {
     "lemma": "bushman's_poison",
     "pos": "noun",
     "offsetCount": 1,
@@ -4374,7 +4273,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "bustier": {
     "lemma": "bustier",
     "pos": "noun",
     "offsetCount": 1,
@@ -4394,7 +4293,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "butter-flower": {
     "lemma": "butter-flower",
     "pos": "noun",
     "offsetCount": 1,
@@ -4424,7 +4323,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "california_personality_inventory": {
     "lemma": "california_personality_inventory",
     "pos": "noun",
     "offsetCount": 1,
@@ -4444,7 +4343,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "calliphora": {
     "lemma": "calliphora",
     "pos": "noun",
     "offsetCount": 1,
@@ -4474,7 +4373,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "camisole": {
     "lemma": "camisole",
     "pos": "noun",
     "offsetCount": 2,
@@ -4495,7 +4394,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "canaan": {
     "lemma": "canaan",
     "pos": "noun",
     "offsetCount": 1,
@@ -4525,7 +4424,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "capital_of_chad": {
     "lemma": "capital_of_chad",
     "pos": "noun",
     "offsetCount": 1,
@@ -4550,42 +4449,32 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "spoken",
-    "pos": "adjective",
+  "romansh": {
+    "lemma": "romansh",
+    "pos": "noun",
     "offsetCount": 1,
     "offsets": [
-      2291437
+      6980848
     ],
     "offsetData": [],
-    "pointerCount": 3,
+    "pointerCount": 1,
     "pointers": [
       {
-        "symbol": "Antonym",
+        "symbol": "Hypernym",
         "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Also see",
-        "offset": 0,
-        "pos": "adjective"
+        "pos": "noun"
       }
     ],
     "senseCount": 1,
-    "tagSenseCount": 1,
+    "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "stoical",
+  "screw-loose": {
+    "lemma": "screw-loose",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      861745
+      2085034
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -4600,13 +4489,12 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "stupefied",
+  "self-sufficing": {
+    "lemma": "self-sufficing",
     "pos": "adjective",
-    "offsetCount": 2,
+    "offsetCount": 1,
     "offsets": [
-      2366833,
-      438360
+      732883
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -4617,36 +4505,16 @@
         "pos": "adjective"
       }
     ],
-    "senseCount": 2,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "synecdochical",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1423361
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
     "senseCount": 1,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "telocentric",
+  "shallow-draught": {
+    "lemma": "shallow-draught",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      3152375
+      3147276
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -4661,32 +4529,13 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "tinseled",
+  "sizeable": {
+    "lemma": "sizeable",
     "pos": "adjective",
-    "offsetCount": 1,
+    "offsetCount": 2,
     "offsets": [
-      57977
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "tref",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      429618
+      1386320,
+      627250
     ],
     "offsetData": [],
     "pointerCount": 2,
@@ -4697,53 +4546,11 @@
         "pos": "adjective"
       }
     ],
-    "senseCount": 1,
+    "senseCount": 2,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "trenchant",
-    "pos": "adjective",
-    "offsetCount": 3,
-    "offsets": [
-      1339324,
-      838498,
-      430512
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 3,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "twenty-eight",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      13771286
-    ],
-    "offsetData": [],
-    "pointerCount": 1,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
+  "capitalisation": {
     "lemma": "capitalisation",
     "pos": "noun",
     "offsetCount": 4,
@@ -4776,7 +4583,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "carpodacus": {
     "lemma": "carpodacus",
     "pos": "noun",
     "offsetCount": 1,
@@ -4806,7 +4613,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cash_register": {
     "lemma": "cash_register",
     "pos": "noun",
     "offsetCount": 1,
@@ -4831,16 +4638,45 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "unaccountable",
+  "spoken": {
+    "lemma": "spoken",
     "pos": "adjective",
-    "offsetCount": 2,
+    "offsetCount": 1,
     "offsets": [
-      943377,
-      2006185
+      2291437
     ],
     "offsetData": [],
-    "pointerCount": 1,
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Also see",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "stoical": {
+    "lemma": "stoical",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      861745
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
     "pointers": [
       {
         "symbol": "Similar to",
@@ -4848,17 +4684,17 @@
         "pos": "adjective"
       }
     ],
-    "senseCount": 2,
+    "senseCount": 1,
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
-    "lemma": "unadapted",
+  "stupefied": {
+    "lemma": "stupefied",
     "pos": "adjective",
     "offsetCount": 2,
     "offsets": [
-      1545324,
-      353092
+      2366833,
+      438360
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -4873,12 +4709,52 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "unsentimental",
+  "synecdochical": {
+    "lemma": "synecdochical",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      2457822
+      1423361
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "telocentric": {
+    "lemma": "telocentric",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      3152375
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Pertainym (pertains to noun)",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "tinseled": {
+    "lemma": "tinseled",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      57977
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -4893,7 +4769,69 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tref": {
+    "lemma": "tref",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      429618
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "trenchant": {
+    "lemma": "trenchant",
+    "pos": "adjective",
+    "offsetCount": 3,
+    "offsets": [
+      1339324,
+      838498,
+      430512
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 3,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "twenty-eight": {
+    "lemma": "twenty-eight",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      13771286
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "centre_of_mass": {
     "lemma": "centre_of_mass",
     "pos": "noun",
     "offsetCount": 1,
@@ -4918,7 +4856,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cerebral_hemorrhage": {
     "lemma": "cerebral_hemorrhage",
     "pos": "noun",
     "offsetCount": 1,
@@ -4943,7 +4881,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cheiranthus_allionii": {
     "lemma": "cheiranthus_allionii",
     "pos": "noun",
     "offsetCount": 1,
@@ -4968,7 +4906,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "chimaera_monstrosa": {
     "lemma": "chimaera_monstrosa",
     "pos": "noun",
     "offsetCount": 1,
@@ -4988,73 +4926,16 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "upper-class",
+  "unaccountable": {
+    "lemma": "unaccountable",
     "pos": "adjective",
-    "offsetCount": 1,
+    "offsetCount": 2,
     "offsets": [
-      262111
+      943377,
+      2006185
     ],
     "offsetData": [],
-    "pointerCount": 3,
-    "pointers": [
-      {
-        "symbol": "Antonym",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Similar to",
-        "offset": 0,
-        "pos": "adjective"
-      },
-      {
-        "symbol": "Attribute",
-        "offset": 0,
-        "pos": "adjective"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "walk-in",
-    "pos": "noun",
-    "offsetCount": 4,
-    "offsets": [
-      10783964,
-      10783796,
-      7490902,
-      4553270
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 4,
-    "tagSenseCount": 0,
-    "isComment": false
-  },
-  {
-    "lemma": "wizardly",
-    "pos": "adjective",
-    "offsetCount": 1,
-    "offsets": [
-      1580464
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
+    "pointerCount": 1,
     "pointers": [
       {
         "symbol": "Similar to",
@@ -5062,16 +4943,37 @@
         "pos": "adjective"
       }
     ],
-    "senseCount": 1,
+    "senseCount": 2,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "unadapted": {
+    "lemma": "unadapted",
+    "pos": "adjective",
+    "offsetCount": 2,
+    "offsets": [
+      1545324,
+      353092
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 2,
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "wrenching",
+  "unsentimental": {
+    "lemma": "unsentimental",
     "pos": "adjective",
     "offsetCount": 1,
     "offsets": [
-      1716982
+      2457822
     ],
     "offsetData": [],
     "pointerCount": 1,
@@ -5083,35 +4985,10 @@
       }
     ],
     "senseCount": 1,
-    "tagSenseCount": 1,
+    "tagSenseCount": 0,
     "isComment": false
   },
-  {
-    "lemma": "zionist",
-    "pos": "noun",
-    "offsetCount": 1,
-    "offsets": [
-      10825105
-    ],
-    "offsetData": [],
-    "pointerCount": 2,
-    "pointers": [
-      {
-        "symbol": "Hypernym",
-        "offset": 0,
-        "pos": "noun"
-      },
-      {
-        "symbol": "Derivationally related form",
-        "offset": 0,
-        "pos": "noun"
-      }
-    ],
-    "senseCount": 1,
-    "tagSenseCount": 1,
-    "isComment": false
-  },
-  {
+  "chorizagrotis": {
     "lemma": "chorizagrotis",
     "pos": "noun",
     "offsetCount": 1,
@@ -5141,7 +5018,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "church_of_england": {
     "lemma": "church_of_england",
     "pos": "noun",
     "offsetCount": 1,
@@ -5171,7 +5048,130 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "upper-class": {
+    "lemma": "upper-class",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      262111
+    ],
+    "offsetData": [],
+    "pointerCount": 3,
+    "pointers": [
+      {
+        "symbol": "Antonym",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      },
+      {
+        "symbol": "Attribute",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "walk-in": {
+    "lemma": "walk-in",
+    "pos": "noun",
+    "offsetCount": 4,
+    "offsets": [
+      10783964,
+      10783796,
+      7490902,
+      4553270
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 4,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "wizardly": {
+    "lemma": "wizardly",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1580464
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 0,
+    "isComment": false
+  },
+  "wrenching": {
+    "lemma": "wrenching",
+    "pos": "adjective",
+    "offsetCount": 1,
+    "offsets": [
+      1716982
+    ],
+    "offsetData": [],
+    "pointerCount": 1,
+    "pointers": [
+      {
+        "symbol": "Similar to",
+        "offset": 0,
+        "pos": "adjective"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "zionist": {
+    "lemma": "zionist",
+    "pos": "noun",
+    "offsetCount": 1,
+    "offsets": [
+      10825105
+    ],
+    "offsetData": [],
+    "pointerCount": 2,
+    "pointers": [
+      {
+        "symbol": "Hypernym",
+        "offset": 0,
+        "pos": "noun"
+      },
+      {
+        "symbol": "Derivationally related form",
+        "offset": 0,
+        "pos": "noun"
+      }
+    ],
+    "senseCount": 1,
+    "tagSenseCount": 1,
+    "isComment": false
+  },
+  "coaching_job": {
     "lemma": "coaching_job",
     "pos": "noun",
     "offsetCount": 1,
@@ -5191,7 +5191,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "coding_system": {
     "lemma": "coding_system",
     "pos": "noun",
     "offsetCount": 1,
@@ -5216,7 +5216,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cohosh": {
     "lemma": "cohosh",
     "pos": "noun",
     "offsetCount": 1,
@@ -5251,7 +5251,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "common_european_earwig": {
     "lemma": "common_european_earwig",
     "pos": "noun",
     "offsetCount": 1,
@@ -5276,7 +5276,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "common_iguana": {
     "lemma": "common_iguana",
     "pos": "noun",
     "offsetCount": 1,
@@ -5301,7 +5301,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "common_moonwort": {
     "lemma": "common_moonwort",
     "pos": "noun",
     "offsetCount": 1,
@@ -5321,7 +5321,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "conglutination": {
     "lemma": "conglutination",
     "pos": "noun",
     "offsetCount": 2,
@@ -5347,7 +5347,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "coniogramme": {
     "lemma": "coniogramme",
     "pos": "noun",
     "offsetCount": 1,
@@ -5377,7 +5377,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "convallariaceae": {
     "lemma": "convallariaceae",
     "pos": "noun",
     "offsetCount": 1,
@@ -5402,7 +5402,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "coptis_groenlandica": {
     "lemma": "coptis_groenlandica",
     "pos": "noun",
     "offsetCount": 1,
@@ -5427,7 +5427,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "copywriter": {
     "lemma": "copywriter",
     "pos": "noun",
     "offsetCount": 1,
@@ -5447,7 +5447,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "coral_drops": {
     "lemma": "coral_drops",
     "pos": "noun",
     "offsetCount": 1,
@@ -5472,7 +5472,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cordon": {
     "lemma": "cordon",
     "pos": "noun",
     "offsetCount": 3,
@@ -5494,7 +5494,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cosmetic_surgeon": {
     "lemma": "cosmetic_surgeon",
     "pos": "noun",
     "offsetCount": 1,
@@ -5514,7 +5514,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "count_alessandro_di_cagliostro": {
     "lemma": "count_alessandro_di_cagliostro",
     "pos": "noun",
     "offsetCount": 1,
@@ -5534,7 +5534,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cowlick": {
     "lemma": "cowlick",
     "pos": "noun",
     "offsetCount": 1,
@@ -5554,7 +5554,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "crack_of_doom": {
     "lemma": "crack_of_doom",
     "pos": "noun",
     "offsetCount": 1,
@@ -5574,7 +5574,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cranial_index": {
     "lemma": "cranial_index",
     "pos": "noun",
     "offsetCount": 1,
@@ -5594,7 +5594,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "crooning": {
     "lemma": "crooning",
     "pos": "noun",
     "offsetCount": 2,
@@ -5620,7 +5620,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cucumis_melo_reticulatus": {
     "lemma": "cucumis_melo_reticulatus",
     "pos": "noun",
     "offsetCount": 1,
@@ -5645,7 +5645,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "cycle_per_second": {
     "lemma": "cycle_per_second",
     "pos": "noun",
     "offsetCount": 1,
@@ -5670,7 +5670,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "de_bakey": {
     "lemma": "de_bakey",
     "pos": "noun",
     "offsetCount": 1,
@@ -5690,7 +5690,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "deadhead": {
     "lemma": "deadhead",
     "pos": "noun",
     "offsetCount": 2,
@@ -5711,7 +5711,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "deadline": {
     "lemma": "deadline",
     "pos": "noun",
     "offsetCount": 1,
@@ -5736,7 +5736,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "defence": {
     "lemma": "defence",
     "pos": "noun",
     "offsetCount": 11,
@@ -5786,7 +5786,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "definition": {
     "lemma": "definition",
     "pos": "noun",
     "offsetCount": 2,
@@ -5817,7 +5817,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "dice_cup": {
     "lemma": "dice_cup",
     "pos": "noun",
     "offsetCount": 1,
@@ -5837,7 +5837,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dinner_service": {
     "lemma": "dinner_service",
     "pos": "noun",
     "offsetCount": 1,
@@ -5857,7 +5857,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dinner_table": {
     "lemma": "dinner_table",
     "pos": "noun",
     "offsetCount": 1,
@@ -5882,7 +5882,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "direct_discourse": {
     "lemma": "direct_discourse",
     "pos": "noun",
     "offsetCount": 1,
@@ -5907,7 +5907,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "directiveness": {
     "lemma": "directiveness",
     "pos": "noun",
     "offsetCount": 1,
@@ -5932,7 +5932,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "disreputability": {
     "lemma": "disreputability",
     "pos": "noun",
     "offsetCount": 1,
@@ -5962,7 +5962,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dissoluteness": {
     "lemma": "dissoluteness",
     "pos": "noun",
     "offsetCount": 1,
@@ -5992,7 +5992,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dominican_dollar": {
     "lemma": "dominican_dollar",
     "pos": "noun",
     "offsetCount": 1,
@@ -6012,7 +6012,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "double-hung_window": {
     "lemma": "double-hung_window",
     "pos": "noun",
     "offsetCount": 1,
@@ -6037,7 +6037,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "drafting": {
     "lemma": "drafting",
     "pos": "noun",
     "offsetCount": 3,
@@ -6069,7 +6069,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "driving_axle": {
     "lemma": "driving_axle",
     "pos": "noun",
     "offsetCount": 1,
@@ -6094,7 +6094,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "drug_cartel": {
     "lemma": "drug_cartel",
     "pos": "noun",
     "offsetCount": 1,
@@ -6119,7 +6119,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dryopteris_dilatata": {
     "lemma": "dryopteris_dilatata",
     "pos": "noun",
     "offsetCount": 1,
@@ -6144,7 +6144,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dubliner": {
     "lemma": "dubliner",
     "pos": "noun",
     "offsetCount": 1,
@@ -6169,7 +6169,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "duc_de_richelieu": {
     "lemma": "duc_de_richelieu",
     "pos": "noun",
     "offsetCount": 1,
@@ -6189,7 +6189,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "dustpanful": {
     "lemma": "dustpanful",
     "pos": "noun",
     "offsetCount": 1,
@@ -6209,7 +6209,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "dyspepsia": {
     "lemma": "dyspepsia",
     "pos": "noun",
     "offsetCount": 1,
@@ -6239,7 +6239,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eastern_highlands": {
     "lemma": "eastern_highlands",
     "pos": "noun",
     "offsetCount": 1,
@@ -6269,7 +6269,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eastern_lowland_gorilla": {
     "lemma": "eastern_lowland_gorilla",
     "pos": "noun",
     "offsetCount": 1,
@@ -6294,7 +6294,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eastern_roman_empire": {
     "lemma": "eastern_roman_empire",
     "pos": "noun",
     "offsetCount": 1,
@@ -6329,7 +6329,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ectopistes": {
     "lemma": "ectopistes",
     "pos": "noun",
     "offsetCount": 1,
@@ -6359,7 +6359,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "edward_morley": {
     "lemma": "edward_morley",
     "pos": "noun",
     "offsetCount": 1,
@@ -6379,7 +6379,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eindhoven": {
     "lemma": "eindhoven",
     "pos": "noun",
     "offsetCount": 1,
@@ -6404,7 +6404,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "el_misti": {
     "lemma": "el_misti",
     "pos": "noun",
     "offsetCount": 1,
@@ -6429,7 +6429,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "elagatis": {
     "lemma": "elagatis",
     "pos": "noun",
     "offsetCount": 1,
@@ -6454,7 +6454,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "electorate": {
     "lemma": "electorate",
     "pos": "noun",
     "offsetCount": 1,
@@ -6484,7 +6484,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "electroshock_therapy": {
     "lemma": "electroshock_therapy",
     "pos": "noun",
     "offsetCount": 1,
@@ -6504,7 +6504,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "electrostatic_machine": {
     "lemma": "electrostatic_machine",
     "pos": "noun",
     "offsetCount": 1,
@@ -6529,7 +6529,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "elysian_fields": {
     "lemma": "elysian_fields",
     "pos": "noun",
     "offsetCount": 1,
@@ -6549,7 +6549,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "endocarp": {
     "lemma": "endocarp",
     "pos": "noun",
     "offsetCount": 1,
@@ -6574,7 +6574,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "enosis": {
     "lemma": "enosis",
     "pos": "noun",
     "offsetCount": 1,
@@ -6594,7 +6594,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eriodictyon": {
     "lemma": "eriodictyon",
     "pos": "noun",
     "offsetCount": 1,
@@ -6624,7 +6624,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ernst_heinrich_weber": {
     "lemma": "ernst_heinrich_weber",
     "pos": "noun",
     "offsetCount": 1,
@@ -6644,7 +6644,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "erythroblastosis": {
     "lemma": "erythroblastosis",
     "pos": "noun",
     "offsetCount": 1,
@@ -6664,7 +6664,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "eucalyptus_dumosa": {
     "lemma": "eucalyptus_dumosa",
     "pos": "noun",
     "offsetCount": 1,
@@ -6684,7 +6684,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "faineance": {
     "lemma": "faineance",
     "pos": "noun",
     "offsetCount": 1,
@@ -6709,7 +6709,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "family_amphioxidae": {
     "lemma": "family_amphioxidae",
     "pos": "noun",
     "offsetCount": 1,
@@ -6739,7 +6739,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "family_cestidae": {
     "lemma": "family_cestidae",
     "pos": "noun",
     "offsetCount": 1,
@@ -6769,7 +6769,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "family_gruidae": {
     "lemma": "family_gruidae",
     "pos": "noun",
     "offsetCount": 1,
@@ -6799,7 +6799,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "family_pelobatidae": {
     "lemma": "family_pelobatidae",
     "pos": "noun",
     "offsetCount": 1,
@@ -6829,7 +6829,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ferrocyanic_acid": {
     "lemma": "ferrocyanic_acid",
     "pos": "noun",
     "offsetCount": 1,
@@ -6849,7 +6849,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fibrillation": {
     "lemma": "fibrillation",
     "pos": "noun",
     "offsetCount": 2,
@@ -6880,7 +6880,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "file_name": {
     "lemma": "file_name",
     "pos": "noun",
     "offsetCount": 1,
@@ -6905,7 +6905,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fire_truck": {
     "lemma": "fire_truck",
     "pos": "noun",
     "offsetCount": 1,
@@ -6930,7 +6930,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fish_fly": {
     "lemma": "fish_fly",
     "pos": "noun",
     "offsetCount": 1,
@@ -6955,7 +6955,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fish_fry": {
     "lemma": "fish_fry",
     "pos": "noun",
     "offsetCount": 1,
@@ -6975,7 +6975,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "flak_catcher": {
     "lemma": "flak_catcher",
     "pos": "noun",
     "offsetCount": 1,
@@ -6995,7 +6995,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fluid_mechanics": {
     "lemma": "fluid_mechanics",
     "pos": "noun",
     "offsetCount": 1,
@@ -7020,7 +7020,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fontenoy": {
     "lemma": "fontenoy",
     "pos": "noun",
     "offsetCount": 1,
@@ -7045,7 +7045,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "food_colour": {
     "lemma": "food_colour",
     "pos": "noun",
     "offsetCount": 1,
@@ -7065,7 +7065,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "food_company": {
     "lemma": "food_company",
     "pos": "noun",
     "offsetCount": 1,
@@ -7085,7 +7085,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "force_per_unit_area": {
     "lemma": "force_per_unit_area",
     "pos": "noun",
     "offsetCount": 1,
@@ -7110,7 +7110,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fore-topmast": {
     "lemma": "fore-topmast",
     "pos": "noun",
     "offsetCount": 1,
@@ -7130,7 +7130,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "forwardness": {
     "lemma": "forwardness",
     "pos": "noun",
     "offsetCount": 3,
@@ -7157,7 +7157,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "four-footed_butterfly": {
     "lemma": "four-footed_butterfly",
     "pos": "noun",
     "offsetCount": 1,
@@ -7187,7 +7187,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "fox_terrier": {
     "lemma": "fox_terrier",
     "pos": "noun",
     "offsetCount": 1,
@@ -7212,7 +7212,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "foxtail_barley": {
     "lemma": "foxtail_barley",
     "pos": "noun",
     "offsetCount": 1,
@@ -7232,7 +7232,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "francoa_ramosa": {
     "lemma": "francoa_ramosa",
     "pos": "noun",
     "offsetCount": 1,
@@ -7257,7 +7257,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "francois_marie_charles_fourier": {
     "lemma": "francois_marie_charles_fourier",
     "pos": "noun",
     "offsetCount": 1,
@@ -7277,7 +7277,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "garden_heliotrope": {
     "lemma": "garden_heliotrope",
     "pos": "noun",
     "offsetCount": 1,
@@ -7297,7 +7297,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "gempylus_serpens": {
     "lemma": "gempylus_serpens",
     "pos": "noun",
     "offsetCount": 1,
@@ -7322,7 +7322,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_actiniopteris": {
     "lemma": "genus_actiniopteris",
     "pos": "noun",
     "offsetCount": 1,
@@ -7347,7 +7347,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_canachites": {
     "lemma": "genus_canachites",
     "pos": "noun",
     "offsetCount": 1,
@@ -7377,7 +7377,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_curcuma": {
     "lemma": "genus_curcuma",
     "pos": "noun",
     "offsetCount": 1,
@@ -7407,7 +7407,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_iris": {
     "lemma": "genus_iris",
     "pos": "noun",
     "offsetCount": 1,
@@ -7432,7 +7432,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_tradescantia": {
     "lemma": "genus_tradescantia",
     "pos": "noun",
     "offsetCount": 1,
@@ -7457,7 +7457,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "genus_zaglossus": {
     "lemma": "genus_zaglossus",
     "pos": "noun",
     "offsetCount": 1,
@@ -7487,7 +7487,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "geomys": {
     "lemma": "geomys",
     "pos": "noun",
     "offsetCount": 1,
@@ -7517,7 +7517,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gerbert": {
     "lemma": "gerbert",
     "pos": "noun",
     "offsetCount": 1,
@@ -7537,7 +7537,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gesell": {
     "lemma": "gesell",
     "pos": "noun",
     "offsetCount": 1,
@@ -7557,7 +7557,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "getulio_dornelles_vargas": {
     "lemma": "getulio_dornelles_vargas",
     "pos": "noun",
     "offsetCount": 1,
@@ -7577,7 +7577,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gide": {
     "lemma": "gide",
     "pos": "noun",
     "offsetCount": 1,
@@ -7597,7 +7597,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "glenn_curtiss": {
     "lemma": "glenn_curtiss",
     "pos": "noun",
     "offsetCount": 1,
@@ -7617,7 +7617,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "golden_warbler": {
     "lemma": "golden_warbler",
     "pos": "noun",
     "offsetCount": 1,
@@ -7642,7 +7642,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gorilla_gorilla": {
     "lemma": "gorilla_gorilla",
     "pos": "noun",
     "offsetCount": 1,
@@ -7672,7 +7672,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "goshawk": {
     "lemma": "goshawk",
     "pos": "noun",
     "offsetCount": 1,
@@ -7697,7 +7697,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "government": {
     "lemma": "government",
     "pos": "noun",
     "offsetCount": 4,
@@ -7740,7 +7740,7 @@
     "tagSenseCount": 3,
     "isComment": false
   },
-  {
+  "grand_marnier": {
     "lemma": "grand_marnier",
     "pos": "noun",
     "offsetCount": 1,
@@ -7760,7 +7760,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "granville_stanley_hall": {
     "lemma": "granville_stanley_hall",
     "pos": "noun",
     "offsetCount": 1,
@@ -7780,7 +7780,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "grape_arbour": {
     "lemma": "grape_arbour",
     "pos": "noun",
     "offsetCount": 1,
@@ -7800,7 +7800,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "greco-roman_deity": {
     "lemma": "greco-roman_deity",
     "pos": "noun",
     "offsetCount": 1,
@@ -7825,7 +7825,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "green_algae": {
     "lemma": "green_algae",
     "pos": "noun",
     "offsetCount": 1,
@@ -7855,7 +7855,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "greyhound_racing": {
     "lemma": "greyhound_racing",
     "pos": "noun",
     "offsetCount": 1,
@@ -7875,7 +7875,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gromwell": {
     "lemma": "gromwell",
     "pos": "noun",
     "offsetCount": 1,
@@ -7900,7 +7900,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "grotto": {
     "lemma": "grotto",
     "pos": "noun",
     "offsetCount": 1,
@@ -7920,7 +7920,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gunnery_sergeant": {
     "lemma": "gunnery_sergeant",
     "pos": "noun",
     "offsetCount": 1,
@@ -7940,7 +7940,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "gustavus_i": {
     "lemma": "gustavus_i",
     "pos": "noun",
     "offsetCount": 1,
@@ -7960,7 +7960,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ha'p'orth": {
     "lemma": "ha'p'orth",
     "pos": "noun",
     "offsetCount": 1,
@@ -7980,7 +7980,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "haematocolpos": {
     "lemma": "haematocolpos",
     "pos": "noun",
     "offsetCount": 1,
@@ -8000,7 +8000,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "haemophilia_a": {
     "lemma": "haemophilia_a",
     "pos": "noun",
     "offsetCount": 1,
@@ -8020,7 +8020,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hakenkreuz": {
     "lemma": "hakenkreuz",
     "pos": "noun",
     "offsetCount": 1,
@@ -8040,7 +8040,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hassam": {
     "lemma": "hassam",
     "pos": "noun",
     "offsetCount": 1,
@@ -8060,7 +8060,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "heart_specialist": {
     "lemma": "heart_specialist",
     "pos": "noun",
     "offsetCount": 1,
@@ -8080,7 +8080,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "heavy_metal_music": {
     "lemma": "heavy_metal_music",
     "pos": "noun",
     "offsetCount": 1,
@@ -8100,7 +8100,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "heir": {
     "lemma": "heir",
     "pos": "noun",
     "offsetCount": 2,
@@ -8126,7 +8126,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "herb_tea": {
     "lemma": "herb_tea",
     "pos": "noun",
     "offsetCount": 1,
@@ -8151,7 +8151,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "highlighting": {
     "lemma": "highlighting",
     "pos": "noun",
     "offsetCount": 1,
@@ -8176,7 +8176,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "holometabola": {
     "lemma": "holometabola",
     "pos": "noun",
     "offsetCount": 1,
@@ -8196,7 +8196,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "horoscope": {
     "lemma": "horoscope",
     "pos": "noun",
     "offsetCount": 2,
@@ -8217,7 +8217,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "horowitz": {
     "lemma": "horowitz",
     "pos": "noun",
     "offsetCount": 1,
@@ -8237,7 +8237,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "housepaint": {
     "lemma": "housepaint",
     "pos": "noun",
     "offsetCount": 1,
@@ -8257,7 +8257,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hubble_parameter": {
     "lemma": "hubble_parameter",
     "pos": "noun",
     "offsetCount": 1,
@@ -8277,7 +8277,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hurly_burly": {
     "lemma": "hurly_burly",
     "pos": "noun",
     "offsetCount": 1,
@@ -8302,7 +8302,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hydride": {
     "lemma": "hydride",
     "pos": "noun",
     "offsetCount": 1,
@@ -8327,7 +8327,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "hydrocephaly": {
     "lemma": "hydrocephaly",
     "pos": "noun",
     "offsetCount": 1,
@@ -8352,7 +8352,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "hylophylax": {
     "lemma": "hylophylax",
     "pos": "noun",
     "offsetCount": 1,
@@ -8382,7 +8382,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ignace_paderewski": {
     "lemma": "ignace_paderewski",
     "pos": "noun",
     "offsetCount": 1,
@@ -8402,7 +8402,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "immortelle": {
     "lemma": "immortelle",
     "pos": "noun",
     "offsetCount": 1,
@@ -8427,7 +8427,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "incongruity": {
     "lemma": "incongruity",
     "pos": "noun",
     "offsetCount": 1,
@@ -8462,7 +8462,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "indira_gandhi": {
     "lemma": "indira_gandhi",
     "pos": "noun",
     "offsetCount": 1,
@@ -8482,7 +8482,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "indirect_lighting": {
     "lemma": "indirect_lighting",
     "pos": "noun",
     "offsetCount": 1,
@@ -8502,7 +8502,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "inferior_alveolar_artery": {
     "lemma": "inferior_alveolar_artery",
     "pos": "noun",
     "offsetCount": 1,
@@ -8522,7 +8522,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "inner_product": {
     "lemma": "inner_product",
     "pos": "noun",
     "offsetCount": 1,
@@ -8542,7 +8542,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "insurer": {
     "lemma": "insurer",
     "pos": "noun",
     "offsetCount": 1,
@@ -8567,7 +8567,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "interpersonal_chemistry": {
     "lemma": "interpersonal_chemistry",
     "pos": "noun",
     "offsetCount": 1,
@@ -8587,7 +8587,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "inverted_hang": {
     "lemma": "inverted_hang",
     "pos": "noun",
     "offsetCount": 1,
@@ -8607,7 +8607,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "involuntary_muscle": {
     "lemma": "involuntary_muscle",
     "pos": "noun",
     "offsetCount": 1,
@@ -8632,7 +8632,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "irish_capital": {
     "lemma": "irish_capital",
     "pos": "noun",
     "offsetCount": 1,
@@ -8662,7 +8662,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "irresoluteness": {
     "lemma": "irresoluteness",
     "pos": "noun",
     "offsetCount": 1,
@@ -8697,7 +8697,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jacksonville": {
     "lemma": "jacksonville",
     "pos": "noun",
     "offsetCount": 1,
@@ -8722,7 +8722,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jacques_alexandre_cesar_charles": {
     "lemma": "jacques_alexandre_cesar_charles",
     "pos": "noun",
     "offsetCount": 1,
@@ -8742,7 +8742,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jacques_tatischeff": {
     "lemma": "jacques_tatischeff",
     "pos": "noun",
     "offsetCount": 1,
@@ -8762,7 +8762,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jafar_umar_thalib": {
     "lemma": "jafar_umar_thalib",
     "pos": "noun",
     "offsetCount": 1,
@@ -8782,7 +8782,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "jerry": {
     "lemma": "jerry",
     "pos": "noun",
     "offsetCount": 1,
@@ -8802,7 +8802,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "joliet": {
     "lemma": "joliet",
     "pos": "noun",
     "offsetCount": 1,
@@ -8822,7 +8822,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "julius_ullman": {
     "lemma": "julius_ullman",
     "pos": "noun",
     "offsetCount": 1,
@@ -8842,7 +8842,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "kandy": {
     "lemma": "kandy",
     "pos": "noun",
     "offsetCount": 1,
@@ -8867,7 +8867,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "kiddy": {
     "lemma": "kiddy",
     "pos": "noun",
     "offsetCount": 1,
@@ -8887,7 +8887,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "kiggelaria_africana": {
     "lemma": "kiggelaria_africana",
     "pos": "noun",
     "offsetCount": 1,
@@ -8912,7 +8912,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "kilobyte": {
     "lemma": "kilobyte",
     "pos": "noun",
     "offsetCount": 2,
@@ -8943,7 +8943,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "krakatau": {
     "lemma": "krakatau",
     "pos": "noun",
     "offsetCount": 1,
@@ -8968,7 +8968,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lake_poets": {
     "lemma": "lake_poets",
     "pos": "noun",
     "offsetCount": 1,
@@ -8993,7 +8993,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lammastide": {
     "lemma": "lammastide",
     "pos": "noun",
     "offsetCount": 1,
@@ -9013,7 +9013,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lappland": {
     "lemma": "lappland",
     "pos": "noun",
     "offsetCount": 1,
@@ -9048,7 +9048,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "larid": {
     "lemma": "larid",
     "pos": "noun",
     "offsetCount": 1,
@@ -9078,7 +9078,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lawn_cart": {
     "lemma": "lawn_cart",
     "pos": "noun",
     "offsetCount": 1,
@@ -9098,7 +9098,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "legislature": {
     "lemma": "legislature",
     "pos": "noun",
     "offsetCount": 1,
@@ -9133,7 +9133,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "ligament": {
     "lemma": "ligament",
     "pos": "noun",
     "offsetCount": 2,
@@ -9164,7 +9164,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "linear_b": {
     "lemma": "linear_b",
     "pos": "noun",
     "offsetCount": 1,
@@ -9184,7 +9184,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "liposome": {
     "lemma": "liposome",
     "pos": "noun",
     "offsetCount": 1,
@@ -9204,7 +9204,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lithophyte": {
     "lemma": "lithophyte",
     "pos": "noun",
     "offsetCount": 1,
@@ -9229,7 +9229,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "living_will": {
     "lemma": "living_will",
     "pos": "noun",
     "offsetCount": 1,
@@ -9249,7 +9249,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "loir": {
     "lemma": "loir",
     "pos": "noun",
     "offsetCount": 1,
@@ -9274,7 +9274,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "loire_river": {
     "lemma": "loire_river",
     "pos": "noun",
     "offsetCount": 1,
@@ -9299,7 +9299,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "longanimity": {
     "lemma": "longanimity",
     "pos": "noun",
     "offsetCount": 1,
@@ -9324,7 +9324,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lookout": {
     "lemma": "lookout",
     "pos": "noun",
     "offsetCount": 4,
@@ -9357,7 +9357,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lounging_jacket": {
     "lemma": "lounging_jacket",
     "pos": "noun",
     "offsetCount": 1,
@@ -9377,7 +9377,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "loxodrome": {
     "lemma": "loxodrome",
     "pos": "noun",
     "offsetCount": 1,
@@ -9397,7 +9397,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lubitsch": {
     "lemma": "lubitsch",
     "pos": "noun",
     "offsetCount": 1,
@@ -9417,7 +9417,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lumbago": {
     "lemma": "lumbago",
     "pos": "noun",
     "offsetCount": 1,
@@ -9437,7 +9437,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "lumpenproletariat": {
     "lemma": "lumpenproletariat",
     "pos": "noun",
     "offsetCount": 1,
@@ -9457,7 +9457,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "making_love": {
     "lemma": "making_love",
     "pos": "noun",
     "offsetCount": 1,
@@ -9477,7 +9477,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "mammoth_cave_national_park": {
     "lemma": "mammoth_cave_national_park",
     "pos": "noun",
     "offsetCount": 1,
@@ -9502,7 +9502,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "maratha": {
     "lemma": "maratha",
     "pos": "noun",
     "offsetCount": 1,
@@ -9522,7 +9522,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "maria_meneghini_callas": {
     "lemma": "maria_meneghini_callas",
     "pos": "noun",
     "offsetCount": 1,
@@ -9542,7 +9542,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "markoff_chain": {
     "lemma": "markoff_chain",
     "pos": "noun",
     "offsetCount": 1,
@@ -9562,7 +9562,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "medieval_latin": {
     "lemma": "medieval_latin",
     "pos": "noun",
     "offsetCount": 1,
@@ -9582,7 +9582,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "memorization": {
     "lemma": "memorization",
     "pos": "noun",
     "offsetCount": 1,
@@ -9612,7 +9612,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "men's_room": {
     "lemma": "men's_room",
     "pos": "noun",
     "offsetCount": 1,
@@ -9632,7 +9632,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "metazoan": {
     "lemma": "metazoan",
     "pos": "noun",
     "offsetCount": 1,
@@ -9657,7 +9657,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "metoprolol": {
     "lemma": "metoprolol",
     "pos": "noun",
     "offsetCount": 1,
@@ -9677,7 +9677,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "micropogonias_undulatus": {
     "lemma": "micropogonias_undulatus",
     "pos": "noun",
     "offsetCount": 1,
@@ -9702,7 +9702,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "milk_cow": {
     "lemma": "milk_cow",
     "pos": "noun",
     "offsetCount": 1,
@@ -9727,7 +9727,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ministry_of_transportation_test": {
     "lemma": "ministry_of_transportation_test",
     "pos": "noun",
     "offsetCount": 1,
@@ -9747,7 +9747,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "miser": {
     "lemma": "miser",
     "pos": "noun",
     "offsetCount": 1,
@@ -9777,7 +9777,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "mossy_saxifrage": {
     "lemma": "mossy_saxifrage",
     "pos": "noun",
     "offsetCount": 1,
@@ -9802,7 +9802,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "moving_staircase": {
     "lemma": "moving_staircase",
     "pos": "noun",
     "offsetCount": 1,
@@ -9822,7 +9822,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "mud_puppy": {
     "lemma": "mud_puppy",
     "pos": "noun",
     "offsetCount": 3,
@@ -9849,7 +9849,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "musculus_quadriceps_femoris": {
     "lemma": "musculus_quadriceps_femoris",
     "pos": "noun",
     "offsetCount": 1,
@@ -9874,7 +9874,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "mustela": {
     "lemma": "mustela",
     "pos": "noun",
     "offsetCount": 1,
@@ -9904,7 +9904,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "myxinikela": {
     "lemma": "myxinikela",
     "pos": "noun",
     "offsetCount": 1,
@@ -9934,7 +9934,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "naja_naja": {
     "lemma": "naja_naja",
     "pos": "noun",
     "offsetCount": 1,
@@ -9959,7 +9959,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "najas": {
     "lemma": "najas",
     "pos": "noun",
     "offsetCount": 1,
@@ -9989,7 +9989,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "nanny": {
     "lemma": "nanny",
     "pos": "noun",
     "offsetCount": 2,
@@ -10020,7 +10020,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "narrow-body_aircraft": {
     "lemma": "narrow-body_aircraft",
     "pos": "noun",
     "offsetCount": 1,
@@ -10040,7 +10040,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "narwal": {
     "lemma": "narwal",
     "pos": "noun",
     "offsetCount": 1,
@@ -10065,7 +10065,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "necrolysis": {
     "lemma": "necrolysis",
     "pos": "noun",
     "offsetCount": 1,
@@ -10085,7 +10085,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "neonatal_death": {
     "lemma": "neonatal_death",
     "pos": "noun",
     "offsetCount": 1,
@@ -10105,7 +10105,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "nervus_radialis": {
     "lemma": "nervus_radialis",
     "pos": "noun",
     "offsetCount": 1,
@@ -10125,7 +10125,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "newton's_second_law": {
     "lemma": "newton's_second_law",
     "pos": "noun",
     "offsetCount": 1,
@@ -10145,7 +10145,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "nooks_and_crannies": {
     "lemma": "nooks_and_crannies",
     "pos": "noun",
     "offsetCount": 1,
@@ -10165,7 +10165,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "northwester": {
     "lemma": "northwester",
     "pos": "noun",
     "offsetCount": 1,
@@ -10190,7 +10190,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "novelist": {
     "lemma": "novelist",
     "pos": "noun",
     "offsetCount": 1,
@@ -10220,7 +10220,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "noxiousness": {
     "lemma": "noxiousness",
     "pos": "noun",
     "offsetCount": 1,
@@ -10245,7 +10245,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "oblong_leaf": {
     "lemma": "oblong_leaf",
     "pos": "noun",
     "offsetCount": 1,
@@ -10265,7 +10265,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "obstetrical_toad": {
     "lemma": "obstetrical_toad",
     "pos": "noun",
     "offsetCount": 1,
@@ -10290,7 +10290,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "oceanic_bonito": {
     "lemma": "oceanic_bonito",
     "pos": "noun",
     "offsetCount": 1,
@@ -10315,7 +10315,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "odor": {
     "lemma": "odor",
     "pos": "noun",
     "offsetCount": 2,
@@ -10351,7 +10351,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "oklahoma": {
     "lemma": "oklahoma",
     "pos": "noun",
     "offsetCount": 1,
@@ -10381,7 +10381,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "olduvai_gorge": {
     "lemma": "olduvai_gorge",
     "pos": "noun",
     "offsetCount": 1,
@@ -10406,7 +10406,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "olive-drab_uniform": {
     "lemma": "olive-drab_uniform",
     "pos": "noun",
     "offsetCount": 1,
@@ -10431,7 +10431,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "open-end_credit": {
     "lemma": "open-end_credit",
     "pos": "noun",
     "offsetCount": 1,
@@ -10456,7 +10456,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "open-hearth_process": {
     "lemma": "open-hearth_process",
     "pos": "noun",
     "offsetCount": 1,
@@ -10476,7 +10476,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "operationalism": {
     "lemma": "operationalism",
     "pos": "noun",
     "offsetCount": 1,
@@ -10496,7 +10496,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "optical_device": {
     "lemma": "optical_device",
     "pos": "noun",
     "offsetCount": 1,
@@ -10521,7 +10521,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "orchidaceae": {
     "lemma": "orchidaceae",
     "pos": "noun",
     "offsetCount": 1,
@@ -10551,7 +10551,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "order_gnetales": {
     "lemma": "order_gnetales",
     "pos": "noun",
     "offsetCount": 1,
@@ -10581,7 +10581,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "order_proteales": {
     "lemma": "order_proteales",
     "pos": "noun",
     "offsetCount": 1,
@@ -10611,7 +10611,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "order_rhamnales": {
     "lemma": "order_rhamnales",
     "pos": "noun",
     "offsetCount": 1,
@@ -10641,7 +10641,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "order_scleroparei": {
     "lemma": "order_scleroparei",
     "pos": "noun",
     "offsetCount": 1,
@@ -10671,7 +10671,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "oscillator": {
     "lemma": "oscillator",
     "pos": "noun",
     "offsetCount": 1,
@@ -10696,7 +10696,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "oswald": {
     "lemma": "oswald",
     "pos": "noun",
     "offsetCount": 1,
@@ -10716,7 +10716,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "outcome": {
     "lemma": "outcome",
     "pos": "noun",
     "offsetCount": 2,
@@ -10742,7 +10742,7 @@
     "tagSenseCount": 2,
     "isComment": false
   },
-  {
+  "outrider": {
     "lemma": "outrider",
     "pos": "noun",
     "offsetCount": 1,
@@ -10762,7 +10762,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "overconfidence": {
     "lemma": "overconfidence",
     "pos": "noun",
     "offsetCount": 1,
@@ -10787,7 +10787,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ovule": {
     "lemma": "ovule",
     "pos": "noun",
     "offsetCount": 2,
@@ -10823,7 +10823,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "paliurus": {
     "lemma": "paliurus",
     "pos": "noun",
     "offsetCount": 1,
@@ -10853,7 +10853,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "parabola": {
     "lemma": "parabola",
     "pos": "noun",
     "offsetCount": 1,
@@ -10878,7 +10878,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "parathyroid_hormone": {
     "lemma": "parathyroid_hormone",
     "pos": "noun",
     "offsetCount": 1,
@@ -10898,7 +10898,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "parroquet": {
     "lemma": "parroquet",
     "pos": "noun",
     "offsetCount": 1,
@@ -10923,7 +10923,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "passementerie": {
     "lemma": "passementerie",
     "pos": "noun",
     "offsetCount": 1,
@@ -10948,7 +10948,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "paviour": {
     "lemma": "paviour",
     "pos": "noun",
     "offsetCount": 1,
@@ -10968,7 +10968,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pedagogics": {
     "lemma": "pedagogics",
     "pos": "noun",
     "offsetCount": 1,
@@ -10993,7 +10993,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pegasus": {
     "lemma": "pegasus",
     "pos": "noun",
     "offsetCount": 2,
@@ -11014,7 +11014,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pentaerythritol": {
     "lemma": "pentaerythritol",
     "pos": "noun",
     "offsetCount": 1,
@@ -11034,7 +11034,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "peristedion": {
     "lemma": "peristedion",
     "pos": "noun",
     "offsetCount": 1,
@@ -11064,7 +11064,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "peronospora_destructor": {
     "lemma": "peronospora_destructor",
     "pos": "noun",
     "offsetCount": 1,
@@ -11089,7 +11089,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "peruvian_monetary_unit": {
     "lemma": "peruvian_monetary_unit",
     "pos": "noun",
     "offsetCount": 1,
@@ -11114,7 +11114,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pheochromocytoma": {
     "lemma": "pheochromocytoma",
     "pos": "noun",
     "offsetCount": 1,
@@ -11134,7 +11134,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "philomath": {
     "lemma": "philomath",
     "pos": "noun",
     "offsetCount": 1,
@@ -11154,7 +11154,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "phlogopite": {
     "lemma": "phlogopite",
     "pos": "noun",
     "offsetCount": 1,
@@ -11174,7 +11174,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "photoconduction": {
     "lemma": "photoconduction",
     "pos": "noun",
     "offsetCount": 1,
@@ -11194,7 +11194,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "phylum_annelida": {
     "lemma": "phylum_annelida",
     "pos": "noun",
     "offsetCount": 1,
@@ -11224,7 +11224,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "physalis_ixocarpa": {
     "lemma": "physalis_ixocarpa",
     "pos": "noun",
     "offsetCount": 1,
@@ -11249,7 +11249,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pipe_fitting": {
     "lemma": "pipe_fitting",
     "pos": "noun",
     "offsetCount": 1,
@@ -11274,7 +11274,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pipe_organ": {
     "lemma": "pipe_organ",
     "pos": "noun",
     "offsetCount": 1,
@@ -11299,7 +11299,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pivoting_window": {
     "lemma": "pivoting_window",
     "pos": "noun",
     "offsetCount": 1,
@@ -11319,7 +11319,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "plainsman": {
     "lemma": "plainsman",
     "pos": "noun",
     "offsetCount": 1,
@@ -11339,7 +11339,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pleurodynia": {
     "lemma": "pleurodynia",
     "pos": "noun",
     "offsetCount": 1,
@@ -11359,7 +11359,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pleurosorus": {
     "lemma": "pleurosorus",
     "pos": "noun",
     "offsetCount": 1,
@@ -11384,7 +11384,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "politesse": {
     "lemma": "politesse",
     "pos": "noun",
     "offsetCount": 1,
@@ -11404,7 +11404,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "port_of_entry": {
     "lemma": "port_of_entry",
     "pos": "noun",
     "offsetCount": 1,
@@ -11429,7 +11429,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "possum": {
     "lemma": "possum",
     "pos": "noun",
     "offsetCount": 2,
@@ -11460,7 +11460,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "pow": {
     "lemma": "pow",
     "pos": "noun",
     "offsetCount": 1,
@@ -11480,7 +11480,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "preoccupancy": {
     "lemma": "preoccupancy",
     "pos": "noun",
     "offsetCount": 2,
@@ -11511,7 +11511,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "prince_of_wales": {
     "lemma": "prince_of_wales",
     "pos": "noun",
     "offsetCount": 1,
@@ -11536,7 +11536,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "psidium_cattleianum": {
     "lemma": "psidium_cattleianum",
     "pos": "noun",
     "offsetCount": 1,
@@ -11556,7 +11556,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pteris": {
     "lemma": "pteris",
     "pos": "noun",
     "offsetCount": 1,
@@ -11586,7 +11586,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "pterocarpus_santalinus": {
     "lemma": "pterocarpus_santalinus",
     "pos": "noun",
     "offsetCount": 1,
@@ -11616,7 +11616,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "puce": {
     "lemma": "puce",
     "pos": "noun",
     "offsetCount": 1,
@@ -11636,7 +11636,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "purslane": {
     "lemma": "purslane",
     "pos": "noun",
     "offsetCount": 1,
@@ -11661,7 +11661,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "push-down_storage": {
     "lemma": "push-down_storage",
     "pos": "noun",
     "offsetCount": 1,
@@ -11681,7 +11681,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "queen_mother": {
     "lemma": "queen_mother",
     "pos": "noun",
     "offsetCount": 1,
@@ -11701,7 +11701,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "queer_duck": {
     "lemma": "queer_duck",
     "pos": "noun",
     "offsetCount": 1,
@@ -11721,7 +11721,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "quid_pro_quo": {
     "lemma": "quid_pro_quo",
     "pos": "noun",
     "offsetCount": 1,
@@ -11741,7 +11741,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rail_line": {
     "lemma": "rail_line",
     "pos": "noun",
     "offsetCount": 1,
@@ -11771,7 +11771,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "raiu": {
     "lemma": "raiu",
     "pos": "noun",
     "offsetCount": 1,
@@ -11791,7 +11791,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rajab": {
     "lemma": "rajab",
     "pos": "noun",
     "offsetCount": 1,
@@ -11816,7 +11816,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ramachandra": {
     "lemma": "ramachandra",
     "pos": "noun",
     "offsetCount": 1,
@@ -11836,7 +11836,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ramontchi": {
     "lemma": "ramontchi",
     "pos": "noun",
     "offsetCount": 1,
@@ -11861,7 +11861,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "range_pole": {
     "lemma": "range_pole",
     "pos": "noun",
     "offsetCount": 1,
@@ -11881,7 +11881,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "real_number": {
     "lemma": "real_number",
     "pos": "noun",
     "offsetCount": 1,
@@ -11906,7 +11906,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "recreational_drug": {
     "lemma": "recreational_drug",
     "pos": "noun",
     "offsetCount": 1,
@@ -11926,7 +11926,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rectifying_valve": {
     "lemma": "rectifying_valve",
     "pos": "noun",
     "offsetCount": 1,
@@ -11946,7 +11946,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "red_marrow": {
     "lemma": "red_marrow",
     "pos": "noun",
     "offsetCount": 1,
@@ -11966,7 +11966,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "relievo": {
     "lemma": "relievo",
     "pos": "noun",
     "offsetCount": 1,
@@ -11991,7 +11991,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "riley": {
     "lemma": "riley",
     "pos": "noun",
     "offsetCount": 1,
@@ -12011,7 +12011,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rob_roy": {
     "lemma": "rob_roy",
     "pos": "noun",
     "offsetCount": 2,
@@ -12037,7 +12037,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "roper": {
     "lemma": "roper",
     "pos": "noun",
     "offsetCount": 3,
@@ -12064,7 +12064,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "round-table_conference": {
     "lemma": "round-table_conference",
     "pos": "noun",
     "offsetCount": 1,
@@ -12084,7 +12084,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "royal_academy": {
     "lemma": "royal_academy",
     "pos": "noun",
     "offsetCount": 1,
@@ -12104,7 +12104,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rug_beater": {
     "lemma": "rug_beater",
     "pos": "noun",
     "offsetCount": 1,
@@ -12129,7 +12129,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ruling_class": {
     "lemma": "ruling_class",
     "pos": "noun",
     "offsetCount": 1,
@@ -12149,7 +12149,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "russian_revolution": {
     "lemma": "russian_revolution",
     "pos": "noun",
     "offsetCount": 2,
@@ -12170,7 +12170,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "rust_fungus": {
     "lemma": "rust_fungus",
     "pos": "noun",
     "offsetCount": 1,
@@ -12205,7 +12205,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sacred_scripture": {
     "lemma": "sacred_scripture",
     "pos": "noun",
     "offsetCount": 1,
@@ -12230,7 +12230,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "salmonellosis": {
     "lemma": "salmonellosis",
     "pos": "noun",
     "offsetCount": 1,
@@ -12250,7 +12250,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "savior": {
     "lemma": "savior",
     "pos": "noun",
     "offsetCount": 2,
@@ -12281,7 +12281,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "sclerometer": {
     "lemma": "sclerometer",
     "pos": "noun",
     "offsetCount": 1,
@@ -12301,7 +12301,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "scombresocidae": {
     "lemma": "scombresocidae",
     "pos": "noun",
     "offsetCount": 1,
@@ -12331,7 +12331,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "screw-pine_family": {
     "lemma": "screw-pine_family",
     "pos": "noun",
     "offsetCount": 1,
@@ -12361,7 +12361,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "screw_auger": {
     "lemma": "screw_auger",
     "pos": "noun",
     "offsetCount": 1,
@@ -12381,7 +12381,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "seal_of_approval": {
     "lemma": "seal_of_approval",
     "pos": "noun",
     "offsetCount": 1,
@@ -12401,7 +12401,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "seating_area": {
     "lemma": "seating_area",
     "pos": "noun",
     "offsetCount": 1,
@@ -12431,7 +12431,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "secureness": {
     "lemma": "secureness",
     "pos": "noun",
     "offsetCount": 2,
@@ -12467,7 +12467,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sedan_chair": {
     "lemma": "sedan_chair",
     "pos": "noun",
     "offsetCount": 1,
@@ -12492,7 +12492,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "self-discipline": {
     "lemma": "self-discipline",
     "pos": "noun",
     "offsetCount": 2,
@@ -12518,7 +12518,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "sex_hormone": {
     "lemma": "sex_hormone",
     "pos": "noun",
     "offsetCount": 1,
@@ -12543,7 +12543,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sexuality": {
     "lemma": "sexuality",
     "pos": "noun",
     "offsetCount": 1,
@@ -12578,7 +12578,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "shopper": {
     "lemma": "shopper",
     "pos": "noun",
     "offsetCount": 2,
@@ -12609,7 +12609,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "shortbread": {
     "lemma": "shortbread",
     "pos": "noun",
     "offsetCount": 1,
@@ -12629,7 +12629,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sidney": {
     "lemma": "sidney",
     "pos": "noun",
     "offsetCount": 1,
@@ -12649,7 +12649,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sign_industry": {
     "lemma": "sign_industry",
     "pos": "noun",
     "offsetCount": 1,
@@ -12669,7 +12669,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sine_qua_non": {
     "lemma": "sine_qua_non",
     "pos": "noun",
     "offsetCount": 1,
@@ -12689,7 +12689,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "sioux": {
     "lemma": "sioux",
     "pos": "noun",
     "offsetCount": 1,
@@ -12719,7 +12719,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "sir_charles_leonard_woolley": {
     "lemma": "sir_charles_leonard_woolley",
     "pos": "noun",
     "offsetCount": 1,
@@ -12739,7 +12739,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "soldering": {
     "lemma": "soldering",
     "pos": "noun",
     "offsetCount": 1,
@@ -12764,7 +12764,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "solicitation": {
     "lemma": "solicitation",
     "pos": "noun",
     "offsetCount": 3,
@@ -12796,7 +12796,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "soutache": {
     "lemma": "soutache",
     "pos": "noun",
     "offsetCount": 1,
@@ -12816,7 +12816,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "speciousness": {
     "lemma": "speciousness",
     "pos": "noun",
     "offsetCount": 1,
@@ -12841,7 +12841,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "spinning_jenny": {
     "lemma": "spinning_jenny",
     "pos": "noun",
     "offsetCount": 1,
@@ -12861,7 +12861,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "spun_yarn": {
     "lemma": "spun_yarn",
     "pos": "noun",
     "offsetCount": 1,
@@ -12881,7 +12881,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "st._martin": {
     "lemma": "st._martin",
     "pos": "noun",
     "offsetCount": 2,
@@ -12907,7 +12907,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "standard_deviation": {
     "lemma": "standard_deviation",
     "pos": "noun",
     "offsetCount": 1,
@@ -12927,7 +12927,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "standee": {
     "lemma": "standee",
     "pos": "noun",
     "offsetCount": 2,
@@ -12953,7 +12953,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "standing_stone": {
     "lemma": "standing_stone",
     "pos": "noun",
     "offsetCount": 1,
@@ -12973,7 +12973,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "steeple": {
     "lemma": "steeple",
     "pos": "noun",
     "offsetCount": 1,
@@ -12998,7 +12998,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "stoneware": {
     "lemma": "stoneware",
     "pos": "noun",
     "offsetCount": 1,
@@ -13018,7 +13018,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "strangler_fig": {
     "lemma": "strangler_fig",
     "pos": "noun",
     "offsetCount": 2,
@@ -13044,7 +13044,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "strip_poker": {
     "lemma": "strip_poker",
     "pos": "noun",
     "offsetCount": 1,
@@ -13064,7 +13064,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sunflower_state": {
     "lemma": "sunflower_state",
     "pos": "noun",
     "offsetCount": 1,
@@ -13094,7 +13094,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "sweet_bay": {
     "lemma": "sweet_bay",
     "pos": "noun",
     "offsetCount": 1,
@@ -13114,7 +13114,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "swiss_mountain_pine": {
     "lemma": "swiss_mountain_pine",
     "pos": "noun",
     "offsetCount": 1,
@@ -13134,7 +13134,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "taenia": {
     "lemma": "taenia",
     "pos": "noun",
     "offsetCount": 2,
@@ -13160,7 +13160,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tank_destroyer": {
     "lemma": "tank_destroyer",
     "pos": "noun",
     "offsetCount": 1,
@@ -13180,7 +13180,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "taraxacum_kok-saghyz": {
     "lemma": "taraxacum_kok-saghyz",
     "pos": "noun",
     "offsetCount": 1,
@@ -13200,7 +13200,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tasset": {
     "lemma": "tasset",
     "pos": "noun",
     "offsetCount": 1,
@@ -13225,7 +13225,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "taxus": {
     "lemma": "taxus",
     "pos": "noun",
     "offsetCount": 1,
@@ -13255,7 +13255,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tea_garden": {
     "lemma": "tea_garden",
     "pos": "noun",
     "offsetCount": 1,
@@ -13275,7 +13275,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tehran": {
     "lemma": "tehran",
     "pos": "noun",
     "offsetCount": 1,
@@ -13300,7 +13300,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "temporal_lobe": {
     "lemma": "temporal_lobe",
     "pos": "noun",
     "offsetCount": 1,
@@ -13330,7 +13330,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "temporary_injunction": {
     "lemma": "temporary_injunction",
     "pos": "noun",
     "offsetCount": 1,
@@ -13350,7 +13350,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "terra_alba": {
     "lemma": "terra_alba",
     "pos": "noun",
     "offsetCount": 3,
@@ -13377,7 +13377,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tethys": {
     "lemma": "tethys",
     "pos": "noun",
     "offsetCount": 2,
@@ -13408,7 +13408,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "thiosulfil": {
     "lemma": "thiosulfil",
     "pos": "noun",
     "offsetCount": 1,
@@ -13428,7 +13428,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "three-way_calling": {
     "lemma": "three-way_calling",
     "pos": "noun",
     "offsetCount": 1,
@@ -13448,7 +13448,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "thyme": {
     "lemma": "thyme",
     "pos": "noun",
     "offsetCount": 2,
@@ -13484,7 +13484,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "topminnow": {
     "lemma": "topminnow",
     "pos": "noun",
     "offsetCount": 2,
@@ -13515,7 +13515,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "touring_car": {
     "lemma": "touring_car",
     "pos": "noun",
     "offsetCount": 1,
@@ -13535,7 +13535,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "towage": {
     "lemma": "towage",
     "pos": "noun",
     "offsetCount": 1,
@@ -13560,7 +13560,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "trachipterus_arcticus": {
     "lemma": "trachipterus_arcticus",
     "pos": "noun",
     "offsetCount": 1,
@@ -13585,7 +13585,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "trail_riding": {
     "lemma": "trail_riding",
     "pos": "noun",
     "offsetCount": 1,
@@ -13605,7 +13605,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "transmission_line": {
     "lemma": "transmission_line",
     "pos": "noun",
     "offsetCount": 1,
@@ -13635,7 +13635,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "transmogrification": {
     "lemma": "transmogrification",
     "pos": "noun",
     "offsetCount": 1,
@@ -13660,7 +13660,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "traveling_wave": {
     "lemma": "traveling_wave",
     "pos": "noun",
     "offsetCount": 1,
@@ -13685,7 +13685,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tri-iodothyronine": {
     "lemma": "tri-iodothyronine",
     "pos": "noun",
     "offsetCount": 1,
@@ -13705,7 +13705,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "triangulum": {
     "lemma": "triangulum",
     "pos": "noun",
     "offsetCount": 1,
@@ -13725,7 +13725,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "trisaccharide": {
     "lemma": "trisaccharide",
     "pos": "noun",
     "offsetCount": 1,
@@ -13750,7 +13750,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "troglodytes_troglodytes": {
     "lemma": "troglodytes_troglodytes",
     "pos": "noun",
     "offsetCount": 1,
@@ -13775,7 +13775,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "turbulency": {
     "lemma": "turbulency",
     "pos": "noun",
     "offsetCount": 1,
@@ -13805,7 +13805,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "tying": {
     "lemma": "tying",
     "pos": "noun",
     "offsetCount": 1,
@@ -13835,7 +13835,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "typhoid_mary": {
     "lemma": "typhoid_mary",
     "pos": "noun",
     "offsetCount": 1,
@@ -13855,7 +13855,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "ulmus_procera": {
     "lemma": "ulmus_procera",
     "pos": "noun",
     "offsetCount": 1,
@@ -13880,7 +13880,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "underrating": {
     "lemma": "underrating",
     "pos": "noun",
     "offsetCount": 1,
@@ -13905,7 +13905,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "unpleasant_woman": {
     "lemma": "unpleasant_woman",
     "pos": "noun",
     "offsetCount": 1,
@@ -13930,7 +13930,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "upbraiding": {
     "lemma": "upbraiding",
     "pos": "noun",
     "offsetCount": 1,
@@ -13955,7 +13955,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "uraturia": {
     "lemma": "uraturia",
     "pos": "noun",
     "offsetCount": 1,
@@ -13975,7 +13975,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "vatican_council": {
     "lemma": "vatican_council",
     "pos": "noun",
     "offsetCount": 1,
@@ -14000,7 +14000,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "vena_phrenica": {
     "lemma": "vena_phrenica",
     "pos": "noun",
     "offsetCount": 1,
@@ -14020,7 +14020,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "vena_stylomastoidea": {
     "lemma": "vena_stylomastoidea",
     "pos": "noun",
     "offsetCount": 1,
@@ -14040,7 +14040,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "venushair": {
     "lemma": "venushair",
     "pos": "noun",
     "offsetCount": 1,
@@ -14060,7 +14060,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "verse_line": {
     "lemma": "verse_line",
     "pos": "noun",
     "offsetCount": 1,
@@ -14090,7 +14090,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "vx_gas": {
     "lemma": "vx_gas",
     "pos": "noun",
     "offsetCount": 1,
@@ -14110,7 +14110,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "w.c.": {
     "lemma": "w.c.",
     "pos": "noun",
     "offsetCount": 1,
@@ -14130,7 +14130,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "walking_horse": {
     "lemma": "walking_horse",
     "pos": "noun",
     "offsetCount": 1,
@@ -14150,7 +14150,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "wall_painting": {
     "lemma": "wall_painting",
     "pos": "noun",
     "offsetCount": 1,
@@ -14175,7 +14175,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "water_jump": {
     "lemma": "water_jump",
     "pos": "noun",
     "offsetCount": 1,
@@ -14195,7 +14195,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "waterlessness": {
     "lemma": "waterlessness",
     "pos": "noun",
     "offsetCount": 1,
@@ -14225,7 +14225,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "woodwardia": {
     "lemma": "woodwardia",
     "pos": "noun",
     "offsetCount": 1,
@@ -14255,7 +14255,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "world_record": {
     "lemma": "world_record",
     "pos": "noun",
     "offsetCount": 1,
@@ -14275,7 +14275,7 @@
     "tagSenseCount": 1,
     "isComment": false
   },
-  {
+  "wyethia_amplexicaulis": {
     "lemma": "wyethia_amplexicaulis",
     "pos": "noun",
     "offsetCount": 1,
@@ -14300,7 +14300,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "yellow_locust": {
     "lemma": "yellow_locust",
     "pos": "noun",
     "offsetCount": 1,
@@ -14330,7 +14330,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "zestfulness": {
     "lemma": "zestfulness",
     "pos": "noun",
     "offsetCount": 1,
@@ -14355,7 +14355,7 @@
     "tagSenseCount": 0,
     "isComment": false
   },
-  {
+  "zygnemales": {
     "lemma": "zygnemales",
     "pos": "noun",
     "offsetCount": 1,
@@ -14385,4 +14385,4 @@
     "tagSenseCount": 0,
     "isComment": false
   }
-]
+}
