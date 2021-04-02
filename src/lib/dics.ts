@@ -3,7 +3,9 @@ import dictionary  from "@terrierscript/wordnet-dictionary"
 
 const searchOffestsObject = (offsets: number[]) => {
 
-  return offsets.map(offset => searchData(offset))
+  return offsets.map(offset => {
+    return searchData(offset)
+  })
   // return offsets.map(offset => {
   //   const { pointers, ...data } = searchData(offset)
   //   console.log({ pointers, ...data })
@@ -18,7 +20,6 @@ const searchOffestsObject = (offsets: number[]) => {
 }
 export const searchIndex = (word: string) => {
   const result = dictionary.searchIndex(word)
-  console.log(result)
   if (!result) {
     return null
   }
@@ -45,12 +46,17 @@ const compactPointers = (pointers) => {
 }
 
 export const searchData = (searchOffset: string|number) => {
-  const data = dictionary.searchData(searchOffset.toString())
-  const { words, wordCount, pointerCnt, isComment, pointers,...rest} = data
-  return {
-    ...rest,
-    words,
-    pointers: pointers
-  }
+  const result = dictionary.searchData(searchOffset.toString())
+  return Object.fromEntries(
+    Object.entries(result).map(([pos, data]) => {
+      // @ts-ignore
+      const { words, wordCount, pointerCnt, isComment, pointers,...rest} = data
+      return [pos,{
+          ...rest,
+        words,
+        pointers: pointers
+      }]
+    })
+  )
 }
 
