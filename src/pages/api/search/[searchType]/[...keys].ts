@@ -1,7 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { searchData, searchIndex } from "../../../../lib/dics"
-
+import { searchIndex, searchData } from "@terrierscript/wordnet-dictionary"
 const handler : NextApiHandler =  async (req, res) => {
   const { searchType, keys } = req.query
   if (searchType !== "words" && searchType !== "offsets") {

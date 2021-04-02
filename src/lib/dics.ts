@@ -7,12 +7,14 @@ const w2dg = (l) => {
   return k
 }
 
+/** @deprecated*/
 export const searchIndex = (word: string) => {
   const dig = w2dg(word)
   const a = JSON.parse(fs.readFileSync(`dic/index/${dig}.json`).toString())
   return a[word]
 }
 
+/** @deprecated*/
 export const searchData = (offset: string|number) => {
   const dig = w2dg(offset.toString())
   const a = JSON.parse(fs.readFileSync(`dic/data/${dig}.json`).toString())
