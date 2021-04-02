@@ -1,22 +1,55 @@
-import fs from "fs"
-import md5 from "md5"
+import dictionary  from "@terrierscript/wordnet-dictionary"
 
-const w2dg = (l) => {
-  const digest = md5(l)
-  const k = digest.slice(0, 2)
-  return k
+
+const searchOffestsObject = (offsets: number[]) => {
+
+  return offsets.map(offset => searchData(offset))
+  // return offsets.map(offset => {
+  //   const { pointers, ...data } = searchData(offset)
+  //   console.log({ pointers, ...data })
+  //   return {
+  //     offset,
+  //     pointers
+  //     ...data,
+  //   }
+  // })
+
+
 }
-
-/** @deprecated*/
 export const searchIndex = (word: string) => {
-  const dig = w2dg(word)
-  const a = JSON.parse(fs.readFileSync(`dic/index/${dig}.json`).toString())
-  return a[word]
+  const result = dictionary.searchIndex(word)
+  if (!result) {
+    return null
+  }
+  const ent = Object.entries(result).map(([pos, idx]) => {
+    // console.log(pos,idx)
+    // @ts-ignore
+    const { lemma, offsets, senseCount, tagSenseCount } = idx
+    const offsetData = searchOffestsObject(offsets)
+    return { lemma,pos, offsetData, senseCount, tagSenseCount } 
+  })
+
+  return ent
 }
 
-/** @deprecated*/
-export const searchData = (offset: string|number) => {
-  const dig = w2dg(offset.toString())
-  const a = JSON.parse(fs.readFileSync(`dic/data/${dig}.json`).toString())
-  return a[offset]
+const compactPointers = (pointers) => {
+  const pts = Object.fromEntries(
+    pointers.map(pt => {
+      const { symbol, pos } = pt
+      return [pt.offset, { symbol, pos }]
+    })
+  )
+  return pts
+
 }
+
+export const searchData = (searchOffset: string|number) => {
+  const data = dictionary.searchData(searchOffset.toString())
+  const { words, wordCount, offset, pointerCnt, isComment, pointers,...rest} = data
+  return {
+    ...rest,
+    words: words.map(w => w.replace(/_/g, " ")),
+    pointers: pointers
+  }
+}
+
