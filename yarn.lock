@@ -1434,10 +1434,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@terrierscript/wordnet-dictionary@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@terrierscript/wordnet-dictionary/-/wordnet-dictionary-1.0.0.tgz#a8eaffe4f4c23186f1ad4beb3b86ca2ac2e3b406"
-  integrity sha512-f9FezvIVQm+WtOi0d5b/FOYi4o2KBj018VPM+MJyXIybm2bA7Qv9dA02LS9hauly2oUhb+JedzoCaloSomDFbA==
+"@terrierscript/wordnet-dictionary@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@terrierscript/wordnet-dictionary/-/wordnet-dictionary-1.0.1.tgz#b8144b6ef3a482d5e4cdc9f18072e7e2e9398682"
+  integrity sha512-F/nOM87msPjanzEIW3wwLt/CpwKOJp4a21HSBMLox3WJ4ShUbGCC+P+o7QvOGZqTc+AAmbgcX3BsPEiYBOVWoQ==
   dependencies:
     md5 "^2.3.0"
 
@@ -2822,14 +2822,7 @@ emojis-list@^2.0.0:
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-2.1.0.tgz"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
-"en-dictionary@https://github.com/open-language/en-dictionary":
-  version "2.0.0"
-  resolved "https://github.com/open-language/en-dictionary#b8ebef75f9e3d1d8b3e0ddadcac4827f28c2f3c9"
-  dependencies:
-    en-wordnet "^2.0.5"
-    reiterator "^1.0.0"
-
-en-wordnet@^2.0.5, en-wordnet@^2.0.6:
+en-wordnet@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/en-wordnet/-/en-wordnet-2.0.6.tgz"
   integrity sha512-J1rfA5RcTmSz+6OM0CNoR7B6Jh6D2r5Hxa44PT8kPSK0ZLN2FRIzhwZb4Pd8mmUCYNr1WeYTf4z3MjW6+bBMcw==
@@ -5593,11 +5586,6 @@ regexpp@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/regexpp/-/regexpp-3.1.0.tgz"
   integrity sha512-ZOIzd8yVsQQA7j8GCSlPGXwg5PfmA1mrq0JP4nGhh54LaKN3xdai/vHUDu74pKwV8OxseMS65u2NImosQcSD0Q==
-
-reiterator@^1.0.0:
-  version "1.1.3"
-  resolved "https://registry.npmjs.org/reiterator/-/reiterator-1.1.3.tgz"
-  integrity sha512-pyz+JP4xfawRbVm1nwEHAXWm6E65uN15lcrWIp4pbhtgZlJngZEda8XIM1kW9Ooz8fjqjx1Fx8L+G6UBcw30hw==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
