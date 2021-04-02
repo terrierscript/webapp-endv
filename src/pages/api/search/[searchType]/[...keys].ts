@@ -10,7 +10,7 @@ const handler : NextApiHandler =  async (req, res) => {
   const _keys = [keys].flat()
   const x = Object.fromEntries(_keys.map(w => {
     const r = searchType === "words" ? searchIndex(w) : searchData(w)
-    console.log(r)
+    // console.log(r)
     return [w, r]
   }))
   res.json(x)
