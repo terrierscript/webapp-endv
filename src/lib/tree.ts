@@ -1,21 +1,26 @@
 import { searchData, searchIndex } from "./dics"
 
+const MAX_DEPTH = 20
 const generateTreeFromWordIndex = (index) => {
-
+  let cache = {}
   const depthOffset = (data, depthCnt = 0) => {
-    const { words, pointers } = data
-    if (depthCnt > 4) {
-      return { words }
+    const { offset, words, pointers } = data
+    const joinnedWord = words.join(",")
+    if (cache[offset]) {
+      return { words: joinnedWord, cycle:true }
     }
+    cache[offset] = true
+    if (depthCnt > MAX_DEPTH) {
+      return { words: joinnedWord }
+    }
+    const ptr = [pointers[0]]
     return {
-      words,
-      pointersData: pointers.map(ptr => {
+      words: joinnedWord,
+      children: ptr.map(ptr => {
         const offsetData = searchData(ptr.offset)
         const nestedOffsetData = depthOffset(offsetData, depthCnt + 1)
-        return {
-          offsetData: nestedOffsetData,
-          // pos: ptr.pos
-        }
+        return nestedOffsetData
+          
       })
     }
   }
@@ -32,6 +37,9 @@ const generateTreeFromWordIndex = (index) => {
 
 export const generateTree = (word: string) => {
   const x = searchIndex(word)
+  if (!x) {
+    return {}
+  }
   const tree = generateTreeFromWordIndex(x)
   return tree
 }
