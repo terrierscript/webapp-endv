@@ -7,31 +7,39 @@ import { searchIndex } from "../../lib/dics"
 
 
 const Words = ({baseWord, words }) => {
-  return        <HStack>
-            {words.map(word => {
-              console.log(baseWord, word)
-              const color = baseWord !== word ? "blue.500" : "red.500"
-              return <NextLink href={`/goop/${word}`} passHref>
-                <Link key={word}
-                color={color}>{word}</Link>
-                </NextLink>
-            })}
-          </HStack>
-  
+  return  <HStack>
+    {words.map(word => {
+      const color = baseWord !== word ? "blue.500" : "red.500"
+      return <NextLink key={word} href={`/goop/${word}`} passHref>
+        <Link color={color}>{word.replaceAll("_", " ")}</Link>
+        </NextLink>
+    })}
+  </HStack>
+}
+const Glossaries = ({ glossaries }) => {
+  return <List>
+    {glossaries.map(gl => {
+      return <ListItem key={gl}>{gl}</ListItem>
+    })}
+  </List>
+}
+const Pointers = ({ pointers }) => {
+  console.log("p",pointers)
+  return <Box>{pointers.map(pt => {
+    return <Box key={pt.offset}>{pt.symbol}({pt.offset})</Box>
+  })}</Box>
 }
 const IndexBlock = ({ baseWord, index }) => {
+  console.log(index)
   return <Box>
     <Heading size="xs">{index.pos}</Heading>
     <Stack>
-      {index.offsetData.map(offset => {
+      {index.offsetData.map((offset) => {
         return <Box key={offset.offset}>
           <Box>
-            <Words words={offset.word} baseWord={baseWord}/>
-            <List >
-            {offset.glossary.map(gl => {
-              return <ListItem key={gl}>{gl}</ListItem>
-            }) }
-            </List>
+            <Words words={offset.words} baseWord={baseWord}/>
+            <Glossaries glossaries={offset.glossary} />
+            <Pointers pointers={offset.pointers}/>
           </Box>
           {/* <AddIcon />
           <Box>
@@ -50,7 +58,9 @@ export const Page = ({ word, index }) => {
   return <Container>
     <Box>
       <Heading>{word}</Heading>
-      {index.map(idx => <IndexBlock key={idx} baseWord={word} index={idx} />)}
+      {index.map(idx => {
+        return <IndexBlock key={idx.pos} baseWord={word} index={idx} />
+      })}
     </Box>
   </Container>
 }

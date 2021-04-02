@@ -18,6 +18,7 @@ const searchOffestsObject = (offsets: number[]) => {
 }
 export const searchIndex = (word: string) => {
   const result = dictionary.searchIndex(word)
+  console.log(result)
   if (!result) {
     return null
   }
@@ -45,10 +46,10 @@ const compactPointers = (pointers) => {
 
 export const searchData = (searchOffset: string|number) => {
   const data = dictionary.searchData(searchOffset.toString())
-  const { words, wordCount, offset, pointerCnt, isComment, pointers,...rest} = data
+  const { words, wordCount, pointerCnt, isComment, pointers,...rest} = data
   return {
     ...rest,
-    words: words.map(w => w.replace(/_/g, " ")),
+    words,
     pointers: pointers
   }
 }
