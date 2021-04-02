@@ -1,9 +1,8 @@
-const md5 = require("md5")
-const fs = require("fs")
-const wordnet = require( "en-wordnet").default
-const Dictionary = require( "en-dictionary").default
-
-console.log(wordnet)
+// @ts-nocheck
+import md5 from "md5"
+import fs  from "fs"
+import wordnet  from  "en-wordnet"
+import Dictionary  from "../node_modules/en-dictionary/src"
 
 const w2dg = (l) => {
   const digest = md5(l)
@@ -23,7 +22,7 @@ const keysToSplitData = (dir, maps) => {
 
     const items = keys.map(key => {
       const item = maps.get(key)
-      if (key) {
+      if (key === "lie") {
         console.log(item)
       }
       return [key,item]
