@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
 import React, { useEffect, useState } from "react"
 import useSWR from "swr"
-import { searchIndex } from "../../lib/dics"
+import { searchLemma } from "../../lib/dics"
 
 
 const Words = ({ baseWord, words }) => {
@@ -20,48 +20,49 @@ const Words = ({ baseWord, words }) => {
     })}
   </HStack>
 }
-const Glossaries = ({ glossaries }) => {
-  if (!glossaries) {
-    return null
-  }
-  return <UnorderedList fontSize="xs" >
-    {glossaries.map(gl => {
-      return <ListItem key={gl}>{gl}</ListItem>
-    })}
-  </UnorderedList>
+const Glossaries = ({ definition, example }) => {
+  return <>
+    {definition && <Box>{definition}</Box>}
+    {example && <UnorderedList fontSize="xs" >
+      {example.map(gl => {
+        return <ListItem key={gl}>{gl}</ListItem>
+      })}
+    </UnorderedList>}
+  </>
 }
 
-const PointerContents = ({ pointers }) => {
-  const pts = pointers.map( p => p.offset)
+const SenseContents = ({ senses }) => {
+  const pts = senses.map( p => p.target)
   const { data, error } = useSWR(`/api/search/offsets/${pts.join("/")}`)
   const [offsetData, setOffsetData] = useState([])
   console.log(data)
   useEffect(() => {
-    if(!data){ return }
-    const offs = Object.entries(data).map(([_offset, offsetData]) => {
-      return Object.entries(offsetData).map(([_pos, data]) => data)
-    }).flat(2)
-    setOffsetData(offs)
+    if (!data) { return }
+    const senses = Object.values(data)
+
+    setOffsetData(senses)
   },[data])
 
   if (!data) {
     return <Spinner />
   }
-  return <>{offsetData.map(off => <OffsetBlock data={off} />)}</>
+  return <>{offsetData.map(off => {
+    return <SenseBlock sense={off} />
+  })}</>
 }
 
 
-const Pointers = ({ pointers }) => {
-  const grouped = pointers
-  console.log(pointers)
-  if (!pointers) {
+const Senses = ({ relations }) => {
+  const grouped = relations
+  // console.log(relations)
+  if (!relations) {
     return null
   }
   return <Accordion allowToggle onChange={(exp) => {
     if (exp !== 0) {
       return
     }
-    console.log(pointers)
+    console.log(relations)
   }}>
     <AccordionItem >{({ isExpanded }) => (
       <>
@@ -70,7 +71,7 @@ const Pointers = ({ pointers }) => {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>
-          {isExpanded ? <PointerContents pointers={pointers} /> : <Spinner />}
+          {isExpanded ? <SenseContents senses={relations} /> : <Spinner />}
         </AccordionPanel>
       </>
     )}
@@ -78,40 +79,59 @@ const Pointers = ({ pointers }) => {
   </Accordion>
 }
 
-const OffsetBlock = ({ baseWord = "", data }) => {
+const SenseBlock = ({ baseWord = "", sense }) => {
+  const { members, definition, example, synsetRelation } = sense
   return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
     <Box>
-      <Words words={data.words} baseWord={baseWord} />
-      <Glossaries glossaries={data.glossary} />
-      <Pointers pointers={data.pointers} />
+      <Words words={members} baseWord={baseWord} />
+      <Glossaries
+        definition={definition}
+        example={example}
+      />
+      <Senses relations={synsetRelation} />
     </Box>
   </Box>
 
 }
-const IndexBlock = ({ baseWord, index }) => {
+const longPart = (p) => {
+  switch (p) {
+    case "n": return "Noun"
+    case "v": return "Verb"
+    case "a": return "Adjective"
+    case "r": return "Adverb"
+    case "s": return "Adjective Satellite"
+    case "c": return "Conjunction"
+    case "p": return "Adposition(Preposition, postposition, etc.)"
+    case "x": return "Other(inc.particle, classifier, bound morphemes, determiners)"
+    case "u": return "Unknown"
+  }
+  return "?"
+}
+const EntryBlock = ({ baseWord, entry }) => {
   return <Box>
-    <Heading size="xs">{index.pos}</Heading>
+    <Heading size="xs">
+      {entry.lemma.writtenForm} ({longPart(entry.lemma.partOfSpeech)})
+    </Heading>
     <Stack>
-      {index.offsetData.map((_offset) => {
-        return Object.values(_offset).map((data:any) => {
-          return <Box key={data.offset}>
-            <OffsetBlock data={data} baseWord={baseWord}/>
-          </Box>
-        })
+      {entry.sense.map((sense) => {
+        return <Box key={sense.id}>
+          <SenseBlock sense={sense.reference} baseWord={baseWord}/>
+        </Box>
       })}
     </Stack>
   </Box>
 }
 
-export const Page = ({ word, index }) => {
-  if (!index) {
+export const Page = ({ word, entry }) => {
+  if (!entry) {
     return <Box>not found</Box>
   }
   return <Container>
     <Box>
       <Heading>{word}</Heading>
-      {index.map(idx => {
-        return <IndexBlock key={idx.pos} baseWord={word} index={idx} />
+      {entry.map((ent,k) => {
+
+        return <EntryBlock key={k} baseWord={word} entry={ent} />
       })}
     </Box>
   </Container>
@@ -119,10 +139,9 @@ export const Page = ({ word, index }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
-  const wd = word.toString().replace(/ /g, "_")
-  const index = searchIndex(wd)
+  const entry = searchLemma(word.toString())
   return {
-    props: { word, index }
+    props: { word, entry }
   }
 }
 

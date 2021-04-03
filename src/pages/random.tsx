@@ -15,7 +15,9 @@ export default function Home({randoms}) {
     <Stack>
 
       {randoms.map(r => {
-        return <NextLink href={`/inspect/${r}`}>{r}</NextLink>
+        return <Box key={r}>
+          <NextLink href={`/inspect/${r}`}>{r}</NextLink>
+        </Box>
       })}  
     </Stack>
   )

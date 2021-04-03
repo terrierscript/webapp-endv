@@ -1,4 +1,4 @@
-import { searchData, searchIndex } from "./dics"
+import { searchSynset, searchLemma } from "./dics"
 
 const MAX_DEPTH = 20
 const generateTreeFromWordIndex = (index) => {
@@ -17,7 +17,7 @@ const generateTreeFromWordIndex = (index) => {
     return {
       words: joinnedWord,
       children: ptr.map(ptr => {
-        const offsetData = searchData(ptr.offset)
+        const offsetData = searchSynset(ptr.offset)
         const nestedOffsetData = depthOffset(offsetData, depthCnt + 1)
         return nestedOffsetData
           
@@ -29,14 +29,14 @@ const generateTreeFromWordIndex = (index) => {
   return {
     lemma,
     offsetData: offsets.map(offset => {
-      const data = searchData(offset)
+      const data = searchSynset(offset)
       return depthOffset(data)
     })
   }
 }
 
 export const generateTree = (word: string) => {
-  const x = searchIndex(word)
+  const x = searchLemma(word)
   if (!x) {
     return {}
   }

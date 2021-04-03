@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { searchData, searchIndex } from "../../../lib/dics"
+import { searchSynset, searchLemma } from "../../../lib/dics"
 import { generateTree } from "../../../lib/tree"
 
 const handler: NextApiHandler = async (req, res) => {

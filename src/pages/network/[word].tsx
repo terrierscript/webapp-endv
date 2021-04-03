@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import useSWR from "swr"
 import { GetStaticProps } from "next"
-import { searchData, searchIndex } from "../../lib/dics"
+import { searchSynset, searchLemma } from "../../lib/dics"
 
 
 // export const getStaticPaths = async () => ({
@@ -13,8 +13,8 @@ import { searchData, searchIndex } from "../../lib/dics"
 export const getServerSideProps: GetStaticProps = async (ctx) => {
   console.log("gsp")
   const word = ctx.params.word.toString()
-  const index= searchIndex(word)
-  const offsets = index.offsets.map(offset => searchData(offset))
+  const index= searchLemma(word)
+  const offsets = index.offsets.map(offset => searchSynset(offset))
   // const initialData = generateInitialNodeEdge(index, offsets)
   // console.log("XXX",initialData)
   return {
