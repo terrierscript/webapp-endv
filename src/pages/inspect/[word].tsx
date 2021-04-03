@@ -1,8 +1,9 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Stack } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
-import React from "react"
+import React, { useEffect, useState } from "react"
+import useSWR from "swr"
 import { searchIndex } from "../../lib/dics"
 
 
@@ -29,28 +30,52 @@ const Glossaries = ({ glossaries }) => {
     })}
   </List>
 }
+
+const PointerContents = ({ pointers }) => {
+  const pts = pointers.map( p => p.offset)
+  const { data, error } = useSWR(`/api/search/offsets/${pts.join("/")}`)
+  const [offsetData, setOffsetData] = useState([])
+  console.log(data)
+  useEffect(() => {
+    if(!data){ return }
+    const offs = Object.entries(data).map(([_offset, offsetData]) => {
+      return Object.entries(offsetData).map(([_pos, data]) => data)
+    }).flat(2)
+    setOffsetData(offs)
+  },[data])
+
+  if (!data) {
+    return <Spinner />
+  }
+  return <>{offsetData.map(off => <OffsetBlock data={off} />)}</>
+}
+
 const Pointers = ({ pointers }) => {
   if (!pointers) {
     return null
   }
-  return <Accordion onChange={(exp) => {
-    console.log(exp)
+  return <Accordion allowToggle onChange={(exp) => {
+    if (exp !== 0) {
+      return
+    }
+    console.log(pointers)
   }}>
-    <AccordionItem>
-      <AccordionButton>
-        pointers
-        <AccordionIcon />
-      </AccordionButton>
-      <AccordionPanel>
-      {pointers.map(pt => {
-        return <Box key={pt.offset}>{pt.symbol}({pt.offset})</Box>
-      })}
-      </AccordionPanel>
+    <AccordionItem >{({ isExpanded }) => (
+      <>
+        <AccordionButton>
+          pointers
+          <AccordionIcon />
+        </AccordionButton>
+        <AccordionPanel>
+          {isExpanded ? <PointerContents pointers={pointers} /> : <Spinner />}
+        </AccordionPanel>
+      </>
+    )}
     </AccordionItem>
   </Accordion>
 }
 
-const OffsetBlock = ({ baseWord, data }) => {
+const OffsetBlock = ({ baseWord = "", data }) => {
   return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
     <Box>
       <Words words={data.words} baseWord={baseWord} />
@@ -61,15 +86,11 @@ const OffsetBlock = ({ baseWord, data }) => {
 
 }
 const IndexBlock = ({ baseWord, index }) => {
-  console.log("ido",index.offsetData)
-  const offsets = Object.values(index.offsetData)
-
   return <Box>
     <Heading size="xs">{index.pos}</Heading>
     <Stack>
       {index.offsetData.map((_offset) => {
         return Object.values(_offset).map((data:any) => {
-
           return <Box key={data.offset}>
             <OffsetBlock data={data} baseWord={baseWord}/>
           </Box>
