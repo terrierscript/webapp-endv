@@ -1,5 +1,5 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
 import React, { useEffect, useState } from "react"
@@ -13,7 +13,7 @@ const Words = ({ baseWord, words }) => {
   }
   return <HStack shouldWrapChildren wrap={"wrap"}>
     {words.map(word => {
-      const color = baseWord !== word ? "blue.500" : "red.500"
+      const color = baseWord !== word ? "blue.500" : "gray.500"
       return <NextLink key={word} href={`/inspect/${word}`} passHref>
         <Link color={color} textDecoration="underline">{word.replaceAll("_", " ")}</Link>
       </NextLink>
@@ -24,11 +24,11 @@ const Glossaries = ({ glossaries }) => {
   if (!glossaries) {
     return null
   }
-  return <List>
+  return <UnorderedList fontSize="xs" >
     {glossaries.map(gl => {
       return <ListItem key={gl}>{gl}</ListItem>
     })}
-  </List>
+  </UnorderedList>
 }
 
 const PointerContents = ({ pointers }) => {
@@ -50,7 +50,10 @@ const PointerContents = ({ pointers }) => {
   return <>{offsetData.map(off => <OffsetBlock data={off} />)}</>
 }
 
+
 const Pointers = ({ pointers }) => {
+  const grouped = pointers
+  console.log(pointers)
   if (!pointers) {
     return null
   }
