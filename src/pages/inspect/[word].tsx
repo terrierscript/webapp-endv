@@ -1,5 +1,5 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Stack } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Stack } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
 import React from "react"
@@ -33,10 +33,13 @@ const Pointers = ({ pointers }) => {
   if (!pointers) {
     return null
   }
-  return <Accordion>
+  return <Accordion onChange={(exp) => {
+    console.log(exp)
+  }}>
     <AccordionItem>
       <AccordionButton>
         pointers
+        <AccordionIcon />
       </AccordionButton>
       <AccordionPanel>
       {pointers.map(pt => {
