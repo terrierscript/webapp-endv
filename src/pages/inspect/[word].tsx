@@ -2,7 +2,7 @@ import { AddIcon } from "@chakra-ui/icons"
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { searchLemma } from "../../lib/dics"
 
@@ -33,7 +33,7 @@ const Glossaries = ({ definition, example }) => {
 
 const SenseContents = ({ senses }) => {
   const pts = senses.map( p => p.target)
-  const { data, error } = useSWR(`/api/search/offsets/${pts.join("/")}`)
+  const { data, error } = useSWR(`/api/search/synset/${pts.join("/")}`)
   const [offsetData, setOffsetData] = useState([])
   console.log(data)
   useEffect(() => {
@@ -51,31 +51,33 @@ const SenseContents = ({ senses }) => {
   })}</>
 }
 
-
 const Senses = ({ relations }) => {
+  const relTypes = useMemo(() => {
+    const rt = relations.map(r => r.relType)
+    return [...new Set<string>(rt)]
+  }, [relations])
+
   const grouped = relations
   // console.log(relations)
   if (!relations) {
     return null
   }
-  return <Accordion allowToggle onChange={(exp) => {
-    if (exp !== 0) {
-      return
-    }
-    console.log(relations)
-  }}>
-    <AccordionItem >{({ isExpanded }) => (
-      <>
-        <AccordionButton>
-          pointers
-          <AccordionIcon />
-        </AccordionButton>
-        <AccordionPanel>
-          {isExpanded ? <SenseContents senses={relations} /> : <Spinner />}
-        </AccordionPanel>
-      </>
-    )}
+  return <Accordion allowToggle allowMultiple>
+    {relTypes.map(rel => {
+      const senses = relations.filter(r => r.relType === rel)
+      return <AccordionItem key={rel}>{({ isExpanded }) => (
+        <>
+          <AccordionButton>
+            {rel.replaceAll("_", " ")}
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel>
+            {isExpanded ? <SenseContents senses={senses} /> : <Spinner />}
+          </AccordionPanel>
+        </>
+      )}
     </AccordionItem>
+  })}
   </Accordion>
 }
 
