@@ -10,12 +10,12 @@ const Words = ({ baseWord, words }) => {
   if (!words) {
     return null
   }
-  return  <HStack>
+  return <HStack shouldWrapChildren wrap={"wrap"}>
     {words.map(word => {
       const color = baseWord !== word ? "blue.500" : "red.500"
-      return <NextLink key={word} href={`/goop/${word}`} passHref>
-        <Link color={color}>{word.replaceAll("_", " ")}</Link>
-        </NextLink>
+      return <NextLink key={word} href={`/inspect/${word}`} passHref>
+        <Link color={color} textDecoration="underline">{word.replaceAll("_", " ")}</Link>
+      </NextLink>
     })}
   </HStack>
 }
@@ -46,6 +46,17 @@ const Pointers = ({ pointers }) => {
     </AccordionItem>
   </Accordion>
 }
+
+const OffsetBlock = ({ baseWord, data }) => {
+  return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
+    <Box>
+      <Words words={data.words} baseWord={baseWord} />
+      <Glossaries glossaries={data.glossary} />
+      <Pointers pointers={data.pointers} />
+    </Box>
+  </Box>
+
+}
 const IndexBlock = ({ baseWord, index }) => {
   console.log("ido",index.offsetData)
   const offsets = Object.values(index.offsetData)
@@ -54,18 +65,10 @@ const IndexBlock = ({ baseWord, index }) => {
     <Heading size="xs">{index.pos}</Heading>
     <Stack>
       {index.offsetData.map((_offset) => {
-        return Object.values(_offset).map(offset => {
-          
-          return <Box key={offset.offset}>
-            <Box>
-            <Words words={offset.words} baseWord={baseWord}/>
-            <Glossaries glossaries={offset.glossary} />
-            <Pointers pointers={offset.pointers}/>
-          </Box>
-          {/* <AddIcon />
-          <Box>
-          {offset.}
-        </Box> */}
+        return Object.values(_offset).map((data:any) => {
+
+          return <Box key={data.offset}>
+            <OffsetBlock data={data} baseWord={baseWord}/>
           </Box>
         })
       })}
