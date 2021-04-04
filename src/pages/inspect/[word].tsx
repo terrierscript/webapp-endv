@@ -98,6 +98,7 @@ const SenseBlock = ({ baseWord = "", sense }) => {
   </Box>
 
 }
+
 const longPart = (p) => {
   switch (p) {
     case "n": return "Noun"
@@ -112,6 +113,7 @@ const longPart = (p) => {
   }
   return "?"
 }
+
 
 const EntryBlock = ({ baseWord, entry }) => {
   const forms = entry.form ? `(${entry.form.map(f => f.writtenForm).join(",")})` : ""
@@ -150,6 +152,7 @@ export const Page = ({ word, entry }) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
   const entry = searchLemma(word.toString())
+  console.log(entry)
   return {
     props: { word, entry }
   }
