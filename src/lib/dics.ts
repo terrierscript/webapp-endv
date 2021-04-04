@@ -62,26 +62,42 @@ export const searchSenses = (senseIds: string[]) => {
     sense,
     relationalSense,
     lexicalEntry
-  }
-  
+  } 
 }
-export const searchExpandSense = (senseId: string) => {
-  const { sense, lemma } = searchRawSense(senseId)
-  console.log(sense,lemma)
-  sense.senseRelation = sense.senseRelation?.map(s => {
-    const { sense } = searchRawSense(s.target)
-    return {
-      lemma,
-      ...s,
-      reference: sense
-    }
-  }) ?? null
-  return sense
-}
+// export const searchExpandSense = (senseId: string) => {
+//   const { sense, lemma } = searchRawSense(senseId)
+//   console.log(sense,lemma)
+//   sense.senseRelation = sense.senseRelation?.map(s => {
+//     const { sense } = searchRawSense(s.target)
+//     return {
+//       lemma,
+//       ...s,
+//       reference: sense
+//     }
+//   }) ?? null
+//   return sense
+// }
 
-export const searchSynset = (synsetId: string) => {
-  const result = dictionary.searchSynset(synsetId.toString())
-  return result
+export const searchSynsets = (synsetIds: string[]) => {
+  const synset = Object.fromEntries(synsetIds.map(s => [s, dictionary.getSynset(s)]))
+
+  const synsetLexMap = Object.fromEntries(synsetIds.map(s => {
+    const lexId = dictionary.getSynsetIndex(s).lexicalEntry
+    return [s, lexId]
+  }))
+  console.log(synsetLexMap)
+  const lexicalEntry = Object.fromEntries(
+    Object.values(synsetLexMap).flat().map(l => [l, dictionary.getLexicalEntry(l)])
+  )
+  const synsetLemma = Object.fromEntries(Object.entries(synsetLexMap).map(([k, v]) => {
+    return [k, v.map(vv => lexicalEntry[vv].lemma.writtenForm)]
+  }))
+
+  return {
+    synset,
+    synsetLemma,
+    lexicalEntry,
+  }
   // return Object.fromEntries(
   //   Object.entries(result).map(([pos, data]) => {
   //     // @ts-ignore
