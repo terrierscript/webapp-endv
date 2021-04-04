@@ -34,6 +34,37 @@ const searchRawSense = (senseId: string) => {
   return { sense, lemma }
 }
 
+const senseIdToLexId = (senseId) => {
+  return senseId.replace(/\-[0-9]+\-[0-9]+/, "")
+}
+
+export const searchSenses = (senseIds: string[]) => {
+  const senses = senseIds.map(senseId =>
+    dictionary.getSense(senseId)
+  )
+  const sense = Object.fromEntries(senses.map(s => {
+    return [s.id, s]
+  }))
+  const relationalSense = Object.fromEntries(
+    senses.map(s => {
+      return s.senseRelation
+    })
+    .flat()
+    .map(ss => {
+      return [ss.target, dictionary.getSense(ss.target)]
+    })
+  )
+  const lexicalEntry = Object.fromEntries(senses.map(ss => {
+    const lexId = senseIdToLexId(ss.id)
+    return [ss.id,  dictionary.getLexicalEntry(lexId) ]
+  }))
+  return {
+    sense,
+    relationalSense,
+    lexicalEntry
+  }
+  
+}
 export const searchExpandSense = (senseId: string) => {
   const { sense, lemma } = searchRawSense(senseId)
   console.log(sense,lemma)
