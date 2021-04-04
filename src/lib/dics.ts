@@ -1,12 +1,28 @@
-import dictionary  from "@terrierscript/wordnet-dictionary"
+import dictionary from "@terrierscript/normalized-global-wordnet-en"
 
-export const searchLemma = (lemma: string) => {
-  const result = dictionary.searchLexicalEntry(lemma)
-  if (!result) {
+const searchLemma = (lemma: string) => {
+  const { lexicalEntry } = dictionary.getLemma(lemma)
+  const lexs = lexicalEntry.map(l => dictionary.getLexicalEntry(l))
+  if (!lexs) {
     return null
   }
+  return lexs
+}
 
-  return result
+export const searchWords = (lemmas: string[]) => {
+  const lexEntries = lemmas.map(w => [w, searchLemma(w)])
+  const senseIds = lexEntries.map(([_, lex]) => lex).flat().map(lex => {
+    return lex.sense
+  }).flat()
+  const senses = getSenses(senseIds)
+
+  return { lemmas: Object.fromEntries(lexEntries), senses }
+}
+
+const getSenses = (senseIds: string[]) => {
+  return Object.fromEntries(senseIds.map(id => {
+    return [id, dictionary.getSense(id)]
+  }))
 }
 
 const searchRawSense = (senseId: string) => {
