@@ -1,55 +1,35 @@
 import dictionary  from "@terrierscript/wordnet-dictionary"
 
-const searchOffestsObject = (offsets: number[]) => {
-
-  return offsets.map(offset => {
-    return searchSynset(offset)
-  })
-  // return offsets.map(offset => {
-  //   const { pointers, ...data } = searchData(offset)
-  //   console.log({ pointers, ...data })
-  //   return {
-  //     offset,
-  //     pointers
-  //     ...data,
-  //   }
-  // })
-
-
-}
 export const searchLemma = (lemma: string) => {
   const result = dictionary.searchLexicalEntry(lemma)
   if (!result) {
     return null
   }
-  const ent = Object.entries(result).map(([pos, entry]: any) => {
-    const sense = entry.sense.map(s => {
-      const synsetData = searchSynset(s.synset)
-      // const relationData = synsetData.synsetRelation.map(r => {
-      //   return { ...r, reference: searchSynset(r.target) }
-      // })
-      // const reference = {
-      //   ...synsetData,
-      //   synsetRelation: relationData
-      // }
-      return { ...s, reference: synsetData }
-    })
 
-    return { ...entry, sense }
-  })
-
-  return ent
+  return result
 }
 
-const compactPointers = (pointers) => {
-  const pts = Object.fromEntries(
-    pointers.map(pt => {
-      const { symbol, pos } = pt
-      return [pt.offset, { symbol, pos }]
-    })
-  )
-  return pts
+const searchRawSense = (senseId: string) => {
+  const ids = senseId.split("-")
+  const lemma = ids[1]
+  const lemmaId = ids.slice(0, 3).join("-")
+  const entry = dictionary.searchLexicalEntry(lemma)[lemmaId]
+  const sense = entry.sense.find(s => s.id = senseId)
+  return { sense, lemma }
+}
 
+export const searchExpandSense = (senseId: string) => {
+  const { sense, lemma } = searchRawSense(senseId)
+  console.log(sense,lemma)
+  sense.senseRelation = sense.senseRelation?.map(s => {
+    const { sense } = searchRawSense(s.target)
+    return {
+      lemma,
+      ...s,
+      reference: sense
+    }
+  }) ?? null
+  return sense
 }
 
 export const searchSynset = (synsetId: string) => {

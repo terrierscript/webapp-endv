@@ -1,5 +1,5 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
 import React, { useEffect, useMemo, useState } from "react"
@@ -68,7 +68,7 @@ const Senses = ({ relations }) => {
       return <AccordionItem key={rel}>{({ isExpanded }) => (
         <>
           <AccordionButton>
-            {rel.replaceAll("_", " ")}
+            {rel.replaceAll("_", " ")} ({senses.length})
             <AccordionIcon />
           </AccordionButton>
           <AccordionPanel>
@@ -83,6 +83,7 @@ const Senses = ({ relations }) => {
 
 const SenseBlock = ({ baseWord = "", sense }) => {
   const { members, definition, example, synsetRelation } = sense
+  const [more, setMore] = useState(false)
   return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
     <Box>
       <Words words={members} baseWord={baseWord} />
@@ -90,7 +91,9 @@ const SenseBlock = ({ baseWord = "", sense }) => {
         definition={definition}
         example={example}
       />
-      <Senses relations={synsetRelation} />
+      {more ? <Senses relations={synsetRelation} /> : <Button onClick={() => setMore(true)}>
+        More
+      </Button>}
     </Box>
   </Box>
 
@@ -109,10 +112,13 @@ const longPart = (p) => {
   }
   return "?"
 }
+
 const EntryBlock = ({ baseWord, entry }) => {
-  return <Box>
+  const forms = entry.form ? `(${entry.form.map(f => f.writtenForm).join(",")})` : ""
+  return <Stack>
     <Heading size="xs">
-      {entry.lemma.writtenForm} ({longPart(entry.lemma.partOfSpeech)})
+      {/* ({longPart(entry.lemma.partOfSpeech)} ) */}
+      [{entry.lemma.partOfSpeech}] {entry.lemma.writtenForm} {forms}
     </Heading>
     <Stack>
       {entry.sense.map((sense) => {
@@ -121,22 +127,24 @@ const EntryBlock = ({ baseWord, entry }) => {
         </Box>
       })}
     </Stack>
-  </Box>
+  </Stack>
 }
 
 export const Page = ({ word, entry }) => {
   if (!entry) {
     return <Box>not found</Box>
   }
-  return <Container>
-    <Box>
-      <Heading>{word}</Heading>
-      {entry.map((ent,k) => {
+  return <Box>
 
-        return <EntryBlock key={k} baseWord={word} entry={ent} />
-      })}
-    </Box>
-  </Container>
+    <Stack>
+      <Heading>{word}</Heading>
+      <Stack>
+        {entry.map((ent,k) => {
+          return <EntryBlock key={k} baseWord={word} entry={ent} />
+        })}
+      </Stack>
+    </Stack>
+  </Box>
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
