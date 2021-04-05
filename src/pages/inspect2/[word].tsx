@@ -1,5 +1,6 @@
 import { AddIcon } from "@chakra-ui/icons"
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
+import deepmerge from "deepmerge"
 import { GetServerSideProps } from "next"
 import NextLink from "next/link"
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react"
@@ -11,22 +12,8 @@ import useSWR from "swr"
 const useWordNetInternal = () => {
   const [cache, setCache] = useState<{ [key in string]: { [key in string]: any } }>({})
   const update = (entries) => {
-    const newCache = Object.entries(entries).map(([k, v]) => {
-      try {
-        const newItem = Object.fromEntries([
-          ...Object.entries(cache[k] ?? {}).map(([k, v]) => [k, v]),
-          ...Object.entries(v ?? {}).map(([k, v]) => [k, v])
-        ])
-        return {
-          ...cache,
-          [k]: newItem
-        }
-      } catch (e) {
-        console.error(e)
-      }
-    })
-    console.log("c", newCache)
-    // @ts-ignore
+    const newCache = deepmerge(cache, entries)
+    console.log("cach", newCache)
     setCache(newCache)
   }
   return {
@@ -43,23 +30,24 @@ const WordNetProvider = ({ children }) => {
   </WordNetContext.Provider>
 }
 
-type EntityType = "sense" | "sense-related" | "synset" | "lemma"
-const useEntity = (type: EntityType, key: string) => {
+type EntityType = "sense" | "senseRelated" | "synset" | "lemma" | "lexicalEntry"
+const useEntity = (type: EntityType, key: string | string[]) => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type, key) => {
-    if (cache[type] && cache[type][key]) {
-      return cache[type][key]
+    try {
+      const caches = Object.entries([key].flat().map(k => [k, cache[type][k]]))
+      const lack = Object.entries(caches).filter(([k, v]) => !v).map(([k]) => k)
+      if (lack.length === 0) {
+        return caches
+      }
+    
+      const url = `/api/search/${type}/${lack.join("/")}`
+      const r = await fetch(url).then(f => f.json())
+      update(r)
+      return Object.entries(key.map(k => [k, r[type][k]]))
+    } catch (e) {
+      console.error(e)
     }
-
-    const url = `/api/search/${type}/${key}`
-    const r = await fetch(url).then(f => f.json())
-    console.log("===")
-    console.log(r)
-    update(r)
-    // console.log("=|=")
-    const rr = r[type][key]
-    // console.log(rr, type, key, r)
-    return r[type][key]
   }
   return useSWR([type, key], fetcher)
 }
@@ -93,7 +81,7 @@ const SenseContents = ({ senses }) => {
   const pts = senses.map(p => p.target)
   const { data, error } = useSWR(`/api/search/synset/${pts.join("/")}`)
   const [offsetData, setOffsetData] = useState([])
-  console.log(data)
+  // console.log(data)
   useEffect(() => {
     if (!data) { return }
     const senses = Object.values(data)
@@ -141,7 +129,6 @@ const Senses = ({ relations }) => {
 
 const SenseBlock = ({ baseWord = "", sense }) => {
   const senseItem = useEntity("sense", sense)
-  console.log(senseItem)
   const { members, definition, example, synsetRelation } = sense
   const [more, setMore] = useState(false)
   return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
@@ -186,22 +173,23 @@ const EntryBlock = ({ baseWord, entry }) => {
     <Stack>
       {entry.sense.map((sense) => {
         return <Box key={sense.id}>
-          <SenseBlock sense={sense.reference} baseWord={baseWord} />
+          {/* <SenseBlock sense={sense.reference} baseWord={baseWord} /> */}
         </Box>
       })}
     </Stack>
   </Stack>
 }
 
-export const Entry = ({ word, entry }) => {
-  if (!entry) {
-    return <Box>not found</Box>
+export const Entry = ({ word, lexIds }) => {
+  const { data } = useEntity("lexicalEntry", lexIds)
+  if (!data) {
+    return null
   }
   return <Box>
     <Stack>
       <Heading>{word}</Heading>
       <Stack>
-        {entry.map((ent, k) => {
+        {data.map((ent, k) => {
           return <EntryBlock key={k} baseWord={word} entry={ent} />
         })}
       </Stack>
@@ -211,11 +199,10 @@ export const Entry = ({ word, entry }) => {
 
 export const PageInner = ({ word }) => {
   const { data } = useEntity("lemma", word)
-  console.log(data)
   if (!data) {
     return null
   }
-  return <Entry word={word} entry={data} />
+  return <Entry word={word} lexIds={data.lexicalEntry} />
 }
 
 export const Page = ({ word }) => {

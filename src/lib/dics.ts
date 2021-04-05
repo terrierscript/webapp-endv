@@ -1,22 +1,39 @@
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
 
-const searchLemma = (lemma: string) => {
-  const { lexicalEntry } = dictionary.getLemma(lemma)
-  const lexs = lexicalEntry.map(l => dictionary.getLexicalEntry(l))
-  if (!lexs) {
-    return null
-  }
-  return lexs
-}
 
+
+// const searchLemma = (lemma: string) => {
+//   const { lexicalEntry } = dictionary.getLemma(lemma)
+//   const lexs = lexicalEntry.map(l => dictionary.getLexicalEntry(l))
+//   if (!lexs) {
+//     return null
+//   }
+//   return lexs
+// }
+
+const getSenseSynsets = (sense) => {
+  // @ts-ignore
+  const synsets = Object.values(sense).map(sense => sense.synset)
+  const norms = searchSynsets(synsets)
+  return norms
+}
 export const searchWords = (lemmas: string[]) => {
-  const lexEntries = lemmas.map(w => [w, searchLemma(w)])
+  const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)])
+  console.log(lemmaEntry.map(l => l[1].lexicalEntry).flat())
+  
+  const lexEntries = lemmaEntry.map(l => l[1].lexicalEntry).flat()
+    .map(w => [w, dictionary.getLexicalEntry(w)])
+  
   const senseIds = lexEntries.map(([_, lex]) => lex).flat().map(lex => {
     return lex.sense
   }).flat()
   const sense = getSenses(senseIds)
-
-  return { lemma: Object.fromEntries(lexEntries), sense }
+  // const n = getSenseSynsets(sense)
+  return {
+    lemma: Object.fromEntries(lemmaEntry),
+    lexEntries: Object.fromEntries(lexEntries),
+    sense
+  }
 }
 
 const getSenses = (senseIds: string[]) => {
@@ -25,14 +42,15 @@ const getSenses = (senseIds: string[]) => {
   }))
 }
 
-const searchRawSense = (senseId: string) => {
-  const ids = senseId.split("-")
-  const lemma = ids[1]
-  const lemmaId = ids.slice(0, 3).join("-")
-  const entry = dictionary.searchLexicalEntry(lemma)[lemmaId]
-  const sense = entry.sense.find(s => s.id = senseId)
-  return { sense, lemma }
-}
+// const searchRawSense = (senseId: string) => {
+//   const ids = senseId.split("-")
+//   const lemma = ids[1]
+//   const lemmaId = ids.slice(0, 3).join("-")
+//   const entry = dictionary.searchLexicalEntry(lemma)[lemmaId]
+//   const sense = entry.sense.find(s => s.id = senseId)
+//   return { sense, lemma }
+// }
+
 
 const senseIdToLexId = (senseId) => {
   return senseId.replace(/\-[0-9]+\-[0-9]+/, "")
@@ -78,7 +96,7 @@ export const searchSynsets = (synsetIds: string[]) => {
     const lexId = dictionary.getSynsetIndex(s).lexicalEntry
     return [s, lexId]
   }))
-  console.log(synsetLexMap)
+  
   const lexicalEntry = Object.fromEntries(
     Object.values(synsetLexMap).flat().map(l => [l, dictionary.getLexicalEntry(l)])
   )
@@ -91,16 +109,5 @@ export const searchSynsets = (synsetIds: string[]) => {
     synsetLemma,
     lexicalEntry,
   }
-  // return Object.fromEntries(
-  //   Object.entries(result).map(([pos, data]) => {
-  //     // @ts-ignore
-  //     const { words, wordCount, pointerCnt, isComment, pointers,...rest} = data
-  //     return [pos,{
-  //         ...rest,
-  //       words,
-  //       pointers: pointers
-  //     }]
-  //   })
-  // )
 }
 
