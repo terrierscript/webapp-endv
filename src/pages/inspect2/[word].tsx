@@ -1,13 +1,67 @@
 import { AddIcon } from "@chakra-ui/icons"
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
-import  NextLink from "next/link"
-import React, { useEffect, useMemo, useState } from "react"
+import NextLink from "next/link"
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 // import { searchLemma } from "../../lib/dics"
 
-const useWordNet = () => {
-  const [cache, setCache] = useState({})
+
+
+const useWordNetInternal = () => {
+  const [cache, setCache] = useState<{ [key in string]: { [key in string]: any } }>({})
+  const update = (entries) => {
+    const newCache = Object.entries(entries).map(([k, v]) => {
+      try {
+        const newItem = Object.fromEntries([
+          ...Object.entries(cache[k] ?? {}).map(([k, v]) => [k, v]),
+          ...Object.entries(v ?? {}).map(([k, v]) => [k, v])
+        ])
+        return {
+          ...cache,
+          [k]: newItem
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    })
+    console.log("c", newCache)
+    // @ts-ignore
+    setCache(newCache)
+  }
+  return {
+    cache, update
+  }
+}
+type WordNetContextItem = ReturnType<typeof useWordNetInternal>
+const WordNetContext = React.createContext<WordNetContextItem>(null)
+
+const WordNetProvider = ({ children }) => {
+  const value = useWordNetInternal()
+  return <WordNetContext.Provider value={value}>
+    {children}
+  </WordNetContext.Provider>
+}
+
+type EntityType = "sense" | "sense-related" | "synset" | "lemma"
+const useEntity = (type: EntityType, key: string) => {
+  const { cache, update } = useContext(WordNetContext)
+  const fetcher = async (type, key) => {
+    if (cache[type] && cache[type][key]) {
+      return cache[type][key]
+    }
+
+    const url = `/api/search/${type}/${key}`
+    const r = await fetch(url).then(f => f.json())
+    console.log("===")
+    console.log(r)
+    update(r)
+    // console.log("=|=")
+    const rr = r[type][key]
+    // console.log(rr, type, key, r)
+    return r[type][key]
+  }
+  return useSWR([type, key], fetcher)
 }
 
 const Words = ({ baseWord, words }) => {
@@ -23,6 +77,7 @@ const Words = ({ baseWord, words }) => {
     })}
   </HStack>
 }
+
 const Glossaries = ({ definition, example }) => {
   return <>
     {definition && <Box>{definition}</Box>}
@@ -35,7 +90,7 @@ const Glossaries = ({ definition, example }) => {
 }
 
 const SenseContents = ({ senses }) => {
-  const pts = senses.map( p => p.target)
+  const pts = senses.map(p => p.target)
   const { data, error } = useSWR(`/api/search/synset/${pts.join("/")}`)
   const [offsetData, setOffsetData] = useState([])
   console.log(data)
@@ -44,7 +99,7 @@ const SenseContents = ({ senses }) => {
     const senses = Object.values(data)
 
     setOffsetData(senses)
-  },[data])
+  }, [data])
 
   if (!data) {
     return <Spinner />
@@ -79,12 +134,14 @@ const Senses = ({ relations }) => {
           </AccordionPanel>
         </>
       )}
-    </AccordionItem>
-  })}
+      </AccordionItem>
+    })}
   </Accordion>
 }
 
 const SenseBlock = ({ baseWord = "", sense }) => {
+  const senseItem = useEntity("sense", sense)
+  console.log(senseItem)
   const { members, definition, example, synsetRelation } = sense
   const [more, setMore] = useState(false)
   return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
@@ -120,6 +177,7 @@ const longPart = (p) => {
 
 const EntryBlock = ({ baseWord, entry }) => {
   const forms = entry.form ? `(${entry.form.map(f => f.writtenForm).join(",")})` : ""
+  console.log(entry)
   return <Stack>
     <Heading size="xs">
       {/* ({longPart(entry.lemma.partOfSpeech)} ) */}
@@ -128,23 +186,22 @@ const EntryBlock = ({ baseWord, entry }) => {
     <Stack>
       {entry.sense.map((sense) => {
         return <Box key={sense.id}>
-          <SenseBlock sense={sense.reference} baseWord={baseWord}/>
+          <SenseBlock sense={sense.reference} baseWord={baseWord} />
         </Box>
       })}
     </Stack>
   </Stack>
 }
 
-export const Page = ({ word, entry }) => {
+export const Entry = ({ word, entry }) => {
   if (!entry) {
     return <Box>not found</Box>
   }
   return <Box>
-
     <Stack>
       <Heading>{word}</Heading>
       <Stack>
-        {entry.map((ent,k) => {
+        {entry.map((ent, k) => {
           return <EntryBlock key={k} baseWord={word} entry={ent} />
         })}
       </Stack>
@@ -152,13 +209,35 @@ export const Page = ({ word, entry }) => {
   </Box>
 }
 
+export const PageInner = ({ word }) => {
+  const { data } = useEntity("lemma", word)
+  console.log(data)
+  if (!data) {
+    return null
+  }
+  return <Entry word={word} entry={data} />
+}
+
+export const Page = ({ word }) => {
+  return <WordNetProvider>
+    <PageInner word={word} />
+  </WordNetProvider>
+}
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
-  const entry = searchLemma(word.toString())
-  console.log(entry)
+  // const entry = searchWord(word.toString())
+  // console.log(entry)
   return {
-    props: { word, entry }
+    props: {
+      word
+      // , entry
+    }
   }
 }
 
 export default Page
+
+function searchWord(arg0: string) {
+  throw new Error("Function not implemented.")
+}
