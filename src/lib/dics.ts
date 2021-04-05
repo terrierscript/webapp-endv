@@ -14,9 +14,9 @@ export const searchWords = (lemmas: string[]) => {
   const senseIds = lexEntries.map(([_, lex]) => lex).flat().map(lex => {
     return lex.sense
   }).flat()
-  const senses = getSenses(senseIds)
+  const sense = getSenses(senseIds)
 
-  return { lemmas: Object.fromEntries(lexEntries), senses }
+  return { lemma: Object.fromEntries(lexEntries), sense }
 }
 
 const getSenses = (senseIds: string[]) => {
@@ -47,12 +47,12 @@ export const searchSenses = (senseIds: string[]) => {
   })
   const lexicalEntry = Object.fromEntries(senses.map(ss => {
     const lexId = senseIdToLexId(ss.id)
-    return [ss.id,  dictionary.getLexicalEntry(lexId) ]
+    return [ss.id, dictionary.getLexicalEntry(lexId)]
   }))
   return {
     sense: Object.fromEntries(senseEntries),
     lexicalEntry
-  } 
+  }
 }
 
 
