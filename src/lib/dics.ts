@@ -31,7 +31,7 @@ export const searchWords = (lemmas: string[]) => {
   // const n = getSenseSynsets(sense)
   return {
     lemma: Object.fromEntries(lemmaEntry),
-    lexEntries: Object.fromEntries(lexEntries),
+    lexicalEntries: Object.fromEntries(lexEntries),
     sense
   }
 }

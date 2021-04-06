@@ -13,8 +13,8 @@ const useWordNetInternal = () => {
   const [cache, setCache] = useState<{ [key in string]: { [key in string]: any } }>({})
   const update = (entries) => {
     const newCache = deepmerge(cache, entries)
-    console.log("cach", newCache)
     setCache(newCache)
+    return newCache
   }
   return {
     cache, update
@@ -31,9 +31,15 @@ const WordNetProvider = ({ children }) => {
 }
 
 type EntityType = "sense" | "senseRelated" | "synset" | "lemma" | "lexicalEntry"
-const useEntity = (type: EntityType, key: string | string[]) => {
+
+const useCachedEntity = (type: EntityType, key: string | string[]) => {
+  const { cache } = useContext(WordNetContext)
+
+}
+const useEntity = (type: EntityType, key:  string[]) => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type, key) => {
+
     try {
       const caches = Object.fromEntries([key].flat()
         .map(k => [k, cache?.[type]?.[key]])
@@ -45,8 +51,9 @@ const useEntity = (type: EntityType, key: string | string[]) => {
     
       const url = `/api/search/${type}/${lack.join("/")}`
       const r = await fetch(url).then(f => f.json())
-      update(r)
-      return Object.fromEntries(key.map(k => [k, r[type][k]]))
+      const newCache = update(r)
+
+      return Object.fromEntries(key.map(k => [k, newCache[type][k]]))
     } catch (e) {
       console.error(e)
     }
@@ -54,158 +61,12 @@ const useEntity = (type: EntityType, key: string | string[]) => {
   return useSWR([type, key], fetcher)
 }
 
-const Words = ({ baseWord, words }) => {
-  if (!words) {
-    return null
-  }
-  return <HStack shouldWrapChildren wrap={"wrap"}>
-    {words.map(word => {
-      const color = baseWord !== word ? "blue.500" : "gray.500"
-      return <NextLink key={word} href={`/inspect/${word}`} passHref>
-        <Link color={color} textDecoration="underline">{word.replaceAll("_", " ")}</Link>
-      </NextLink>
-    })}
-  </HStack>
-}
-
-const Glossaries = ({ definition, example }) => {
-  return <>
-    {definition && <Box>{definition}</Box>}
-    {example && <UnorderedList fontSize="xs" >
-      {example.map(gl => {
-        return <ListItem key={gl}>{gl}</ListItem>
-      })}
-    </UnorderedList>}
-  </>
-}
-
-const SenseContents = ({ senses }) => {
-  const pts = senses.map(p => p.target)
-  const { data, error } = useSWR(`/api/search/synset/${pts.join("/")}`)
-  const [offsetData, setOffsetData] = useState([])
-  // console.log(data)
-  useEffect(() => {
-    if (!data) { return }
-    const senses = Object.values(data)
-
-    setOffsetData(senses)
-  }, [data])
-
-  if (!data) {
-    return <Spinner />
-  }
-  return <>{offsetData.map(off => {
-    return <SenseBlock sense={off} />
-  })}</>
-}
-
-const Senses = ({ relations }) => {
-  const relTypes = useMemo(() => {
-    const rt = relations.map(r => r.relType)
-    return [...new Set<string>(rt)]
-  }, [relations])
-
-  const grouped = relations
-  // console.log(relations)
-  if (!relations) {
-    return null
-  }
-  return <Accordion allowToggle allowMultiple>
-    {relTypes.map(rel => {
-      const senses = relations.filter(r => r.relType === rel)
-      return <AccordionItem key={rel}>{({ isExpanded }) => (
-        <>
-          <AccordionButton>
-            {rel.replaceAll("_", " ")} ({senses.length})
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel>
-            {isExpanded ? <SenseContents senses={senses} /> : <Spinner />}
-          </AccordionPanel>
-        </>
-      )}
-      </AccordionItem>
-    })}
-  </Accordion>
-}
-
-const SenseBlock = ({ baseWord = "", sense }) => {
-  const senseItem = useEntity("sense", sense)
-  const { members, definition, example, synsetRelation } = sense
-  const [more, setMore] = useState(false)
-  return <Box border={1} borderRadius={4} borderColor="gray.200" borderStyle="solid" p={4}>
-    <Box>
-      <Words words={members} baseWord={baseWord} />
-      <Glossaries
-        definition={definition}
-        example={example}
-      />
-      {more ? <Senses relations={synsetRelation} /> : <Button onClick={() => setMore(true)}>
-        More
-      </Button>}
-    </Box>
-  </Box>
-
-}
-
-const longPart = (p) => {
-  switch (p) {
-    case "n": return "Noun"
-    case "v": return "Verb"
-    case "a": return "Adjective"
-    case "r": return "Adverb"
-    case "s": return "Adjective Satellite"
-    case "c": return "Conjunction"
-    case "p": return "Adposition(Preposition, postposition, etc.)"
-    case "x": return "Other(inc.particle, classifier, bound morphemes, determiners)"
-    case "u": return "Unknown"
-  }
-  return "?"
-}
-
-
-const EntryBlock = ({ baseWord, entry }) => {
-  const forms = entry.form ? `(${entry.form.map(f => f.writtenForm).join(",")})` : ""
-  console.log(entry)
-  return <Stack>
-    <Heading size="xs">
-      {/* ({longPart(entry.lemma.partOfSpeech)} ) */}
-      [{entry.lemma.partOfSpeech}] {entry.lemma.writtenForm} {forms}
-    </Heading>
-    <Stack>
-      {entry.sense.map((sense) => {
-        return <Box key={sense.id}>
-          {/* <SenseBlock sense={sense.reference} baseWord={baseWord} /> */}
-        </Box>
-      })}
-    </Stack>
-  </Stack>
-}
-
-export const Entry = ({ word, lexIds }) => {
-  const { data } = useEntity("lexicalEntry", lexIds)
-  if (!data) {
-    return null
-  }
-  return <Box>
-    <Stack>
-      <Heading>{word}</Heading>
-      <Stack>
-        {data.map((ent, k) => {
-          return <EntryBlock key={k} baseWord={word} entry={ent} />
-        })}
-      </Stack>
-    </Stack>
-  </Box>
-}
-
 export const PageInner = ({ word }) => {
   const { data } = useEntity("lemma", word)
-  console.log("dd",data)
   if (!data) {
     return null
   }
-  return <Entry word={word} lexIds={data.lexicalEntry} />
+  return null //<Entry word={word} lexIds={data.lexicalEntry} />
 }
 
 export const Page = ({ word }) => {
