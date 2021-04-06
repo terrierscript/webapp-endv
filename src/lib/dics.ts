@@ -11,12 +11,20 @@ import dictionary from "@terrierscript/normalized-global-wordnet-en"
 //   return lexs
 // }
 
-const getSenseSynsets = (sense) => {
+const getSenseSynsets = (synsetIds:string[]) => {
   // @ts-ignore
-  const synsets = Object.values(sense).map(sense => sense.synset)
+  // return Object.fromEntries(
+  //   synsetIds.map(id => [id, dictionary.getSynset(id)])
+  // )
   const norms = searchSynsets(synsets)
-  return norms
+  // return norms
 }
+const getSenses = (senseIds: string[]) => {
+  return Object.fromEntries(senseIds.map(id => {
+    return [id, dictionary.getSense(id)]
+  }))
+}
+
 export const searchWords = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)])
   console.log(lemmaEntry.map(l => l[1].lexicalEntry).flat())
@@ -28,19 +36,16 @@ export const searchWords = (lemmas: string[]) => {
     return lex.sense
   }).flat()
   const sense = getSenses(senseIds)
-  // const n = getSenseSynsets(sense)
+  const synsetIds = Object.values(sense).map(s => s.synset)
+  const synsetResult = searchSynsets(synsetIds)
   return {
+    ...synsetResult,
     lemma: Object.fromEntries(lemmaEntry),
     lexicalEntry: Object.fromEntries(lexEntries),
-    sense
+    sense,
   }
 }
 
-const getSenses = (senseIds: string[]) => {
-  return Object.fromEntries(senseIds.map(id => {
-    return [id, dictionary.getSense(id)]
-  }))
-}
 
 // const searchRawSense = (senseId: string) => {
 //   const ids = senseId.split("-")

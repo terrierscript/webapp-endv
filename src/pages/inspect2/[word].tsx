@@ -1,13 +1,18 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, BoxProps, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
 import deepmerge from "deepmerge"
 import { GetServerSideProps } from "next"
 import NextLink from "next/link"
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
-// import { searchLemma } from "../../lib/dics"
+import { Glossaries } from "../../components/Glossaries"
+import { EntityType } from "../../lib/types"
 
-
+const Block = (props: BoxProps) => <Box
+  boxShadow="md"
+  p={4}
+  {...props}
+/>
 
 const useWordNetInternal = () => {
   const [cache, setCache] = useState<{ [key in string]: { [key in string]: any } }>({})
@@ -30,7 +35,6 @@ const WordNetProvider = ({ children }) => {
   </WordNetContext.Provider>
 }
 
-type EntityType = "sense" | "senseRelated" | "synset" | "lemma" | "lexicalEntry" | "synsetLemma"
 
 const getFromCache = (cache, type, key) => {
   return Object.fromEntries(key
@@ -43,44 +47,60 @@ const getFromCache = (cache, type, key) => {
 // }
 const useEntity = (type: EntityType, key: string ) => {
   const { cache, update } = useContext(WordNetContext)
+  const [data, setData] = useState(null)
   const fetcher = async (type, key) => {
     try {
       if (cache?.[type]?.[key]) {
         return cache?.[type]?.[key]
       }
     
-      const url = `/api/search/${type}/${key}`
+      const url = `/api/dics2/${type}/${key}`
       const r = await fetch(url).then(f => f.json())
       const newCache = update(r)
       return newCache[type][key]
     } catch (e) {
-      console.error(e)
+      console.error(type, key,e)
     }
   }
-  return useSWR([type, key], fetcher)
+  useEffect(() => {
+    fetcher(type,key).then(item => setData(item))
+  }, [type, key])
+  return { data }
 }
 
+const SynsetLemma = ({ synsetId }) => {
+  const { data } = useEntity("synsetLemma", synsetId)
+  if (!data) {
+    return null
+  }
+  console.log(data)
+  return <HStack>{data?.map(l => {
+    return <Box>{l}</Box>
+  })}</HStack>
+}
 const Synset = ({ synsetId }) => {
   const { data } = useEntity("synset", synsetId)
-  const { data :lemm } = useEntity("synsetLemma", synsetId)
-
+  const { definition, example} = data ?? {}
   if (!data) {
-    return
+    return null
   }
-  console.log("ysn",data)
-  return <Box></Box>
+  // console.log(data)
+  return <Box>
+    <Glossaries definition={definition} example={example}/>
+  </Box>
 }
 const Sense = ({ senseId }) => {
   const { data } = useEntity("sense", senseId)
   if (!data) {
     return null
   }
-  return <Box>
+  return <Block >
     {senseId}
     <Box>
+      <SynsetLemma synsetId={data.synset} />
       <Synset synsetId={data.synset} />
     </Box>
-  </Box>
+  </Block >
   
 }
 const LexicalEntries = ({lexicalEntryId}) => {
@@ -89,12 +109,12 @@ const LexicalEntries = ({lexicalEntryId}) => {
   if (!data) {
     return null
   }
-  return <Box>
+  return <Block >
     {data.lemma.writtenForm}
     {data.sense.map(s => {
       return <Sense senseId={s} />
     })}
-  </Box>
+  </Block >
 }
 export const PageInner = ({ word }) => {
   const { data } = useEntity("lemma", word)
@@ -104,11 +124,11 @@ export const PageInner = ({ word }) => {
   }
   const ls = data.lexicalEntry
   // console.log(data, ls)
-  return <>{
+  return <Block>{
     ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />
     })
-  }</>
+  }</Block>
 }
 
 export const Page = ({ word }) => {

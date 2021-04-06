@@ -1,5 +1,23 @@
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
 
+export const getSynsetLexicalEntry = (synsetId: string) => {
+  const synIdx = dictionary.getSynsetIndex(synsetId)
+  return {
+    id: synsetId,
+    ...synIdx,
+  }
+}
+export const getSynsetLemma = (synsetId: string) => {
+  const { lexicalEntry } = dictionary.getSynsetIndex(synsetId)
+  const lexs = lexicalEntry.map(l => dictionary.getLexicalEntry(l))
+  console.log(lexs)
+  return {
+    id: synsetId,
+    lemma: lexs.map(l => l.lemma.writtenForm)
+  }
+
+}
+
 const senseIdToLexId = (senseId) => {
   return senseId.replace(/\-[0-9]+\-[0-9]+/, "")
 }

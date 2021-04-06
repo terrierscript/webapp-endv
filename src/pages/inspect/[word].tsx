@@ -1,10 +1,11 @@
 import { AddIcon } from "@chakra-ui/icons"
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, ListItem, Spinner, Stack, UnorderedList } from "@chakra-ui/react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Container, Heading, HStack, Link, List, Spinner, Stack } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import  NextLink from "next/link"
 import React, { useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { searchLemma } from "../../lib/dics"
+import { Glossaries } from "../../components/Glossaries"
 
 
 const Words = ({ baseWord, words }) => {
@@ -19,16 +20,6 @@ const Words = ({ baseWord, words }) => {
       </NextLink>
     })}
   </HStack>
-}
-const Glossaries = ({ definition, example }) => {
-  return <>
-    {definition && <Box>{definition}</Box>}
-    {example && <UnorderedList fontSize="xs" >
-      {example.map(gl => {
-        return <ListItem key={gl}>{gl}</ListItem>
-      })}
-    </UnorderedList>}
-  </>
 }
 
 const SenseContents = ({ senses }) => {
