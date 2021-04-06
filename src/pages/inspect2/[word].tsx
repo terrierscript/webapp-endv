@@ -35,7 +35,9 @@ const useEntity = (type: EntityType, key: string | string[]) => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type, key) => {
     try {
-      const caches = Object.entries([key].flat().map(k => [k, cache[type][k]]))
+      const caches = Object.fromEntries([key].flat()
+        .map(k => [k, cache?.[type]?.[key]])
+      )
       const lack = Object.entries(caches).filter(([k, v]) => !v).map(([k]) => k)
       if (lack.length === 0) {
         return caches
@@ -44,7 +46,7 @@ const useEntity = (type: EntityType, key: string | string[]) => {
       const url = `/api/search/${type}/${lack.join("/")}`
       const r = await fetch(url).then(f => f.json())
       update(r)
-      return Object.entries(key.map(k => [k, r[type][k]]))
+      return Object.fromEntries(key.map(k => [k, r[type][k]]))
     } catch (e) {
       console.error(e)
     }
@@ -199,6 +201,7 @@ export const Entry = ({ word, lexIds }) => {
 
 export const PageInner = ({ word }) => {
   const { data } = useEntity("lemma", word)
+  console.log("dd",data)
   if (!data) {
     return null
   }
