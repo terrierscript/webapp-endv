@@ -5,6 +5,7 @@ import { GetServerSideProps } from "next"
 import NextLink from "next/link"
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
+import { ItemAccordion } from "../../components/Acordion"
 import { Glossaries } from "../../components/Glossaries"
 import { EntityType } from "../../lib/types"
 
@@ -45,7 +46,7 @@ const getFromCache = (cache, type, key) => {
 //   const { cache } = useContext(WordNetContext)
 //   return { data: getFromCache(cache, type, key) }
 // }
-const useEntity = (type: EntityType, key: string ) => {
+const useWordNet = (type: EntityType, key: string ) => {
   const { cache, update } = useContext(WordNetContext)
   const [data, setData] = useState(null)
   const fetcher = async (type, key) => {
@@ -69,7 +70,7 @@ const useEntity = (type: EntityType, key: string ) => {
 }
 
 const SynsetLemma = ({ synsetId }) => {
-  const { data } = useEntity("synsetLemma", synsetId)
+  const { data } = useWordNet("synsetLemma", synsetId)
   if (!data) {
     return null
   }
@@ -78,19 +79,38 @@ const SynsetLemma = ({ synsetId }) => {
     return <Box>{l}</Box>
   })}</HStack>
 }
+
+const SynsetRelations = ({ relations }) => {
+  return <>{relations.map(s => {
+    return <Box>
+      <Box>
+        {s.target}
+      </Box>
+      <Synset synsetId={s.target} />
+    </Box>
+  })}</>
+}
+
 const Synset = ({ synsetId }) => {
-  const { data } = useEntity("synset", synsetId)
-  const { definition, example} = data ?? {}
+  const { data } = useWordNet("synset", synsetId)
+  const { definition, example } = data ?? {}
+  console.log("sss", synsetId, data)
   if (!data) {
-    return null
+  
+    return <div>no synsss </div>
   }
-  // console.log(data)
-  return <Box>
-    <Glossaries definition={definition} example={example}/>
-  </Box>
+  if ("ewn-02737265-v" === synsetId) {
+    console.log("ssn",data)
+  }
+  return <Block bg="rgba(10,0,0,0.1)">
+    <Glossaries definition={definition} example={example} />
+    <ItemAccordion title="relation">
+      <SynsetRelations relations={data.synsetRelation}/>
+    </ItemAccordion>
+  </Block>
 }
 const Sense = ({ senseId }) => {
-  const { data } = useEntity("sense", senseId)
+  const { data } = useWordNet("sense", senseId)
   if (!data) {
     return null
   }
@@ -104,7 +124,7 @@ const Sense = ({ senseId }) => {
   
 }
 const LexicalEntries = ({lexicalEntryId}) => {
-  const { data } = useEntity("lexicalEntry", lexicalEntryId)
+  const { data } = useWordNet("lexicalEntry", lexicalEntryId)
   console.log(data)
   if (!data) {
     return null
@@ -117,7 +137,7 @@ const LexicalEntries = ({lexicalEntryId}) => {
   </Block >
 }
 export const PageInner = ({ word }) => {
-  const { data } = useEntity("lemma", word)
+  const { data } = useWordNet("lemma", word)
   console.log(data)
   if (!data) {
     return null
