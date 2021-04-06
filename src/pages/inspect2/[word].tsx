@@ -37,35 +37,46 @@ const WordNetProvider = ({ children }) => {
 }
 
 
-const getFromCache = (cache, type, key) => {
-  return Object.fromEntries(key
+const getFromCache = (cache, type:string, keys:string[]) => {
+  return Object.fromEntries(keys
     .map(k => [k, cache?.[type]?.[k]])
   )
 }
-// const useCachedEntity = (type: EntityType, key: string | string[]) => {
-//   const { cache } = useContext(WordNetContext)
-//   return { data: getFromCache(cache, type, key) }
-// }
-const useWordNet = (type: EntityType, key: string ) => {
+
+const cacheFetcher = (cache, update) => {
+  return async (type, ...keys) => {
+    try {
+      const cached = getFromCache(cache, type, keys)
+      const uncached = keys.filter(k => !cached[k])
+      if (uncached.length === 0) {
+        return cached
+      }
+
+      const url = `/api/dics2/${type}/${uncached.join("/")}`
+      const r = await fetch(url).then(f => f.json())
+      const newCache = update(r)
+      return getFromCache(newCache,type, keys)
+    } catch (e) {
+      console.error(type, keys, e)
+    }
+  }
+
+}
+const useWordNet = (type: EntityType, key: string | string[] ) => {
   const { cache, update } = useContext(WordNetContext)
   const [data, setData] = useState(null)
   const fetcher = async (type, key) => {
-    try {
-      if (cache?.[type]?.[key]) {
-        return cache?.[type]?.[key]
-      }
-    
-      const url = `/api/dics2/${type}/${key}`
-      const r = await fetch(url).then(f => f.json())
-      const newCache = update(r)
-      return newCache[type][key]
-    } catch (e) {
-      console.error(type, key,e)
-    }
+    return cacheFetcher(cache, update)(type, key)
   }
   useEffect(() => {
-    fetcher(type,key).then(item => setData(item))
-  }, [type, key])
+    fetcher(type, key).then(item => {
+      if (typeof key === "string") {
+        setData(item[key])
+      }else{
+        setData(item)
+      }
+    })
+  }, [type, ...[key].flat()])
   return { data }
 }
 
