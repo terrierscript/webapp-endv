@@ -30,30 +30,29 @@ const WordNetProvider = ({ children }) => {
   </WordNetContext.Provider>
 }
 
-type EntityType = "sense" | "senseRelated" | "synset" | "lemma" | "lexicalEntry"
+type EntityType = "sense" | "senseRelated" | "synset" | "lemma" | "lexicalEntry" | "synsetLemma"
 
-const useCachedEntity = (type: EntityType, key: string | string[]) => {
-  const { cache } = useContext(WordNetContext)
-
+const getFromCache = (cache, type, key) => {
+  return Object.fromEntries(key
+    .map(k => [k, cache?.[type]?.[k]])
+  )
 }
-const useEntity = (type: EntityType, key:  string[]) => {
+// const useCachedEntity = (type: EntityType, key: string | string[]) => {
+//   const { cache } = useContext(WordNetContext)
+//   return { data: getFromCache(cache, type, key) }
+// }
+const useEntity = (type: EntityType, key: string ) => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type, key) => {
-
     try {
-      const caches = Object.fromEntries([key].flat()
-        .map(k => [k, cache?.[type]?.[key]])
-      )
-      const lack = Object.entries(caches).filter(([k, v]) => !v).map(([k]) => k)
-      if (lack.length === 0) {
-        return caches
+      if (cache?.[type]?.[key]) {
+        return cache?.[type]?.[key]
       }
     
-      const url = `/api/search/${type}/${lack.join("/")}`
+      const url = `/api/search/${type}/${key}`
       const r = await fetch(url).then(f => f.json())
       const newCache = update(r)
-
-      return Object.fromEntries(key.map(k => [k, newCache[type][k]]))
+      return newCache[type][key]
     } catch (e) {
       console.error(e)
     }
@@ -61,12 +60,55 @@ const useEntity = (type: EntityType, key:  string[]) => {
   return useSWR([type, key], fetcher)
 }
 
-export const PageInner = ({ word }) => {
-  const { data } = useEntity("lemma", word)
+const Synset = ({ synsetId }) => {
+  const { data } = useEntity("synset", synsetId)
+  const { data :lemm } = useEntity("synsetLemma", synsetId)
+
+  if (!data) {
+    return
+  }
+  console.log("ysn",data)
+  return <Box></Box>
+}
+const Sense = ({ senseId }) => {
+  const { data } = useEntity("sense", senseId)
   if (!data) {
     return null
   }
-  return null //<Entry word={word} lexIds={data.lexicalEntry} />
+  return <Box>
+    {senseId}
+    <Box>
+      <Synset synsetId={data.synset} />
+    </Box>
+  </Box>
+  
+}
+const LexicalEntries = ({lexicalEntryId}) => {
+  const { data } = useEntity("lexicalEntry", lexicalEntryId)
+  console.log(data)
+  if (!data) {
+    return null
+  }
+  return <Box>
+    {data.lemma.writtenForm}
+    {data.sense.map(s => {
+      return <Sense senseId={s} />
+    })}
+  </Box>
+}
+export const PageInner = ({ word }) => {
+  const { data } = useEntity("lemma", word)
+  console.log(data)
+  if (!data) {
+    return null
+  }
+  const ls = data.lexicalEntry
+  // console.log(data, ls)
+  return <>{
+    ls?.map(l => {
+      return <LexicalEntries key={l} lexicalEntryId={l} />
+    })
+  }</>
 }
 
 export const Page = ({ word }) => {

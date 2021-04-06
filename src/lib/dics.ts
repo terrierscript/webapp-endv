@@ -31,7 +31,7 @@ export const searchWords = (lemmas: string[]) => {
   // const n = getSenseSynsets(sense)
   return {
     lemma: Object.fromEntries(lemmaEntry),
-    lexicalEntries: Object.fromEntries(lexEntries),
+    lexicalEntry: Object.fromEntries(lexEntries),
     sense
   }
 }
@@ -63,13 +63,19 @@ export const searchSenses = (senseIds: string[]) => {
   const senseEntries = senses.map(s => {
     return [s.id, s]
   })
-  const lexicalEntry = Object.fromEntries(senses.map(ss => {
+  const senseLexicalEntryIndex = Object.fromEntries(senses.map(ss => {
     const lexId = senseIdToLexId(ss.id)
+    return [ss.id, lexId]
+  }))
+  const lexicalEntry = Object.fromEntries(senses.map(ss => {
+    const lexId = senseLexicalEntryIndex[ss.id]
     return [ss.id, dictionary.getLexicalEntry(lexId)]
   }))
+  
   return {
     sense: Object.fromEntries(senseEntries),
-    lexicalEntry
+    lexicalEntry,
+    senseLexicalEntryIndex
   }
 }
 
