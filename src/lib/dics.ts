@@ -47,6 +47,22 @@ export const searchWords = (lemmas: string[]) => {
 }
 
 
+export const getSynsetLexicalEntry = (synsetId: string) => {
+  const synIdx = dictionary.getSynsetIndex(synsetId)
+  return {
+    id: synsetId,
+    ...synIdx,
+  }
+
+}
+export const getSynsetLemma = (synsetId: string) => {
+  const { lexicalEntry } = dictionary.getSynsetIndex(synsetId)
+  const lexs = lexicalEntry.map(l => dictionary.getLexicalEntry(l))
+  return {
+    id: synsetId,
+    lemma: lexs.map(l => l.lemma.writtenForm)
+  }
+}
 // const searchRawSense = (senseId: string) => {
 //   const ids = senseId.split("-")
 //   const lemma = ids[1]

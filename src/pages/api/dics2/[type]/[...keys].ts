@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { searchSenses, searchWords } from "../../../../lib/dics"
+import { getSynsetLemma, getSynsetLexicalEntry, searchSenses, searchWords } from "../../../../lib/dics"
 
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
 import deepmerge from "deepmerge"
