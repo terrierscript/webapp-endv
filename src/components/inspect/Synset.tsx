@@ -24,7 +24,10 @@ export const SynsetLemma = ({ synsetId }) => {
   }
   // console.log(data)
   return <HStack>{data?.map(l => {
-    return <Box key={l} color="blue.500">{l}</Box>
+    return <Box key={l} color="blue.500">
+      
+      {l}
+    </Box>
   })}</HStack>
 }
 
