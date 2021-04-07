@@ -5,8 +5,9 @@ import { Glossaries } from "../Glossaries"
 import { useWordNet } from "./useWordNet"
 import { Block } from "./Block"
 
-const PlainSynset = ({ synset,lemma }) => {
+const PlainSynset = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
+  // console.log("ps",synset, lemma)
   return <Block bg="rgba(10,0,0,0.1)">
     <HStack>{lemma?.map(l => {
       return <Box key={l}>{l}</Box>
@@ -38,10 +39,10 @@ export const SynsetsLoader: FC<any> = ({ synsetIds = [], relations = [] }) => {
     const { relType } = relations
       .find(r => r.target === target) ?? {}
     const synset = data[target]
-    const lemma = lemmas?.[target] ?? []
-    return <Box>
+    const synsetLemma = lemmas?.[target] ?? []
+    return <Box key={target}>
       {relType && <Box>{relType}</Box>}
-      <PlainSynset key={target} synset={synset} lemma={lemma}/>
+      <PlainSynset key={target} synset={synset} lemma={synsetLemma.lemma}/>
     </Box>
   })
 }

@@ -10,7 +10,7 @@ export const LexicalEntries = ({ lexicalEntryId }) => {
     return <Box><Spinner />Loading {lexicalEntryId}</Box>
   }
   const { lemma, sense } = data
-  return <Block>
+  return <Block p={4}>
     {lemma.writtenForm} ({lemma.partOfSpeech})
     {sense.map(s => {
       return <Sense key={s} senseId={s} />

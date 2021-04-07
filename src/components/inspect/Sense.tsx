@@ -5,30 +5,33 @@ import { Block } from "./Block"
 import {  SynsetsLoader } from "./Synset"
 import { ItemAccordion } from "../Acordion"
 
-const SenseRelation : FC<any> = ({ senseRelation }) => {
+const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
   const sr = senseRelation.map(s => s.target)
   const data = useWordNet("sense", sr) 
   if (!senseRelation || !data) {
     return null
   }
+  if (senseRelation.length === 0) {
+    return null
+  }
+  return <ItemAccordion title="sense relation">{
+    senseRelation.map(({ target, relType }) => {
+      return <Box key={target}>
+        <Box>{relType}</Box>
+        <PlainSense sense={data[target]} />
+      </Box>
+    })
+  }</ItemAccordion>
 
-  return senseRelation.map(({target,relType}) => {
-    return <Box>
-      <Box>{relType}</Box>
-      <PlainSense sense={data[target]} />
-    </Box>
-  })
 }
 
 const PlainSense = ({ sense }) => {
-  return <Block>
+  return <>
     <Box>
       <SynsetsLoader synsetIds={[sense.synset]} />
-      <ItemAccordion title="sense relation">
-        <SenseRelation senseRelation={sense.senseRelation} />
-      </ItemAccordion>
+      <SenseRelation senseRelation={sense.senseRelation} />
     </Box>
-  </Block>
+  </>
 }
 
 export const SensesLoader = ({ senseIds }) => {
@@ -45,10 +48,11 @@ export const SensesLoader = ({ senseIds }) => {
 }
 export const Sense = ({ senseId }) => {
   const data = useWordNet("sense", senseId)
+  
   if (!data) {
     return null
   }
-  return <Block>
+  return <>
     <PlainSense sense={data} />
-  </Block>
+  </>
 }
