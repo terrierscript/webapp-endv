@@ -85,39 +85,39 @@ const SynsetLemma = ({ synsetId }) => {
   if (!data) {
     return null
   }
-  console.log(data)
+  // console.log(data)
   return <HStack>{data?.map(l => {
     return <Box>{l}</Box>
   })}</HStack>
 }
 
-const SynsetRelations = ({ relations }) => {
-  return <>{relations.map(s => {
-    return <Box>
-      <Box>
-        {s.target}
+const SynsetRelations = ({ data, relations }) => {
+  if (!relations){
+    return null
+  }
+    
+  return <ItemAccordion title="relation">
+    {relations.map(({ target, relType }) => {
+      return <Box key={target}>
+        <Box>
+          {target}: {relType}
+        </Box>
+        <Synset synsetId={target} />
       </Box>
-      <Synset synsetId={s.target} />
-    </Box>
-  })}</>
+    })}
+  </ItemAccordion>
 }
 
 const Synset = ({ synsetId }) => {
   const { data } = useWordNet("synset", synsetId)
   const { definition, example } = data ?? {}
-  console.log("sss", synsetId, data)
-  if (!data) {
-  
-    return <div>no synsss </div>
+  if (!data) {  
+    return null
   }
-  if ("ewn-02737265-v" === synsetId) {
-    console.log("ssn",data)
-  }
+  console.log("sss", synsetId, data?.synsetRelation)
   return <Block bg="rgba(10,0,0,0.1)">
     <Glossaries definition={definition} example={example} />
-    <ItemAccordion title="relation">
-      <SynsetRelations relations={data.synsetRelation}/>
-    </ItemAccordion>
+    <SynsetRelations data={data} relations={data.synsetRelation} />
   </Block>
 }
 const Sense = ({ senseId }) => {
@@ -143,7 +143,7 @@ const LexicalEntries = ({lexicalEntryId}) => {
   return <Block >
     {data.lemma.writtenForm}
     {data.sense.map(s => {
-      return <Sense senseId={s} />
+      return <Sense key={s} senseId={s} />
     })}
   </Block >
 }
