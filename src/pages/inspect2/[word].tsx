@@ -2,21 +2,22 @@ import { GetServerSideProps } from "next"
 import React, {  } from "react"
 import { WordNetProvider } from "../../components/inspect/useWordNet"
 import { Lemma } from "../../components/inspect/Lemma"
+import { searchWords } from "../../lib/dics"
 
-export const Page = ({ word }) => {
+export const Page = ({ word, initial }) => {
   console.log(word)
-  return <WordNetProvider>
+  return <WordNetProvider preload={initial}>
     <Lemma word={word} />
   </WordNetProvider>
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
-  // const entry = searchWord(word.toString())
+  const initial = searchWords(word.toString())
   // console.log(entry)
   return {
     props: {
-      word
+      word, initial
       // , entry
     }
   }
@@ -24,6 +25,3 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export default Page
 
-function searchWord(arg0: string) {
-  throw new Error("Function not implemented.")
-}

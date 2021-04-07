@@ -2,12 +2,12 @@ import deepmerge from "deepmerge"
 import React, { useContext, useEffect, useState } from "react"
 import { EntityType } from "../../lib/types"
 
-const useWordNetInternal = () => {
+const useWordNetInternal = (preload = {}) => {
   const [cache, setCache] = useState<{
     [key in string]: {
       [key in string]: any
     }
-  }>({})
+  }>(preload)
   const update = (entries) => {
     const newCache = deepmerge(cache, entries)
     setCache(newCache)
@@ -32,8 +32,8 @@ const validateKey = (key) => {
 type WordNetContextItem = ReturnType<typeof useWordNetInternal>
 const WordNetContext = React.createContext<WordNetContextItem>(null)
 
-export const WordNetProvider = ({ children }) => {
-  const value = useWordNetInternal()
+export const WordNetProvider = ({ children,preload }) => {
+  const value = useWordNetInternal(preload)
   return <WordNetContext.Provider value={value}>
     {children}
   </WordNetContext.Provider>
