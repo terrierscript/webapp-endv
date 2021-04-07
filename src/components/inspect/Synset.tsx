@@ -4,32 +4,34 @@ import { ItemAccordion } from "../Acordion"
 import { Glossaries } from "../Glossaries"
 import { useWordNet } from "./useWordNet"
 import { Block } from "./Block"
+import { InspectWordLink } from "./Link"
 
 const PlainSynset = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
   // console.log("ps",synset, lemma)
   return <Block bg="rgba(10,0,0,0.1)">
     <HStack>{lemma?.map(l => {
-      return <Box key={l}>{l}</Box>
+      return <Box key={l}>
+        <InspectWordLink word={l} />
+      </Box>
     })}</HStack>
     <Glossaries definition={definition} example={example} />
     <SynsetRelations relations={synsetRelation} />
   </Block>
 }
 
-export const SynsetLemma = ({ synsetId }) => {
-  const data = useWordNet("synsetLemma", synsetId)
-  if (!data) {
-    return null
-  }
-  // console.log(data)
-  return <HStack>{data?.map(l => {
-    return <Box key={l} color="blue.500">
-      
-      {l}
-    </Box>
-  })}</HStack>
-}
+// const SynsetLemma = ({ synsetId }) => {
+//   const data = useWordNet("synsetLemma", synsetId)
+//   if (!data) {
+//     return null
+//   }
+//   // console.log(data)
+//   return <HStack bg="red">{data?.map(l => {
+//     return <Box key={l}>
+//       <InspectWordLink word={l} />
+//     </Box>
+//   })}</HStack>
+// }
 
 export const SynsetsLoader: FC<any> = ({ synsetIds = [], relations = [] }) => {
   const  data  = useWordNet("synset", synsetIds)
