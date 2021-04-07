@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { getSynsetLemma, getSynsetLexicalEntry, searchSenses, searchWords } from "../../../../lib/dics"
+import { getLexicalEntryRelation, getSynsetLemma, getSynsetLexicalEntry, searchSenses, searchWords } from "../../../../lib/dics"
 
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
 import deepmerge from "deepmerge"
@@ -12,6 +12,7 @@ const wrap = (result, type, key) => {
 const getRawResult = (type: EntityType, key) => {
   switch (type) {
     case "lexicalEntry": return wrap(dictionary.getKexicalEntry(key), type, key)
+    case "lexicalEntryRelation": return getLexicalEntryRelation( key)
     case "synset": return wrap(dictionary.getSynset(key), type, key)
     case "synsetIndex": return wrap(dictionary.getSynsetIndex(key), type, key)
     case "synsetLexicalEntry": return wrap(getSynsetLexicalEntry(key), type, key)
@@ -40,3 +41,4 @@ const handler: NextApiHandler = async (req, res) => {
 }
 
 export default handler
+

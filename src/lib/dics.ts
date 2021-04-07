@@ -11,19 +11,25 @@ import dictionary from "@terrierscript/normalized-global-wordnet-en"
 //   return lexs
 // }
 
-const getSenseSynsets = (synsetIds:string[]) => {
-  // @ts-ignore
-  // return Object.fromEntries(
-  //   synsetIds.map(id => [id, dictionary.getSynset(id)])
-  // )
-  const norms = searchSynsets(synsets)
-  // return norms
-}
+// const getSenseSynsets = (synsetIds:string[]) => {
+//   // @ts-ignore
+//   // return Object.fromEntries(
+//   //   synsetIds.map(id => [id, dictionary.getSynset(id)])
+//   // )
+//   const norms = searchSynsets(synsets)
+//   // return norms
+// }
 const getSenses = (senseIds: string[]) => {
   return Object.fromEntries(senseIds.map(id => {
     return [id, dictionary.getSense(id)]
   }))
 }
+const getSynsets = (synsetId: string[]) => {
+  return Object.fromEntries(synsetId.map(id => {
+    return [id, dictionary.getSynset(id)]
+  }))
+}
+
 
 export const searchWords = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)])
@@ -138,3 +144,33 @@ export const searchSynsets = (synsetIds: string[]) => {
   }
 }
 
+const groupingRelation = (relations = []) => {
+  const map = new Map()
+  relations.map((rel) => {
+    const { relType } = rel
+    const m = map.get(relType) ?? []
+    map.set(relType, [...m, rel])
+  })
+  return Object.fromEntries(map)
+}
+const getSenseRelType = (sense) => {
+  const { synset, senseRelation } = sense
+  console.log(sense)
+  const senseSynset = dictionary.getSynset(synset)
+  const { synsetRelation } = senseSynset 
+  const relations = {
+    sense: groupingRelation(senseRelation),
+    synset: groupingRelation(synsetRelation)
+  }
+  return relations
+}
+
+export const getLexicalEntryRelation = (key:string) => {
+  const lex = dictionary.getLexicalEntry(key)
+  const senses = getSenses(lex.sense ?? [])
+  const senseRelation = Object.fromEntries(
+    Object.values(senses).map(sense => [sense.id, getSenseRelType(sense)])
+  )
+  return senseRelation
+
+}
