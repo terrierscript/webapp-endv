@@ -1,3 +1,5 @@
+// @ts-nocheck
+export const noop = () => {}
 // import { searchSynset, searchLemma } from "./dics"
 
 // const MAX_DEPTH = 20

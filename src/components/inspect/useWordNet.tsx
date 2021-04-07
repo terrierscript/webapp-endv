@@ -1,6 +1,8 @@
 import deepmerge from "deepmerge"
-import React, { useContext, useEffect, useState } from "react"
+import React, { FC, useContext, useEffect, useState } from "react"
 import { EntityType } from "../../lib/types"
+
+type Cache = any
 
 const useWordNetInternal = (preload = {}) => {
   const [cache, setCache] = useState<{
@@ -8,7 +10,7 @@ const useWordNetInternal = (preload = {}) => {
       [key in string]: any
     }
   }>(preload)
-  const update = (entries) => {
+  const update = (entries: Cache) => {
     const newCache = deepmerge(cache, entries, {
       arrayMerge: (_, sourceArray, ) => sourceArray
     })
@@ -20,7 +22,7 @@ const useWordNetInternal = (preload = {}) => {
   }
 }
 
-const validateKey = (key) => {
+const validateKey = (key:string[]) => {
   if (!Array.isArray(key)) {
     return true
   }
@@ -32,21 +34,21 @@ const validateKey = (key) => {
 }
 
 type WordNetContextItem = ReturnType<typeof useWordNetInternal>
+// @ts-ignore
 const WordNetContext = React.createContext<WordNetContextItem>(null)
 
-export const WordNetProvider = ({ children,preload }) => {
+export const WordNetProvider: FC<{ preload: Cache}> = ({ children, preload }) => {
   const value = useWordNetInternal(preload)
   return <WordNetContext.Provider value={value}>
     {children}
   </WordNetContext.Provider>
 }
-
-const getFromCache = (cache, type: string, keys: string[]) => {
-  return Object.fromEntries(keys
+const getFromCache = (cache: Cache, type: string, keys: string[]) => {
+return Object.fromEntries(keys
     .map(k => [k, cache?.[type]?.[k]])
   )
 }
-const cacheFetcher = (cache, update) => {
+const cacheFetcher = (cache: Cache, update: (item: Cache) => Cache) => {
   return async (type: string, ...keys: string[]) => {
     try {
       validateKey(keys)
@@ -68,11 +70,13 @@ const cacheFetcher = (cache, update) => {
 
 }
 
-
-export const useWordNet = (type: EntityType, key: string | string[]) => {
+type Map<T> = {
+  [key in string]: T
+}
+export function useWordNet<T>(type: EntityType, key:  string[]): Map<T> | undefined {
   const { cache, update } = useContext(WordNetContext)
-  const [data, setData] = useState(null)
-  const fetcher = async (type, ...key) => {
+  const [data, setData] = useState<Map<T>>()
+  const fetcher = async (type:string, ...key:string[]) => {
     return cacheFetcher(cache, update)(type, ...key)
   }
   const keys = [key].flat()
@@ -80,12 +84,12 @@ export const useWordNet = (type: EntityType, key: string | string[]) => {
     // console.log("effe", type, key)
     fetcher(type, ...keys).then(item => {
       // validateKey(key)
-      if (typeof key === "string") {
-        setData(item[key])
-      } else {
+      // if (typeof key === "string") {
+      //   setData(item?.[key])
+      // } else {
         setData(item)
-      }
+      // }
     })
   }, [type, ...keys])
-  return  data 
+  return data
 }

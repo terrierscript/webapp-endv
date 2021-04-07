@@ -4,10 +4,11 @@ import {  useWordNet } from "./useWordNet"
 import { BBlock, Block } from "./Block"
 import { SynsetsLoader } from "./Synset"
 import { ItemAccordion } from "../Acordion"
+import { Relation, Sense } from "../../lib/types"
 
-const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
+const SenseRelation: FC<{senseRelation: Relation[]}> = ({ senseRelation = [] }) => {
   const sr = senseRelation.map(s => s.target)
-  const data = useWordNet("sense", sr) 
+  const data = useWordNet<Sense>("sense", sr) 
   if (!senseRelation || !data) {
     return null
   }
@@ -19,7 +20,7 @@ const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
       {senseRelation.map(({ target, relType }) => {
         return <Box key={target}>
           <Box>{relType}</Box>
-          <PlainSense sense={data[target]} />
+          {data[target] && <PlainSense sense={data[target]} />}
         </Box>
       })}
     </Block>
@@ -27,17 +28,17 @@ const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
 
 }
 
-const PlainSense = ({ sense }) => {
+const PlainSense: FC<{ sense: Sense }>= ({ sense }) => {
   return <>
     <Box>
-      <SynsetsLoader synsetIds={[sense.synset]} />
-      <SenseRelation senseRelation={sense.senseRelation} />
+      <SynsetsLoader synsetIds={[sense.synset ?? ""]} />
+      <SenseRelation senseRelation={sense.senseRelation ?? []} />
     </Box>
   </>
 }
 
-export const SensesLoader = ({ senseIds }) => {
-  const data = useWordNet("sense", senseIds)
+export const SensesLoader: FC<{senseIds: string[]}> = ({ senseIds }) => {
+  const data = useWordNet<Sense>("sense", senseIds)
   if (!data) {
     return null
   }
@@ -48,13 +49,13 @@ export const SensesLoader = ({ senseIds }) => {
     })}
   </>
 }
-export const Sense = ({ senseId }) => {
-  const data = useWordNet("sense", senseId)
+export const SenseItem = ({ senseId }: { senseId:string }) => {
+  const data = useWordNet<Sense>("sense", [senseId])
   
   if (!data) {
     return null
   }
   return <BBlock>
-    <PlainSense sense={data} />
+    <PlainSense sense={data[senseId]} />
   </BBlock>
 }

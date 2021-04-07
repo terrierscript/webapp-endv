@@ -1,4 +1,4 @@
-export const longPart = (p) => {
+export const longPart = (p: string) => {
   switch (p) {
     case "n": return "Noun"
     case "v": return "Verb"

@@ -1,3 +1,4 @@
+export const noop = () => { }
 
 // import { NextApiHandler } from "next"
 // import { searchSynset, searchLemma } from "../../../lib/dics"

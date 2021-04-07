@@ -1,7 +1,7 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Spinner } from "@chakra-ui/react"
-import React, { useMemo, useState } from "react"
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Spinner } from "@chakra-ui/react"
+import React, { FC } from "react"
 
-export const ItemAccordion = ({ title, children }) => {
+export const ItemAccordion: FC<{title:string}> = ({ title, children }) => {
   
   return <Accordion allowToggle allowMultiple>
      <AccordionItem>{({ isExpanded }) => (

@@ -42,3 +42,8 @@ export type LexicalEntryIndex = {
   lexicalEntry: string[]
 }
 export type Behavior = string[]
+
+export type SynsetLemma = {
+  id: string,
+  lemma: string[]
+}

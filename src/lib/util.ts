@@ -6,6 +6,6 @@
 //   const sense = entry.sense.find(s => s.id = senseId)
 //   return { sense, lemma }
 // }
-export const senseIdToLexId = (senseId) => {
+export const senseIdToLexId = (senseId:string) => {
   return senseId.replace(/\-[0-9]+\-[0-9]+/, "")
 }
