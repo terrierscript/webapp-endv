@@ -50,7 +50,6 @@ export const Sense = ({ senseId }) => {
     return null
   }
   return <Block>
-    {senseId}
     <PlainSense sense={data} />
   </Block>
 }
