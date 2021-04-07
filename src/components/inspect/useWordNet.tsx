@@ -1,6 +1,6 @@
 import deepmerge from "deepmerge"
-import React, { FC, useContext, useEffect, useState } from "react"
-import { EntityType } from "../../lib/types"
+import React, { FC, useContext, useEffect, useMemo, useState } from "react"
+import { EntityType, Mapping, SynsetLemma } from "../../lib/types"
 
 type Cache = any
 
@@ -70,27 +70,27 @@ const cacheFetcher = (cache: Cache, update: (item: Cache) => Cache) => {
 
 }
 
-type Map<T> = {
-  [key in string]: T
-}
-export function useWordNet<T>(type: EntityType, key:  string[]): Map<T> | undefined {
+
+export function useWordNet<T>(type: EntityType, key: string[] | string): Mapping<T> | undefined {
   const { cache, update } = useContext(WordNetContext)
-  const [data, setData] = useState<Map<T>>()
+  const [data, setData] = useState<Mapping<T>>()
   const fetcher = async (type:string, ...key:string[]) => {
     return cacheFetcher(cache, update)(type, ...key)
   }
   const keys = [key].flat()
   useEffect(() => {
-    // console.log("effe", type, key)
+    if (keys.length === 0) {
+      return
+    }
     fetcher(type, ...keys).then(item => {
-      // if (typeof key === "string") {
-      //   console.warn("Deprecated warning")
-      //   setData(item?.[key])
-      // } else {
-        // console.log(item)
+      if (typeof key === "string") {
+        setData(item?.[key])
+      } else {
         setData(item)
-      // }
+      }
     })
-  }, [type, ...keys])
+  }, [type, keys.join("/")])
   return data
 }
+
+

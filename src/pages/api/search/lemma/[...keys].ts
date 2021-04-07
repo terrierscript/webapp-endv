@@ -1,12 +1,12 @@
 
 import { NextApiHandler } from "next"
-import { searchWords } from "../../../../lib/expand"
+import { getLemmasExpandItems } from "../../../../lib/expand"
 
 
 const handler: NextApiHandler = async (req, res) => {
   const { keys } = req.query
   const _keys = [keys].flat()
-  const x = searchWords(_keys)
+  const x = getLemmasExpandItems(_keys)
   res.json(x)
 }
 

@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next"
 import React, { FC } from "react"
 import { WordNetProvider } from "../../components/inspect/useWordNet"
 import { Lemma } from "../../components/inspect/Lemma"
-import { searchWords } from "../../lib/expand"
+import { getLemmasExpandItems } from "../../lib/expand"
 
 export const Page : FC<{word:string, initial: any}>= ({ word, initial }) => {
   console.log(word)
@@ -18,7 +18,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       notFound: true
     }
   }
-  const initial = searchWords([word]) ?? {}
+  // const initial = searchWords([word]) ?? {}
+  const initial = {} //searchWords([word]) ?? {}
   return {
     props: {
       word, initial

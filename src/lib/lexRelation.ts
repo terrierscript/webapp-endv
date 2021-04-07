@@ -1,10 +1,9 @@
 import * as dictionary from "./dictionary"
 
 import { getSenses } from "./expand"
-import { Relation, Sense } from "./types"
+import { Relation, RelationMap, Sense, SenseRelation } from "./types"
 import { senseIdToLexId } from "./util"
 
-type RelationMap = { [key in string]: string[]}
 const groupingRelation = (relations: Relation[] = []): RelationMap => {
   const map = new Map()
   relations.map((rel) => {
@@ -14,6 +13,7 @@ const groupingRelation = (relations: Relation[] = []): RelationMap => {
   })
   return Object.fromEntries(map)
 }
+
 const getSenseRelations = (sense: Sense) => {
   const { synset, senseRelation } = sense
   const senseSynset = dictionary.getSynset(synset)
@@ -21,6 +21,9 @@ const getSenseRelations = (sense: Sense) => {
   const synsetRelation: Relation[] = senseSynset.synsetRelation
   return { senseRelation, synsetRelation }
 }
+
+
+
 const getSenseRelType = (sense: Sense) => {
   const { senseRelation, synsetRelation } = getSenseRelations(sense)
   const relations = {
@@ -69,14 +72,12 @@ export const getLexicalEntryWordRelation = (key: string) => {
   const senses = getSenses(lex?.sense ?? [])
   const senseRelation = Object.fromEntries(
     Object.values(senses)
-      .map(sense => {
-        const relTypes = expandRelType(sense)
-        return [sense.id, relTypes]
-      })
+    .map(sense => {
+      const relTypes = expandRelType(sense)
+      return [sense.id, relTypes]
+    })
     )
-  return senseRelation
-}
-export const getLemmaWordRelation = (key: string) => {
-  const lex = dictionary.getLemma(key)
-
-}
+    return senseRelation
+  }
+  
+ 

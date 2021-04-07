@@ -1,4 +1,6 @@
 import * as dictionary from "./dictionary"
+import { getSenseRelations } from "./senseRelation"
+// import { getSenseRelation } from "./senseRelation"
 import { Sense, SynsetLemma } from "./types"
 
 
@@ -34,7 +36,7 @@ const getSynsets = (synsetId: string[]) => {
 }
 
 
-export const searchWords = (lemmas: string[]) => {
+export const getLemmasExpandItems = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)] as const)
     .filter(([k,v] ) => v !== undefined)
   console.log(lemmaEntry.map(l => l[1]?.lexicalEntry).flat())
@@ -50,11 +52,13 @@ export const searchWords = (lemmas: string[]) => {
   const sense = getSenses(senseIds)
   const synsetIds = Object.values(sense).map(s => s.synset)
   const synsetResult = searchSynsets(synsetIds)
+  const senseRelation = getSenseRelations(senseIds)
   return {
     ...synsetResult,
     lemma: Object.fromEntries(lemmaEntry),
     lexicalEntry: Object.fromEntries(lexEntries),
     sense,
+    senseRelation
   }
 }
 
@@ -78,6 +82,7 @@ export const getSynsetLemma = (synsetId: string): SynsetLemma => {
   //   // @ts-ignore
   // }
 }
+
 export const searchRelatedSenses = (senseIds: string[]) => {
   const senses = senseIds.map(senseId =>
     dictionary.getSense(senseId)
@@ -113,5 +118,9 @@ export const searchSynsets = (synsetIds: string[]) => {
     synsetLemma,
     lexicalEntry,
   }
+}
+
+function getSenseRelation(senseIds: string[]) {
+  throw new Error("Function not implemented.")
 }
 

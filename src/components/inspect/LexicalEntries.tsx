@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { SenseItem } from "./Sense"
 import { useWordNet } from "./useWordNet"
+import { useSynsetGroupedRelation } from "./useSynsetGroupedRelation"
 import { Block } from "./Block"
 import { Box, Spinner, Stack } from "@chakra-ui/react"
-import { LexicalEntry } from "../../lib/types"
+import { LexicalEntry, Sense } from "../../lib/types"
+
+// const Relations = ({ lexicalEntry }: any) => {
+//   useSynsetGroupedRelation({ lexicalEntry })
+//   return null
+// }
 
 export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string}) => {
   const data  = useWordNet<LexicalEntry>("lexicalEntry", [lexicalEntryId])

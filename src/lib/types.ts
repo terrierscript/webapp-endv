@@ -1,3 +1,6 @@
+export type Mapping<T> = {
+  [key in string]: T
+}
 
 export type EntityType =
   "lexicalEntry" |
@@ -9,7 +12,9 @@ export type EntityType =
   "synsetLexicalEntry" |
   // "senseRelated"|
   "syntacticBehaviour" |
-  "sense" 
+  "sense" |
+  "senseRelation" |
+  "synsetRelation"
 
 export type LexicalEntry = {
   id: string
@@ -48,3 +53,15 @@ export type SynsetLemma = string[]
 //   id: string,
 //   lemma: string[]
 // }
+
+
+export type RelationMap = { [key in string]: string[] }
+export type SenseRelation = {
+  sense: RelationMap
+  synset: RelationMap
+}
+export type RelationRecord = {
+  relType: string,
+  targets: string[]
+  type: "sense" | "synset"
+}

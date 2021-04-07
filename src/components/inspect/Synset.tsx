@@ -7,7 +7,14 @@ import { BBlock } from "./Block"
 import { InspectWordLink } from "./Link"
 import { LexicalEntryIndex, Relation, Synset, SynsetLemma } from "../../lib/types"
 import { RelType } from "./RelType"
+import { RelationAccordion } from "./RelationAccordion"
+import { LoadSynsetRelation } from "./useSynsetGroupedRelation"
 
+// const SysnetRelationAccordion = ({ synsetRelation }: any) => {
+//   const 
+//   const relations = synsetRelation.map()
+//   return <RelationAccordion />
+// }
 const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
   // console.log("ps",synset, lemma)
@@ -18,27 +25,25 @@ const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []
       </Box>
     })}</HStack>
     <Glossaries definition={definition} example={example} />
-    <SynsetRelations relations={synsetRelation ?? []} />
+    {synset && <LoadSynsetRelation synsetId={synset.id} />}
   </>
 }
 
 export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
   const data  = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
-  console.log("|||", synsetIds, data, lemmas)
   
   if (!data || !lemmas) {
     return <Spinner/>
   }
-  console.log("||| after", synsetIds, data, lemmas)
   return <Stack>
     {synsetIds.map((target) => {
       const { relType } = relations
         .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
-      console.log(synsetLemma)
-      return <BBlock key={target} >
+      // console.log(synsetLemma)
+      return <BBlock key={target} >syn
         <Box>{target}</Box>
         <RelType relType={relType} />
         <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
