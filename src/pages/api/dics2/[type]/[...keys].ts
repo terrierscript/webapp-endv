@@ -4,7 +4,6 @@ import { searchSenses, searchWords } from "../../../../lib/dics"
 
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
 import deepmerge from "deepmerge"
-import { getSynsetLemma, getSynsetLexicalEntry } from "../../../../lib/___dic2"
 import { EntityType } from "../../../../lib/types"
 
 const wrap = (result, type, key) => {

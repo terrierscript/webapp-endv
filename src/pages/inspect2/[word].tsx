@@ -13,7 +13,7 @@ export const Page = ({ word, initial }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
-  const initial = searchWords(word.toString())
+  const initial = searchWords([word.toString()])
   // console.log(entry)
   return {
     props: {
