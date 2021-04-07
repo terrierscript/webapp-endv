@@ -18,8 +18,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       notFound: true
     }
   }
-  const initial = searchWords([word])
-  // console.log(entry)
+  const initial = searchWords([word]) ?? {}
+  console.log(initial)
   return {
     props: {
       word, initial

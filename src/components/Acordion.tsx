@@ -3,7 +3,7 @@ import React, { FC } from "react"
 
 export const ItemAccordion: FC<{title:string}> = ({ title, children }) => {
   
-  return <Accordion allowToggle allowMultiple>
+  return <Accordion allowToggle allowMultiple reduceMotion>
      <AccordionItem>{({ isExpanded }) => (
         <>
           <AccordionButton>

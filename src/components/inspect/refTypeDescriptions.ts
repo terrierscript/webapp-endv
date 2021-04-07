@@ -87,3 +87,7 @@ export const synsetRelTypeDescriptions = {
   "subevent": "A relation between two concepts where concept B takes place during or as part of concept A, and whenever concept B takes place, concept A takes place.",
   "target_direction": "A relation between two concepts where concept A is the place where the action or event expressed by concept B leads to.",
 }
+export const relTypeDescriptions = {
+  ...senseRelTypeDescriptions,
+  ...synsetRelTypeDescriptions,
+}

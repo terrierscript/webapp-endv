@@ -36,12 +36,13 @@ const getSynsets = (synsetId: string[]) => {
 
 export const searchWords = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)] as const)
+    .filter(([k,v] ) => v !== undefined)
   console.log(lemmaEntry.map(l => l[1]?.lexicalEntry).flat())
   
   const lexEntries = lemmaEntry.map(l => l[1]?.lexicalEntry).flat()
     .filter(w => w !== undefined)
     .map((w: any) => [w, dictionary.getLexicalEntry(w)] as const)
-  
+    .filter(([k,v] ) => v !== undefined)
   // @ts-ignore
   const senseIds: string[] = lexEntries.map(([_, lex]) => lex).flat().map(lex => {
     return lex?.sense
