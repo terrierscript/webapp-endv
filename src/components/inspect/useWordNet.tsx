@@ -83,10 +83,11 @@ export function useWordNet<T>(type: EntityType, key:  string[]): Map<T> | undefi
   useEffect(() => {
     // console.log("effe", type, key)
     fetcher(type, ...keys).then(item => {
-      // validateKey(key)
       // if (typeof key === "string") {
+      //   console.warn("Deprecated warning")
       //   setData(item?.[key])
       // } else {
+        // console.log(item)
         setData(item)
       // }
     })

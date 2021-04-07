@@ -21,7 +21,7 @@ const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []
   </>
 }
 
-export const SynsetsLoader: FC<{synsetIds?: string[], relations?: Relation[]}> = ({ synsetIds = [], relations = [] }) => {
+export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
   const data  = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
