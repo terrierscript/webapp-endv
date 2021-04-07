@@ -1,4 +1,4 @@
-import dictionary from "@terrierscript/normalized-global-wordnet-en"
+import * as dictionary from "./dictionary"
 
 
 
@@ -19,7 +19,7 @@ import dictionary from "@terrierscript/normalized-global-wordnet-en"
 //   const norms = searchSynsets(synsets)
 //   // return norms
 // }
-const getSenses = (senseIds: string[]) => {
+export const getSenses = (senseIds: string[]) => {
   return Object.fromEntries(senseIds.map(id => {
     return [id, dictionary.getSense(id)]
   }))
@@ -69,44 +69,6 @@ export const getSynsetLemma = (synsetId: string) => {
     lemma: lexs.map(l => l.lemma.writtenForm)
   }
 }
-// const searchRawSense = (senseId: string) => {
-//   const ids = senseId.split("-")
-//   const lemma = ids[1]
-//   const lemmaId = ids.slice(0, 3).join("-")
-//   const entry = dictionary.searchLexicalEntry(lemma)[lemmaId]
-//   const sense = entry.sense.find(s => s.id = senseId)
-//   return { sense, lemma }
-// }
-
-
-const senseIdToLexId = (senseId) => {
-  return senseId.replace(/\-[0-9]+\-[0-9]+/, "")
-}
-
-export const searchSenses = (senseIds: string[]) => {
-  const senses = senseIds.map(senseId =>
-    dictionary.getSense(senseId)
-  )
-  const senseEntries = senses.map(s => {
-    return [s.id, s]
-  })
-  const senseLexicalEntryIndex = Object.fromEntries(senses.map(ss => {
-    const lexId = senseIdToLexId(ss.id)
-    return [ss.id, lexId]
-  }))
-  const lexicalEntry = Object.fromEntries(senses.map(ss => {
-    const lexId = senseLexicalEntryIndex[ss.id]
-    return [ss.id, dictionary.getLexicalEntry(lexId)]
-  }))
-  
-  return {
-    sense: Object.fromEntries(senseEntries),
-    lexicalEntry,
-    senseLexicalEntryIndex
-  }
-}
-
-
 export const searchRelatedSenses = (senseIds: string[]) => {
   const senses = senseIds.map(senseId =>
     dictionary.getSense(senseId)
@@ -144,33 +106,3 @@ export const searchSynsets = (synsetIds: string[]) => {
   }
 }
 
-const groupingRelation = (relations = []) => {
-  const map = new Map()
-  relations.map((rel) => {
-    const { relType } = rel
-    const m = map.get(relType) ?? []
-    map.set(relType, [...m, rel])
-  })
-  return Object.fromEntries(map)
-}
-const getSenseRelType = (sense) => {
-  const { synset, senseRelation } = sense
-  console.log(sense)
-  const senseSynset = dictionary.getSynset(synset)
-  const { synsetRelation } = senseSynset 
-  const relations = {
-    sense: groupingRelation(senseRelation),
-    synset: groupingRelation(synsetRelation)
-  }
-  return relations
-}
-
-export const getLexicalEntryRelation = (key:string) => {
-  const lex = dictionary.getLexicalEntry(key)
-  const senses = getSenses(lex.sense ?? [])
-  const senseRelation = Object.fromEntries(
-    Object.values(senses).map(sense => [sense.id, getSenseRelType(sense)])
-  )
-  return senseRelation
-
-}

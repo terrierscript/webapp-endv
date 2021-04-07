@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import React, { useEffect } from 'react'
+import React from 'react'
+// @ts-ignore
 import dictionary from "@terrierscript/wordnet-dictionary"
 import { Box, Stack } from '@chakra-ui/react'
 import NextLink from "next/link"
@@ -10,11 +10,12 @@ export const getServerSideProps = () => {
     props: { randoms }
   }
 }
+// @ts-ignore
 export default function Home({randoms}) {
   return (
     <Stack>
 
-      {randoms.map(r => {
+      {randoms.map((r: string) => {
         return <Box key={r}>
           <NextLink href={`/inspect/${r}`}>{r}</NextLink>
         </Box>

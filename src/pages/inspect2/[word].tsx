@@ -1,10 +1,10 @@
 import { GetServerSideProps } from "next"
-import React, {  } from "react"
+import React, { FC } from "react"
 import { WordNetProvider } from "../../components/inspect/useWordNet"
 import { Lemma } from "../../components/inspect/Lemma"
-import { searchWords } from "../../lib/dics"
+import { searchWords } from "../../lib/expand"
 
-export const Page = ({ word, initial }) => {
+export const Page : FC<{word:string, initial: any}>= ({ word, initial }) => {
   console.log(word)
   return <WordNetProvider preload={initial}>
     <Lemma word={word} />
@@ -13,7 +13,12 @@ export const Page = ({ word, initial }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { word } = ctx.query
-  const initial = searchWords([word.toString()])
+  if (typeof word !== "string") {
+    return {
+      notFound: true
+    }
+  }
+  const initial = searchWords([word])
   // console.log(entry)
   return {
     props: {

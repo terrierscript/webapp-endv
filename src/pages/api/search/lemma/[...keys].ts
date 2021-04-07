@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { searchWords } from "../../../../lib/dics"
+import { searchWords } from "../../../../lib/expand"
 
 
 const handler: NextApiHandler = async (req, res) => {

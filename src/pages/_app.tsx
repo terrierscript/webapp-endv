@@ -16,6 +16,7 @@ const Footer = () => {
     </Box>
   </Box>
 }
+// @ts-ignore
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
     <Container minHeight="90vh">

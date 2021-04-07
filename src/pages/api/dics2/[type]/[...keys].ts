@@ -1,23 +1,27 @@
 
 import { NextApiHandler } from "next"
-import { getLexicalEntryRelation, getSynsetLemma, getSynsetLexicalEntry, searchSenses, searchWords } from "../../../../lib/dics"
+import { getSynsetLemma, getSynsetLexicalEntry, searchWords } from "../../../../lib/expand"
+import { searchSenses } from "../../../../lib/searchSenses"
+import { getLexicalEntryRelation, getLexicalEntryWordRelation } from "../../../../lib/lexRelation"
+import * as dictionary from "../../../../lib/dictionary"
 
-import dictionary from "@terrierscript/normalized-global-wordnet-en"
 import deepmerge from "deepmerge"
 import { EntityType } from "../../../../lib/types"
 
-const wrap = (result, type, key) => {
+const wrap = (result:any, type:string, key:string) => {
   return {[type] : { [key] : result }}
 }
-const getRawResult = (type: EntityType, key) => {
+const getRawResult = (type: EntityType, key:string) => {
   switch (type) {
-    case "lexicalEntry": return wrap(dictionary.getKexicalEntry(key), type, key)
-    case "lexicalEntryRelation": return getLexicalEntryRelation( key)
+    case "lexicalEntry": return wrap(dictionary.getLexicalEntry(key), type, key)
+    case "lexicalEntryRelation": return getLexicalEntryRelation(key)
+    // @ts-ignore
+    case "lexicalEntryWordRelation": return getLexicalEntryWordRelation( key)
     case "synset": return wrap(dictionary.getSynset(key), type, key)
     case "synsetIndex": return wrap(dictionary.getSynsetIndex(key), type, key)
     case "synsetLexicalEntry": return wrap(getSynsetLexicalEntry(key), type, key)
     case "synsetLemma": return wrap(getSynsetLemma(key), type, key)
-    case "senseRelated": return wrap(dictionary.getSenseRelated(key), type, key)
+    // case "senseRelated": return wrap(dictionary.getSenseRelated(key), type, key)
     case "syntacticBehaviour": return wrap(dictionary.getSyntacticBehaviour(key), type, key)
     case "sense": return searchSenses([key])
     case "lemma": return searchWords([key])
