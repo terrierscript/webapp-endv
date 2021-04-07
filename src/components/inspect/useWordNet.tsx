@@ -9,7 +9,9 @@ const useWordNetInternal = (preload = {}) => {
     }
   }>(preload)
   const update = (entries) => {
-    const newCache = deepmerge(cache, entries)
+    const newCache = deepmerge(cache, entries, {
+      arrayMerge: (_, sourceArray, ) => sourceArray
+    })
     setCache(newCache)
     return newCache
   }

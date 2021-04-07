@@ -1,16 +1,16 @@
-import { HStack, Box, Stack } from "@chakra-ui/react"
-import React, { FC, useDebugValue } from "react"
+import { HStack, Box, Stack, Spinner } from "@chakra-ui/react"
+import React, { FC } from "react"
 import { ItemAccordion } from "../Acordion"
 import { Glossaries } from "../Glossaries"
 import { useWordNet } from "./useWordNet"
-import { BBlock, Block } from "./Block"
+import { BBlock } from "./Block"
 import { InspectWordLink } from "./Link"
 
 const PlainSynset = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
   // console.log("ps",synset, lemma)
   return <>
-    <HStack>{lemma?.map(l => {
+    <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
       return <Box key={l}>
         <InspectWordLink word={l} />
       </Box>
@@ -25,7 +25,7 @@ export const SynsetsLoader: FC<any> = ({ synsetIds = [], relations = [] }) => {
   const lemmas  = useWordNet("synsetLemma", synsetIds)
 
   if (!data || !lemmas) {
-    return null
+    return <Spinner/>
   }
   return <Stack>
     {synsetIds.map((target) => {
