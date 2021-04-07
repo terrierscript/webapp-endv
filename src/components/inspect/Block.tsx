@@ -6,3 +6,5 @@ export const Block = (props: BoxProps) => <Box
   boxShadow="md"
   p={2}
   {...props} />
+
+export const BBlock = (props: BoxProps) => <Block bg="rgba(10,0,0,0.1)" {...props} />

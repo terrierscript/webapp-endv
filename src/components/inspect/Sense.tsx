@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react"
 import React, { FC } from "react"
 import {  useWordNet } from "./useWordNet"
-import { Block } from "./Block"
-import {  SynsetsLoader } from "./Synset"
+import { BBlock, Block } from "./Block"
+import { SynsetsLoader } from "./Synset"
 import { ItemAccordion } from "../Acordion"
 
 const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
@@ -15,12 +15,14 @@ const SenseRelation: FC<any> = ({ senseRelation = [] }) => {
     return null
   }
   return <ItemAccordion title="sense relation">{
-    senseRelation.map(({ target, relType }) => {
-      return <Box key={target}>
-        <Box>{relType}</Box>
-        <PlainSense sense={data[target]} />
-      </Box>
-    })
+    <Block bg="rgba(0,0,0,0.1)">
+      {senseRelation.map(({ target, relType }) => {
+        return <Box key={target}>
+          <Box>{relType}</Box>
+          <PlainSense sense={data[target]} />
+        </Box>
+      })}
+    </Block>
   }</ItemAccordion>
 
 }
@@ -52,7 +54,7 @@ export const Sense = ({ senseId }) => {
   if (!data) {
     return null
   }
-  return <>
+  return <BBlock>
     <PlainSense sense={data} />
-  </>
+  </BBlock>
 }

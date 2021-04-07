@@ -1,15 +1,15 @@
-import { HStack, Box } from "@chakra-ui/react"
+import { HStack, Box, Stack } from "@chakra-ui/react"
 import React, { FC, useDebugValue } from "react"
 import { ItemAccordion } from "../Acordion"
 import { Glossaries } from "../Glossaries"
 import { useWordNet } from "./useWordNet"
-import { Block } from "./Block"
+import { BBlock, Block } from "./Block"
 import { InspectWordLink } from "./Link"
 
 const PlainSynset = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
   // console.log("ps",synset, lemma)
-  return <Block bg="rgba(10,0,0,0.1)">
+  return <>
     <HStack>{lemma?.map(l => {
       return <Box key={l}>
         <InspectWordLink word={l} />
@@ -17,39 +17,28 @@ const PlainSynset = ({ synset,lemma = []}) => {
     })}</HStack>
     <Glossaries definition={definition} example={example} />
     <SynsetRelations relations={synsetRelation} />
-  </Block>
+  </>
 }
 
-// const SynsetLemma = ({ synsetId }) => {
-//   const data = useWordNet("synsetLemma", synsetId)
-//   if (!data) {
-//     return null
-//   }
-//   // console.log(data)
-//   return <HStack bg="red">{data?.map(l => {
-//     return <Box key={l}>
-//       <InspectWordLink word={l} />
-//     </Box>
-//   })}</HStack>
-// }
-
 export const SynsetsLoader: FC<any> = ({ synsetIds = [], relations = [] }) => {
-  const  data  = useWordNet("synset", synsetIds)
+  const data  = useWordNet("synset", synsetIds)
   const lemmas  = useWordNet("synsetLemma", synsetIds)
 
   if (!data || !lemmas) {
     return null
   }
-  return synsetIds.map((target) => {
-    const { relType } = relations
-      .find(r => r.target === target) ?? {}
-    const synset = data[target]
-    const synsetLemma = lemmas?.[target] ?? []
-    return <Box key={target}>
-      {relType && <Box>{relType}</Box>}
-      <PlainSynset key={target} synset={synset} lemma={synsetLemma.lemma}/>
-    </Box>
-  })
+  return <Stack>
+    {synsetIds.map((target) => {
+      const { relType } = relations
+        .find(r => r.target === target) ?? {}
+      const synset = data[target]
+      const synsetLemma = lemmas?.[target] ?? []
+      return <BBlock key={target} >
+        {relType && <Box>{relType}</Box>}
+        <PlainSynset key={target} synset={synset} lemma={synsetLemma.lemma} />
+      </BBlock>
+    })}
+  </Stack>
 }
 
 export const SynsetRelations = ({ relations }) => {
@@ -58,7 +47,7 @@ export const SynsetRelations = ({ relations }) => {
   }
   const synsetIds = relations.map(r => r.target)
   return <ItemAccordion title="relation">
-    <SynsetsLoader synsetIds={synsetIds} relations={relations} />
+      <SynsetsLoader synsetIds={synsetIds} relations={relations} />
   </ItemAccordion>
 }
 
