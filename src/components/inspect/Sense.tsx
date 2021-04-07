@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { useWordNet } from "./useWordNet"
+import {  useWordNet } from "./useWordNet"
 import { Block } from "./Block"
-import { SynsetLemma, SynsetsLoader } from "./Synset"
+import {  SynsetsLoader } from "./Synset"
 import { ItemAccordion } from "../Acordion"
 
 const SenseRelation : FC<any> = ({ senseRelation }) => {
   const sr = senseRelation.map(s => s.target)
-  const { data } = useWordNet("sense", sr) 
+  const data = useWordNet("sense", sr) 
   if (!senseRelation || !data) {
     return null
   }
@@ -23,7 +23,6 @@ const SenseRelation : FC<any> = ({ senseRelation }) => {
 const PlainSense = ({ sense }) => {
   return <Block>
     <Box>
-      <SynsetLemma synsetId={sense.synset} />
       <SynsetsLoader synsetIds={[sense.synset]} />
       <ItemAccordion title="sense relation">
         <SenseRelation senseRelation={sense.senseRelation} />
@@ -33,7 +32,7 @@ const PlainSense = ({ sense }) => {
 }
 
 export const SensesLoader = ({ senseIds }) => {
-  const { data } = useWordNet("sense", senseIds)
+  const data = useWordNet("sense", senseIds)
   if (!data) {
     return null
   }
@@ -45,7 +44,7 @@ export const SensesLoader = ({ senseIds }) => {
   </>
 }
 export const Sense = ({ senseId }) => {
-  const { data } = useWordNet("sense", senseId)
+  const data = useWordNet("sense", senseId)
   if (!data) {
     return null
   }

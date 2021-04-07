@@ -85,5 +85,5 @@ export const useWordNet = (type: EntityType, key: string | string[]) => {
       }
     })
   }, [type, ...keys])
-  return { data }
+  return  data 
 }

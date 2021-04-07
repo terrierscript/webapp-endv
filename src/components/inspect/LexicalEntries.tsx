@@ -5,13 +5,14 @@ import { Block } from "./Block"
 import { Box, Spinner } from "@chakra-ui/react"
 
 export const LexicalEntries = ({ lexicalEntryId }) => {
-  const { data } = useWordNet("lexicalEntry", lexicalEntryId)
+  const data  = useWordNet("lexicalEntry", lexicalEntryId)
   if (!data) {
     return <Box><Spinner />Loading {lexicalEntryId}</Box>
   }
+  const { lemma, sense } = data
   return <Block>
-    {data.lemma.writtenForm}
-    {data.sense.map(s => {
+    {lemma.writtenForm} ({lemma.partOfSpeech})
+    {sense.map(s => {
       return <Sense key={s} senseId={s} />
     })}
   </Block>

@@ -1,11 +1,11 @@
 import React from "react"
-import { useWordNet } from "./useWordNet"
+import {  useWordNet } from "./useWordNet"
 import { Block } from "./Block"
 import { LexicalEntries } from "./LexicalEntries"
 
 
 export const Lemma = ({ word }) => {
-  const { data } = useWordNet("lemma", word)
+  const data = useWordNet("lemma", word)
   // console.log(data)
   if (!data) {
     return null
