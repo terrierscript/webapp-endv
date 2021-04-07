@@ -2375,6 +2375,13 @@ component-emitter@^1.2.1:
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
+compromise@^13.10.6:
+  version "13.10.6"
+  resolved "https://registry.yarnpkg.com/compromise/-/compromise-13.10.6.tgz#c729431e99cd612493ca0f146dedc22f0995c2c5"
+  integrity sha512-Bp/+gbjzlNFBvEiD/Gg/A5dIT2aYNYMAFDAqjzlQsyCgPddmkR2hXmMM7XLWFomXjca/I2kyjHdizfHIBzGw4w==
+  dependencies:
+    efrt-unpack "2.2.0"
+
 compute-scroll-into-view@1.0.14:
   version "1.0.14"
   resolved "https://registry.npmjs.org/compute-scroll-into-view/-/compute-scroll-into-view-1.0.14.tgz"
@@ -2809,6 +2816,11 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+efrt-unpack@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/efrt-unpack/-/efrt-unpack-2.2.0.tgz#b05dbec0fb8cb346a27840e00c969df9c72fee52"
+  integrity sha512-9xUSSj7qcUxz+0r4X3+bwUNttEfGfK5AH+LVa1aTpqdAfrN5VhROYCfcF+up4hp5OL7IUKcZJJrzAGipQRDoiQ==
 
 electron-to-chromium@^1.3.634:
   version "1.3.704"

@@ -1,4 +1,4 @@
-import { HStack, Box, Stack, Spinner, Tooltip } from "@chakra-ui/react"
+import { HStack, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { ItemAccordion } from "../Acordion"
 import { Glossaries } from "../Glossaries"
@@ -6,7 +6,7 @@ import { useWordNet } from "./useWordNet"
 import { BBlock } from "./Block"
 import { InspectWordLink } from "./Link"
 import { LexicalEntryIndex, Relation, Synset, SynsetLemma } from "../../lib/types"
-import { relTypeDescriptions } from "./refTypeDescriptions"
+import { RelType } from "./RelType"
 
 const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []}) => {
   const { definition, example, synsetRelation } = synset ?? {}
@@ -22,14 +22,6 @@ const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []
   </>
 }
 
-const RelType = ({ relType }: { relType?: string }) => {
-  if (!relType) {
-    return null
-  }
-  // @ts-ignore
-  const label = relTypeDescriptions[relType]
-  return <Tooltip label={label}><Box>{relType}</Box></Tooltip>
-}
 export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
   const data  = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)

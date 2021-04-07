@@ -5,6 +5,7 @@ import { BBlock, Block } from "./Block"
 import { SynsetsLoader } from "./Synset"
 import { ItemAccordion } from "../Acordion"
 import { Relation, Sense } from "../../lib/types"
+import { RelType } from "./RelType"
 
 const SenseRelation: FC<{senseRelation: Relation[]}> = ({ senseRelation = [] }) => {
   const sr = senseRelation.map(s => s.target)
@@ -19,7 +20,7 @@ const SenseRelation: FC<{senseRelation: Relation[]}> = ({ senseRelation = [] }) 
     <Block bg="rgba(0,0,0,0.1)">
       {senseRelation.map(({ target, relType }) => {
         return <Box key={target}>
-          <Box>{relType}</Box>
+          <RelType relType={relType} />
           {data[target] && <PlainSense sense={data[target]} />}
         </Box>
       })}
