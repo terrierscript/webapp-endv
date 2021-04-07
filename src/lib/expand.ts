@@ -71,11 +71,12 @@ export const getSynsetLexicalEntry = (synsetId: string) => {
 export const getSynsetLemma = (synsetId: string): SynsetLemma => {
   const { lexicalEntry } = dictionary.getSynsetIndex(synsetId) ?? {}
   const lexs = lexicalEntry?.map(l => dictionary.getLexicalEntry(l))
-  return {
-    id: synsetId,
-    // @ts-ignore
-    lemma: lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s)
-  }
+  // @ts-ignore
+  return lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s).filter(v => !!v)
+  // return {
+  //   id: synsetId,
+  //   // @ts-ignore
+  // }
 }
 export const searchRelatedSenses = (senseIds: string[]) => {
   const senses = senseIds.map(senseId =>

@@ -25,19 +25,23 @@ const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []
 export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
   const data  = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
-
+  console.log("|||", synsetIds, data, lemmas)
+  
   if (!data || !lemmas) {
     return <Spinner/>
   }
+  console.log("||| after", synsetIds, data, lemmas)
   return <Stack>
     {synsetIds.map((target) => {
       const { relType } = relations
         .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
+      console.log(synsetLemma)
       return <BBlock key={target} >
+        <Box>{target}</Box>
         <RelType relType={relType} />
-        <PlainSynset key={target} synset={synset} lemma={synsetLemma.lemma} />
+        <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
       </BBlock>
     })}
   </Stack>
