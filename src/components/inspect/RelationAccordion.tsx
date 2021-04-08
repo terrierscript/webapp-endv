@@ -5,10 +5,9 @@ import { RelType } from "./RelType"
 import { SenseItem } from "./Sense"
 import { SynsetsLoader } from "./Synset"
 
-export const RelationAccordion = ({ relations }: { relations: RelationRecord[]} ) => {
+export const RelationAccordion = ({ relations }: { relations: RelationRecord[] }) => {
   return <>{relations?.map(({ relType, targets, type }, i) => {
-    return <ItemAccordion title={relType} key={i}>
-      <RelType relType={relType} />
+    return <ItemAccordion title={<RelType relType={relType} />} key={i}>
       {(type === "sense")
         ? targets.map(target => {
           return <SenseItem key={target} senseId={target} />

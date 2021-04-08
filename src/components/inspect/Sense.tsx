@@ -39,18 +39,19 @@ const PlainSense: FC<{ sense: Sense }>= ({ sense }) => {
   </>
 }
 
-export const SensesLoader: FC<{senseIds: string[]}> = ({ senseIds }) => {
-  const data = useWordNet<Sense>("sense", senseIds)
-  if (!data) {
-    return null
-  }
-  return <>
-    {senseIds.map(id => {
-      const sense = data[id]
-      return <PlainSense sense={sense}/>
-    })}
-  </>
-}
+// export const SensesLoader: FC<{senseIds: string[]}> = ({ senseIds }) => {
+//   const data = useWordNet<Sense>("sense", senseIds)
+//   if (!data) {
+//     return null
+//   }
+//   return <>
+//     {senseIds.map(id => {
+//       const sense = data[id]
+//       return <PlainSense sense={sense}/>
+//     })}
+//   </>
+// }
+
 export const SenseItem = ({ senseId }: { senseId:string }) => {
   const data = useWordNet<Sense>("sense", [senseId])
   if (!data) {
