@@ -15,7 +15,7 @@ import { LoadSynsetRelation } from "./useSynsetGroupedRelation"
 //   const relations = synsetRelation.map()
 //   return <RelationAccordion />
 // }
-const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []}) => {
+const PlainSynset: FC<{ synset: Synset, lemma: string[] }> = ({ synset, lemma = [] }) => {
   const { definition, example, synsetRelation } = synset ?? {}
   // console.log("ps",synset, lemma)
   return <>
@@ -30,11 +30,11 @@ const PlainSynset : FC<{synset: Synset, lemma: string[]}> = ({ synset,lemma = []
 }
 
 export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
-  const data  = useWordNet<Synset>("synset", synsetIds)
+  const data = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
-  
+
   if (!data || !lemmas) {
-    return <Spinner/>
+    return <Spinner />
   }
   return <Stack>
     {synsetIds.map((target) => {
@@ -42,7 +42,6 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
         .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
-      // console.log(synsetLemma)
       return <BBlock key={target} >syn
         <Box>{target}</Box>
         <RelType relType={relType} />
@@ -52,13 +51,13 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
   </Stack>
 }
 
-export const SynsetRelations: FC<{ relations: Relation[] }>= ({ relations }) => {
+export const SynsetRelations: FC<{ relations: Relation[] }> = ({ relations }) => {
   if (!relations) {
     return null
   }
   const synsetIds = relations.map(r => r.target)
   return <ItemAccordion title="relation">
-      <SynsetsLoader synsetIds={synsetIds} relations={relations} />
+    <SynsetsLoader synsetIds={synsetIds} relations={relations} />
   </ItemAccordion>
 }
 
