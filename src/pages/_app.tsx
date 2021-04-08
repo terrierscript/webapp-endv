@@ -3,7 +3,7 @@ import React from "react"
 
 const Footer = () => {
   return <Box>
-    <Divider/>
+    <Divider />
     <Box textAlign="right" px={10} color="gray.500">
       <Stack>
         <Box>
@@ -19,10 +19,12 @@ const Footer = () => {
 // @ts-ignore
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
-    <Container minHeight="90vh">
-      <Component {...pageProps} />
-    </Container>
-    <Footer />
+    <Box bg="gray.100" minHeight="90vh">
+      <Container bg="white" maxW="8xl" >
+        <Component {...pageProps} />
+      </Container>
+      <Footer />
+    </Box>
   </ChakraProvider>
 }
 

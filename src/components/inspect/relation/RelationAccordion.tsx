@@ -1,9 +1,9 @@
 import React from "react"
-import { RelationRecord } from "../../lib/types"
-import { ItemAccordion } from "../Acordion"
+import { RelationRecord } from "../../../lib/types"
+import { ItemAccordion } from "../../Acordion"
 import { RelType } from "./RelType"
-import { SenseItem } from "./Sense"
-import { SynsetsLoader } from "./Synset"
+import { SenseItem } from "../sense/Sense"
+import { SynsetsLoader } from "../synset/Synset"
 
 export const RelationAccordion = ({ relations }: { relations: RelationRecord[] }) => {
   return <>{relations?.map(({ relType, targets, type }, i) => {

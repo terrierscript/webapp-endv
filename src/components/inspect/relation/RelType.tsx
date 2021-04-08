@@ -2,7 +2,7 @@ import { Badge, Box, Tooltip } from "@chakra-ui/react"
 import React from "react"
 import { relTypeDescriptions } from "./refTypeDescriptions"
 
-export const RelType = ({ relType }: { relType?: string} ) => {
+export const RelType = ({ relType }: { relType?: string }) => {
   if (!relType) {
     return null
   }

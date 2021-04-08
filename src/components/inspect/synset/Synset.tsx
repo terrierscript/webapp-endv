@@ -1,25 +1,19 @@
 import { HStack, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { ItemAccordion } from "../Acordion"
-import { Glossaries } from "../Glossaries"
-import { useWordNet } from "./useWordNet"
-import { BBlock } from "./Block"
-import { InspectWordLink } from "./Link"
-import { LexicalEntryIndex, Relation, Synset, SynsetLemma } from "../../lib/types"
-import { RelType } from "./RelType"
-import { RelationAccordion } from "./RelationAccordion"
-import { LoadSynsetRelation } from "./useSynsetGroupedRelation"
+import { ItemAccordion } from "../../Acordion"
+import { Glossaries } from "./Glossaries"
+import { useWordNet } from "../useWordNet"
+import { BBlock } from "../Block"
+import { InspectWordLink } from "../Link"
+import { Relation, Synset, SynsetLemma } from "../../../lib/types"
+import { RelType } from "../relation/RelType"
+import { LoadSynsetRelation } from "../useSynsetGroupedRelation"
 
-// const SysnetRelationAccordion = ({ synsetRelation }: any) => {
-//   const 
-//   const relations = synsetRelation.map()
-//   return <RelationAccordion />
-// }
 const PlainSynset: FC<{ synset: Synset, lemma: string[] }> = ({ synset, lemma = [] }) => {
-  const { definition, example, synsetRelation } = synset ?? {}
-  // console.log("ps",synset, lemma)
+  const { definition, example } = synset ?? {}
   return <>
     <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
+      console.log(l)
       return <Box key={l}>
         <InspectWordLink word={l} />
       </Box>
@@ -42,8 +36,7 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
         .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
-      return <BBlock key={target} >syn
-        <Box>{target}</Box>
+      return <BBlock key={target} >
         <RelType relType={relType} />
         <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
       </BBlock>

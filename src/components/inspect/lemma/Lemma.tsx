@@ -1,13 +1,12 @@
 import React, { FC } from "react"
-import {  useWordNet } from "./useWordNet"
-import { Block } from "./Block"
-import { LexicalEntries } from "./LexicalEntries"
-import { LexicalEntryIndex } from "../../lib/types"
+import { useWordNet } from "../useWordNet"
+import { Block } from "../Block"
+import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
+import { LexicalEntryIndex } from "../../../lib/types"
 
 
-export const Lemma : FC<{word: string}> = ({ word }) => {
+export const Lemma: FC<{ word: string }> = ({ word }) => {
   const data = useWordNet<LexicalEntryIndex>("lemma", [word])
-  // console.log(data)
   if (!data) {
     return null
   }
