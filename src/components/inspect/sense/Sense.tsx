@@ -11,13 +11,19 @@ import {
   // Relations
 } from "../relation/RelationLoader"
 
-const PlainSense: FC<{ sense: Sense }> = ({ sense }) => {
-  return <>
-    <Box>
-      <SynsetsLoader sense={sense} synsetIds={[sense.synset ?? ""]} />
-    </Box>
-  </>
-}
+const PlainSense: FC<{
+  // sense: Sense
+}> = ({
+  // sense
+}) => {
+    return <>
+      <Box>
+        <SynsetsLoader
+          // sense={sense}
+          synsetIds={[sense.synset ?? ""]} />
+      </Box>
+    </>
+  }
 
 export const SenseItem = ({ senseId }: { senseId: string }) => {
   const data = useWordNet<Sense>("sense", [senseId])

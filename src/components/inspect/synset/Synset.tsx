@@ -7,9 +7,9 @@ import { BBlock } from "../Block"
 import { InspectWordLink } from "../Link"
 import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/types"
 import { RelType } from "../relation/RelType"
-import { LoadSenseRelation, LoadSynsetRelation, MoreRelations } from "../relation/RelationLoader"
+import { LoadSenseRelation, LoadSynsetRelation } from "../relation/RelationLoader"
 
-const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
+const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
   return <BBlock>
@@ -23,31 +23,38 @@ const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ se
     })}</HStack>
     <Glossaries definition={definition} example={example} />
     {synset && <LoadSynsetRelation synsetId={synset.id} />}
-    <LoadSenseRelation sense={sense} />
+    {sense && <LoadSenseRelation sense={sense} />}
     {/* <MoreRelations sense={sense} /> */}
   </BBlock>
 }
 
-export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?: Relation[] }> = ({ sense, synsetIds = [], relations = [] }) => {
-  const data = useWordNet<Synset>("synset", synsetIds)
-  const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
+export const SynsetsLoader: FC<{
+  // sense: Sense,
+  synsetIds?: string[], relations?: Relation[]
+}> = ({
+  // sense,
+  synsetIds = [], relations = [] }) => {
+    const data = useWordNet<Synset>("synset", synsetIds)
+    const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
-  if (!data || !lemmas) {
-    return <Spinner />
+    if (!data || !lemmas) {
+      return <Spinner />
+    }
+    return <Stack>
+      {synsetIds.map((target) => {
+        const { relType } = relations
+          .find(r => r.target === target) ?? {}
+        const synset = data[target]
+        const synsetLemma = lemmas?.[target] ?? []
+        return <Box key={target} >
+          <RelType relType={relType} />
+          <PlainSynset
+            // sense={sense}
+            key={target} synset={synset} lemma={synsetLemma} />
+        </Box>
+      })}
+    </Stack>
   }
-  return <Stack>
-    {synsetIds.map((target) => {
-      const { relType } = relations
-        .find(r => r.target === target) ?? {}
-      const synset = data[target]
-      const synsetLemma = lemmas?.[target] ?? []
-      return <Box key={target} >
-        <RelType relType={relType} />
-        <PlainSynset sense={sense} key={target} synset={synset} lemma={synsetLemma} />
-      </Box>
-    })}
-  </Stack>
-}
 
 // export const SynsetRelations: FC<{ relations: Relation[] }> = ({ relations }) => {
 //   if (!relations) {
