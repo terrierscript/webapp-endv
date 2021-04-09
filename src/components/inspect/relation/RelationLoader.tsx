@@ -6,8 +6,9 @@ import { FC } from "react"
 import { ItemAccordion } from "../../Acordion"
 
 export const LoadSenseRelation = ({ sense }: { sense: Sense }) => {
+  console.log(sense)
   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
-  const relations = useWordNet<RelationRecord[]>("senseRelation", [sense.id])
+  const relations = useWordNet<RelationRecord[]>("senseRelation", [sense?.id])
   const rel = relations?.[sense.id]
   if (!rel) {
     return null
@@ -23,22 +24,3 @@ export const LoadSynsetRelation = ({ synsetId }: { synsetId: string }) => {
   }
   return <RelationAccordion relations={rel} />
 }
-
-// export const MoreRelations: FC<{ sense: Sense }> = ({ sense }) => {
-
-//   return sense && (<ItemAccordion title="more">
-//     <LoadSenseRelation sense={sense} />
-//   </ItemAccordion>)
-// }
-
-// export const LoadSenseSynsetRelation = ({ senseId }: { senseId: string }) => {
-//   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
-//   const relations = useWordNet<RelationRecord[]>("senseSynsetRelation", [senseId])
-//   const rel = relations?.[senseId]
-//   if (!rel) {
-//     return null
-//   }
-//   return <RelationAccordion relations={rel} />
-// }
-
-// senseSynsetRelation
