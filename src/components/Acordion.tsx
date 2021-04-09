@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from "react"
 
 export const ItemAccordion: FC<{ title: ReactNode }> = ({ title, children }) => {
 
-  return <Accordion allowToggle allowMultiple reduceMotion>
+  return <Accordion allowToggle allowMultiple reduceMotion >
     <AccordionItem>{({ isExpanded }) => (
       <>
         <AccordionButton fontSize="sm" >
@@ -14,7 +14,7 @@ export const ItemAccordion: FC<{ title: ReactNode }> = ({ title, children }) => 
             </Box>
           </HStack>
         </AccordionButton>
-        <AccordionPanel>
+        <AccordionPanel p={0} >
           {isExpanded ? children : <Spinner />}
         </AccordionPanel>
       </>

@@ -24,13 +24,12 @@ export const LoadSynsetRelation = ({ synsetId }: { synsetId: string }) => {
   return <RelationAccordion relations={rel} />
 }
 
-export const Relations: FC<{ sense: Sense }> = ({ sense }) => {
+// export const MoreRelations: FC<{ sense: Sense }> = ({ sense }) => {
 
-  return <ItemAccordion title="more">
-    {/* {sense?.synset && <LoadSynsetRelation sense={sense} synsetId={sense?.synset} />} */}
-    {sense && <LoadSenseRelation sense={sense} />}
-  </ItemAccordion>
-}
+//   return sense && (<ItemAccordion title="more">
+//     <LoadSenseRelation sense={sense} />
+//   </ItemAccordion>)
+// }
 
 // export const LoadSenseSynsetRelation = ({ senseId }: { senseId: string }) => {
 //   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)

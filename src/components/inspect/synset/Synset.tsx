@@ -7,7 +7,7 @@ import { BBlock } from "../Block"
 import { InspectWordLink } from "../Link"
 import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/types"
 import { RelType } from "../relation/RelType"
-import { LoadSynsetRelation, Relations } from "../relation/RelationLoader"
+import { LoadSenseRelation, LoadSynsetRelation, MoreRelations } from "../relation/RelationLoader"
 
 const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
@@ -23,11 +23,12 @@ const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ se
     })}</HStack>
     <Glossaries definition={definition} example={example} />
     {synset && <LoadSynsetRelation synsetId={synset.id} />}
-    <Relations sense={sense} />
+    <LoadSenseRelation sense={sense} />
+    {/* <MoreRelations sense={sense} /> */}
   </BBlock>
 }
 
-export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
+export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?: Relation[] }> = ({ sense, synsetIds = [], relations = [] }) => {
   const data = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
@@ -42,7 +43,7 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
       const synsetLemma = lemmas?.[target] ?? []
       return <Box key={target} >
         <RelType relType={relType} />
-        <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
+        <PlainSynset sense={sense} key={target} synset={synset} lemma={synsetLemma} />
       </Box>
     })}
   </Stack>
