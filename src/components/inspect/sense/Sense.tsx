@@ -8,7 +8,7 @@ import {
   LoadSenseRelation,
   // LoadSenseSynsetRelation,
   LoadSynsetRelation,
-  RelationsAccordion
+  // Relations
 } from "../relation/RelationLoader"
 
 const PlainSense: FC<{ sense: Sense }> = ({ sense }) => {

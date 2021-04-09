@@ -7,14 +7,14 @@ import { BBlock } from "../Block"
 import { InspectWordLink } from "../Link"
 import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/types"
 import { RelType } from "../relation/RelType"
-import { RelationsAccordion } from "../relation/RelationLoader"
+import { LoadSynsetRelation, Relations } from "../relation/RelationLoader"
 
 const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
   return <BBlock>
 
-    sense {sense.id} synset: {synset.id}
+    sense {sense?.id ?? "-"} synset: {synset.id}
     <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
       console.log(l)
       return <Box key={l}>
@@ -22,12 +22,12 @@ const PlainSynset: FC<{ sense: Sense, synset: Synset, lemma: string[] }> = ({ se
       </Box>
     })}</HStack>
     <Glossaries definition={definition} example={example} />
-    <RelationsAccordion sense={sense} />
-    {/* {synset && <LoadSynsetRelation synsetId={synset.id} />} */}
+    {synset && <LoadSynsetRelation synsetId={synset.id} />}
+    <Relations sense={sense} />
   </BBlock>
 }
 
-export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?: Relation[] }> = ({ sense, synsetIds = [], relations = [] }) => {
+export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
   const data = useWordNet<Synset>("synset", synsetIds)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
@@ -42,7 +42,7 @@ export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?:
       const synsetLemma = lemmas?.[target] ?? []
       return <Box key={target} >
         <RelType relType={relType} />
-        <PlainSynset sense={sense} key={target} synset={synset} lemma={synsetLemma} />
+        <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
       </Box>
     })}
   </Stack>
