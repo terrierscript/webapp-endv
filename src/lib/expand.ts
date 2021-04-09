@@ -38,19 +38,19 @@ const getSynsets = (synsetId: string[]) => {
 
 export const getLemmasExpandItems = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)] as const)
-    .filter(([k,v] ) => v !== undefined)
+    .filter(([k, v]) => v !== undefined)
   console.log(lemmaEntry.map(l => l[1]?.lexicalEntry).flat())
-  
+
   const lexEntries = lemmaEntry.map(l => l[1]?.lexicalEntry).flat()
     .filter(w => w !== undefined)
     .map((w: any) => [w, dictionary.getLexicalEntry(w)] as const)
-    .filter(([k,v] ) => v !== undefined)
+    .filter(([k, v]) => v !== undefined)
   // @ts-ignore
   const senseIds: string[] = lexEntries.map(([_, lex]) => lex).flat().map(lex => {
     return lex?.sense
   }).flat().filter(s => s !== undefined)
   const sense = getSenses(senseIds)
-  const synsetIds = Object.values(sense).map(s => s.synset)
+  const synsetIds = Object.values(sense).map(s => s.synset).filter((s): s is string => !!s)
   const synsetResult = searchSynsets(synsetIds)
   const senseRelation = getSenseRelations(senseIds)
   return {
@@ -105,7 +105,7 @@ export const searchSynsets = (synsetIds: string[]) => {
     const lexId = dictionary.getSynsetIndex(s)?.lexicalEntry
     return [s, lexId]
   }))
-  
+
   const lexicalEntry = Object.fromEntries(
     Object.values(synsetLexMap).flat().map(l => [l, dictionary.getLexicalEntry(l)])
   )
