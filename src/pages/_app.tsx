@@ -20,7 +20,7 @@ const Footer = () => {
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
     <Box bg="gray.100" minHeight="90vh">
-      <Container bg="white" maxW="8xl" >
+      <Container bg="white" maxW="8xl" p={4}>
         <Component {...pageProps} />
       </Container>
       <Footer />

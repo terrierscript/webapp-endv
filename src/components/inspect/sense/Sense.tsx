@@ -1,10 +1,15 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Divider } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
 import { SynsetsLoader } from "../synset/Synset"
 import { Sense } from "../../../lib/types"
-import { LoadSenseRelation } from "../useSynsetGroupedRelation"
+import {
+  LoadSenseRelation,
+  LoadSenseSynsetRelation,
+  // LoadSenseSynsetRelation,
+  LoadSynsetRelation
+} from "../relation/RelationLoader"
 
 const PlainSense: FC<{ sense: Sense }> = ({ sense }) => {
   return <>
@@ -20,9 +25,12 @@ export const SenseItem = ({ senseId }: { senseId: string }) => {
     return null
   }
   const sense = data[senseId]
-
   return <BBlock>
+    sense:{sense.id}
     <PlainSense sense={sense} />
     <LoadSenseRelation sense={sense} />
+    <LoadSynsetRelation synsetId={sense.synset} />
+    {/* <Box>--</Box>
+    <LoadSenseSynsetRelation senseId={sense.id} /> */}
   </BBlock>
 }

@@ -2,13 +2,18 @@ import * as dictionary from "./dictionary"
 import { Mapping, Relation, Sense, RelationRecord } from "./types"
 
 const groupingRelationMap = (relations: Relation[] = []) => {
-  const map = new Map<string, string[]>()
+  const map = new Map<string, Set<string>>()
   relations.map((rel) => {
     const { relType } = rel
-    const m = map.get(relType) ?? []
-    map.set(relType, [...m, rel.target])
+    const s = map.get(relType) ?? new Set()
+    s.add(rel.target)
+    map.set(relType, s)
   })
-  return map
+  return new Map(
+    Array.from(map.entries()).map(([key, value]) => {
+      return [key, Array.from(value)]
+    })
+  )
 }
 
 const getRelations = (sense: Sense) => {
@@ -19,25 +24,32 @@ const getRelations = (sense: Sense) => {
   return { senseRelation, synsetRelation }
 }
 
+const getSenseIndexRelation = (senseId: string) => {
+  const senseToSynsetRelation = dictionary.getSenseIndex(senseId)
+  const rel = senseToSynsetRelation?.map(s => ({
+    relType: s.relType,
+    target: s.sense,
+  })).filter(s => s.relType === "derivation")
+  return rel
 
+}
 const getSenseRelation = (senseId: string): RelationRecord[] => {
   const sense = dictionary.getSense(senseId)
   if (!sense) {
     return []
   }
-  const { senseRelation, synsetRelation } = getRelations(sense)
-  const senseRecord = Array.from(groupingRelationMap(senseRelation).entries())
+  const { senseRelation } = getRelations(sense)
+  const senseIndexRelation = getSenseIndexRelation(sense.id)
+  const senseRecord = Array.from(groupingRelationMap([
+    ...senseRelation ?? [],
+    ...senseIndexRelation ?? [],
+  ]).entries())
     .map(([relType, targets]): RelationRecord => {
       return { relType, targets, type: "sense" }
-    })
-  const synsetRecord = Array.from(groupingRelationMap(synsetRelation).entries())
-    .map(([relType, targets]): RelationRecord => {
-      return { relType, targets, type: "synset" }
     })
 
   return [
     ...senseRecord
-    // , ...synsetRecord
   ]
 }
 
@@ -67,4 +79,24 @@ export const getSynsetRelations = (synsetIds: string[]): Mapping<RelationRecord[
   return Object.fromEntries(synsetIds.map(s => {
     return [s, getSynsetRelation(s)]
   }))
+}
+
+// @beta
+export const getSenseSynsetRelations = (senseIds: string[]) => {
+  return Object.fromEntries(senseIds.map(senseId => {
+    const senseToSynsetRelation = dictionary.getSenseIndex(senseId)
+    const rel = senseToSynsetRelation?.map(s => ({
+      relType: s.relType,
+      target: s.sense,
+    }))
+    const rels = groupingRelationMap(rel)
+
+    const record = Array.from(rels.entries())
+      .map(([relType, targets]): RelationRecord => {
+        return { relType, targets, type: "sense" }
+      })
+
+    return [senseIds, record]
+  }))
+
 }

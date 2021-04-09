@@ -1,7 +1,7 @@
 import React from "react"
-import { Sense, RelationRecord } from "../../lib/types"
-import { RelationAccordion } from "./relation/RelationAccordion"
-import { useWordNet } from "./useWordNet"
+import { Sense, RelationRecord } from "../../../lib/types"
+import { RelationAccordion } from "./RelationAccordion"
+import { useWordNet } from "../useWordNet"
 
 export const LoadSenseRelation = ({ sense }: { sense: Sense }) => {
   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
@@ -21,3 +21,15 @@ export const LoadSynsetRelation = ({ synsetId }: { synsetId: string }) => {
   }
   return <RelationAccordion relations={rel} />
 }
+
+export const LoadSenseSynsetRelation = ({ senseId }: { senseId: string }) => {
+  // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
+  const relations = useWordNet<RelationRecord[]>("senseSynsetRelation", [senseId])
+  const rel = relations?.[senseId]
+  if (!rel) {
+    return null
+  }
+  return <RelationAccordion relations={rel} />
+}
+
+// senseSynsetRelation

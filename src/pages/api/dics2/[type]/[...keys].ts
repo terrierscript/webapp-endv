@@ -9,16 +9,16 @@ import * as dictionary from "../../../../lib/dictionary"
 import deepmerge from "deepmerge"
 import { EntityType } from "../../../../lib/types"
 import { getExpandLexicalEntry } from "../../../../lib/lexicalEntry"
-import { getSenseRelations, getSynsetRelations } from "../../../../lib/senseRelation"
+import { getSenseRelations, getSenseSynsetRelations, getSynsetRelations } from "../../../../lib/senseRelation"
 
-const wrap = (result:any, type:string, key:string) => {
-  return {[type] : { [key] : result }}
+const wrap = (result: any, type: string, key: string) => {
+  return { [type]: { [key]: result } }
 }
 
-const getRawResult = (type: EntityType, key:string) => {
+const getRawResult = (type: EntityType, key: string) => {
   switch (type) {
     case "lexicalEntry": return getExpandLexicalEntry(key)
-      // wrap(dictionary.getLexicalEntry(key), type, key)
+    // wrap(dictionary.getLexicalEntry(key), type, key)
     case "lexicalEntryRelation": return getLexicalEntryRelation(key)
     // @ts-ignore
     // case "lexicalEntryWordRelation": return getLexicalEntryWordRelation( key)
@@ -29,6 +29,10 @@ const getRawResult = (type: EntityType, key:string) => {
     // @ts-ignore
     case "synsetRelation": return {
       synsetRelation: getSynsetRelations([key])
+    }
+    // @ts-ignore
+    case "senseSynsetRelation": return {
+      senseSynsetRelation: getSenseSynsetRelations([key])
     }
     case "synset": return wrap(dictionary.getSynset(key), type, key)
     case "synsetIndex": return wrap(dictionary.getSynsetIndex(key), type, key)
@@ -49,7 +53,7 @@ const getItem = (type: EntityType, keys: string[]) => {
   })
 }
 const handler: NextApiHandler = async (req, res) => {
-  const {type, keys } = req.query
+  const { type, keys } = req.query
   const results = [keys].flat().map(key => {
     // @ts-ignore
     return getRawResult(type, key)

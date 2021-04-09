@@ -7,11 +7,11 @@ import { BBlock } from "../Block"
 import { InspectWordLink } from "../Link"
 import { Relation, Synset, SynsetLemma } from "../../../lib/types"
 import { RelType } from "../relation/RelType"
-import { LoadSynsetRelation } from "../useSynsetGroupedRelation"
 
 const PlainSynset: FC<{ synset: Synset, lemma: string[] }> = ({ synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
-  return <>
+  return <BBlock>
+    synset: {synset.id}
     <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
       console.log(l)
       return <Box key={l}>
@@ -19,8 +19,8 @@ const PlainSynset: FC<{ synset: Synset, lemma: string[] }> = ({ synset, lemma = 
       </Box>
     })}</HStack>
     <Glossaries definition={definition} example={example} />
-    {synset && <LoadSynsetRelation synsetId={synset.id} />}
-  </>
+    {/* {synset && <LoadSynsetRelation synsetId={synset.id} />} */}
+  </BBlock>
 }
 
 export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
@@ -36,21 +36,21 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
         .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
-      return <BBlock key={target} >
+      return <Box key={target} >
         <RelType relType={relType} />
         <PlainSynset key={target} synset={synset} lemma={synsetLemma} />
-      </BBlock>
+      </Box>
     })}
   </Stack>
 }
 
-export const SynsetRelations: FC<{ relations: Relation[] }> = ({ relations }) => {
-  if (!relations) {
-    return null
-  }
-  const synsetIds = relations.map(r => r.target)
-  return <ItemAccordion title="relation">
-    <SynsetsLoader synsetIds={synsetIds} relations={relations} />
-  </ItemAccordion>
-}
+// export const SynsetRelations: FC<{ relations: Relation[] }> = ({ relations }) => {
+//   if (!relations) {
+//     return null
+//   }
+//   const synsetIds = relations.map(r => r.target)
+//   return <ItemAccordion title="relation">
+//     <SynsetsLoader synsetIds={synsetIds} relations={relations} />
+//   </ItemAccordion>
+// }
 

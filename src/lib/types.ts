@@ -4,7 +4,7 @@ export type Mapping<T> = {
 
 export type EntityType =
   "lexicalEntry" |
-  "lexicalEntryRelation"|
+  "lexicalEntryRelation" |
   "lemma" |
   "synset" |
   "synsetIndex" |
@@ -14,7 +14,8 @@ export type EntityType =
   "syntacticBehaviour" |
   "sense" |
   "senseRelation" |
-  "synsetRelation"
+  "synsetRelation" |
+  "senseSynsetRelation"
 
 export type LexicalEntry = {
   id: string
@@ -64,4 +65,10 @@ export type RelationRecord = {
   relType: string,
   targets: string[]
   type: "sense" | "synset"
+}
+
+export type SenseIndexRelation = {
+  relType: string,
+  sense: string
+  synset: string
 }

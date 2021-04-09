@@ -15,7 +15,7 @@ export const Lemma: FC<{ word: string }> = ({ word }) => {
     return null
   }
   const ls = lemm.lexicalEntry
-  return <Block>{ls?.map(l => {
+  return <Block >{ls?.map(l => {
     return <LexicalEntries key={l} lexicalEntryId={l} />
   })}</Block>
 }

@@ -18,12 +18,12 @@ export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) =
   }
   const lex = data[lexicalEntryId]
   const { lemma, sense } = lex
-  return <Block p={4}>
+  return <Box p={4}>
     {lemma.writtenForm} ({lemma.partOfSpeech})
     <Stack>
       {sense?.map(s => {
         return <SenseItem key={s} senseId={s} />
       })}
     </Stack>
-  </Block>
+  </Box>
 }
