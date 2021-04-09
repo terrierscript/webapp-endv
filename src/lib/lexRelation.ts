@@ -56,7 +56,7 @@ const expandRelType = (baseSense: Sense) => {
   const synsetExpand = Object.fromEntries(Object.entries(synset).map(([relType, synsetId]) => {
     return [relType, Object.fromEntries(synsetId.map(s => {
       const syns = dictionary.getSynset(s ?? "")
-      const synsetLex = dictionary.getSynsetIndex(syns?.id ?? "") ?? {lexicalEntry: []}
+      const synsetLex = dictionary.getSynsetIndex(syns?.id ?? "") ?? { lexicalEntry: [] }
       const ll = synsetLex.lexicalEntry.map(l => dictionary.getLexicalEntry(l)?.lemma.writtenForm)
       return [s, ll]
     }))]
@@ -72,12 +72,12 @@ export const getLexicalEntryWordRelation = (key: string) => {
   const senses = getSenses(lex?.sense ?? [])
   const senseRelation = Object.fromEntries(
     Object.values(senses)
-    .map(sense => {
-      const relTypes = expandRelType(sense)
-      return [sense.id, relTypes]
-    })
-    )
-    return senseRelation
-  }
-  
- 
+      .map(sense => {
+        const relTypes = expandRelType(sense)
+        return [sense.id, relTypes]
+      })
+  )
+  return senseRelation
+}
+
+

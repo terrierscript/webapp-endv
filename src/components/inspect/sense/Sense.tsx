@@ -7,13 +7,14 @@ import { Sense } from "../../../lib/types"
 import {
   LoadSenseRelation,
   // LoadSenseSynsetRelation,
-  LoadSynsetRelation
+  LoadSynsetRelation,
+  RelationsAccordion
 } from "../relation/RelationLoader"
 
 const PlainSense: FC<{ sense: Sense }> = ({ sense }) => {
   return <>
     <Box>
-      <SynsetsLoader synsetIds={[sense.synset ?? ""]} />
+      <SynsetsLoader sense={sense} synsetIds={[sense.synset ?? ""]} />
     </Box>
   </>
 }
@@ -25,10 +26,8 @@ export const SenseItem = ({ senseId }: { senseId: string }) => {
   }
   const sense = data[senseId]
   return <BBlock>
-    sense:{sense.id}
+    {/* sense:{sense.id} */}
     <PlainSense sense={sense} />
-    <LoadSynsetRelation synsetId={sense.synset} />
-    <LoadSenseRelation sense={sense} />
     {/* <Box>--</Box>
     <LoadSenseSynsetRelation senseId={sense.id} /> */}
   </BBlock>

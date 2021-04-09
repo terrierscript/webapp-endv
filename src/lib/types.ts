@@ -31,7 +31,7 @@ export type Relation = {
 }
 export type Sense = {
   id: string
-  synset: string
+  synset?: string
   "dc:identifier": string
   senseRelation?: Relation[]
 }
