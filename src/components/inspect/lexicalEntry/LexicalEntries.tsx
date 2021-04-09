@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { SenseItem } from "../sense/Sense"
 import { useWordNet } from "../useWordNet"
-import { useSynsetGroupedRelation } from "../useSynsetGroupedRelation"
+// import { useSynsetGroupedRelation } from "../useSynsetGroupedRelation"
 import { Block } from "../Block"
 import { Box, Spinner, Stack } from "@chakra-ui/react"
 import { LexicalEntry, Sense } from "../../../lib/types"
