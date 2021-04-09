@@ -12,9 +12,9 @@ import {
 } from "../relation/RelationLoader"
 
 const PlainSense: FC<{
-  // sense: Sense
+  sense: Sense
 }> = ({
-  // sense
+  sense
 }) => {
     return <>
       <Box>
