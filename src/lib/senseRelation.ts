@@ -82,21 +82,21 @@ export const getSynsetRelations = (synsetIds: string[]): Mapping<RelationRecord[
 }
 
 // @beta
-export const getSenseSynsetRelations = (senseIds: string[]) => {
-  return Object.fromEntries(senseIds.map(senseId => {
-    const senseToSynsetRelation = dictionary.getSenseIndex(senseId)
-    const rel = senseToSynsetRelation?.map(s => ({
-      relType: s.relType,
-      target: s.sense,
-    }))
-    const rels = groupingRelationMap(rel)
+// export const getSenseSynsetRelations = (senseIds: string[]) => {
+//   return Object.fromEntries(senseIds.map(senseId => {
+//     const senseToSynsetRelation = dictionary.getSenseIndex(senseId)
+//     const rel = senseToSynsetRelation?.map(s => ({
+//       relType: s.relType,
+//       target: s.sense,
+//     }))
+//     const rels = groupingRelationMap(rel)
 
-    const record = Array.from(rels.entries())
-      .map(([relType, targets]): RelationRecord => {
-        return { relType, targets, type: "sense" }
-      })
+//     const record = Array.from(rels.entries())
+//       .map(([relType, targets]): RelationRecord => {
+//         return { relType, targets, type: "sense" }
+//       })
 
-    return [senseIds, record]
-  }))
+//     return [senseIds, record]
+//   }))
 
-}
+// }

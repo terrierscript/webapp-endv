@@ -22,14 +22,14 @@ export const LoadSynsetRelation = ({ synsetId }: { synsetId: string }) => {
   return <RelationAccordion relations={rel} />
 }
 
-export const LoadSenseSynsetRelation = ({ senseId }: { senseId: string }) => {
-  // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
-  const relations = useWordNet<RelationRecord[]>("senseSynsetRelation", [senseId])
-  const rel = relations?.[senseId]
-  if (!rel) {
-    return null
-  }
-  return <RelationAccordion relations={rel} />
-}
+// export const LoadSenseSynsetRelation = ({ senseId }: { senseId: string }) => {
+//   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
+//   const relations = useWordNet<RelationRecord[]>("senseSynsetRelation", [senseId])
+//   const rel = relations?.[senseId]
+//   if (!rel) {
+//     return null
+//   }
+//   return <RelationAccordion relations={rel} />
+// }
 
 // senseSynsetRelation

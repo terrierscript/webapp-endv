@@ -6,7 +6,6 @@ import { SynsetsLoader } from "../synset/Synset"
 import { Sense } from "../../../lib/types"
 import {
   LoadSenseRelation,
-  LoadSenseSynsetRelation,
   // LoadSenseSynsetRelation,
   LoadSynsetRelation
 } from "../relation/RelationLoader"
@@ -28,8 +27,8 @@ export const SenseItem = ({ senseId }: { senseId: string }) => {
   return <BBlock>
     sense:{sense.id}
     <PlainSense sense={sense} />
-    <LoadSenseRelation sense={sense} />
     <LoadSynsetRelation synsetId={sense.synset} />
+    <LoadSenseRelation sense={sense} />
     {/* <Box>--</Box>
     <LoadSenseSynsetRelation senseId={sense.id} /> */}
   </BBlock>

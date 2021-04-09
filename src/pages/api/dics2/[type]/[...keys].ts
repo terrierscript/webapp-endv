@@ -9,7 +9,7 @@ import * as dictionary from "../../../../lib/dictionary"
 import deepmerge from "deepmerge"
 import { EntityType } from "../../../../lib/types"
 import { getExpandLexicalEntry } from "../../../../lib/lexicalEntry"
-import { getSenseRelations, getSenseSynsetRelations, getSynsetRelations } from "../../../../lib/senseRelation"
+import { getSenseRelations, getSynsetRelations } from "../../../../lib/senseRelation"
 
 const wrap = (result: any, type: string, key: string) => {
   return { [type]: { [key]: result } }
@@ -30,10 +30,10 @@ const getRawResult = (type: EntityType, key: string) => {
     case "synsetRelation": return {
       synsetRelation: getSynsetRelations([key])
     }
-    // @ts-ignore
-    case "senseSynsetRelation": return {
-      senseSynsetRelation: getSenseSynsetRelations([key])
-    }
+    // // @ts-ignore
+    // case "senseSynsetRelation": return {
+    //   senseSynsetRelation: getSenseSynsetRelations([key])
+    // }
     case "synset": return wrap(dictionary.getSynset(key), type, key)
     case "synsetIndex": return wrap(dictionary.getSynsetIndex(key), type, key)
     case "synsetLexicalEntry": return wrap(getSynsetLexicalEntry(key), type, key)
