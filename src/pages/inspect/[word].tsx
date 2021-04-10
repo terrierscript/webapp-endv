@@ -3,6 +3,8 @@ import React, { FC } from "react"
 import { WordNetProvider } from "../../components/inspect/useWordNet"
 import { Lemma } from "../../components/inspect/lemma/Lemma"
 import { LemmaHeader } from "../../components/inspect/lemma/LemmaHeader"
+import { getSynsetExpandItems } from "../../lib/expand"
+import { resourceHandler } from "../../lib/resources"
 
 export const Page: FC<{ word: string, initial: any }> = ({ word, initial }) => {
   return <WordNetProvider preload={initial}>
@@ -18,8 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       notFound: true
     }
   }
-  // const initial = searchWords([word]) ?? {}
-  const initial = {} //searchWords([word]) ?? {}
+  const initial = resourceHandler("lemma", [word]) ?? {}
   return {
     props: {
       word,
