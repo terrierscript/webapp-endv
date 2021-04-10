@@ -1,5 +1,5 @@
-export const longPart = (p: string) => {
-  switch (p) {
+export const logPartOfSpeech = (partOfSpeech: string) => {
+  switch (partOfSpeech) {
     case "n": return "Noun"
     case "v": return "Verb"
     case "a": return "Adjective"

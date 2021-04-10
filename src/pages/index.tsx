@@ -27,7 +27,7 @@ export default function Home({ randoms }) {
       <Heading>Random pickup</Heading>
       {randoms.map((r: string) => {
         return <Box key={r}>
-          <InspectWordLink word={r}>{r}</InspectWordLink>
+          <InspectWordLink word={r} />
         </Box>
       })}
     </Stack>

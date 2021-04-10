@@ -3,18 +3,23 @@ import { useWordNet } from "../useWordNet"
 import { Block } from "../Block"
 import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
 import { LexicalEntryIndex } from "../../../lib/dictionary/types"
-import { Box, Spinner, Stack } from "@chakra-ui/react"
+import { Box, Heading, Spinner, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
 import { CompactLemma } from "./CompactLemma"
 import { Loading } from "../../Loading"
 
-const patterns = (word: string) => {
+type LemmaProps = {
+  word: string
+}
+
+const patterns = (word: string, appendCandidates: string[]) => {
   const comp = nlp(word)
   const { conjugations } = comp.verbs().json()?.[0] ?? {}
   const verbr: string[] = Object.values(conjugations ?? {})
   const noun = comp.nouns()
   const primary = [
+    ...appendCandidates,
     ...noun.toSingular().out("array"),
     conjugations?.Infinitive
   ]
@@ -24,8 +29,8 @@ const patterns = (word: string) => {
   ])].filter(x => x && x.length > 0)
 
 }
-const NotFound: FC<{ word: string }> = ({ word }) => {
-  const candidates = patterns(word)
+const NotFound: FC<LemmaProps & { appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
+  const candidates = patterns(word, appendCandidates)
   return <Box>
     <Box>😵</Box>
     <Stack>
@@ -36,23 +41,26 @@ const NotFound: FC<{ word: string }> = ({ word }) => {
   </Box>
 
 }
-type LemmaProps = {
-  word: string
+
+const lexicalEntryIdToLemma = (lexId: string) => {
+  return lexId.match(/ewn-(.+)-[a-z]/)?.[1] ?? ""
 }
 
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
   const data = useWordNet<LexicalEntryIndex>("lemma", [word])
   const lemm = data?.[word]
+  const formLemma = lemm?.form?.map(f => lexicalEntryIdToLemma(f)) ?? []
   if (!data) {
     return <Loading>
       Loading Word...
     </Loading>
   }
+  const ls = lemm?.lexicalEntry
 
-  if (!lemm) {
-    return <NotFound word={word} />
+  if (!ls) {
+    return <NotFound word={word} appendCandidates={formLemma} />
   }
-  const ls = lemm.lexicalEntry
+
   return <Stack>
     {ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />

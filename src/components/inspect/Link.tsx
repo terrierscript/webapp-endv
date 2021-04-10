@@ -4,10 +4,12 @@ import NextLink from "next/link"
 import React, { FC } from "react"
 
 
-export const InspectWordLink: FC<{ word: string } & LinkProps> = ({ word, color = "blue.500", ...linkProps }) => {
+export const InspectWordLink: FC<{ word: string } & LinkProps> = ({ word, color = "blue.500", children, ...linkProps }) => {
   return <NextLink key={word} href={`/inspect/${word}`} passHref >
-    <Link color={color} {...linkProps}>
-      {word.replaceAll("_", " ")}
-    </Link>
+    {children ??
+      <Link color={color} {...linkProps} textDecoration="underline">
+        {word.replaceAll("_", " ")}
+      </Link>
+    }
   </NextLink>
 }

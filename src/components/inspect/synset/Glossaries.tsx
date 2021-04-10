@@ -32,9 +32,7 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverHeader>
-          <InspectWordLink word={term.text} >
-            {term.text}
-          </InspectWordLink>
+          <InspectWordLink word={term.text} />
         </PopoverHeader>
         <PopoverBody>
           <CompactLemma word={term.text} />

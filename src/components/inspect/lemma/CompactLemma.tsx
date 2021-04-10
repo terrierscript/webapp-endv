@@ -1,11 +1,12 @@
-import { Box, ListItem, Text, UnorderedList } from "@chakra-ui/react"
+import { Box, ListItem, UnorderedList } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { LexicalEntry, LexicalEntryIndex, Sense, Synset } from "../../../lib/dictionary/types"
-import { useWordNet, useWordNetQuery } from "../useWordNet"
+import { Loading } from "../../Loading"
+import { useWordNetQuery } from "../useWordNet"
 
 export const CompactLemma: FC<{ word: string }> = ({ word }) => {
   const lemma = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
-  const lex = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word].lexicalEntry)
+  const lex = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word]?.lexicalEntry)
   const sense = useWordNetQuery<Sense>("sense", () => lex && Object
     .values(lex)
     .map(l => l?.sense).flat()
@@ -16,11 +17,19 @@ export const CompactLemma: FC<{ word: string }> = ({ word }) => {
   )
   const definitions = synset && Object.values(synset).map(syn => syn.definition).flat()
   const length = definitions?.length ?? 0
+
   const num = 3
+  if (!lemma) {
+    return <Loading>Loading</Loading>
+  }
+  if (!definitions) {
+    return <Box>Not found</Box>
+  }
+
   return <Box p={2}>
     <UnorderedList>
       {definitions?.concat().slice(0, num).map(def => {
-        return <ListItem>{def}</ListItem>
+        return <ListItem key={def}>{def}</ListItem>
       })}
     </UnorderedList>
     <Box p={2}>

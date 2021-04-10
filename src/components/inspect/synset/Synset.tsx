@@ -1,6 +1,5 @@
 import { Text, HStack, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { ItemAccordion } from "../../ItemAcordion"
 import { Glossaries } from "./Glossaries"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
@@ -36,32 +35,25 @@ const SynsetItem: FC<{ synset: Synset }> = ({ synset }) => {
   />
 
 }
-export const SynsetsLoader: FC<{
-  // sense: Sense,
-  synsetIds?: string[], relations?: Relation[]
-}> = ({
-  // sense,
-  synsetIds = [], relations = [] }) => {
-    const data = useWordNet<Synset>("synset", synsetIds)
-    // const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
+export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }> = ({ synsetIds = [], relations = [] }) => {
+  const data = useWordNet<Synset>("synset", synsetIds)
+  // const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
-    if (!data) {
-      return <Box p={4} verticalAlign="center">
-        <Spinner /><Text> Loading Synset</Text>
-      </Box>
-    }
-    return <Stack>
-      {synsetIds.map((target) => {
-        const { relType } = relations
-          .find(r => r.target === target) ?? {}
-        const synset = data[target]
-        // const synsetLemma = lemmas?.[target] ?? []
-        return <Box key={target} >
-          <RelType relType={relType} />
-          <SynsetItem
-            // sense={sense}
-            key={target} synset={synset} />
-        </Box>
-      })}
-    </Stack>
+  if (!data) {
+    return <Box p={4} verticalAlign="center">
+      <Spinner /><Text> Loading Synset</Text>
+    </Box>
   }
+  return <Stack>
+    {synsetIds.map((target) => {
+      const { relType } = relations
+        .find(r => r.target === target) ?? {}
+      const synset = data[target]
+      // const synsetLemma = lemmas?.[target] ?? []
+      return <Box key={target} >
+        <RelType relType={relType} />
+        <SynsetItem key={target} synset={synset} />
+      </Box>
+    })}
+  </Stack>
+}

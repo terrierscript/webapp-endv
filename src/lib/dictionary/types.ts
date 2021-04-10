@@ -46,6 +46,7 @@ export type Synset = {
 }
 export type LexicalEntryIndex = {
   lexicalEntry: string[]
+  form: string[]
 }
 export type Behavior = string[]
 

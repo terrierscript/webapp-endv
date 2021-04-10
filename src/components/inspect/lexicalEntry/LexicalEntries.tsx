@@ -1,11 +1,10 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { SenseItem } from "../sense/Sense"
 import { useWordNet } from "../useWordNet"
-// import { useSynsetGroupedRelation } from "../useSynsetGroupedRelation"
-import { Block } from "../Block"
 import { Box, Stack } from "@chakra-ui/react"
-import { LexicalEntry, Sense } from "../../../lib/dictionary/types"
+import { LexicalEntry } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
+import { logPartOfSpeech } from "./longPart"
 
 export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) => {
   const data = useWordNet<LexicalEntry>("lexicalEntry", [lexicalEntryId])
@@ -15,7 +14,7 @@ export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) =
   const lex = data[lexicalEntryId]
   const { lemma, sense } = lex
   return <Box p={4}>
-    {lemma.writtenForm} ({lemma.partOfSpeech})
+    {logPartOfSpeech(lemma.partOfSpeech)}
     <Stack>
       {sense?.map(s => {
         return <SenseItem key={s} senseId={s} />

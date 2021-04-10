@@ -1,39 +1,15 @@
-import { Box, Divider } from "@chakra-ui/react"
-import React, { FC } from "react"
+import React from "react"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
 import { SynsetsLoader } from "../synset/Synset"
 import { Sense } from "../../../lib/dictionary/types"
-import {
-  LoadSenseRelation,
-  // LoadSenseSynsetRelation,
-  LoadSynsetRelation,
-  // Relations
-} from "../relation/RelationLoader"
-
-const PlainSense: FC<{
-  sense: Sense
-}> = ({
-  sense
-}) => {
-    return <>
-      <Box>
-        <SynsetsLoader
-          synsetIds={[sense.synset ?? ""]} />
-      </Box>
-    </>
-  }
+import { Loading } from "../../Loading"
 
 export const SenseItem = ({ senseId }: { senseId: string }) => {
   const data = useWordNet<Sense>("sense", [senseId])
   if (!data) {
-    return null
+    return <Loading>Loading sense..</Loading>
   }
   const sense = data[senseId]
-  return <BBlock>
-    {/* sense:{sense.id} */}
-    <PlainSense sense={sense} />
-    {/* <Box>--</Box>
-    <LoadSenseSynsetRelation senseId={sense.id} /> */}
-  </BBlock>
+  return <SynsetsLoader synsetIds={[sense.synset ?? ""]} />
 }
