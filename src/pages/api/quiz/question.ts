@@ -5,7 +5,7 @@ import nlp from "compromise"
 import { NextApiHandler } from "next"
 
 const isMaybePhrasalVerb = (word: string) => {
-  if (word.split("").length != 2) {
+  if (word.split(" ").length != 2) {
     return false
   }
   if (/[A-Z]/.test(word)) {
@@ -14,22 +14,20 @@ const isMaybePhrasalVerb = (word: string) => {
 
   const terms = nlp(word).terms().json().map((t: any) => t.terms).flat()
   const maybePhrasalVerb = terms.some((term: any) => {
-    return term.tags.include("Preposition") ||
-      term.tags.include("Conjunction") ||
-      term.tags.include("PhrasalVerb")
+    const tags: string[] = term?.tags ?? []
+    return tags.includes("Preposition") ||
+      tags.includes("Conjunction") ||
+      tags.includes("PhrasalVerb")
   })
-  if (!maybePhrasalVerb) {
-    console.log(terms)
-  }
+
   return maybePhrasalVerb
 }
+
 const handler: NextApiHandler = async (req, res) => {
-  console.log(dictionary)
   const aw = dictionary.getAllWords()
-  aw.map((a: string) => {
-    isMaybePhrasalVerb(a)
-  })
-  res.json({})
+  const pv = aw.filter((a: string) => isMaybePhrasalVerb(a))
+
+  res.json({ pv })
 }
 
 export default handler
