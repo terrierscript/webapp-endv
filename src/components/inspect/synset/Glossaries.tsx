@@ -33,7 +33,7 @@ const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence,
       fontWeight: words.includes(text) ? "bold" : "inherit",
       textDecoration: words.includes(text) ? "underline dashed" : "inherit"
     }
-    text === "component" && console.log(text, words.includes(text))
+    text === "fancy" && console.log(text, words.includes(text))
     return <Text key={i} as="span">
       <Text as="span">{pre}</Text>
       <Text as="span"{...textProps}>{text}</Text>
@@ -41,6 +41,7 @@ const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence,
     </Text>
   })
 }
+
 const Examples: FC<Pick<GlossaryProps, "example" | "lemma">> = ({ lemma, example }) => {
   const examples = example?.map(l => typeof l === "string" ? l : l["#text"])
   return <Wrap lineHeight="1">{examples.map((ex, i) => [
