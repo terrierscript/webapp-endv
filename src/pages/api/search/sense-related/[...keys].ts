@@ -1,7 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { searchRelatedSenses } from "../../../../lib/expand"
-import { searchSenses } from "../../../../lib/searchSenses"
+import { searchRelatedSenses } from "../../../../lib/resources/expand"
 
 const handler: NextApiHandler = async (req, res) => {
   const { keys } = req.query

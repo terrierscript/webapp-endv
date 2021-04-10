@@ -1,4 +1,4 @@
-import { getLexicalEntry, getSynset } from "./dictionary"
+import { getLexicalEntry, getSynset } from "../dictionary/dictionary"
 import { searchSenses } from "./searchSenses"
 
 export const getExpandLexicalEntry = (lexId: string) => {

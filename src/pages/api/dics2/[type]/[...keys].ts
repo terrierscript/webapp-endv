@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { resourceHandler } from "../../../../lib/resources"
+import { resourceHandler } from "../../../../lib/resources/resources"
 
 const handler: NextApiHandler = async (req, res) => {
   const { type, keys } = req.query

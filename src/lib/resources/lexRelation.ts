@@ -1,7 +1,7 @@
-import * as dictionary from "./dictionary"
+import * as dictionary from "../dictionary/dictionary"
 
 import { getSenses } from "./expand"
-import { Relation, RelationMap, Sense, SenseRelation } from "./types"
+import { Relation, RelationMap, Sense, SenseRelation } from "../dictionary/types"
 import { senseIdToLexId } from "./util"
 
 const groupingRelation = (relations: Relation[] = []): RelationMap => {

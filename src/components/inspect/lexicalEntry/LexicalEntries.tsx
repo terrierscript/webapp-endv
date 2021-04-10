@@ -4,7 +4,7 @@ import { useWordNet } from "../useWordNet"
 // import { useSynsetGroupedRelation } from "../useSynsetGroupedRelation"
 import { Block } from "../Block"
 import { Box, Stack } from "@chakra-ui/react"
-import { LexicalEntry, Sense } from "../../../lib/types"
+import { LexicalEntry, Sense } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 
 export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) => {

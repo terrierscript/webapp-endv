@@ -1,10 +1,10 @@
-import * as dictionary from "./dictionary"
-import { Sense } from "./types"
+import * as dictionary from "../dictionary/dictionary"
+import { Sense } from "../dictionary/types"
 import { senseIdToLexId } from "./util"
 
 export const searchSenses = (senseIds: string[]) => {
   // @ts-ignore
-  const senses : Sense[] = senseIds.map(senseId => dictionary.getSense(senseId)
+  const senses: Sense[] = senseIds.map(senseId => dictionary.getSense(senseId)
   ).filter(s => s !== undefined)
   const senseEntries = senses.map(s => {
     return [s.id, s]

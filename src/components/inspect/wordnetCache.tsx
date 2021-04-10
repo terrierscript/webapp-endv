@@ -1,4 +1,4 @@
-import { resourceHandler } from "../../lib/resources"
+import { resourceHandler } from "../../lib/resources/resources"
 import { Cache, validateKey } from "./useWordNet"
 
 const getFromCache = (cache: Cache, type: string, keys: string[]) => {

@@ -3,7 +3,7 @@ import React, { FC } from "react"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
 import { SynsetsLoader } from "../synset/Synset"
-import { Sense } from "../../../lib/types"
+import { Sense } from "../../../lib/dictionary/types"
 import {
   LoadSenseRelation,
   // LoadSenseSynsetRelation,

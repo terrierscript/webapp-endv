@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { getLemmasExpandItems } from "../../../../lib/expand"
+import { getLemmasExpandItems } from "../../../../lib/resources/expand"
 
 
 const handler: NextApiHandler = async (req, res) => {

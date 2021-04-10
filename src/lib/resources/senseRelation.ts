@@ -1,5 +1,5 @@
-import * as dictionary from "./dictionary"
-import { Mapping, Relation, Sense, RelationRecord } from "./types"
+import * as dictionary from "../dictionary/dictionary"
+import { Mapping, Relation, Sense, RelationRecord } from "../dictionary/types"
 
 const groupingRelationMap = (relations: Relation[] = []) => {
   const map = new Map<string, Set<string>>()

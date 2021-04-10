@@ -1,6 +1,6 @@
 import { Box, ListItem, Text, UnorderedList } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { LexicalEntry, LexicalEntryIndex, Sense, Synset } from "../../../lib/types"
+import { LexicalEntry, LexicalEntryIndex, Sense, Synset } from "../../../lib/dictionary/types"
 import { useWordNet, useWordNetQuery } from "../useWordNet"
 
 export const CompactLemma: FC<{ word: string }> = ({ word }) => {

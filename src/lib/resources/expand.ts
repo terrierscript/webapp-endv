@@ -1,7 +1,7 @@
-import * as dictionary from "./dictionary"
+import * as dictionary from "../dictionary/dictionary"
 import { getSenseRelations, getSynsetRelations } from "./senseRelation"
 // import { getSenseRelation } from "./senseRelation"
-import { Sense, SynsetLemma } from "./types"
+import { Sense, SynsetLemma } from "../dictionary/types"
 
 
 

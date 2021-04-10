@@ -1,5 +1,5 @@
 import React from "react"
-import { RelationRecord, Sense } from "../../../lib/types"
+import { RelationRecord, Sense } from "../../../lib/dictionary/types"
 import { ItemAccordion } from "../../ItemAcordion"
 import { RelType } from "./RelType"
 import { SenseItem } from "../sense/Sense"

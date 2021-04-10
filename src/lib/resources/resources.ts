@@ -1,9 +1,9 @@
 import { getSynsetLemma, getSynsetLexicalEntry, getLemmasExpandItems, getSynsetExpandItems } from "./expand"
 import { searchSenses } from "./searchSenses"
 import { getLexicalEntryRelation } from "./lexRelation"
-import * as dictionary from "./dictionary"
+import * as dictionary from "../dictionary/dictionary"
 import deepmerge from "deepmerge"
-import { EntityType } from "./types"
+import { EntityType } from "../dictionary/types"
 import { getExpandLexicalEntry } from "./lexicalEntry"
 import { getSenseRelations, getSynsetRelations } from "./senseRelation"
 

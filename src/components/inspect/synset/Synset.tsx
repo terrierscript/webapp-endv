@@ -5,7 +5,7 @@ import { Glossaries } from "./Glossaries"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
 import { InspectWordLink } from "../Link"
-import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/types"
+import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { RelType } from "../relation/RelType"
 import { LoadSenseRelation, LoadSynsetRelation } from "../relation/RelationLoader"
 
