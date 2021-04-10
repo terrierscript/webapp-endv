@@ -1,16 +1,8 @@
-import { Text, Box, Wrap, TextProps } from "@chakra-ui/react"
+import { Text, Box, Wrap, TextProps, HStack } from "@chakra-ui/react"
 import React, { FC } from "react"
 import nlp from "compromise"
 import { Lemma } from "../lemma/Lemma"
-import { Term } from "./Term"
-
-
-const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
-  const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
-  return <>{terms.map((t: any, i: number) => {
-    return <Term key={i} term={t} {...props} />
-  })}</>
-}
+import { SearchableText } from "./Term"
 
 type Example = string | {
   "dc:source": string
@@ -31,13 +23,38 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
       <SearchableText as="b">{def}</SearchableText>
     </Box>)}
   </Wrap>
+}
 
+
+const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
+  const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
+  return terms.map(({ text, pre, post }: any, i) => {
+    const textProps: TextProps = {
+      fontWeight: words.includes(text) ? "bold" : "inherit",
+      textDecoration: words.includes(text) ? "underline dashed" : "inherit"
+    }
+    text === "component" && console.log(text, words.includes(text))
+    return <Text key={i} as="span">
+      <Text as="span">{pre}</Text>
+      <Text as="span"{...textProps}>{text}</Text>
+      <Text as="span">{post}</Text>
+    </Text>
+  })
+}
+const Examples: FC<Pick<GlossaryProps, "example" | "lemma">> = ({ lemma, example }) => {
+  const examples = example?.map(l => typeof l === "string" ? l : l["#text"])
+  return <Wrap lineHeight="1">{examples.map((ex, i) => [
+    i > 0 && <Text as="small">/</Text>,
+    <Text as="small" key={ex}>
+      <HighlightExample
+        sentence={ex} words={lemma}
+      />
+    </Text>])}</Wrap>
 }
 
 export const Glossaries = ({ lemma, definition, example }: GlossaryProps) => {
-  const examples = example?.join(" / ")
   return <Box p={2}>
     {definition && <Definitions definition={definition} />}
-    {examples && <Text as="small">{examples}</Text>}
+    {example && <Examples lemma={lemma} example={example} />}
   </Box>
 }

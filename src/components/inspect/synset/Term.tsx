@@ -2,6 +2,7 @@ import { Text, TextProps, Popover, PopoverTrigger, PopoverContent, PopoverArrow,
 import React, { FC } from "react"
 import { InspectWordLink } from "../Link"
 import { CompactLemma } from "../lemma/CompactLemma"
+import nlp from "compromise"
 
 const termType = (term: any) => {
   const { tags } = term
@@ -42,7 +43,7 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
     </Portal>
   </Popover>
 }
-export const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
+const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
   return <>
     <Text {...props}>{term.pre}</Text>
     <TermPopover term={term}>
@@ -50,4 +51,10 @@ export const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
     </TermPopover>
     <Text {...props}>{term.post}</Text>
   </>
+}
+export const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
+  const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+  return <>{terms.map((t: any, i: number) => {
+    return <Term key={i} term={t} {...props} />
+  })}</>
 }
