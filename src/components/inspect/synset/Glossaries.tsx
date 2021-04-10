@@ -17,26 +17,26 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
   if (termType(term) === "Other") {
     return <>{children}</>
   }
-  return <Popover isLazy placement="right">
+  return <Popover isLazy>
     <PopoverTrigger>
       <Text as="span" color="green.700" _hover={{ textDecoration: "underline" }} cursor="pointer">
         {children}
       </Text>
     </PopoverTrigger>
-    {/* <Portal> */}
-    <PopoverContent>
-      <PopoverArrow />
-      <PopoverCloseButton />
-      <PopoverHeader>
-        <InspectWordLink word={term.text} >
-          {term.text}
-        </InspectWordLink>
-      </PopoverHeader>
-      <PopoverBody>
-        <Lemma word={term.text} />
-      </PopoverBody>
-    </PopoverContent>
-    {/* </Portal> */}
+    <Portal>
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverHeader>
+          <InspectWordLink word={term.text} >
+            {term.text}
+          </InspectWordLink>
+        </PopoverHeader>
+        <PopoverBody>
+          <Lemma word={term.text} />
+        </PopoverBody>
+      </PopoverContent>
+    </Portal>
   </Popover>
 }
 const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
