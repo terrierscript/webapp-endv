@@ -18,7 +18,7 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
         <InspectWordLink word={l} />
       </Box>
     })}</HStack>
-    <Glossaries definition={definition} example={example} />
+    <Glossaries lemma={lemma} definition={definition} example={example} />
     {synset && <LoadSynsetRelation synsetId={synset.id} />}
     {sense && <LoadSenseRelation sense={sense} />}
     {/* <MoreRelations sense={sense} /> */}
