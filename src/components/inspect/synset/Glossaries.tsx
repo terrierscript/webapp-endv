@@ -11,7 +11,7 @@ const termType = (term: any) => {
   if (tags.includes("Verb")) return "Verb"
   if (tags.includes("Adjective")) return "Adjective"
   if (tags.includes("Adverb")) return "Adverb"
-  console.log(term.text, tags)
+  // console.log(term.text, tags)
   return "Other"
 }
 

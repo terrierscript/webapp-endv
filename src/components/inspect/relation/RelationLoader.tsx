@@ -3,10 +3,10 @@ import { Sense, RelationRecord } from "../../../lib/types"
 import { RelationAccordion } from "./RelationAccordion"
 import { useWordNet } from "../useWordNet"
 import { FC } from "react"
-import { ItemAccordion } from "../../Acordion"
+import { ItemAccordion } from "../../ItemAcordion"
 
 export const LoadSenseRelation = ({ sense }: { sense: Sense }) => {
-  console.log(sense)
+  // console.log(sense)
   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)
   const relations = useWordNet<RelationRecord[]>("senseRelation", [sense?.id])
   const rel = relations?.[sense.id]

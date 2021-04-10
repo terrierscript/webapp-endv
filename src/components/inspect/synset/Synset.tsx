@@ -1,6 +1,6 @@
 import { Text, HStack, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { ItemAccordion } from "../../Acordion"
+import { ItemAccordion } from "../../ItemAcordion"
 import { Glossaries } from "./Glossaries"
 import { useWordNet } from "../useWordNet"
 import { BBlock } from "../Block"
