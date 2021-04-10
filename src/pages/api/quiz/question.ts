@@ -25,7 +25,7 @@ const isMaybePhrasalVerb = (word: string) => {
 
 const handler: NextApiHandler = async (req, res) => {
   const aw = dictionary.getAllWords()
-  const pv = aw.filter((a: string) => isMaybePhrasalVerb(a))
+  const pv = aw.slice(0, 1000).filter((a: string) => isMaybePhrasalVerb(a))
 
   res.json({ pv })
 }
