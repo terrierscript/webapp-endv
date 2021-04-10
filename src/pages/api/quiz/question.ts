@@ -11,6 +11,9 @@ const isMaybePhrasalVerb = (word: string) => {
   if (/[A-Z]/.test(word)) {
     return false
   }
+  if (/\-/.test(word)) {
+    return false
+  }
 
   const terms = nlp(word).terms().json().map((t: any) => t.terms).flat()
   const maybePhrasalVerb = terms.some((term: any) => {
@@ -25,7 +28,7 @@ const isMaybePhrasalVerb = (word: string) => {
 
 const handler: NextApiHandler = async (req, res) => {
   const aw = dictionary.getAllWords()
-  const pv = aw.slice(0, 1000).filter((a: string) => isMaybePhrasalVerb(a))
+  const pv = aw.slice(10000, 50000).filter((a: string) => isMaybePhrasalVerb(a))
 
   res.json({ pv })
 }

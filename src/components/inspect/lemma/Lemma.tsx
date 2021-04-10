@@ -16,7 +16,7 @@ type LemmaProps = {
 const patterns = (word: string, appendCandidates: string[]) => {
   const comp = nlp(word)
   const { conjugations } = comp.verbs().json()?.[0] ?? {}
-  const verbr: string[] = Object.values(conjugations ?? {})
+  const verbForm: string[] = Object.values(conjugations ?? {})
   const noun = comp.nouns()
   const primary = [
     ...appendCandidates,
@@ -25,7 +25,7 @@ const patterns = (word: string, appendCandidates: string[]) => {
   ]
   return [...new Set([
     ...primary,
-    ...verbr,
+    ...verbForm,
   ])].filter(x => x && x.length > 0)
 
 }
@@ -60,11 +60,13 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
   if (!ls) {
     return <NotFound word={word} appendCandidates={formLemma} />
   }
+  // console.log(lemm)
 
   return <Stack>
     {ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />
     })}
+    {/* {lemm?.form?.join("/")} */}
   </Stack>
 }
 
