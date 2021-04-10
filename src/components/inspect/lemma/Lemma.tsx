@@ -7,6 +7,7 @@ import { Box, Spinner, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
 import { CompactLemma } from "./CompactLemma"
+import { Loading } from "../../Loading"
 
 const patterns = (word: string) => {
   const comp = nlp(word)
@@ -43,7 +44,9 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
   const data = useWordNet<LexicalEntryIndex>("lemma", [word])
   const lemm = data?.[word]
   if (!data) {
-    return <Spinner />
+    return <Loading>
+      Loading Word...
+    </Loading>
   }
 
   if (!lemm) {
