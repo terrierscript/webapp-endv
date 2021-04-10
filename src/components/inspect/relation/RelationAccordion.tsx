@@ -8,7 +8,7 @@ import { SynsetsLoader } from "../synset/Synset"
 export const RelationAccordion = ({ relations }: { relations: RelationRecord[] }) => {
   // console.log(relations)
   return <>{relations?.map(({ relType, targets, type }, i) => {
-    return <ItemAccordion title={<><RelType relType={relType} /> ({targets.length} / {type})</>
+    return <ItemAccordion title={<><RelType relType={relType} /> ({targets.length})</>
     } key={i} >
       {(type === "sense")
         ? targets.map(target => {

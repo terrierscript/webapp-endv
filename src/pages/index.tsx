@@ -1,7 +1,7 @@
 import React from 'react'
 // @ts-ignore
 import dictionary from "@terrierscript/wordnet-dictionary"
-import { Box, Heading, Stack } from '@chakra-ui/react'
+import { Box, Heading, HStack, Stack } from '@chakra-ui/react'
 import NextLink from "next/link"
 import nlp from "compromise"
 import { InspectWordLink } from '../components/inspect/Link'
@@ -14,7 +14,8 @@ const getRandomWord = () => {
 }
 
 export const getServerSideProps = () => {
-  const randoms = Array.from(Array(10), () => getRandomWord())
+  // const randoms = Array.from(Array(10), () => getRandomWord())
+  const randoms = Array.from(Array(10), () => dictionary.getRandomWord())
   return {
     props: { randoms }
   }
@@ -25,11 +26,13 @@ export default function Home({ randoms }) {
   return (
     <Stack>
       <Heading>Random pickup</Heading>
-      {randoms.map((r: string) => {
-        return <Box key={r}>
-          <InspectWordLink word={r} />
-        </Box>
-      })}
+      <HStack>
+        {randoms.map((r: string) => {
+          return <Box key={r}>
+            <InspectWordLink word={r} />
+          </Box>
+        })}
+      </HStack>
     </Stack>
   )
 }
