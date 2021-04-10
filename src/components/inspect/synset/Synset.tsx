@@ -27,7 +27,7 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
 }
 
 const SynsetItem: FC<{ synset: Synset }> = ({ synset }) => {
-  console.log(synset)
+  // console.log(synset)
   const lemmas = useWordNet<SynsetLemma>("synsetLemma", [synset?.id])
   const synsetLemma = lemmas?.[synset.id] ?? []
 

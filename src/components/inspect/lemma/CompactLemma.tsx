@@ -4,5 +4,5 @@ import { useWordNet } from "../useWordNet"
 
 export const CompactLemma: FC<{ word: string }> = ({ word }) => {
   const data = useWordNet<LexicalEntryIndex>("lemma", [word])
-
+  return null
 }
