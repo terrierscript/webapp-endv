@@ -53,13 +53,12 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
     return <NotFound word={word} />
   }
   const ls = lemm.lexicalEntry
-  return <Block >
+  return <Stack>
     {ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />
     })}
-  </Block>
+  </Stack>
 }
-
 
 export const Lemma: FC<LemmaProps> = ({ word }) => {
   return <LemmaInner key={word} word={word} />
