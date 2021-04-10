@@ -13,11 +13,9 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
   const { definition, example } = synset ?? {}
 
   return <BBlock>
-
-    sense {sense?.id ?? "-"} synset: {synset.id}
+    {/* sense {sense?.id ?? "-"} synset: {synset.id} */}
     <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
-      console.log(l)
-      return <Box key={l}>
+      return <Box key={l} textDecoration="underline">
         <InspectWordLink word={l} />
       </Box>
     })}</HStack>
@@ -28,6 +26,15 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
   </BBlock>
 }
 
+const SynsetItem: FC<{ synset: Synset }> = ({ synset }) => {
+  const lemmas = useWordNet<SynsetLemma>("synsetLemma", [synset.id])
+  const synsetLemma = lemmas?.[synset.id] ?? []
+
+  return <PlainSynset
+    synset={synset} lemma={synsetLemma}
+  />
+
+}
 export const SynsetsLoader: FC<{
   // sense: Sense,
   synsetIds?: string[], relations?: Relation[]
@@ -35,9 +42,9 @@ export const SynsetsLoader: FC<{
   // sense,
   synsetIds = [], relations = [] }) => {
     const data = useWordNet<Synset>("synset", synsetIds)
-    const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
+    // const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
-    if (!data || !lemmas) {
+    if (!data) {
       return <Spinner />
     }
     return <Stack>
@@ -45,12 +52,12 @@ export const SynsetsLoader: FC<{
         const { relType } = relations
           .find(r => r.target === target) ?? {}
         const synset = data[target]
-        const synsetLemma = lemmas?.[target] ?? []
+        // const synsetLemma = lemmas?.[target] ?? []
         return <Box key={target} >
           <RelType relType={relType} />
-          <PlainSynset
+          <SynsetItem
             // sense={sense}
-            key={target} synset={synset} lemma={synsetLemma} />
+            key={target} synset={synset} />
         </Box>
       })}
     </Stack>

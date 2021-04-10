@@ -1,6 +1,6 @@
 
 import { NextApiHandler } from "next"
-import { getSynsetLemma, getSynsetLexicalEntry, getLemmasExpandItems } from "../../../../lib/expand"
+import { getSynsetLemma, getSynsetLexicalEntry, getLemmasExpandItems, getSynsetExpandItems } from "../../../../lib/expand"
 import { searchSenses } from "../../../../lib/searchSenses"
 import { getLexicalEntryRelation, getLexicalEntryWordRelation } from "../../../../lib/lexRelation"
 // import { getSenseRelation } from "../../../../lib/senseRelation"
@@ -34,7 +34,6 @@ const getRawResult = (type: EntityType, key: string) => {
     // case "senseSynsetRelation": return {
     //   senseSynsetRelation: getSenseSynsetRelations([key])
     // }
-    case "synset": return wrap(dictionary.getSynset(key), type, key)
     case "synsetIndex": return wrap(dictionary.getSynsetIndex(key), type, key)
     case "synsetLexicalEntry": return wrap(getSynsetLexicalEntry(key), type, key)
     case "synsetLemma": return wrap(getSynsetLemma(key), type, key)
@@ -42,6 +41,7 @@ const getRawResult = (type: EntityType, key: string) => {
     case "syntacticBehaviour": return wrap(dictionary.getSyntacticBehaviour(key), type, key)
     case "sense": return searchSenses([key])
     case "lemma": return getLemmasExpandItems([key])
+    case "synset": return getSynsetExpandItems([key]) // wrap(dictionary.getSynset(key), type, key)
   }
   throw new Error("invalid type")
 }

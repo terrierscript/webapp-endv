@@ -1,10 +1,61 @@
-import { Text, Box, ListItem, UnorderedList, Stack, HStack, Wrap } from "@chakra-ui/react"
-import React from "react"
+import { Text, Box, Wrap, TextProps, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, PopoverHeader, Portal } from "@chakra-ui/react"
+import React, { FC } from "react"
 import nlp from "compromise"
-import { ItemAccordion } from "../../Acordion"
+import { Lemma } from "../lemma/Lemma"
+import { InspectWordLink } from "../Link"
 
-const ExampleText = ({ text }: { text: string }) => {
-  return <Box>{text}</Box>
+
+const termType = (term: any) => {
+  const { tags } = term
+  if (tags.includes("Noun")) return "Noun"
+  if (tags.includes("Verb")) return "Verb"
+  return "Other"
+}
+
+const TermPopover: FC<{ term: any }> = ({ term, children }) => {
+  // return <>{children}</>
+  if (termType(term) === "Other") {
+    return <>{children}</>
+  }
+  return <Popover isLazy placement="right">
+    <PopoverTrigger>
+      <Text as="span" color="green.700" _hover={{ textDecoration: "underline" }} cursor="pointer">
+        {children}
+      </Text>
+    </PopoverTrigger>
+    {/* <Portal> */}
+    <PopoverContent>
+      <PopoverArrow />
+      <PopoverCloseButton />
+      <PopoverHeader>
+        <InspectWordLink word={term.text} >
+          {term.text}
+        </InspectWordLink>
+      </PopoverHeader>
+      <PopoverBody>
+        <Lemma word={term.text} />
+      </PopoverBody>
+    </PopoverContent>
+    {/* </Portal> */}
+  </Popover>
+}
+const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
+  return <>
+    <Text {...props}>{term.pre}</Text>
+    <TermPopover term={term}>
+      <Text {...props}>{term.text}</Text>
+    </TermPopover>
+    <Text {...props}>{term.post}</Text>
+  </>
+}
+const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
+  const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+  return <>{terms.map((t: any, i: number) => {
+    // console.log(t)
+    return <Term key={i} term={t} {...props} />
+  })}</>
+  // console.log(terms)
+  // return <Box>{text}</Box>
 }
 
 type Example = string | {
@@ -13,23 +64,17 @@ type Example = string | {
 }
 export const Glossaries = ({ definition, example }: { definition: string[], example: Example[] }) => {
   const examples = example?.join(" / ")
-  return <>
+  return <Box p={2}>
     {definition && <Wrap align="center">
-      <Text as="b">{definition}</Text>
-      {examples && <Text as="small">{examples}</Text>}
+
+      {definition.map(def => {
+        return <Box key={def}>
+          <SearchableText as="b">{def}</SearchableText>
+        </Box>
+      })}
+      {/* <Text as="b">{definition}</Text> */}
     </Wrap>
     }
-    {/* {example &&
-      <ItemAccordion title="Examples">
-        <UnorderedList fontSize="xs">
-          {example.map((gl, i) => {
-            const txt = typeof gl === "string" ? gl : gl["#text"]
-            return <ListItem key={i}>
-              <ExampleText text={txt} />
-            </ListItem>
-          })}
-        </UnorderedList>
-      </ItemAccordion>
-    } */}
-  </>
+    {examples && <Text as="small">{examples}</Text>}
+  </Box>
 }

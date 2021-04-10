@@ -1,5 +1,5 @@
 import * as dictionary from "./dictionary"
-import { getSenseRelations } from "./senseRelation"
+import { getSenseRelations, getSynsetRelations } from "./senseRelation"
 // import { getSenseRelation } from "./senseRelation"
 import { Sense, SynsetLemma } from "./types"
 
@@ -39,7 +39,7 @@ const getSynsets = (synsetId: string[]) => {
 export const getLemmasExpandItems = (lemmas: string[]) => {
   const lemmaEntry = lemmas.map(l => [l, dictionary.getLemma(l)] as const)
     .filter(([k, v]) => v !== undefined)
-  console.log(lemmaEntry.map(l => l[1]?.lexicalEntry).flat())
+  // console.log(lemmaEntry.map(l => l[1]?.lexicalEntry).flat())
 
   const lexEntries = lemmaEntry.map(l => l[1]?.lexicalEntry).flat()
     .filter(w => w !== undefined)
@@ -53,15 +53,29 @@ export const getLemmasExpandItems = (lemmas: string[]) => {
   const synsetIds = Object.values(sense).map(s => s.synset).filter((s): s is string => !!s)
   const synsetResult = searchSynsets(synsetIds)
   const senseRelation = getSenseRelations(senseIds)
+  const synsetRelation = getSynsetRelations(synsetIds)
   return {
     ...synsetResult,
     lemma: Object.fromEntries(lemmaEntry),
     lexicalEntry: Object.fromEntries(lexEntries),
     sense,
-    senseRelation
+    senseRelation,
+    synsetRelation
   }
 }
 
+
+export const getSynsetExpandItems = (synsetIds: string[]) => {
+  const synsetEntities = synsetIds.map(synsetId => [synsetId, dictionary.getSynset(synsetId)] as const)
+  const synsetLemma = synsetIds.map(synsetId => [synsetId, getSynsetLemma(synsetId)])
+  const synsetRelation = getSynsetRelations(synsetIds)
+
+  return {
+    synset: Object.fromEntries(synsetEntities),
+    synsetLemma: Object.fromEntries(synsetLemma),
+    synsetRelation
+  }
+}
 
 export const getSynsetLexicalEntry = (synsetId: string) => {
   const synIdx = dictionary.getSynsetIndex(synsetId)
