@@ -1,3 +1,5 @@
+import 'core-js/features/string/replaceAll'
+
 import { Box, Center, ChakraProvider, Container, Divider, Stack } from "@chakra-ui/react"
 import React from "react"
 
