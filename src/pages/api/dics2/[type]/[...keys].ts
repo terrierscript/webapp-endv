@@ -45,24 +45,22 @@ const getRawResult = (type: EntityType, key: string) => {
   }
   throw new Error("invalid type")
 }
-
-
-const getItem = (type: EntityType, keys: string[]) => {
-  keys.map(key => {
-    return [key, getRawResult(type, key)]
-  })
-}
-const handler: NextApiHandler = async (req, res) => {
-  const { type, keys } = req.query
-  console.log(keys)
-  const k = [keys].flat().map(k => k.split(",")).flat()
-  const results = k.map(key => {
+const resourceHandler = (type: string, keys: string[]) => {
+  const results = keys.map(key => {
     // @ts-ignore
     return getRawResult(type, key)
   })
-  res.json(deepmerge.all(results, {
+  return deepmerge.all(results, {
     arrayMerge: (_, sourceArray,) => sourceArray
-  }))
+  })
+}
+
+const handler: NextApiHandler = async (req, res) => {
+  const { type, keys } = req.query
+  const k = [keys].flat().map(k => k.split(",")).flat()
+
+  const result = resourceHandler(type.toString(), k)
+  res.json(result)
 }
 
 export default handler
