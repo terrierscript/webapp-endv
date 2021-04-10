@@ -57,11 +57,14 @@ const useCachedFetcher = () => {
   return fetcher
 }
 
+
 type KeyFn = () => string[] | null | undefined
 type Key = string[] | null | KeyFn
+
 export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T> | undefined {
   const [data, setData] = useState<Mapping<T>>()
   const fetcher = useCachedFetcher()
+
   const keys = useMemo(() => {
     if (typeof key === "function") {
       return key() ?? null
@@ -71,6 +74,7 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
     }
     return key
   }, [key])
+
   useEffect(() => {
     if (!type || !keys) {
       return

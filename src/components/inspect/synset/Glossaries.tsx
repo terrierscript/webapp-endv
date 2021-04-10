@@ -38,7 +38,6 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
         </PopoverHeader>
         <PopoverBody>
           <CompactLemma word={term.text} />
-
           {/* <Lemma word={term.text} /> */}
         </PopoverBody>
       </PopoverContent>
