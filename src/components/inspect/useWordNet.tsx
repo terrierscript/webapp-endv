@@ -49,7 +49,18 @@ const getFromCache = (cache: Cache, type: string, keys: string[]) => {
     .map(k => [k, cache?.[type]?.[k]])
   )
 }
-const cacheFetcher = (cache: Cache, update: (item: Cache) => Cache) => {
+type ResourceFetcer = (type: string, keys: string[]) => Promise<object>
+const remoteResourceFetcher: ResourceFetcer = async (type: string, keys: string[]) => {
+  const urlkeys = keys.join(",")
+  const url = `/api/dics2/${type}/${urlkeys}`
+  const r = await fetch(url).then(f => f.json())
+  return r
+}
+const cacheFetcher = (
+  cache: Cache,
+  update: (item: Cache) => Cache,
+  resourceFetcher: ResourceFetcer
+) => {
   return async (type: string, ...keys: string[]) => {
     try {
       validateKey(keys)
@@ -59,9 +70,7 @@ const cacheFetcher = (cache: Cache, update: (item: Cache) => Cache) => {
         return cached
       }
 
-      const urlkeys = uncachedKey.join(",")
-      const url = `/api/dics2/${type}/${urlkeys}`
-      const r = await fetch(url).then(f => f.json())
+      const r = resourceFetcher(type, keys)
       const newCache = update(r)
       return getFromCache(newCache, type, keys)
     } catch (e) {
@@ -75,7 +84,7 @@ const cacheFetcher = (cache: Cache, update: (item: Cache) => Cache) => {
 const useCachedFetcher = () => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type: string, ...key: string[]) => {
-    return cacheFetcher(cache, update)(type, ...key)
+    return cacheFetcher(cache, update, remoteResourceFetcher)(type, ...key)
   }
   return fetcher
 }
