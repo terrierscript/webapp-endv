@@ -14,11 +14,11 @@ export const remoteResourceFetcher: ResourceFetcer = async (type: string, keys: 
   return r
 }
 
-export const localResourceFetcher: ResourceFetcer = async (type: string,
-  keys: string[]) => {
-  const { resourceHandler } = await import("../../lib/resources")
-  return resourceHandler(type, keys)
-}
+// export const localResourceFetcher: ResourceFetcer = async (type: string,
+//   keys: string[]) => {
+//   const { resourceHandler } = await import("../../lib/resources")
+//   return resourceHandler(type, keys)
+// }
 
 export const cacheFetcher = (
   cache: Cache,

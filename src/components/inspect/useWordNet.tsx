@@ -2,7 +2,7 @@ import deepmerge from "deepmerge"
 import React, { FC, useContext, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { EntityType, Mapping, SynsetLemma } from "../../lib/types"
-import { cacheFetcher, localResourceFetcher, remoteResourceFetcher } from "./wordnetCache"
+import { cacheFetcher, remoteResourceFetcher } from "./wordnetCache"
 
 export type Cache = any
 
@@ -51,7 +51,7 @@ const useCachedFetcher = () => {
     return cacheFetcher(
       cache,
       update,
-      localResourceFetcher
+      remoteResourceFetcher
     )(type, ...key)
   }
   return fetcher
