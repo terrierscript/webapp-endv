@@ -6,6 +6,7 @@ import { LexicalEntryIndex } from "../../../lib/types"
 import { Box, Spinner, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
+import { CompactLemma } from "./CompactLemma"
 
 const patterns = (word: string) => {
   const comp = nlp(word)
@@ -49,9 +50,11 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
     return <NotFound word={word} />
   }
   const ls = lemm.lexicalEntry
-  return <Block >{ls?.map(l => {
-    return <LexicalEntries key={l} lexicalEntryId={l} />
-  })}</Block>
+  return <Block >
+    {ls?.map(l => {
+      return <LexicalEntries key={l} lexicalEntryId={l} />
+    })}
+  </Block>
 }
 
 

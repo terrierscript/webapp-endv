@@ -3,6 +3,7 @@ import React, { FC } from "react"
 import nlp from "compromise"
 import { Lemma } from "../lemma/Lemma"
 import { InspectWordLink } from "../Link"
+import { CompactLemma } from "../lemma/CompactLemma"
 
 
 const termType = (term: any) => {
@@ -36,7 +37,9 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
           </InspectWordLink>
         </PopoverHeader>
         <PopoverBody>
-          <Lemma word={term.text} />
+          <CompactLemma word={term.text} />
+
+          {/* <Lemma word={term.text} /> */}
         </PopoverBody>
       </PopoverContent>
     </Portal>
