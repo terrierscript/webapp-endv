@@ -19,7 +19,6 @@ const PlainSense: FC<{
     return <>
       <Box>
         <SynsetsLoader
-          // sense={sense}
           synsetIds={[sense.synset ?? ""]} />
       </Box>
     </>

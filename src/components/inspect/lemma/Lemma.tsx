@@ -6,6 +6,7 @@ import { LexicalEntryIndex } from "../../../lib/types"
 import { Box, Spinner } from "@chakra-ui/react"
 
 
+
 export const Lemma: FC<{ word: string }> = ({ word }) => {
   const data = useWordNet<LexicalEntryIndex>("lemma", [word])
   if (!data) {

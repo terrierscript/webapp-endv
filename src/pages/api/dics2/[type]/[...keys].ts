@@ -54,7 +54,9 @@ const getItem = (type: EntityType, keys: string[]) => {
 }
 const handler: NextApiHandler = async (req, res) => {
   const { type, keys } = req.query
-  const results = [keys].flat().map(key => {
+  console.log(keys)
+  const k = [keys].flat().map(k => k.split(",")).flat()
+  const results = k.map(key => {
     // @ts-ignore
     return getRawResult(type, key)
   })

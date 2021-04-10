@@ -1,4 +1,4 @@
-import { HStack, Box, Stack, Spinner } from "@chakra-ui/react"
+import { Text, HStack, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { ItemAccordion } from "../../Acordion"
 import { Glossaries } from "./Glossaries"
@@ -27,7 +27,8 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
 }
 
 const SynsetItem: FC<{ synset: Synset }> = ({ synset }) => {
-  const lemmas = useWordNet<SynsetLemma>("synsetLemma", [synset.id])
+  console.log(synset)
+  const lemmas = useWordNet<SynsetLemma>("synsetLemma", [synset?.id])
   const synsetLemma = lemmas?.[synset.id] ?? []
 
   return <PlainSynset
@@ -45,7 +46,9 @@ export const SynsetsLoader: FC<{
     // const lemmas = useWordNet<SynsetLemma>("synsetLemma", synsetIds)
 
     if (!data) {
-      return <Spinner />
+      return <Box p={4} verticalAlign="center">
+        <Spinner /><Text> Loading Synset</Text>
+      </Box>
     }
     return <Stack>
       {synsetIds.map((target) => {
@@ -62,14 +65,3 @@ export const SynsetsLoader: FC<{
       })}
     </Stack>
   }
-
-// export const SynsetRelations: FC<{ relations: Relation[] }> = ({ relations }) => {
-//   if (!relations) {
-//     return null
-//   }
-//   const synsetIds = relations.map(r => r.target)
-//   return <ItemAccordion title="relation">
-//     <SynsetsLoader synsetIds={synsetIds} relations={relations} />
-//   </ItemAccordion>
-// }
-

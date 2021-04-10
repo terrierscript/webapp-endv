@@ -7,4 +7,6 @@ export const Block = (props: BoxProps) => <Box
   p={2}
   {...props} />
 
-export const BBlock = (props: BoxProps) => <Block bg="rgba(10,0,0,0.03)" {...props} />
+export const BBlock = (props: BoxProps) => <Block
+  boxShadow="sm"
+  bg="rgba(10,0,0,0.03)" {...props} />
