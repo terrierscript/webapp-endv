@@ -1,5 +1,5 @@
 import 'core-js/features/string/replace-all'
-
+import NextNprogress from 'nextjs-progressbar'
 import { Box, Center, ChakraProvider, Container, Divider, Stack } from "@chakra-ui/react"
 import React from "react"
 
@@ -21,6 +21,7 @@ const Footer = () => {
 // @ts-ignore
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
+    <NextNprogress />
     <Box bg="gray.100" minHeight="90vh">
       <Container bg="white" maxW="8xl" p={4}>
         <Component {...pageProps} />
