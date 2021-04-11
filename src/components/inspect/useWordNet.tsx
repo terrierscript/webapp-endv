@@ -88,7 +88,9 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
     if (keys.length === 0) {
       return
     }
+    console.time(`${type}-${keys.join(":")}`)
     fetcher(type, ...keys).then(item => {
+      console.timeLog(`${type}-${keys.join(":")}`)
       if (typeof key === "string") {
         setData(item?.[key])
       } else {
