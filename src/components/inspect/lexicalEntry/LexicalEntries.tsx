@@ -5,9 +5,10 @@ import { Box, Stack } from "@chakra-ui/react"
 import { LexicalEntry, Sense } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { logPartOfSpeech } from "./longPart"
-import { SynsetsLoader } from "../synset/Synset"
+// import { SynsetsLoader } from "../synset/Synset"
 import { DatasetProps } from "../useDefinitions"
 import { FC } from "react"
+import { SenseSynsetList } from "../synset/Synset"
 
 export const LexicalEntries: FC<DatasetProps & { lexicalEntryId: string }> = ({ lexicalEntryId, dataset }) => {
   // const lexs = useWordNetQuery<LexicalEntry>("lexicalEntry", [lexicalEntryId])
@@ -34,6 +35,7 @@ export const LexicalEntries: FC<DatasetProps & { lexicalEntryId: string }> = ({ 
   return <Box p={4}>
     {logPartOfSpeech(lemma.partOfSpeech)}
     <Stack>
+      <SenseSynsetList dataset={dataset} />
       {/* <SynsetsLoader synsetIds={synsetIds} /> */}
       {/* {sense?.map(s => {
         return <SenseItem key={s} senseId={s} />

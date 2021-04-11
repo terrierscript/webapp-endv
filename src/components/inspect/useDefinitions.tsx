@@ -32,6 +32,7 @@ const useWordNetPartialsInner = (word: string) => {
     lemma,
     lexicalEntry,
     sense,
+    senseIds,
     synset,
     synsetIds,
     synsetLemmas,
