@@ -25,15 +25,9 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
   const fetcher = useCachedFetcher()
 
   const _keys = useMemo(() => {
-    if (typeof key === "function") {
-      return key() ?? null
-    }
-    if (key === null) {
-      return null
-    }
-    if (key.length === 0) {
-      return null
-    }
+    if (typeof key === "function") { return key() ?? null }
+    if (key === null) { return null }
+    if (key.length === 0) { return null }
     return key
   }, [key])
   const keys = useMemo(() => {
@@ -47,9 +41,10 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
     if (keys.length === 0) {
       return
     }
-    console.time(`${type}-${keys.join(":")}`)
+    const lb = `${new Date().getTime()}-${type}-${keys.join(":")}`
+    console.time(lb)
     fetcher(type, ...keys).then(item => {
-      console.timeLog(`${type}-${keys.join(":")}`)
+      console.timeLog(lb)
       if (typeof key === "string") {
         setData(item?.[key])
       } else {
