@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsResult, GetStaticProps, GetStaticPropsResult } from "next"
 import React, { FC } from "react"
-import { WordNetProvider } from "../../components/inspect/useWordNet"
+import { WordNetProvider } from "../../components/inspect/WordNetContext"
 import { Lemma } from "../../components/inspect/lemma/Lemma"
 import { LemmaHeader } from "../../components/inspect/lemma/LemmaHeader"
 import { resourceHandler } from "../../lib/resources/resources"

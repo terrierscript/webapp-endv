@@ -1,50 +1,9 @@
-import deepmerge from "deepmerge"
-import React, { FC, useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { EntityType, Mapping, SynsetLemma } from "../../lib/dictionary/types"
+import { WordNetContext } from "./WordNetContext"
 import { cacheFetcher, remoteResourceFetcher } from "./wordnetCache"
 
-export type Cache = any
-
-const useWordNetInternal = (preload = {}) => {
-  const [cache, setCache] = useState<{
-    [key in string]: {
-      [key in string]: any
-    }
-  }>(preload)
-  const update = (entries: Cache) => {
-    const newCache = deepmerge(cache, entries, {
-      arrayMerge: (_, sourceArray,) => sourceArray
-    })
-    setCache(newCache)
-    return newCache
-  }
-  return {
-    cache, update
-  }
-}
-
-export const validateKey = (key: string[]) => {
-  if (!Array.isArray(key)) {
-    return true
-  }
-  key.every(k => {
-    if (typeof k !== "string") {
-      console.error("invalid key", key)
-    }
-  })
-}
-
-type WordNetContextItem = ReturnType<typeof useWordNetInternal>
-// @ts-ignore
-const WordNetContext = React.createContext<WordNetContextItem>(null)
-
-export const WordNetProvider: FC<{ preload: Cache }> = ({ children, preload }) => {
-  const value = useWordNetInternal(preload)
-  return <WordNetContext.Provider value={value}>
-    {children}
-  </WordNetContext.Provider>
-}
 const useCachedFetcher = () => {
   const { cache, update } = useContext(WordNetContext)
   const fetcher = async (type: string, ...key: string[]) => {
