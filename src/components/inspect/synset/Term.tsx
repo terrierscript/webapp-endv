@@ -1,7 +1,7 @@
 import { Text, TextProps, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, PopoverHeader, Portal } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { InspectWordLink } from "../Link"
-import { CompactLemma } from "../lemma/CompactLemma"
+import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
 
 const termType = (term: any) => {
@@ -36,7 +36,7 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
           <InspectWordLink word={term.text} />
         </PopoverHeader>
         <PopoverBody>
-          <CompactLemma word={term.text} />
+          <CompactDefinition word={term.text} />
           {/* <Lemma word={term.text} /> */}
         </PopoverBody>
       </PopoverContent>

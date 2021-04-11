@@ -7,17 +7,14 @@ import { InspectWordLink } from "../Link"
 import { Relation, Sense, Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { RelType } from "../relation/RelType"
 import { LoadSenseRelation, LoadSynsetRelation } from "../relation/RelationLoader"
+import { Words } from "./Words"
 
 const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
   return <BBlock id={`sysnet-${synset.id}`}>
     {/* sense {sense?.id ?? "-"} synset: {synset.id} */}
-    <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
-      return <Box key={l} textDecoration="underline">
-        <InspectWordLink word={l} />
-      </Box>
-    })}</HStack>
+    <Words words={lemma} />
     <Glossaries lemma={lemma} definition={definition} example={example} />
     {synset && <LoadSynsetRelation synsetId={synset.id} />}
     {sense && <LoadSenseRelation sense={sense} />}
