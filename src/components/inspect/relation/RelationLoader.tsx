@@ -5,6 +5,7 @@ import { useWordNet } from "../useWordNet"
 import { FC } from "react"
 import { ItemAccordion } from "../../ItemAcordion"
 
+
 export const LoadSenseRelation = ({ sense }: { sense: Sense }) => {
   // console.log(sense)
   // const { senseRelation, synsetRelation } = useSynsetGroupedRelation(sense)

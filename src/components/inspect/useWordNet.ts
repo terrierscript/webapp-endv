@@ -51,6 +51,9 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
         setData(item)
       }
     })
+    return () => {
+      console.log("end")
+    }
   }, [type, keys ? keys.join("/") : null])
   return data
 }

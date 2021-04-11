@@ -1,11 +1,12 @@
 import { Box, Heading, ListItem, Stack, UnorderedList } from "@chakra-ui/react"
 import React, { FC, useMemo } from "react"
-import { LexicalEntry, LexicalEntryIndex, Sense, Synset, SynsetLemma } from "../../../lib/dictionary/types"
+import { Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { Words } from "../synset/Words"
 import { useWordNetQuery } from "../useWordNet"
+import { useDefinitions } from "../useDefinitions"
 
-const useSynonyms = (word: string, synsets: Synset[]) => {
+export const useSynonyms = (word: string, synsets: Synset[]) => {
   const synsetIds = synsets.map(s => s.id)
   const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
   const synonyms = useMemo(() => {
@@ -17,22 +18,6 @@ const useSynonyms = (word: string, synsets: Synset[]) => {
     return [...new Set(lems)].filter(w => w !== word)
   }, [Object.keys(lemmas ?? {}).join("_")])
   return synonyms
-}
-
-const useDefinitions = (word: string) => {
-  const lemma = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
-  const lex = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word]?.lexicalEntry)
-  const sense = useWordNetQuery<Sense>("sense", () => lex && Object
-    .values(lex)
-    .map(l => l?.sense).flat()
-    .filter((l): l is string => !!l)
-  )
-  const synset = useWordNetQuery<Synset>("synset", () => sense && Object.values(sense).map(s => s.synset)
-    .filter((l): l is string => !!l)
-  )
-  const synonymus = useSynonyms(word, Object.values(synset ?? {}))
-  const definitions = useMemo(() => synset && Object.values(synset).map(syn => syn.definition).flat(), [JSON.stringify(synset)])
-  return { lemma, synonymus, definitions }
 }
 
 export const CompactDefinition: FC<{ word: string }> = ({ word }) => {

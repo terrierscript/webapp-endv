@@ -1,24 +1,36 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { SenseItem } from "../sense/Sense"
-import { useWordNet } from "../useWordNet"
+import { useWordNet, useWordNetQuery } from "../useWordNet"
 import { Box, Stack } from "@chakra-ui/react"
-import { LexicalEntry } from "../../../lib/dictionary/types"
+import { LexicalEntry, Sense } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { logPartOfSpeech } from "./longPart"
+import { SynsetsLoader } from "../synset/Synset"
 
 export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) => {
-  const data = useWordNet<LexicalEntry>("lexicalEntry", [lexicalEntryId])
-  if (!data) {
+  const lexs = useWordNetQuery<LexicalEntry>("lexicalEntry", [lexicalEntryId])
+  const senseMap = useWordNetQuery<Sense>("sense", () => lexs && Object
+    .values(lexs)
+    .map(l => l?.sense).flat()
+    .filter((l): l is string => !!l)
+  )
+
+  const synsetIds = useMemo(() => senseMap ? Object.values(senseMap)
+    .map(s => s.synset)
+    .filter((s): s is string => !!s) : [], [JSON.stringify(senseMap)])
+  console.log("xx", senseMap, synsetIds)
+  if (!lexs || !senseMap || !synsetIds) {
     return <Loading>Loading {lexicalEntryId}</Loading>
   }
-  const lex = data[lexicalEntryId]
+  const lex = lexs[lexicalEntryId]
   const { lemma, sense } = lex
   return <Box p={4}>
     {logPartOfSpeech(lemma.partOfSpeech)}
     <Stack>
-      {sense?.map(s => {
+      <SynsetsLoader synsetIds={synsetIds} />
+      {/* {sense?.map(s => {
         return <SenseItem key={s} senseId={s} />
-      })}
+      })} */}
     </Stack>
   </Box>
 }

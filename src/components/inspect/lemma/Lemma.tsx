@@ -64,10 +64,10 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
 
   return <Stack>
     <CompactDefinition word={word} />
-    {ls?.map(l => {
+    {/* {ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />
     })}
-    {lemm?.form?.join("/")}
+    {lemm?.form?.join("/")} */}
   </Stack>
 }
 

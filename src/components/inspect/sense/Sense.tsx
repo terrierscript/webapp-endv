@@ -5,6 +5,7 @@ import { SynsetsLoader } from "../synset/Synset"
 import { Sense } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 
+/** @deprecated */
 export const SenseItem = ({ senseId }: { senseId: string }) => {
   const data = useWordNet<Sense>("sense", [senseId])
   if (!data) {
