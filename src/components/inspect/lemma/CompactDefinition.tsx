@@ -22,8 +22,10 @@ export const useSynonyms = (word: string, synsets: Synset[]) => {
 
 export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
   const { lemma, synonymus, definitions } = useWordNetPartials(word)
+  console.log(lemma, definitions)
   const length = definitions?.length ?? 0
   const num = 3
+
   if (!lemma) {
     return <Loading>Loading</Loading>
   }

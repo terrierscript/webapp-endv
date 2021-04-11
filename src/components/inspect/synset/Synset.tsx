@@ -14,7 +14,7 @@ import { RelationAccordion } from "../relation/RelationAccordion"
 const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
-  return <Box id={`sysnet-${synset.id}`}>
+  return <Box id={`sysnet-${synset.id}`} boxShadow="xs" rounded={"xs"} p={2} m={2}>
     {/* sense {sense?.id ?? "-"} synset: {synset.id} */}
     <Words words={lemma} />
     <Glossaries lemma={lemma} definition={definition} example={example} />
@@ -35,37 +35,49 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
 // }
 
 
-export const SenseSynsetList: FC<DatasetProps> = ({ dataset }) => {
-  const { senseIds,
+const PlainSense: FC<DatasetProps & { senseId: string }> = ({ dataset, senseId }) => {
+  const {
     synset: synsetMap,
     sense: senseMap,
     synsetLemmas
+  } = dataset
+
+  const sense = senseMap?.[senseId]
+  if (!sense) return null
+  const synsetId = sense.synset
+  if (!synsetId) return null
+  const synset = sense?.synset && synsetMap?.[sense?.synset]
+  const synsetLemma = synsetLemmas?.[synsetId] ?? []
+  const senseRelation = senseMap && dataset?.senseRelations?.[sense.id]
+  const synsetRelation = dataset?.synsetRelations?.[synsetId]
+
+  return <BBlock key={senseId} >
+    {synset && <PlainSynset
+      synset={synset} lemma={synsetLemma}
+    />}
+    <Box p={2}>
+      {synsetRelation && <RelationAccordion relations={synsetRelation} />}
+      {senseRelation && <RelationAccordion relations={senseRelation} />}
+    </Box>
+
+  </BBlock>
+
+}
+
+export const SenseSynsetList: FC<DatasetProps> = ({ dataset }) => {
+  const { senseIds,
+    // synset: synsetMap,
+    // sense: senseMap,
+    // synsetLemmas
   } = dataset
   if (!senseIds) {
     return null
   }
   return <Stack>
     {senseIds.map((senseId) => {
-      const sense = senseMap?.[senseId]
-      if (!sense) return null
-      const synsetId = sense.synset
-      if (!synsetId) return null
-      const synset = sense?.synset && synsetMap?.[sense?.synset]
-      const synsetLemma = synsetLemmas?.[synsetId] ?? []
-      const senseRelation = senseMap && dataset?.senseRelations?.[sense.id]
-      const synsetRelation = dataset?.synsetRelations?.[synsetId]
-
-      return <BBlock key={senseId} >
-        {synset && <PlainSynset
-          synset={synset} lemma={synsetLemma}
-        />}
-        {synsetRelation && <RelationAccordion relations={synsetRelation} />}
-        {senseRelation && <RelationAccordion relations={senseRelation} />}
-
-      </BBlock>
+      return <PlainSense key={senseId} senseId={senseId} dataset={dataset} />
     })}
   </Stack>
-
 }
 
 export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
