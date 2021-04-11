@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react"
 import { useWordNet, useWordNetQuery } from "../useWordNet"
 import { Block } from "../Block"
 import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
-import { LexicalEntryIndex } from "../../../lib/dictionary/types"
+import { LemmaIndex } from "../../../lib/dictionary/types"
 import { Box, Heading, Spinner, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
@@ -49,7 +49,7 @@ const lexicalEntryIdToLemma = (lexId: string) => {
 
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
   const dataset = useWordNetPartials(word)
-  const data = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
+  const data = useWordNetQuery<LemmaIndex>("lemma", [word])
   const lemm = dataset.lemma?.[word]
   const formLemma = lemm?.form?.map(f => lexicalEntryIdToLemma(f)) ?? []
 

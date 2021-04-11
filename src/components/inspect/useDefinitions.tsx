@@ -1,12 +1,11 @@
 import { useMemo } from "react"
-import { LexicalEntry, LexicalEntryIndex, RelationRecord, Sense, Synset, SynsetLemma } from "../../lib/dictionary/types"
+import { LexicalEntry, LemmaIndex, RelationRecord, Sense, Synset, SynsetLemma } from "../../lib/dictionary/types"
 import { useWordNetQuery } from "./useWordNet"
 import { useSynonyms } from "./lemma/CompactDefinition"
 
 const useWordNetSynsetPartials = (synsetIds: string[] | null) => {
 
   const synset = useWordNetQuery<Synset>("synset", synsetIds)
-
   const synsetLemmas = useWordNetQuery<SynsetLemma>("synsetLemma", () => synsetIds)
   const synsetRelations = useWordNetQuery<RelationRecord[]>("synsetRelation", () => synsetIds)
 
@@ -36,7 +35,7 @@ const useWordNetSensePartials = (senseIds: string[] | null) => {
 }
 
 const useWordNetPartialsInner = (word: string) => {
-  const lemma = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
+  const lemma = useWordNetQuery<LemmaIndex>("lemma", [word])
   const lexicalEntry = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word]?.lexicalEntry)
   const sense = useWordNetQuery<Sense>("sense", () => lexicalEntry && Object
     .values(lexicalEntry)
@@ -53,29 +52,18 @@ const useWordNetPartialsInner = (word: string) => {
   const synonymus = useSynonyms(word, Object.values(synset ?? {}))
   const definitions = useMemo(() => synset && Object.values(synset).map(syn => syn.definition).flat(), [JSON.stringify(synset)])
 
-  // const synsetIds = useMemo(() => sense && Object.values(sense)
-  //   .map(s => s.synset)
-  //   .filter((s): s is string => !!s), [JSON.stringify(sense)])
-
-  // const synsetLemmas = useWordNetQuery<SynsetLemma>("synsetLemma", () => synsetIds)
-  // const senseRelations = useWordNetQuery<RelationRecord[]>("senseRelation", () => senseIds)
-  // const synsetRelations = useWordNetQuery<RelationRecord[]>("synsetRelation", () => synsetIds)
-
   return {
     lemma,
     lexicalEntry,
     sense,
     senseIds,
     synset,
-    // synsetIds,
-    // synsetLemmas,
-    // senseRelations,
-    // synsetRelations,
     synonymus,
     definitions,
     ...senseResults
   }
 }
+
 export type PartialDataset = ReturnType<typeof useWordNetPartialsInner>
 export const useWordNetPartials = (word: string): PartialDataset => {
   return useWordNetPartialsInner(word)

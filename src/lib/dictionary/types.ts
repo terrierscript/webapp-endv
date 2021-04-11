@@ -44,9 +44,9 @@ export type Synset = {
   definition: string[]
   example: string[]
 }
-export type LexicalEntryIndex = {
-  lexicalEntry: string[]
-  form: string[]
+export type LemmaIndex = {
+  lexicalEntry?: string[]
+  form?: string[]
 }
 export type Behavior = string[]
 
