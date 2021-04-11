@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
-import { useWordNet } from "../useWordNet"
+import { useWordNet, useWordNetQuery } from "../useWordNet"
 import { Block } from "../Block"
 import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
 import { LexicalEntryIndex } from "../../../lib/dictionary/types"
@@ -47,9 +47,10 @@ const lexicalEntryIdToLemma = (lexId: string) => {
 }
 
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
-  const data = useWordNet<LexicalEntryIndex>("lemma", [word])
+  const data = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
   const lemm = data?.[word]
   const formLemma = lemm?.form?.map(f => lexicalEntryIdToLemma(f)) ?? []
+
   if (!data) {
     return <Loading>
       Loading Word...
@@ -60,14 +61,13 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
   if (!ls) {
     return <NotFound word={word} appendCandidates={formLemma} />
   }
-  // console.log(lemm)
 
   return <Stack>
     <CompactDefinition word={word} />
     {ls?.map(l => {
       return <LexicalEntries key={l} lexicalEntryId={l} />
     })}
-    {/* {lemm?.form?.join("/")} */}
+    {lemm?.form?.join("/")}
   </Stack>
 }
 

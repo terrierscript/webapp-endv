@@ -34,6 +34,7 @@ const useDefinitions = (word: string) => {
   const definitions = useMemo(() => synset && Object.values(synset).map(syn => syn.definition).flat(), [JSON.stringify(synset)])
   return { lemma, synonymus, definitions }
 }
+
 export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
   const { lemma, synonymus, definitions } = useDefinitions(word)
   const length = definitions?.length ?? 0
