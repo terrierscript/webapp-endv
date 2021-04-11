@@ -3,11 +3,11 @@ import { LexicalEntry, LexicalEntryIndex, RelationRecord, Sense, Synset, SynsetL
 import { useWordNetQuery } from "./useWordNet"
 import { useSynonyms } from "./lemma/CompactDefinition"
 
-export const useDefinitions = (word: string) => {
+const useWordNetPartialsInner = (word: string) => {
   const lemma = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
-  const lex = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word]?.lexicalEntry)
-  const sense = useWordNetQuery<Sense>("sense", () => lex && Object
-    .values(lex)
+  const lexicalEntry = useWordNetQuery<LexicalEntry>("lexicalEntry", () => lemma?.[word]?.lexicalEntry)
+  const sense = useWordNetQuery<Sense>("sense", () => lexicalEntry && Object
+    .values(lexicalEntry)
     .map(l => l?.sense).flat()
     .filter((l): l is string => !!l)
   )
@@ -30,8 +30,10 @@ export const useDefinitions = (word: string) => {
 
   return {
     lemma,
+    lexicalEntry,
     sense,
     synset,
+    synsetIds,
     synsetLemmas,
     senseRelations,
     synsetRelations,
@@ -39,3 +41,9 @@ export const useDefinitions = (word: string) => {
     definitions
   }
 }
+export type PartialDataset = ReturnType<typeof useWordNetPartialsInner>
+export const useWordNetPartials = (word: string): PartialDataset => {
+  return useWordNetPartialsInner(word)
+}
+
+export type DatasetProps = { dataset: PartialDataset }

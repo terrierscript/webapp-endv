@@ -4,7 +4,7 @@ import { Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { Words } from "../synset/Words"
 import { useWordNetQuery } from "../useWordNet"
-import { useDefinitions } from "../useDefinitions"
+import { useWordNetPartials } from "../useDefinitions"
 
 export const useSynonyms = (word: string, synsets: Synset[]) => {
   const synsetIds = synsets.map(s => s.id)
@@ -21,7 +21,7 @@ export const useSynonyms = (word: string, synsets: Synset[]) => {
 }
 
 export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
-  const { lemma, synonymus, definitions } = useDefinitions(word)
+  const { lemma, synonymus, definitions } = useWordNetPartials(word)
   const length = definitions?.length ?? 0
   const num = 3
   if (!lemma) {

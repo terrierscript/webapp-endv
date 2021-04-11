@@ -8,6 +8,7 @@ import nlp from "compromise"
 import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "./CompactDefinition"
 import { Loading } from "../../Loading"
+import { useWordNetPartials } from "../useDefinitions"
 
 type LemmaProps = {
   word: string
@@ -47,8 +48,9 @@ const lexicalEntryIdToLemma = (lexId: string) => {
 }
 
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
+  const dataset = useWordNetPartials(word)
   const data = useWordNetQuery<LexicalEntryIndex>("lemma", [word])
-  const lemm = data?.[word]
+  const lemm = dataset.lemma?.[word]
   const formLemma = lemm?.form?.map(f => lexicalEntryIdToLemma(f)) ?? []
 
   if (!data) {
@@ -64,10 +66,10 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
 
   return <Stack>
     <CompactDefinition word={word} />
-    {/* {ls?.map(l => {
-      return <LexicalEntries key={l} lexicalEntryId={l} />
+    {ls?.map(l => {
+      return <LexicalEntries key={l} lexicalEntryId={l} dataset={dataset} />
     })}
-    {lemm?.form?.join("/")} */}
+    {lemm?.form?.join("/")}
   </Stack>
 }
 
