@@ -11,7 +11,7 @@ import { LoadSenseRelation, LoadSynsetRelation } from "../relation/RelationLoade
 const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
-  return <BBlock>
+  return <BBlock id={`sysnet-${synset.id}`}>
     {/* sense {sense?.id ?? "-"} synset: {synset.id} */}
     <HStack shouldWrapChildren wrap={"wrap"}>{lemma?.map(l => {
       return <Box key={l} textDecoration="underline">
@@ -21,7 +21,6 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
     <Glossaries lemma={lemma} definition={definition} example={example} />
     {synset && <LoadSynsetRelation synsetId={synset.id} />}
     {sense && <LoadSenseRelation sense={sense} />}
-    {/* <MoreRelations sense={sense} /> */}
   </BBlock>
 }
 
