@@ -1,11 +1,12 @@
 import { resourceHandler } from "../../lib/resources/resources"
-import { Cache, validateKey } from "./useWordNet"
+import { Cache, GetCacheValues, validateKey } from "./useWordNet"
 
-const getFromCache = (cache: Cache, type: string, keys: string[]) => {
-  return Object.fromEntries(keys
-    .map(k => [k, cache?.[type]?.[k]])
-  )
-}
+// const getFromCache = (cache: Cache, type: string, keys: string[]) => {
+//   return Object.fromEntries(keys
+//     .map(k => [k, cache?.[type]?.[k]])
+//   )
+// }
+
 type ResourceFetcer = (type: string, keys: string[]) => Promise<object>
 export const remoteResourceFetcher: ResourceFetcer = async (type: string, keys: string[]) => {
   const urlkeys = keys.join(",")
@@ -21,21 +22,21 @@ export const remoteResourceFetcher: ResourceFetcer = async (type: string, keys: 
 // }
 
 export const cacheFetcher = (
-  cache: Cache,
-  update: (item: Cache) => Cache,
+  getCacheValues: GetCacheValues,
+  update: (item: Cache) => GetCacheValues,
   resourceFetcher: ResourceFetcer
 ) => {
   return async (type: string, ...keys: string[]) => {
     try {
       validateKey(keys)
-      const cached = getFromCache(cache, type, keys)
+      const cached = getCacheValues(type, keys)
       const uncachedKey = keys.filter(k => !cached[k])
       if (uncachedKey.length === 0) {
         return cached
       }
       const r = await resourceFetcher(type, keys)
-      const newCache = update(r)
-      return getFromCache(newCache, type, keys)
+      const newCacheGetValue = update(r)
+      return newCacheGetValue(type, keys)
     } catch (e) {
       console.error(type, keys, e)
     }

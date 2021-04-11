@@ -5,79 +5,91 @@ import { EntityType, Mapping, SynsetLemma } from "../../lib/dictionary/types"
 import { cacheFetcher, remoteResourceFetcher } from "./wordnetCache"
 
 export type Cache = { [key in string]: any }
+export type GetCacheValues = (type: string, keys: string[]) => Cache
+
+const generTeGetCacheValues = (cache: Cache): GetCacheValues => (type: string, keys: string[]) => {
+  return Object.fromEntries(keys
+    .map(k => [k, cache?.[type]?.[k]])
+  )
+}
 
 const useWordNetInternal = (preload = {}) => {
   const [cache, setCache] = useState<{
     [type in string]: Cache
   }>(preload)
-  // const getValue = (type:string, key:string) => cache?.[type]?.[key]
+
+  const getCacheValues: GetCacheValues = (type: string, keys: string[]) => {
+    return generTeGetCacheValues(cache)(type, keys)
+  }
   // const cacheMap = useMemo(() => {
 
   // },[cache])
-  const update = (entries: Cache) => {
+  const update = (entries: Cache): GetCacheValues => {
     const newCache = deepmerge(cache, entries, {
       arrayMerge: (_, sourceArray,) => sourceArray
     })
     setCache(newCache)
-    return newCache
+    return generTeGetCacheValues(newCache)
+    // return newCache
   }
-  const update2 = (entries: Cache) => {
-    const append = Object.fromEntries(Object.entries(entries).map(([key, value]) => {
-      const old = cache[key]
-      return [key, {
-        ...old,
-        ...value
-      }]
-    }))
-    const newCache = {
-      ...cache,
-      ...append
-    }
-    // const newCache = deepmerge(cache, entries, {
-    //   arrayMerge: (_, sourceArray,) => sourceArray
-    // })
-    setCache(newCache)
-    return newCache
-  }
-  const update3 = (entries: Cache) => {
-    const append = Object.fromEntries(Object.entries(entries)
-      .filter(([key, value]) => !cache?.[key]?.[value])
-      .map(([key, value]) => {
-        const old = cache[key]
-        return [key, {
-          ...old,
-          ...value
-        }]
-      }))
-    const newCache = {
-      ...cache,
-      ...append
-    }
-    // const newCache = deepmerge(cache, entries, {
-    //   arrayMerge: (_, sourceArray,) => sourceArray
-    // })
-    setCache(newCache)
-    return newCache
-  }
-  const update4 = (entries: Cache) => {
-    const append = Object.entries(entries)
-      .map(([type, value]) => {
-        return Object.entries(value).map(([vk, vv]) => {
-          return [`${type}::${vk}`, vv]
-        })
-      }).flat()
-    console.log(append)
-    const newCache = Object.fromEntries([
-      ...Object.entries(cache),
-      ...append
-    ])
-    console.log(newCache)
-    // const newCache = deepmerge(cache, entries, {
-    //   arrayMerge: (_, sourceArray,) => sourceArray
-    // })
-    setCache(newCache)
-    return newCache
-  }
+  // const update2 = (entries: Cache) => {
+  //   const append = Object.fromEntries(Object.entries(entries).map(([key, value]) => {
+  //     const old = cache[key]
+  //     return [key, {
+  //       ...old,
+  //       ...value
+  //     }]
+  //   }))
+  //   const newCache = {
+  //     ...cache,
+  //     ...append
+  //   }
+  //   // const newCache = deepmerge(cache, entries, {
+  //   //   arrayMerge: (_, sourceArray,) => sourceArray
+  //   // })
+  //   setCache(newCache)
+  //   return newCache
+  // }
+  // // const update3 = (entries: Cache) => {
+  // //   const append = Object.fromEntries(Object.entries(entries)
+  // //     .filter(([key, value]) => !cache?.[key]?.[value])
+  // //     .map(([key, value]) => {
+  // //       const old = cache[key]
+  // //       return [key, {
+  // //         ...old,
+  // //         ...value
+  // //       }]
+  // //     }))
+  // //   const newCache = {
+  // //     ...cache,
+  // //     ...append
+  // //   }
+  // //   // const newCache = deepmerge(cache, entries, {
+  // //   //   arrayMerge: (_, sourceArray,) => sourceArray
+  // //   // })
+  // //   setCache(newCache)
+  // //   return _getCacheValues()
+  // // }
+  // const update4 = (entries: Cache) => {
+  //   const append = Object.entries(entries)
+  //     .map(([type, value]) => {
+  //       return Object.entries(value).map(([vk, vv]) => {
+  //         return [`${type}::${vk}`, vv]
+  //       })
+  //     }).flat()
+  //   console.log(append)
+  //   const newCache = Object.fromEntries([
+  //     ...Object.entries(cache),
+  //     ...append
+  //   ])
+  //   console.log(newCache)
+  //   // const newCache = deepmerge(cache, entries, {
+  //   //   arrayMerge: (_, sourceArray,) => sourceArray
+  //   // })
+  //   setCache(newCache)
+  //   return getCacheValues
+  //   return newCache
+  // }
 
   // const update3 = (entries: Cache) => {
   //   const m = new Map(Object.entries(cache).map(([k, v]) => [k, new Map(Object.entries(v))]))
@@ -99,8 +111,8 @@ const useWordNetInternal = (preload = {}) => {
   //   return newCache
   // }
   return {
-    // getValue,
-    cache, update: update
+    getCacheValues,
+    update: update
   }
 }
 
@@ -126,11 +138,11 @@ export const WordNetProvider: FC<{ preload: Cache }> = ({ children, preload }) =
   </WordNetContext.Provider>
 }
 const useCachedFetcher = () => {
-  const { cache, update } = useContext(WordNetContext)
+  const { getCacheValues, update } = useContext(WordNetContext)
   const fetcher = async (type: string, ...key: string[]) => {
 
     return cacheFetcher(
-      cache,
+      getCacheValues,
       update,
       remoteResourceFetcher
     )(type, ...key)
