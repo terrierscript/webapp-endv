@@ -14,13 +14,13 @@ import { RelationAccordion } from "../relation/RelationAccordion"
 const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ sense, synset, lemma = [] }) => {
   const { definition, example } = synset ?? {}
 
-  return <BBlock id={`sysnet-${synset.id}`}>
+  return <Box id={`sysnet-${synset.id}`}>
     {/* sense {sense?.id ?? "-"} synset: {synset.id} */}
     <Words words={lemma} />
     <Glossaries lemma={lemma} definition={definition} example={example} />
     {/* {synset && <LoadSynsetRelation synsetId={synset.id} />}
     {sense && <LoadSenseRelation sense={sense} />} */}
-  </BBlock>
+  </Box>
 }
 
 // const SynsetItem: FC<{ synset: Synset }> = ({ synset, synsetLemma }) => {
@@ -36,10 +36,11 @@ const PlainSynset: FC<{ sense?: Sense, synset: Synset, lemma: string[] }> = ({ s
 
 
 export const SenseSynsetList: FC<DatasetProps> = ({ dataset }) => {
-  const senseIds = dataset?.senseIds
-  const synsetMap = dataset?.synset
-  const synsetLemmas = dataset?.synsetLemmas
-  const senseMap = dataset?.sense
+  const { senseIds,
+    synset: synsetMap,
+    sense: senseMap,
+    synsetLemmas
+  } = dataset
   if (!senseIds) {
     return null
   }
@@ -54,20 +55,20 @@ export const SenseSynsetList: FC<DatasetProps> = ({ dataset }) => {
       const senseRelation = senseMap && dataset?.senseRelations?.[sense.id]
       const synsetRelation = dataset?.synsetRelations?.[synsetId]
 
-      return <Box key={senseId} >
+      return <BBlock key={senseId} >
         {synset && <PlainSynset
           synset={synset} lemma={synsetLemma}
         />}
         {synsetRelation && <RelationAccordion relations={synsetRelation} />}
         {senseRelation && <RelationAccordion relations={senseRelation} />}
 
-      </Box>
+      </BBlock>
     })}
   </Stack>
 
 }
 
-export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?: Relation[] }> = ({ sense, synsetIds = [], relations = [] }) => {
+export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
   const data = useWordNetQuery<Synset>("synset", synsetIds)
   const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
   // const senseRelations = useWordNetQuery<RelationRecord[]>("senseRelation", [sense?.id])
@@ -80,12 +81,12 @@ export const SynsetsLoader: FC<{ sense: Sense, synsetIds?: string[], relations?:
   }
   return <Stack>
     {synsetIds.map((target) => {
-      const { relType } = relations
-        .find(r => r.target === target) ?? {}
+      // const { relType } = relations
+      //   .find(r => r.target === target) ?? {}
       const synset = data[target]
       const synsetLemma = lemmas?.[target] ?? []
       return <Box key={target} >
-        <RelType relType={relType} />
+        {/* <RelType relType={relType} /> */}
         <PlainSynset
           synset={synset} lemma={synsetLemma}
         />

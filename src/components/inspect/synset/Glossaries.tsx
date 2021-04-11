@@ -28,6 +28,7 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
 
 
 const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
+
   const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
   return terms.map(({ text, pre, post }: any, i: number) => {
     // @ts-ignore

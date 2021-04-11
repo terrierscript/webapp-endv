@@ -36,10 +36,6 @@ export const LexicalEntries: FC<DatasetProps & { lexicalEntryId: string }> = ({ 
     {logPartOfSpeech(lemma.partOfSpeech)}
     <Stack>
       <SenseSynsetList dataset={dataset} />
-      {/* <SynsetsLoader synsetIds={synsetIds} /> */}
-      {/* {sense?.map(s => {
-        return <SenseItem key={s} senseId={s} />
-      })} */}
     </Stack>
   </Box>
 }
