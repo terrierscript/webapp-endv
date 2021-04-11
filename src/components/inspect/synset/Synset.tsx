@@ -42,12 +42,13 @@ export const SynsetsLoader: FC<{ synsetIds?: string[], relations?: Relation[] }>
   }
   return <Stack>
     {synsetIds.map((target) => {
-      const { relType } = relations
-        .find(r => r.target === target) ?? {}
+      // const { relType } = relations
+      //   .find(r => r.target === target) ?? {}
+      // console.log("rel", relType)
       const synset = data[target]
       // const synsetLemma = lemmas?.[target] ?? []
       return <Box key={target} >
-        <RelType relType={relType} />
+        {/* <RelType relType={relType} /> */}
         <SynsetItem key={target} synset={synset} />
       </Box>
     })}
