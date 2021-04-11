@@ -27,11 +27,17 @@ const useDefinitions = (word: string) => {
     .map(l => l?.sense).flat()
     .filter((l): l is string => !!l)
   )
-  const synset = useWordNetQuery<Synset>("synset", () => sense && Object.values(sense).map(s => s.synset)
-    .filter((l): l is string => !!l)
-  )
+  const synsetIds = useMemo(() => sense && Object.values(sense).map(s => s.synset).filter((l): l is string => !!l), [sense])
+  const synset = useWordNetQuery<Synset>("synset", synsetIds ?? [])
+
   const synonymus = useSynonyms(word, Object.values(synset ?? {}))
   const definitions = useMemo(() => synset && Object.values(synset).map(syn => syn.definition).flat(), [JSON.stringify(synset)])
+  // console.log({
+  //   date: new Date().getTime(),
+  //   lemma, lex, sense,
+  //   synsetIds,
+  //   synset, synonymus, definitions
+  // })
   return { lemma, synonymus, definitions }
 }
 

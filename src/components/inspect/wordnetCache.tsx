@@ -33,7 +33,6 @@ export const cacheFetcher = (
       if (uncachedKey.length === 0) {
         return cached
       }
-
       const r = await resourceFetcher(type, keys)
       const newCache = update(r)
       return getFromCache(newCache, type, keys)
