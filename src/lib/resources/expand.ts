@@ -86,6 +86,7 @@ export const getSynsetLexicalEntry = (synsetId: string) => {
 
 }
 
+/** @deprecated */
 export const getSynsetLemma = (synsetId: string): SynsetLemma => {
   const { lexicalEntry } = dictionary.getSynsetIndex(synsetId) ?? {}
   const lexs = lexicalEntry?.map(l => dictionary.getLexicalEntry(l))

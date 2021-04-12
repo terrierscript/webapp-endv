@@ -53,16 +53,13 @@ const getSenseRelation = (senseId: string): RelationRecord[] => {
   ]
 }
 
-/** @deprecated */
 export const getSenseRelations = (senseIds: string[]): Mapping<RelationRecord[]> => {
   return Object.fromEntries(senseIds.map(s => {
     return [s, getSenseRelation(s)]
   }))
 }
 
-
-
-const getSynsetRelation = (synsetId: string): RelationRecord[] => {
+export const getSynsetRelation = (synsetId: string): RelationRecord[] => {
   const synset = dictionary.getSynset(synsetId)
   if (!synset) {
     return []
@@ -75,29 +72,3 @@ const getSynsetRelation = (synsetId: string): RelationRecord[] => {
 
   return [...synsetRecord]
 }
-/** @deprecated */
-export const getSynsetRelations = (synsetIds: string[]): Mapping<RelationRecord[]> => {
-  return Object.fromEntries(synsetIds.map(s => {
-    return [s, getSynsetRelation(s)]
-  }))
-}
-
-// @beta
-// export const getSenseSynsetRelations = (senseIds: string[]) => {
-//   return Object.fromEntries(senseIds.map(senseId => {
-//     const senseToSynsetRelation = dictionary.getSenseIndex(senseId)
-//     const rel = senseToSynsetRelation?.map(s => ({
-//       relType: s.relType,
-//       target: s.sense,
-//     }))
-//     const rels = groupingRelationMap(rel)
-
-//     const record = Array.from(rels.entries())
-//       .map(([relType, targets]): RelationRecord => {
-//         return { relType, targets, type: "sense" }
-//       })
-
-//     return [senseIds, record]
-//   }))
-
-// }
