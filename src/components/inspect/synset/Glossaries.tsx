@@ -1,5 +1,5 @@
 import { Text, Box, Wrap, TextProps, HStack } from "@chakra-ui/react"
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import nlp from "compromise"
 import { Lemma } from "../lemma/Lemma"
 import { SearchableText } from "./Term"
@@ -28,8 +28,15 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
 
 
 const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
-  const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
-  return terms.map(({ text, pre, post }: any, i: number) => {
+  const [terms, setTerms] = useState<any[]>()
+  useEffect(() => {
+    const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
+    setTerms(terms)
+  }, [])
+  if (!terms) {
+    return <>{sentence}</>
+  }
+  return <>{terms.map(({ text, pre, post }: any, i: number) => {
     // @ts-ignore
     const isHighlightWord = nlp(words.join(" ")).match(text, { fuzzy: 0.7 }).length > 0
     // || words.includes(text)
@@ -45,7 +52,7 @@ const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence,
       <Text as="span"{...textProps}>{text}</Text>
       <Text as="span">{post}</Text>
     </Text>
-  })
+  })}</>
 }
 
 const Examples: FC<Pick<GlossaryProps, "example" | "lemma">> = ({ lemma, example }) => {

@@ -1,5 +1,5 @@
 import { Text, TextProps, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, PopoverHeader, Portal } from "@chakra-ui/react"
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
@@ -53,7 +53,14 @@ const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
   </>
 }
 export const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
-  const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+  const [terms, setTerms] = useState<any[]>([])
+  useEffect(() => {
+    const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+    setTerms(terms)
+  }, [children])
+  if (!terms) {
+    return <>{children}</>
+  }
   return <>{terms.map((t: any, i: number) => {
     return <Term key={i} term={t} {...props} />
   })}</>
