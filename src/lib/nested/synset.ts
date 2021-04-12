@@ -17,7 +17,7 @@ export const getNestedSynset = (synsetId: string) => {
 
   return {
     ...synset,
-    extends: {
+    $: {
       lemma: synsetLemma,
       relation,
       synsetRelation // todo

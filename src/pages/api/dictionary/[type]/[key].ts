@@ -1,7 +1,9 @@
 
 
 import { NextApiHandler } from "next"
+import { getNestedLexicaEntry } from "../../../../lib/nested/lexicaEntry"
 import { getNestedLemma } from "../../../../lib/nested/lemma"
+import { getNestedSense } from "../../../../lib/nested/sense"
 import { getNestedSynset } from "../../../../lib/nested/synset"
 
 const getNestedResource = (type: string, key: string) => {
@@ -9,8 +11,14 @@ const getNestedResource = (type: string, key: string) => {
     case "lemma": {
       return getNestedLemma(key)
     }
+    case "lexicalEntry": {
+      return getNestedLexicaEntry(key)
+    }
     case "synset": {
       return getNestedSynset(key)
+    }
+    case "sense": {
+      return getNestedSense(key)
     }
   }
   throw new Error(`Invalid param ${type}`)

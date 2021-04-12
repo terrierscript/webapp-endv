@@ -1,5 +1,6 @@
 import * as dictionary from "../dictionary/dictionary"
 import { LemmaIndex } from "../dictionary/types"
+import { getNestedLexicaEntry } from "./lexicaEntry"
 
 
 const lexicalEntriesObj = (lexIds?: string[]) => {
@@ -7,10 +8,11 @@ const lexicalEntriesObj = (lexIds?: string[]) => {
     return null
   }
   return Object.fromEntries(lexIds?.map(lexId => {
-    return [lexId, dictionary.getLexicalEntry(lexId)]
+    return [lexId, getNestedLexicaEntry(lexId)]
   }))
 }
-const expandLexicalEntry = (lemma?: LemmaIndex) => {
+
+const expandLemma = (lemma?: LemmaIndex) => {
   if (!lemma) {
     return {}
   }
@@ -25,5 +27,6 @@ const expandLexicalEntry = (lemma?: LemmaIndex) => {
 }
 export const getNestedLemma = (word: string) => {
   const lemma = dictionary.getLemma(word)
-  return expandLexicalEntry(lemma)
+
+  return expandLemma(lemma)
 }
