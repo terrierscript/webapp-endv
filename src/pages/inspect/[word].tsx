@@ -1,14 +1,14 @@
 import { GetServerSideProps, GetServerSidePropsResult, GetStaticProps, GetStaticPropsResult } from "next"
 import React, { FC } from "react"
-import { WordNetProvider } from "../../components/inspect/WordNetContext"
 import { Lemma } from "../../components/inspect/lemma/Lemma"
 import { LemmaHeader } from "../../components/inspect/lemma/LemmaHeader"
-import { resourceHandler } from "../../lib/___resources/resources"
 import { ParsedUrlQuery } from 'querystring'
 import { Search } from "../../components/inspect/Search"
 import { getNestedLemma, NestedLemmaData } from "../../lib/nested/lemma"
 
-export const Page: FC<{ word: string, initialWordLemmaData: NestedLemmaData }> = ({ word, initialWordLemmaData }) => {
+export const Page: FC<{ word: string, initialWordLemmaData: NestedLemmaData }> = ({ word, initialWordLemmaData, ...rest }) => {
+  // console.log("init", initialWordLemmaData)
+  // console.log("init", rest)
   return <>
     <Search />
     <LemmaHeader word={word} />
@@ -25,7 +25,7 @@ function getProps(query: ParsedUrlQuery): Result {
     }
   }
   const initialWordLemmaData = getNestedLemma(word)
-
+  // console.log(initialWordLemmaData)
   return {
     props: {
       word,
@@ -43,9 +43,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 // export const getStaticProps: GetStaticProps = async (ctx) => {
 //   const result = getProps(ctx.params ?? {})
+//   // console.log("gSP", result)
 //   return {
 //     ...result,
-//     revalidate: 100
+//     revalidate: 1
 //   }
 // }
 
