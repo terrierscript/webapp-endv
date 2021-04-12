@@ -12,6 +12,7 @@ import { useWordNetPartials } from "../useDefinitions"
 import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { fetcher } from "./fetcher"
+import { useNestedLemma } from "./useNestedLemma"
 
 type LemmaProps = {
   word: string
@@ -57,12 +58,7 @@ const useLemma = (word: string) => {
   return
 }
 const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
-  const { data } = useSWR<NestedLemmaData>(() => {
-    return word && `/api/dictionary/lemma/${word}`
-  }, fetcher, {
-    initialData
-  })
-  console.log(data, initialData)
+  const { data } = useNestedLemma(word, initialData)
 
   if (!data) {
     return <Loading>
@@ -77,7 +73,7 @@ const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   }
 
   return <Stack>
-    {/* <CompactDefinition word={word} /> */}
+    <CompactDefinition word={word} initialData={initialData} />
     {lexs?.map(l => {
       return <LexicalEntries key={l.id} lexicalEntry={l} />
     })}

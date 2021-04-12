@@ -5,6 +5,9 @@ import { Loading } from "../../Loading"
 import { Words } from "../synset/Words"
 import { useWordNetQuery } from "../useWordNet"
 import { useWordNetPartials } from "../useDefinitions"
+import useSWR from "swr"
+import { NestedLemmaData } from "../../../lib/nested/lemma"
+import { useNestedLemma } from "./useNestedLemma"
 
 export const useSynonyms = (word: string, synsets: Synset[]) => {
   const synsetIds = synsets.map(s => s.id)
@@ -20,13 +23,29 @@ export const useSynonyms = (word: string, synsets: Synset[]) => {
   return synonyms
 }
 
-export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
-  const { lemma, synonymus, definitions } = useWordNetPartials(word)
-  console.log(lemma, definitions)
+export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData, definitionNum?: number }> = ({ word, definitionNum = 3, initialData }) => {
+  const { data } = useNestedLemma(word, initialData)
+  const allSynsets = useMemo(() => {
+    return data?.lexicalEntry?.map(lex => lex.sense?.map(s => {
+      return s?.synset
+    })).flat()
+  }, [])
+  // @ts-ignore
+  const synonymus: string[] = useMemo(() => {
+    const syns = allSynsets?.map(s => s?.lemma).flat()
+    return [
+      ...new Set(syns)
+    ]
+  }, [allSynsets])
+  const definitions = useMemo(() => {
+    return allSynsets?.map(s => s?.definition).flat()
+  }, [data])
+  console.log(synonymus, definitions)
+  // const {  synonymus, definitions } = data
+  // console.log(lemma, definitions)
   const length = definitions?.length ?? 0
-  const num = 3
 
-  if (!lemma) {
+  if (!data) {
     return <Loading>Loading</Loading>
   }
   if (!definitions) {
@@ -34,6 +53,7 @@ export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
   }
 
   return <Stack p={2}>
+
     <Box>
       <Heading size="sm">Synonymus</Heading>
       <Words words={synonymus ?? []} />
@@ -41,12 +61,12 @@ export const CompactDefinition: FC<{ word: string }> = ({ word }) => {
     <Box>
       <Heading size="sm">Definitions</Heading>
       <UnorderedList>
-        {definitions?.concat().slice(0, num).map(def => {
+        {definitions?.concat().slice(0, definitionNum).map(def => {
           return <ListItem key={def}>{def}</ListItem>
         })}
       </UnorderedList>
       <Box p={2}>
-        {length > num && `and (${length - num} definitions)`}
+        {length > definitionNum && `and (${length - definitionNum} definitions)`}
       </Box>
     </Box>
   </Stack>
