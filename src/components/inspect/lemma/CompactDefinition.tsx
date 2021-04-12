@@ -38,7 +38,7 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
     ]
   }, [allSynsets])
   const definitions = useMemo(() => {
-    return allSynsets?.map(s => s?.definition).flat()
+    return allSynsets?.map(s => s?.definition.join(" / ")).flat()
   }, [allSynsets])
 
   const length = definitions?.length ?? 0

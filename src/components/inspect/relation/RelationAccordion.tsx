@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { RelationRecord, Sense } from "../../../lib/dictionary/types"
-import { LazyLoadingAccordion } from "../../ItemAcordion"
+import { LazyLoadingAccordion } from "../../LazyLoadAccordion"
 import { RelType } from "./RelType"
 // import { SenseItem } from "../sense/Sense"
 // import { SynsetsLoader } from "../synset/Synset"

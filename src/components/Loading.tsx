@@ -5,7 +5,7 @@ import { Box, HStack, Spinner } from "@chakra-ui/react"
 //   useSynsetGroupedRelation({ lexicalEntry })
 //   return null
 // }
-export const Loading: FC<{}> = ({ children }) => <HStack>
+export const Loading: FC<{}> = ({ children }) => <HStack p={2}>
   <Spinner />
   <Box>{children}</Box>
 </HStack>

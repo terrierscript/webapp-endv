@@ -73,7 +73,7 @@ const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   }
 
   return <Stack>
-    <CompactDefinition word={word} initialData={initialData} />
+    <CompactDefinition word={word} initialData={initialData} definitionNum={Infinity} />
     {lexs?.map(l => {
       return <LexicalEntries key={l.id} lexicalEntry={l} />
     })}
