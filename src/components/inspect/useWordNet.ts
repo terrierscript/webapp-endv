@@ -36,17 +36,16 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
 
   const update = async (type: string, keys: string[]) => {
     const lb = `${new Date().getTime()}-${type}-${keys.join(":")}`
-    console.time(lb)
-    console.log(`start ${lb}`)
+    // console.time(lb)
+    // console.log(`start ${lb}`)
     const item = await fetcher(type, ...keys)
-    console.timeLog(lb)
-    console.log(`end ${lb}`)
+    // console.timeLog(lb)
+    // console.log(`end ${lb}`)
     if (typeof key === "string") {
       setData(item?.[key])
     } else {
       setData(item)
     }
-
   }
   useEffect(() => {
     if (!type || !keys) {
