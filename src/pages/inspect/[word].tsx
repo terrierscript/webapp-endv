@@ -33,24 +33,24 @@ function getProps(query: ParsedUrlQuery): Result {
   }
 }
 
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   const props: GetServerSidePropsResult<any> = await getProps(ctx.query)
-//   // const { word } = ctx.query
-//   return props
-// }
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const result = getProps(ctx.params ?? {})
-  return {
-    ...result,
-    revalidate: 1
-  }
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const props: GetServerSidePropsResult<any> = await getProps(ctx.query)
+  // const { word } = ctx.query
+  return props
 }
 
-export const getStaticPaths = async () => ({
-  paths: [],
-  fallback: true,
-})
+// export const getStaticProps: GetStaticProps = async (ctx) => {
+//   const result = getProps(ctx.params ?? {})
+//   return {
+//     ...result,
+//     revalidate: 1
+//   }
+// }
+
+// export const getStaticPaths = async () => ({
+//   paths: [],
+//   fallback: true,
+// })
 
 export default Page
 
