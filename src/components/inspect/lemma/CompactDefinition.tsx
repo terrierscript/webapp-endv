@@ -1,27 +1,10 @@
 import { Box, Heading, ListItem, Stack, UnorderedList } from "@chakra-ui/react"
 import React, { FC, useMemo } from "react"
-import { Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { Words } from "../synset/Words"
-import { useWordNetQuery } from "../useWordNet"
-import { useWordNetPartials } from "../useDefinitions"
-import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
 
-export const useSynonyms = (word: string, synsets: Synset[]) => {
-  const synsetIds = synsets.map(s => s.id)
-  const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
-  const synonyms = useMemo(() => {
-    if (!lemmas) {
-      return null
-    }
-
-    const lems = Object.values(lemmas).flat()
-    return [...new Set(lems)].filter(w => w !== word)
-  }, [Object.keys(lemmas ?? {}).join("_")])
-  return synonyms
-}
 
 export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData, definitionNum?: number }> = ({ word, definitionNum = 3, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
