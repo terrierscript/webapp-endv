@@ -57,6 +57,8 @@ const PlainSense: FC<{ sense: NestedSenseData }> = ({ sense }) => {
   // const senseRelation = senseMap && dataset?.senseRelations?.[sense.id]
   // const synsetRelation = dataset?.synsetRelations?.[synsetId]
   const synset = sense?.synset
+  const senseRelation = sense?.relations
+  const synsetRelation = sense?.synset?.relations
 
   return <BBlock key={sense?.id} >
     {synset && <PlainSynset

@@ -8,7 +8,7 @@ export const getNestedSense = (senseId: string) => {
     return null
   }
   const { senseRelation, ...rest } = sense
-  const synset = sense?.synset && getNestedSynset(sense.synset)
+  const synset = sense?.synset ? getNestedSynset(sense.synset) : null
   const relations = getSenseRelation(senseId)
   return {
     ...rest,

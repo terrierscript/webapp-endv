@@ -18,12 +18,12 @@ export const getNestedSynset = (synsetId: string) => {
   }
   const { synsetRelation, ...rest } = synset
   const synsetLemma = getSynsetLemma(synsetId)
-  const relation = getSynsetRelation(synsetId)
+  const relations = getSynsetRelation(synsetId)
 
   return {
     ...rest,
     lemma: synsetLemma,
-    relation,
+    relations,
     // synsetRelation 
   }
 }

@@ -50,7 +50,7 @@ const lexicalEntryIdToLemma = (lexId: string) => {
 }
 
 const useLemma = (word: string) => {
-  return useSWR<NestedLemmaData>(`/api/dictionary/lemma${word}`)
+  return useSWR<NestedLemmaData>(() => word && `/api/dictionary/lemma/${word}`)
 }
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
   const { data } = useLemma(word)
