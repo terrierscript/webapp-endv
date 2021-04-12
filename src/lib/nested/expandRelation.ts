@@ -1,5 +1,5 @@
 import { RelationRecord } from "../dictionary/types"
-import { getSynsetRelation } from "./relations"
+import { getSenseRelation, getSynsetRelation } from "./relations"
 import { getNestedSense } from "./sense"
 import { getNestedSynset } from "./synset"
 
@@ -16,7 +16,7 @@ export const getExpandRelation = (relations: RelationRecord[], targetRelType: st
   }).flat()
 }
 export const getSenseRelationExpand = (senseId: string, relType: string) => {
-  const relations = getSynsetRelation(senseId)
+  const relations = getSenseRelation(senseId)
   return getExpandRelation(relations, relType)
 }
 export const getSynsetRelationExpand = (synsetId: string, relType: string) => {

@@ -15,7 +15,8 @@ export const ItemAccordion: FC<{ title: ReactNode }> = ({ title, children }) => 
           </HStack>
         </AccordionButton>
         <AccordionPanel p={0} >
-          {isExpanded ? children : <Spinner />}
+          {children}
+          {/* {isExpanded ? children : <Spinner />} */}
         </AccordionPanel>
       </>
     )}

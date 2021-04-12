@@ -12,25 +12,18 @@ import { SenseRelationExpand, SynsetRelationExpand } from "../../../lib/nested/e
 import { PlainSenseOrSynset } from "../synset/PlainSenseOrSynset"
 import { fetcher } from "../lemma/fetcher"
 
-type RelLoader = { sourceId: string, relType: string }
-
-// const RelationExpand: FC<RelLoader> = ({ sourceId, relType }) => {
-// }
-// const SynsetRelationLoader: FC<RelLoader> = ({ sourceId, relType }) => {
-//   const { data } = useSWR<SenseRelationExpand | SynsetRelationExpand>(`/api/relations/synset/${sourceId}/${relType}`)
-
-// }
-
 export const RelationLoader: FC<{ type: string, sourceId: string, relType: string }> = ({ type, sourceId, relType }) => {
   const { data } = useSWR<SenseRelationExpand | SynsetRelationExpand>(() =>
     type && sourceId && relType && `/api/relations/${type}/${sourceId}/${relType}`, fetcher, {
-    revalidateOnFocus: false, revalidateOnMount: false
   })
 
   if (!data) {
     return <Loading>Loading</Loading>
   }
-  return <>{data.map((d) => <PlainSenseOrSynset key={d?.id} item={d} />)}</>
+  return <>{data.map((d) => <PlainSenseOrSynset
+    key={d?.id} item={d}
+    more={false}
+  />)}</>
 }
 
 export const RelationAccordion: FC<{ sourceId: string, relations: RelationRecord[] }> = ({ sourceId, relations }) => {

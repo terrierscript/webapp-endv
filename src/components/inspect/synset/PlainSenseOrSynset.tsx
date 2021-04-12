@@ -5,8 +5,13 @@ import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
+import { ItemAccordion } from "../../ItemAcordion"
 
-export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData }> = ({ item }) => {
+
+// const Relations = () => {
+
+// }
+export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
   const [sense, synset] = useMemo(() => {
     // @ts-ignore
     const maybeSynset = item?.synset
@@ -19,11 +24,16 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData }
   // const synset = sense?.synset
   const senseRelation = sense?.relations
   const synsetRelation = synset?.relations
-  return <BBlock key={sense?.id}>
+  return <BBlock >
+
     {synset && <PlainSynset synset={synset} />}
+    {/* <ItemAccordion title="more"> */}
+
     <Box p={2}>
       {synset && synsetRelation && <RelationAccordion sourceId={synset.id} relations={synsetRelation} />}
       {sense && senseRelation && <RelationAccordion sourceId={sense.id} relations={senseRelation} />}
     </Box>
+
+    {/* </ItemAccordion> */}
   </BBlock>
 }
