@@ -1,6 +1,3 @@
-
-
-
 import { NextApiHandler } from "next"
 import { getSenseRelationExpand, getSynsetRelationExpand } from "../../../../../lib/nested/expandRelation"
 

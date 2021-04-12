@@ -29,7 +29,7 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
     return data?.lexicalEntry?.map(lex => lex.sense?.map(s => {
       return s?.synset
     })).flat()
-  }, [])
+  }, [JSON.stringify(data)])
   // @ts-ignore
   const synonymus: string[] = useMemo(() => {
     const syns = allSynsets?.map(s => s?.lemma).flat()
@@ -39,10 +39,8 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
   }, [allSynsets])
   const definitions = useMemo(() => {
     return allSynsets?.map(s => s?.definition).flat()
-  }, [data])
-  console.log(synonymus, definitions)
-  // const {  synonymus, definitions } = data
-  // console.log(lemma, definitions)
+  }, [allSynsets])
+
   const length = definitions?.length ?? 0
 
   if (!data) {
@@ -53,7 +51,6 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
   }
 
   return <Stack p={2}>
-
     <Box>
       <Heading size="sm">Synonymus</Heading>
       <Words words={synonymus ?? []} />
