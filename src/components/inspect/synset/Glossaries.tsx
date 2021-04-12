@@ -26,32 +26,49 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
   </Wrap>
 }
 
+const HighlightTerm: FC<any> = ({ targets, text, pre, post }) => {
+  const [isHighlight, setIsHighlight] = useState()
+  useEffect(() => {
+    // @ts-ignore
+    const isHighlightWord = (nlp(targets).match(text, { fuzzy: 0.7 }).length > 0)
+    setIsHighlight(isHighlight)
+  }, [])
+  const textProps: TextProps = isHighlight ? {
+    fontWeight: "bold",
+    textDecoration: "underline dashed"
+  } : {}
+
+  return <Text as="span">
+    <Text as="span">{pre}</Text>
+    <Text as="span"{...textProps}>{text}</Text>
+    <Text as="span">{post}</Text>
+  </Text>
+}
 
 const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
   const [terms, setTerms] = useState<any[]>()
-  // useEffect(() => {
-  //   const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
-  //   setTerms(terms)
-  // }, [])
+  const targetText = words.join(" ")
+  useEffect(() => {
+    const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
+    setTerms(terms)
+  }, [])
   if (!terms) {
     return <>{sentence}</>
   }
-  return <>{terms.map(({ text, pre, post }: any, i: number) => {
-    // @ts-ignore
-    const isHighlightWord = nlp(words.join(" ")).match(text, { fuzzy: 0.7 }).length > 0
-    // || words.includes(text)
-    // || wordForms(text).some(formedText => words.includes(formedText))
-    // console.log(wordForms(text))
-    const textProps: TextProps = isHighlightWord ? {
-      fontWeight: "bold",
-      textDecoration: "underline dashed"
-    } : {}
+  return <>{terms.map((term: any, i: number) => {
+    return <HighlightTerm key={i} {...term} targets={targetText} />
+    // // @ts-ignore
+    // const isHighlightWord = nlp(words.join(" ")).match(text, { fuzzy: 0.7 }).length > 0
+    // const textProps: TextProps = isHighlightWord ? {
+    //   fontWeight: "bold",
+    //   textDecoration: "underline dashed"
+    // } : {}
 
-    return <Text key={i} as="span">
-      <Text as="span">{pre}</Text>
-      <Text as="span"{...textProps}>{text}</Text>
-      <Text as="span">{post}</Text>
-    </Text>
+    // return <Text key={i} as="span">
+    //   <Text as="span">{pre}</Text>
+    //   <Text as="span"{...textProps}>{text}</Text>
+    //   <Text as="span">{post}</Text>
+    // </Text>
   })}</>
 }
 
