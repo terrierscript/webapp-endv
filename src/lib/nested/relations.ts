@@ -32,6 +32,7 @@ const getSenseIndexRelation = (senseId: string) => {
   })).filter(s => s.relType === "derivation")
   return rel
 }
+
 export const convertGroupedRelations = (relations: Relation[], type: RelationType): RelationRecord[] => {
   return Array.from(groupingRelationMap(relations).entries())
     .map(([relType, targets]): RelationRecord => {
@@ -39,6 +40,7 @@ export const convertGroupedRelations = (relations: Relation[], type: RelationTyp
     })
 
 }
+
 export const getSenseRelation = (senseId: string): RelationRecord[] => {
   const sense = dictionary.getSense(senseId)
   if (!sense) {

@@ -1,5 +1,6 @@
 
 
+
 import { NextApiHandler } from "next"
 import { getNestedLexicaEntry } from "../../../../lib/nested/lexicaEntry"
 import { getNestedLemma } from "../../../../lib/nested/lemma"
@@ -9,14 +10,8 @@ import { getSynsetRelationExpand } from "../../../../lib/nested/expandRelation"
 
 const getNestedResource = (type: string, key: string) => {
   switch (type) {
-    case "lemma": {
-      return getNestedLemma(key)
-    }
-    case "lexicalEntry": {
-      return getNestedLexicaEntry(key)
-    }
     case "synset": {
-      return getNestedSynset(key)
+      return getSynsetRelationExpand(key)
     }
     case "sense": {
       return getNestedSense(key)
