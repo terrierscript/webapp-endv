@@ -5,8 +5,6 @@ import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
-import { LazyLoadingAccordion } from "../../ItemAcordion"
-
 
 // const Relations = () => {
 
