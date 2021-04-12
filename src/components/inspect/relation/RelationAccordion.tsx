@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { RelationRecord, Sense } from "../../../lib/dictionary/types"
-import { ItemAccordion } from "../../ItemAcordion"
+import { LazyLoadingAccordion } from "../../ItemAcordion"
 import { RelType } from "./RelType"
 // import { SenseItem } from "../sense/Sense"
 // import { SynsetsLoader } from "../synset/Synset"
@@ -29,10 +29,10 @@ export const RelationLoader: FC<{ type: string, sourceId: string, relType: strin
 export const RelationAccordion: FC<{ sourceId: string, relations: RelationRecord[] }> = ({ sourceId, relations }) => {
   // console.log(relations)
   return <>{relations?.map(({ relType, targets, type }, i) => {
-    return <ItemAccordion title={<><RelType relType={relType} /> ({targets.length})</>
+    return <LazyLoadingAccordion title={<><RelType relType={relType} /> ({targets.length})</>
     } key={i} >
       <RelationLoader type={type} sourceId={sourceId} relType={relType} />
-    </ItemAccordion>
+    </LazyLoadingAccordion>
   })}</>
 }
 

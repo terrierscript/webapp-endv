@@ -1,11 +1,12 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, HStack, Spinner } from "@chakra-ui/react"
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, useState } from "react"
 
-export const ItemAccordion: FC<{ title: ReactNode }> = ({ title, children }) => {
-
+export const LazyLoadingAccordion: FC<{ title: ReactNode }> = ({ title, children }) => {
+  const [loaded, setLoaded] = useState(false)
   return <Accordion allowToggle reduceMotion >
-    <AccordionItem>{({ isExpanded }) => (
-      <>
+    <AccordionItem>{({ isExpanded }) => {
+      setLoaded(isExpanded || loaded)
+      return <>
         <AccordionButton fontSize="sm" >
           <HStack>
             <AccordionIcon />
@@ -15,10 +16,10 @@ export const ItemAccordion: FC<{ title: ReactNode }> = ({ title, children }) => 
           </HStack>
         </AccordionButton>
         <AccordionPanel p={0} >
-          {isExpanded ? children : <Spinner />}
+          {loaded ? children : <Spinner />}
         </AccordionPanel>
       </>
-    )}
+    }}
     </AccordionItem>
   </Accordion>
 }
