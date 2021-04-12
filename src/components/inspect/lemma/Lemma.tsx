@@ -14,6 +14,7 @@ import { NestedLemmaData } from "../../../lib/nested/lemma"
 
 type LemmaProps = {
   word: string
+  initialData: NestedLemmaData
 }
 
 const patterns = (word: string, appendCandidates: string[]) => {
@@ -50,10 +51,18 @@ const lexicalEntryIdToLemma = (lexId: string) => {
 }
 
 const useLemma = (word: string) => {
-  return useSWR<NestedLemmaData>(() => word && `/api/dictionary/lemma/${word}`)
+  const { data } = useSWR(() => "aa", {})
+
+  return
 }
-const LemmaInner: FC<LemmaProps> = ({ word }) => {
-  const { data } = useLemma(word)
+const fetcher = (url: string) => window.fetch(url).then(res => res.json())
+const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
+
+  const { data } = useSWR<NestedLemmaData>(() => {
+    return word && `/api/dictionary/lemma/${word}`
+  }, fetcher, {
+    initialData
+  })
 
   if (!data) {
     return <Loading>
@@ -76,6 +85,6 @@ const LemmaInner: FC<LemmaProps> = ({ word }) => {
   </Stack>
 }
 
-export const Lemma: FC<LemmaProps> = ({ word }) => {
-  return <LemmaInner key={word} word={word} />
+export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
+  return <LemmaInner key={word} word={word} initialData={initialData} />
 }

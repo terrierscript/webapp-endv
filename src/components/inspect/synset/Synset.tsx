@@ -42,20 +42,6 @@ const PlainSense: FC<{ sense: NestedSenseData }> = ({ sense }) => {
   if (!sense) {
     return null
   }
-  // const {
-  //   synset: synsetMap,
-  //   sense: senseMap,
-  //   synsetLemmas
-  // } = dataset
-
-  // const sense = senseMap?.[senseId]
-  // if (!sense) return null
-  // const synsetId = sense.synset
-  // if (!synsetId) return null
-  // const synset = sense?.synset && synsetMap?.[sense?.synset]
-  // const synsetLemma = synsetLemmas?.[synsetId] ?? []
-  // const senseRelation = senseMap && dataset?.senseRelations?.[sense.id]
-  // const synsetRelation = dataset?.synsetRelations?.[synsetId]
   const synset = sense?.synset
   const senseRelation = sense?.relations
   const synsetRelation = sense?.synset?.relations

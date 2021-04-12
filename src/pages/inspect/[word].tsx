@@ -6,13 +6,14 @@ import { LemmaHeader } from "../../components/inspect/lemma/LemmaHeader"
 import { resourceHandler } from "../../lib/___resources/resources"
 import { ParsedUrlQuery } from 'querystring'
 import { Search } from "../../components/inspect/Search"
+import { getNestedLemma, NestedLemmaData } from "../../lib/nested/lemma"
 
-export const Page: FC<{ word: string, initial: any }> = ({ word, initial }) => {
-  return <WordNetProvider preload={initial}>
+export const Page: FC<{ word: string, initialWordLemmaData: NestedLemmaData }> = ({ word, initialWordLemmaData }) => {
+  return <>
     <Search />
     <LemmaHeader word={word} />
-    <Lemma word={word} />
-  </WordNetProvider>
+    <Lemma word={word} initialData={initialWordLemmaData} />
+  </>
 }
 
 type Result = GetStaticPropsResult<any> | GetServerSidePropsResult<any>
@@ -23,11 +24,11 @@ function getProps(query: ParsedUrlQuery): Result {
       notFound: true
     }
   }
-  const initial = resourceHandler("lemma", [word]) ?? {}
+  const initialWordLemmaData = getNestedLemma(word)
   return {
     props: {
       word,
-      initial
+      initialWordLemmaData
       // , entry
     }
   }
