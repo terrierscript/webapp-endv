@@ -11,6 +11,7 @@ import { Loading } from "../../Loading"
 import { useWordNetPartials } from "../useDefinitions"
 import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
+import { fetcher } from "./fetcher"
 
 type LemmaProps = {
   word: string
@@ -54,10 +55,6 @@ const useLemma = (word: string) => {
   const { data } = useSWR(() => "aa", {})
 
   return
-}
-const fetcher = (url: string) => {
-  console.log("fetch", url)
-  return window.fetch(url).then(res => res.json())
 }
 const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   const { data } = useSWR<NestedLemmaData>(() => {

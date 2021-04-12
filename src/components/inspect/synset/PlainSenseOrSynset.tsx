@@ -5,6 +5,7 @@ import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
+
 export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData }> = ({ item }) => {
   const [sense, synset] = useMemo(() => {
     // @ts-ignore

@@ -10,6 +10,7 @@ import { Loading } from "../../Loading"
 import { Stack } from "@chakra-ui/react"
 import { SenseRelationExpand, SynsetRelationExpand } from "../../../lib/nested/expandRelation"
 import { PlainSenseOrSynset } from "../synset/PlainSenseOrSynset"
+import { fetcher } from "../lemma/fetcher"
 
 type RelLoader = { sourceId: string, relType: string }
 
@@ -21,14 +22,15 @@ type RelLoader = { sourceId: string, relType: string }
 // }
 
 export const RelationLoader: FC<{ type: string, sourceId: string, relType: string }> = ({ type, sourceId, relType }) => {
-  const { data } = useSWR<SenseRelationExpand | SynsetRelationExpand>(`/api/relations/${type}/${sourceId}/${relType}`)
+  const { data } = useSWR<SenseRelationExpand | SynsetRelationExpand>(() =>
+    type && sourceId && relType && `/api/relations/${type}/${sourceId}/${relType}`, fetcher, {
+    revalidateOnFocus: false, revalidateOnMount: false
+  })
 
   if (!data) {
     return <Loading>Loading</Loading>
   }
-  console.log(data)
   return <>{data.map((d) => <PlainSenseOrSynset key={d?.id} item={d} />)}</>
-
 }
 
 export const RelationAccordion: FC<{ sourceId: string, relations: RelationRecord[] }> = ({ sourceId, relations }) => {
