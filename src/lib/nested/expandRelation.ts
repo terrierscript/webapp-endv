@@ -1,25 +1,28 @@
-import { Relation, RelationRecord } from "../dictionary/types"
+import { RelationRecord } from "../dictionary/types"
 import { getSynsetRelation } from "./relations"
 import { getNestedSense } from "./sense"
 import { getNestedSynset } from "./synset"
 
 
-export const getExpandRelation = (relations: RelationRecord[]) => {
-  return relations.map(rel => {
+export const getExpandRelation = (relations: RelationRecord[], targetRelType: string) => {
+
+  return relations.filter(({ relType }) => {
+    return targetRelType === relType
+  }).map(rel => {
     const { targets, type } = rel
-    return {
-      ...rel,
-      targets: targets.map(t =>
-        type === "synset" ? getNestedSynset(t) : getNestedSense(t)
-      )
-    }
-  })
+    return targets.map(t =>
+      type === "synset" ? getNestedSynset(t) : getNestedSense(t)
+    )
+  }).flat()
 }
-export const getSenseRelationExpand = (senseId: string) => {
+export const getSenseRelationExpand = (senseId: string, relType: string) => {
   const relations = getSynsetRelation(senseId)
-  return getExpandRelation(relations)
+  return getExpandRelation(relations, relType)
 }
-export const getSynsetRelationExpand = (synsetId: string) => {
+export const getSynsetRelationExpand = (synsetId: string, relType: string) => {
   const relations = getSynsetRelation(synsetId)
-  return getExpandRelation(relations)
+  return getExpandRelation(relations, relType)
 }
+
+export type SenseRelationExpand = ReturnType<typeof getSenseRelationExpand>
+export type SynsetRelationExpand = ReturnType<typeof getSynsetRelationExpand>

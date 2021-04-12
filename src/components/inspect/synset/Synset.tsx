@@ -2,16 +2,15 @@ import { Text, Box, Stack, Spinner } from "@chakra-ui/react"
 import React, { FC } from "react"
 import { Glossaries } from "./Glossaries"
 import { useWordNetQuery } from "../useWordNet"
-import { BBlock } from "../Block"
 import { Sense, Synset, SynsetLemma } from "../../../lib/dictionary/types"
 import { Words } from "./Words"
 import { DatasetProps } from "../useDefinitions"
-import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import useSWR from "swr"
+import { PlainSenseOrSynset } from "./PlainSenseOrSynset"
 
-const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
+export const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
   if (!synset) {
     return null
   }
@@ -27,53 +26,41 @@ const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
   </Box>
 }
 
-// const SynsetItem: FC<{ synset: Synset }> = ({ synset, synsetLemma }) => {
-//   // console.log(synset)
-//   // const lemmas = useWordNet<SynsetLemma>("synsetLemma", [synset?.id])
-//   // const synsetLemma = lemmas?.[synset.id] ?? []
+// const PlainSense: FC<{ sense: NestedSenseData }> = ({ sense }) => {
+//   if (!sense) {
+//     return null
+//   }
+//   const synset = sense?.synset
+//   const senseRelation = sense?.relations
+//   const synsetRelation = sense?.synset?.relations
+//   return <BBlock key={sense?.id} >
+//     {synset && <PlainSynset
+//       synset={synset}
+//     />}
+//     <Box p={2}>
+//       {synset && synsetRelation && <RelationAccordion sourceId={synset.id} relations={synsetRelation} />}
+//       {senseRelation && <RelationAccordion sourceId={sense.id} relations={senseRelation} />}
+//     </Box>
 
-//   return <PlainSynset
-//     synset={synset} lemma={synsetLemma}
-//   />
+//   </BBlock>
 
 // }
-
-
-const PlainSense: FC<{ sense: NestedSenseData }> = ({ sense }) => {
-  if (!sense) {
-    return null
-  }
-  const synset = sense?.synset
-  const senseRelation = sense?.relations
-  const synsetRelation = sense?.synset?.relations
-  return <BBlock key={sense?.id} >
-    {synset && <PlainSynset
-      synset={synset}
-    />}
-    <Box p={2}>
-      {synsetRelation && <RelationAccordion relations={synsetRelation} />}
-      {senseRelation && <RelationAccordion relations={senseRelation} />}
-    </Box>
-
-  </BBlock>
-
-}
 
 export const SenseSynsetList: FC<{ senses: NestedSenseData[] }> = ({ senses }) => {
   return <Stack>
     {senses.map(s => {
 
-      return s && <PlainSense key={s.id} sense={s} />
+      return s && <PlainSenseOrSynset key={s.id} item={s} />
     })}
   </Stack>
 }
 
-export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
-  const data = useSWR(() => {
-    return
-  })
-  return null
-}
+// export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
+//   const data = useSWR(() => {
+//     return
+//   })
+//   return null
+// }
 // export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
 //   const data = useWordNetQuery<Synset>("synset", synsetIds)
 //   const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
