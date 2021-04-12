@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
-import { useWordNet, useWordNetQuery } from "../useWordNet"
+import { useWordNetQuery } from "../useWordNet"
 import { Block } from "../Block"
 import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
 import { LemmaIndex } from "../../../lib/dictionary/types"
