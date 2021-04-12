@@ -27,3 +27,4 @@ export const getNestedSynset = (synsetId: string) => {
     // synsetRelation 
   }
 }
+export type NestedSynsetData = ReturnType<typeof getNestedSynset>

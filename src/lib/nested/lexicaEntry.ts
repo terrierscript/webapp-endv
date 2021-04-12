@@ -22,3 +22,5 @@ export const getNestedLexicaEntry = (lexId: string) => {
     sense // overwrite sense
   }
 }
+
+export type NestedLexicaEntryData = ReturnType<typeof getNestedLexicaEntry>

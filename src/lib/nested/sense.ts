@@ -16,3 +16,5 @@ export const getNestedSense = (senseId: string) => {
     relations
   }
 }
+
+export type NestedSenseData = ReturnType<typeof getNestedSense>

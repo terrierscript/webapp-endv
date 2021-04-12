@@ -33,3 +33,5 @@ export const getNestedLemma = (word: string) => {
 
   return expandLemma(lemma)
 }
+
+export type NestedLemmaData = ReturnType<typeof getNestedLemma>
