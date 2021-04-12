@@ -12,12 +12,16 @@ const getSynsetLemma = (synsetId: string): SynsetLemma => {
 }
 
 export const getNestedSynset = (synsetId: string) => {
-  const { synsetRelation, ...synset } = dictionary.getSynset(synsetId) ?? {}
+  const synset = dictionary.getSynset(synsetId)
+  if (!synset) {
+    return null
+  }
+  const { synsetRelation, ...rest } = synset
   const synsetLemma = getSynsetLemma(synsetId)
   const relation = getSynsetRelation(synsetId)
 
   return {
-    ...synset,
+    ...rest,
     lemma: synsetLemma,
     relation,
     // synsetRelation 

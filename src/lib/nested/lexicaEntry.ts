@@ -6,9 +6,12 @@ const senseObj = (senseIds?: string[]) => {
   if (!senseIds) {
     return null
   }
-  return Object.fromEntries(senseIds?.map(lexId => {
-    return [lexId, getNestedSense(lexId)]
-  }))
+  return senseIds?.map(lexId => {
+    return getNestedSense(lexId)
+  })
+  // return Object.fromEntries(senseIds?.map(lexId => {
+  //   return [lexId, getNestedSense(lexId)]
+  // }))
 }
 
 export const getNestedLexicaEntry = (lexId: string) => {

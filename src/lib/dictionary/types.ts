@@ -62,10 +62,11 @@ export type SenseRelation = {
   sense: RelationMap
   synset: RelationMap
 }
+export type RelationType = "sense" | "synset"
 export type RelationRecord = {
   relType: string,
   targets: string[]
-  type: "sense" | "synset"
+  type: RelationType
 }
 
 export type SenseIndexRelation = {

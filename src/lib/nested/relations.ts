@@ -1,5 +1,5 @@
 import * as dictionary from "../dictionary/dictionary"
-import { Relation, Sense, RelationRecord } from "../dictionary/types"
+import { Relation, Sense, RelationRecord, RelationType } from "../dictionary/types"
 
 const groupingRelationMap = (relations: Relation[] = []) => {
   const map = new Map<string, Set<string>>()
@@ -32,6 +32,13 @@ const getSenseIndexRelation = (senseId: string) => {
   })).filter(s => s.relType === "derivation")
   return rel
 }
+export const convertGroupedRelations = (relations: Relation[], type: RelationType): RelationRecord[] => {
+  return Array.from(groupingRelationMap(relations).entries())
+    .map(([relType, targets]): RelationRecord => {
+      return { relType, targets, type: type }
+    })
+
+}
 export const getSenseRelation = (senseId: string): RelationRecord[] => {
   const sense = dictionary.getSense(senseId)
   if (!sense) {
@@ -39,17 +46,11 @@ export const getSenseRelation = (senseId: string): RelationRecord[] => {
   }
   const { senseRelation } = getRelations(sense)
   const senseIndexRelation = getSenseIndexRelation(sense.id)
-  const senseRecord = Array.from(groupingRelationMap([
+  const senseRecord = convertGroupedRelations([
     ...senseRelation ?? [],
     ...senseIndexRelation ?? [],
-  ]).entries())
-    .map(([relType, targets]): RelationRecord => {
-      return { relType, targets, type: "sense" }
-    })
-
-  return [
-    ...senseRecord
-  ]
+  ], "sense")
+  return senseRecord
 }
 
 export const getSynsetRelation = (synsetId: string): RelationRecord[] => {
@@ -58,10 +59,5 @@ export const getSynsetRelation = (synsetId: string): RelationRecord[] => {
     return []
   }
 
-  const synsetRecord = Array.from(groupingRelationMap(synset.synsetRelation).entries())
-    .map(([relType, targets]): RelationRecord => {
-      return { relType, targets, type: "synset" }
-    })
-
-  return [...synsetRecord]
+  return convertGroupedRelations(synset.synsetRelation ?? [], "synset")
 }

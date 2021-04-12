@@ -7,9 +7,12 @@ const lexicalEntriesObj = (lexIds?: string[]) => {
   if (!lexIds) {
     return null
   }
-  return Object.fromEntries(lexIds?.map(lexId => {
-    return [lexId, getNestedLexicaEntry(lexId)]
-  }))
+  return lexIds?.map(lexId => {
+    return getNestedLexicaEntry(lexId)
+  })
+  // return Object.fromEntries(lexIds?.map(lexId => {
+  //   return [lexId, getNestedLexicaEntry(lexId)]
+  // }))
 }
 
 const expandLemma = (lemma?: LemmaIndex) => {
