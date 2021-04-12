@@ -6,33 +6,19 @@ import { logPartOfSpeech } from "./longPart"
 import { DatasetProps } from "../useDefinitions"
 import { FC } from "react"
 import { SenseSynsetList } from "../synset/Synset"
+import { NestedLexicaEntryData } from "../../../lib/nested/lexicaEntry"
 
-export const LexicalEntries: FC<DatasetProps & { lexicalEntryId: string }> = ({ lexicalEntryId, dataset }) => {
-  // const lexs = useWordNetQuery<LexicalEntry>("lexicalEntry", [lexicalEntryId])
-  // const senseMap = useWordNetQuery<Sense>("sense", () => lexs && Object
-  //   .values(lexs)
-  //   .map(l => l?.sense).flat()
-  //   .filter((l): l is string => !!l)
-  // )
+export const LexicalEntries: FC<{ lexicalEntry: NestedLexicaEntryData }> = ({ lexicalEntry }) => {
 
-  // const synsetIds = useMemo(() => senseMap ? Object.values(senseMap)
-  //   .map(s => s.synset)
-  //   .filter((s): s is string => !!s) : [], [JSON.stringify(senseMap)])
-  // console.log("xx", senseMap, synsetIds)
-  // if (!lexs || !senseMap || !synsetIds) {
-  //   return <Loading>Loading {lexicalEntryId}</Loading>
-  // }
-
-  const lex = dataset?.lexicalEntry?.[lexicalEntryId]
-  const synsetIds = dataset?.synsetIds
+  const lex = lexicalEntry
   if (!lex) {
-    return <Loading>Loading {lexicalEntryId}</Loading>
+    return <Loading>Loading {lexicalEntry.id}</Loading>
   }
   const { lemma, sense } = lex
   return <Box p={4}>
-    {logPartOfSpeech(lemma.partOfSpeech)}
+    {lemma?.partOfSpeech && logPartOfSpeech(lemma?.partOfSpeech)}
     <Stack>
-      <SenseSynsetList dataset={dataset} />
+      {sense && <SenseSynsetList senses={sense} />}
     </Stack>
   </Box>
 }

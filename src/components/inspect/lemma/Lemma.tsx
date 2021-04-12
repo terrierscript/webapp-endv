@@ -9,6 +9,8 @@ import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "./CompactDefinition"
 import { Loading } from "../../Loading"
 import { useWordNetPartials } from "../useDefinitions"
+import useSWR from "swr"
+import { NestedLemmaData } from "../../../lib/nested/lemma"
 
 type LemmaProps = {
   word: string
@@ -47,29 +49,30 @@ const lexicalEntryIdToLemma = (lexId: string) => {
   return lexId.match(/ewn-(.+)-[a-z]/)?.[1] ?? ""
 }
 
+const useLemma = (word: string) => {
+  return useSWR<NestedLemmaData>(`/api/dictionary/lemma${word}`)
+}
 const LemmaInner: FC<LemmaProps> = ({ word }) => {
-  const dataset = useWordNetPartials(word)
-  const data = useWordNetQuery<LemmaIndex>("lemma", [word])
-  const lemm = dataset.lemma?.[word]
-  const formLemma = lemm?.form?.map(f => lexicalEntryIdToLemma(f)) ?? []
+  const { data } = useLemma(word)
 
   if (!data) {
     return <Loading>
       Loading Word...
     </Loading>
   }
-  const ls = lemm?.lexicalEntry
-
-  if (!ls) {
+  const lexs = data?.lexicalEntry
+  // @ts-ignore
+  const formLemma: string[] = data?.form?.map(f => f.lemma?.writtenForm)
+  if (!lexs) {
     return <NotFound word={word} appendCandidates={formLemma} />
   }
 
   return <Stack>
-    <CompactDefinition word={word} />
-    {ls?.map(l => {
-      return <LexicalEntries key={l} lexicalEntryId={l} dataset={dataset} />
+    {/* <CompactDefinition word={word} /> */}
+    {lexs?.map(l => {
+      return <LexicalEntries key={l.id} lexicalEntry={l} />
     })}
-    {lemm?.form?.join("/")}
+    {data?.form?.join("/")}
   </Stack>
 }
 
