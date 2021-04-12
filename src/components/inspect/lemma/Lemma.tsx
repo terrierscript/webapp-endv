@@ -65,6 +65,7 @@ const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   }, fetcher, {
     initialData
   })
+  console.log(data, initialData)
 
   if (!data) {
     return <Loading>
