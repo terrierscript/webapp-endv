@@ -27,11 +27,11 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
 }
 
 const HighlightTerm: FC<any> = ({ targets, text, pre, post }) => {
-  const [isHighlight, setIsHighlight] = useState()
+  const [isHighlight, setIsHighlight] = useState(false)
   useEffect(() => {
     // @ts-ignore
     const isHighlightWord = (nlp(targets).match(text, { fuzzy: 0.7 }).length > 0)
-    setIsHighlight(isHighlight)
+    setIsHighlight(isHighlightWord)
   }, [])
   const textProps: TextProps = isHighlight ? {
     fontWeight: "bold",
