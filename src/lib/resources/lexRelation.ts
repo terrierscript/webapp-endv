@@ -1,7 +1,7 @@
 import * as dictionary from "../dictionary/dictionary"
 
 import { getSenses } from "./expand"
-import { Relation, RelationMap, Sense, SenseRelation } from "../dictionary/types"
+import { Relation, RelationMap, Sense } from "../dictionary/types"
 import { senseIdToLexId } from "./util"
 
 const groupingRelation = (relations: Relation[] = []): RelationMap => {
@@ -57,7 +57,7 @@ const expandRelType = (baseSense: Sense) => {
     return [relType, Object.fromEntries(synsetId.map(s => {
       const syns = dictionary.getSynset(s ?? "")
       const synsetLex = dictionary.getSynsetIndex(syns?.id ?? "")
-      const ll = synsetLex?.lexicalEntry.map(l => dictionary.getLexicalEntry(l)?.lemma.writtenForm)
+      const ll = synsetLex?.lexicalEntry?.map(l => dictionary.getLexicalEntry(l)?.lemma.writtenForm)
       return [s, ll]
     }))]
   }))
