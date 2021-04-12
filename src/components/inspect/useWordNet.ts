@@ -34,6 +34,19 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
     return _keys?.filter(k => typeof k === "string")
   }, [_keys])
 
+  const update = async (type: string, keys: string[]) => {
+    const lb = `${new Date().getTime()}-${type}-${keys.join(":")}`
+    // console.time(lb)
+    // console.log(`start ${lb}`)
+    const item = await fetcher(type, ...keys)
+    // console.timeLog(lb)
+    // console.log(`end ${lb}`)
+    if (typeof key === "string") {
+      setData(item?.[key])
+    } else {
+      setData(item)
+    }
+  }
   useEffect(() => {
     if (!type || !keys) {
       return
@@ -41,26 +54,15 @@ export function useWordNetQuery<T>(type: EntityType | null, key: Key): Mapping<T
     if (keys.length === 0) {
       return
     }
-    const lb = `${new Date().getTime()}-${type}-${keys.join(":")}`
-    console.time(lb)
-    fetcher(type, ...keys).then(item => {
-      console.timeLog(lb)
-      if (typeof key === "string") {
-        setData(item?.[key])
-      } else {
-        setData(item)
-      }
-    })
-    return () => {
-      console.log("end")
-    }
+
+    update(type, keys)
   }, [type, keys ? keys.join("/") : null])
   return data
 }
 
-export function useWordNet<T>(type: EntityType, key: string[] | string): Mapping<T> | undefined {
-  return useWordNetQuery(type, [key].flat())
-}
+// export function useWordNet<T>(type: EntityType, key: string[] | string): Mapping<T> | undefined {
+//   return useWordNetQuery(type, [key].flat())
+// }
 
 // type TypeKey = { type: string, keys: string[] }
 // export function useWordNetR() {
