@@ -9,6 +9,7 @@ import { DatasetProps } from "../useDefinitions"
 import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
+import useSWR from "swr"
 
 const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
   if (!synset) {
@@ -45,7 +46,6 @@ const PlainSense: FC<{ sense: NestedSenseData }> = ({ sense }) => {
   const synset = sense?.synset
   const senseRelation = sense?.relations
   const synsetRelation = sense?.synset?.relations
-
   return <BBlock key={sense?.id} >
     {synset && <PlainSynset
       synset={synset}
@@ -69,29 +69,35 @@ export const SenseSynsetList: FC<{ senses: NestedSenseData[] }> = ({ senses }) =
 }
 
 export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
-  const data = useWordNetQuery<Synset>("synset", synsetIds)
-  const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
-  // const senseRelations = useWordNetQuery<RelationRecord[]>("senseRelation", [sense?.id])
-  // const synsetRelations = useWordNetQuery<RelationRecord[]>("synsetRelation", synsetIds)
-
-  if (!data) {
-    return <Box p={4} verticalAlign="center">
-      <Spinner /><Text> Loading Synset</Text>
-    </Box>
-  }
-  return <Stack>
-    {synsetIds.map((target) => {
-      // const { relType } = relations
-      //   .find(r => r.target === target) ?? {}
-      const synset = data[target]
-      const synsetLemma = lemmas?.[target] ?? []
-      return <Box key={target} >
-        {/* <RelType relType={relType} /> */}
-        <PlainSynset
-          synset={synset} lemma={synsetLemma}
-        />
-        {/* <SynsetItem key={target} synset={synset} synsetLemma={synsetLemma/> */}
-      </Box>
-    })}
-  </Stack>
+  const data = useSWR(() => {
+    return
+  })
+  return null
 }
+// export const SynsetsLoader: FC<{ synsetIds?: string[] }> = ({ synsetIds = [] }) => {
+//   const data = useWordNetQuery<Synset>("synset", synsetIds)
+//   const lemmas = useWordNetQuery<SynsetLemma>("synsetLemma", synsetIds)
+//   // const senseRelations = useWordNetQuery<RelationRecord[]>("senseRelation", [sense?.id])
+//   // const synsetRelations = useWordNetQuery<RelationRecord[]>("synsetRelation", synsetIds)
+
+//   if (!data) {
+//     return <Box p={4} verticalAlign="center">
+//       <Spinner /><Text> Loading Synset</Text>
+//     </Box>
+//   }
+//   return <Stack>
+//     {synsetIds.map((target) => {
+//       // const { relType } = relations
+//       //   .find(r => r.target === target) ?? {}
+//       const synset = data[target]
+//       const synsetLemma = lemmas?.[target] ?? []
+//       return <Box key={target} >
+//         {/* <RelType relType={relType} /> */}
+//         <PlainSynset
+//           synset={synset} lemma={synsetLemma}
+//         />
+//         {/* <SynsetItem key={target} synset={synset} synsetLemma={synsetLemma/> */}
+//       </Box>
+//     })}
+//   </Stack>
+// }

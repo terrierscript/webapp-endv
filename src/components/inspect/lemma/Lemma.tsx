@@ -33,7 +33,7 @@ const patterns = (word: string, appendCandidates: string[]) => {
   ])].filter(x => x && x.length > 0)
 
 }
-const NotFound: FC<LemmaProps & { appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
+const NotFound: FC<{ word: string, appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
   const candidates = patterns(word, appendCandidates)
   return <Box>
     <Box>😵</Box>
@@ -55,9 +55,11 @@ const useLemma = (word: string) => {
 
   return
 }
-const fetcher = (url: string) => window.fetch(url).then(res => res.json())
+const fetcher = (url: string) => {
+  console.log("fetch", url)
+  return window.fetch(url).then(res => res.json())
+}
 const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
-
   const { data } = useSWR<NestedLemmaData>(() => {
     return word && `/api/dictionary/lemma/${word}`
   }, fetcher, {
