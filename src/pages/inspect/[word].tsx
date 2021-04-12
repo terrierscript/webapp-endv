@@ -3,7 +3,7 @@ import React, { FC } from "react"
 import { WordNetProvider } from "../../components/inspect/WordNetContext"
 import { Lemma } from "../../components/inspect/lemma/Lemma"
 import { LemmaHeader } from "../../components/inspect/lemma/LemmaHeader"
-import { resourceHandler } from "../../lib/resources/resources"
+import { resourceHandler } from "../../lib/___resources/resources"
 import { ParsedUrlQuery } from 'querystring'
 import { Search } from "../../components/inspect/Search"
 
