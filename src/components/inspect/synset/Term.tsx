@@ -53,11 +53,12 @@ const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
   </>
 }
 export const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
-  const [terms, setTerms] = useState<any[]>([])
-  useEffect(() => {
-    const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
-    setTerms(terms)
-  }, [children])
+  const [terms, setTerms] = useState<any[]>()
+  // console.log("xxx", children)
+  // useEffect(() => {
+  //   const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+  //   setTerms(terms)
+  // }, [children])
   if (!terms) {
     return <Text {...props}>{children}</Text>
   }

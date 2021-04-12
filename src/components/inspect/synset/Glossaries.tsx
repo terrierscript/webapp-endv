@@ -29,10 +29,10 @@ const Definitions: FC<DefinitionProps> = ({ definition }) => {
 
 const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
   const [terms, setTerms] = useState<any[]>()
-  useEffect(() => {
-    const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
-    setTerms(terms)
-  }, [])
+  // useEffect(() => {
+  //   const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
+  //   setTerms(terms)
+  // }, [])
   if (!terms) {
     return <>{sentence}</>
   }
