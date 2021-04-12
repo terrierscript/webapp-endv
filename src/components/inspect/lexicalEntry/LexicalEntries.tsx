@@ -1,13 +1,13 @@
 import React from "react"
 import { SenseItem } from "../sense/Sense"
-import { useWordNet } from "../useWordNet"
 import { Box, Stack } from "@chakra-ui/react"
 import { LexicalEntry } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 import { logPartOfSpeech } from "./longPart"
+import { useWordNetQuery } from "../useWordNet"
 
 export const LexicalEntries = ({ lexicalEntryId }: { lexicalEntryId: string }) => {
-  const data = useWordNet<LexicalEntry>("lexicalEntry", [lexicalEntryId])
+  const data = useWordNetQuery<LexicalEntry>("lexicalEntry", [lexicalEntryId])
   if (!data) {
     return <Loading>Loading {lexicalEntryId}</Loading>
   }

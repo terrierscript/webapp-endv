@@ -1,12 +1,12 @@
 import React from "react"
-import { useWordNet } from "../useWordNet"
+import { useWordNetQuery } from "../useWordNet"
 import { BBlock } from "../Block"
 import { SynsetsLoader } from "../synset/Synset"
 import { Sense } from "../../../lib/dictionary/types"
 import { Loading } from "../../Loading"
 
 export const SenseItem = ({ senseId }: { senseId: string }) => {
-  const data = useWordNet<Sense>("sense", [senseId])
+  const data = useWordNetQuery<Sense>("sense", [senseId])
   if (!data) {
     return <Loading>Loading sense..</Loading>
   }
