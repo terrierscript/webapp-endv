@@ -1,5 +1,5 @@
 import * as dictionary from "../dictionary/dictionary"
-import { Mapping, Relation, Sense, RelationRecord } from "../dictionary/types"
+import { Relation, Sense, RelationRecord } from "../dictionary/types"
 
 const groupingRelationMap = (relations: Relation[] = []) => {
   const map = new Map<string, Set<string>>()
@@ -31,9 +31,8 @@ const getSenseIndexRelation = (senseId: string) => {
     target: s.sense,
   })).filter(s => s.relType === "derivation")
   return rel
-
 }
-const getSenseRelation = (senseId: string): RelationRecord[] => {
+export const getSenseRelation = (senseId: string): RelationRecord[] => {
   const sense = dictionary.getSense(senseId)
   if (!sense) {
     return []
@@ -51,12 +50,6 @@ const getSenseRelation = (senseId: string): RelationRecord[] => {
   return [
     ...senseRecord
   ]
-}
-
-export const getSenseRelations = (senseIds: string[]): Mapping<RelationRecord[]> => {
-  return Object.fromEntries(senseIds.map(s => {
-    return [s, getSenseRelation(s)]
-  }))
 }
 
 export const getSynsetRelation = (synsetId: string): RelationRecord[] => {

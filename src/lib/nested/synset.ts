@@ -10,6 +10,7 @@ const getSynsetLemma = (synsetId: string): SynsetLemma => {
   // @ts-ignore
   return lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s).filter(v => !!v)
 }
+
 export const getNestedSynset = (synsetId: string) => {
   const { synsetRelation, ...synset } = dictionary.getSynset(synsetId) ?? {}
   const synsetLemma = getSynsetLemma(synsetId)
@@ -17,10 +18,8 @@ export const getNestedSynset = (synsetId: string) => {
 
   return {
     ...synset,
-    $: {
-      lemma: synsetLemma,
-      relation,
-      synsetRelation // todo
-    }
+    lemma: synsetLemma,
+    relation,
+    // synsetRelation 
   }
 }

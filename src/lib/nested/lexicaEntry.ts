@@ -16,8 +16,6 @@ export const getNestedLexicaEntry = (lexId: string) => {
   const sense = senseObj(lex?.sense)
   return {
     ...lex,
-    $: {
-      sense
-    }
+    sense // overwrite sense
   }
 }
