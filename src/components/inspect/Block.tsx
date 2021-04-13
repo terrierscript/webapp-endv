@@ -4,6 +4,7 @@ import React from "react"
 
 export const Block = (props: BoxProps) => <Box
   boxShadow="md"
+  rounded="md"
   p={2}
   {...props} />
 

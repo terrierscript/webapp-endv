@@ -21,7 +21,7 @@ export const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
 }
 
 export const SenseSynsetList: FC<{ senses: NestedSenseData[] }> = ({ senses }) => {
-  return <Stack>
+  return <Stack spacing={4}>
     {senses.map(s => {
       return s && <PlainSenseOrSynset key={s.id} item={s} />
     })}
