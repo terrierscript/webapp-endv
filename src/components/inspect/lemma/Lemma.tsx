@@ -42,15 +42,10 @@ export const NotFound: FC<{ word: string, appendCandidates?: string[] }> = ({ wo
 
 }
 
-const lexicalEntryIdToLemma = (lexId: string) => {
-  return lexId.match(/ewn-(.+)-[a-z]/)?.[1] ?? ""
-}
+// const lexicalEntryIdToLemma = (lexId: string) => {
+//   return lexId.match(/ewn-(.+)-[a-z]/)?.[1] ?? ""
+// }
 
-const useLemma = (word: string) => {
-  const { data } = useSWR(() => "aa", {})
-
-  return
-}
 const DefinitionTab: FC<LemmaProps> = ({ word, initialData }) => {
   return <CompactDefinition word={word} initialData={initialData} definitionNum={Infinity} />
 }
@@ -80,6 +75,12 @@ const LemmaTab: FC<LemmaProps> = (props) => {
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
+
+  // @ts-ignore
+  const formLemma: string[] = data?.form?.map(f => f.lemma?.writtenForm)
+  if (!data?.lexicalEntry) {
+    return <NotFound word={word} appendCandidates={formLemma} />
+  }
 
   return <Tabs
     // defaultIndex={1}
