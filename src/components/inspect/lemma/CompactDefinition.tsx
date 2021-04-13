@@ -35,10 +35,6 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
 
   return <Stack p={2}>
     <Box>
-      <Heading size="sm">Synonymus</Heading>
-      <Words words={synonymus ?? []} />
-    </Box>
-    <Box>
       <Heading size="sm">Definitions</Heading>
       <UnorderedList>
         {definitions?.concat().slice(0, definitionNum).map(def => {
@@ -48,6 +44,10 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
       <Box p={2}>
         {length > definitionNum && `and (${length - definitionNum} definitions)`}
       </Box>
+    </Box>
+    <Box>
+      <Heading size="sm">Synonymus</Heading>
+      <Words words={synonymus ?? []} />
     </Box>
   </Stack>
 }

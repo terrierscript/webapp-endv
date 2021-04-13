@@ -41,19 +41,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return props
 }
 
-// export const getStaticProps: GetStaticProps = async (ctx) => {
-//   const result = getProps(ctx.params ?? {})
-//   // console.log("gSP", result)
-//   return {
-//     ...result,
-//     revalidate: 1
-//   }
-// }
-
-// export const getStaticPaths = async () => ({
-//   paths: [],
-//   fallback: true,
-// })
-
 export default Page
 
