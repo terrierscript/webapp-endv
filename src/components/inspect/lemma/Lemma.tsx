@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { LexicalEntries } from "../lexicalEntry/LexicalEntries"
-import { Box, Stack } from "@chakra-ui/react"
+import { Box, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "./CompactDefinition"
@@ -52,7 +52,10 @@ const useLemma = (word: string) => {
 
   return
 }
-const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
+const DefinitionTab: FC<LemmaProps> = ({ word, initialData }) => {
+  return <CompactDefinition word={word} initialData={initialData} definitionNum={Infinity} />
+}
+const RelationTab: FC<LemmaProps> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
 
   if (!data) {
@@ -68,7 +71,6 @@ const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   }
 
   return <Stack>
-    <CompactDefinition word={word} initialData={initialData} definitionNum={Infinity} />
     {lexs?.map(l => {
       return <LexicalEntries key={l.id} lexicalEntry={l} />
     })}
@@ -76,6 +78,39 @@ const LemmaInner: FC<LemmaProps> = ({ word, initialData }) => {
   </Stack>
 }
 
+const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
+  const { data } = useNestedLemma(word, initialData)
+  if (!data?.form) {
+    return <Box>No forms</Box>
+  }
+  return <Stack>
+    {data?.form?.map(f => <Box>{f}</Box>)}
+  </Stack>
+}
+
+
 export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
   return <LemmaInner key={word} word={word} initialData={initialData} />
+}
+
+export const LemmaInner: FC<LemmaProps> = (props) => {
+  return <Tabs variant="soft-rounded" >
+    <TabList>
+      <Tab>Definitions</Tab>
+      <Tab>Relations</Tab>
+      <Tab>Forms</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <DefinitionTab {...props} />
+      </TabPanel>
+      <TabPanel>
+        <RelationTab {...props} />
+      </TabPanel>
+      <TabPanel>
+        <FormsTab {...props} />
+      </TabPanel>
+    </TabPanels>
+
+  </Tabs>
 }
