@@ -3,6 +3,7 @@ import React, { FC, useEffect, useState } from "react"
 import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
+import { HighlightProps } from "./Glossaries"
 
 const termType = (term: any) => {
   const { tags } = term
@@ -52,13 +53,13 @@ const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
     <Text {...props}>{term.post}</Text>
   </>
 }
-export const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
+export const SearchableText: FC<{ children: string } & TextProps & HighlightProps> = ({ children, isHighlight, ...props }) => {
   const [terms, setTerms] = useState<any[]>()
   useEffect(() => {
-    // const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
-    // setTerms(terms)
+    const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+    setTerms(terms)
   }, [children])
-  if (!terms) {
+  if (!terms || !isHighlight) {
     return <Text {...props}>{children}</Text>
   }
   return <>{terms.map((t: any, i: number) => {
