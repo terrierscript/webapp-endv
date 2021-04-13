@@ -1,9 +1,7 @@
-import { Text, Box, Wrap, TextProps, HStack } from "@chakra-ui/react"
-import React, { FC, ReactNode, useEffect, useMemo, useState } from "react"
-import nlp from "compromise"
-import { Lemma } from "../lemma/Lemma"
+import { Text, Box, Wrap } from "@chakra-ui/react"
+import React, { FC, useMemo, useState } from "react"
 import { SearchableText } from "./Term"
-import { wordForms } from "../../../lib/dictionary/wordForms"
+import { HighlightExample } from "./HighlightExample"
 
 export type HighlightProps = {
   isHighlight: boolean
@@ -27,50 +25,6 @@ const Definitions: FC<DefinitionProps> = ({ definition, isHighlight }) => {
       <SearchableText isHighlight={isHighlight} as="b">{def}</SearchableText>
     </Box>)}
   </Wrap>
-}
-
-const HighlightTerm: FC<any> = ({ targets, text, pre, post }) => {
-  const [isHighlight, setIsHighlight] = useState(false)
-  useEffect(() => {
-    // @ts-ignore
-    const isHighlightWord = (nlp(targets).match(text, { fuzzy: 0.7 }).length > 0)
-    setIsHighlight(isHighlightWord)
-  }, [])
-  const textProps: TextProps = isHighlight ? {
-    // fontWeight: "bold",
-    color: "red.700",
-    textDecoration: "underline dashed"
-  } : {}
-
-  return <Text as="span">
-    <Text as="span">{pre}</Text>
-    <Text as="span"{...textProps}>{text}</Text>
-    <Text as="span">{post}</Text>
-  </Text>
-}
-
-const Hover: FC<{ inactive: ReactNode, active: ReactNode }> = ({ inactive, active }) => {
-  const [isActive, setActive] = useState(false)
-  return <Box onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
-    {isActive ? <>{active}</> : <>{inactive}</>}
-  </Box>
-}
-
-type HighlightExampleProps = { sentence: string, words: string[] } & HighlightProps
-const HighlightExample: FC<HighlightExampleProps> = ({ sentence, words, isHighlight }) => {
-  const [terms, setTerms] = useState<any[]>()
-  const targetText = words.join(" ")
-  useEffect(() => {
-    const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
-    setTerms(terms)
-  }, [])
-  if (!terms || !isHighlight) {
-    return <>{sentence}</>
-  }
-
-  return <>{terms.map((term: any, i: number) => {
-    return <HighlightTerm key={i} {...term} targets={targetText} />
-  })}</>
 }
 
 type ExampleProps = Pick<GlossaryProps, "example" | "lemma"> & HighlightProps

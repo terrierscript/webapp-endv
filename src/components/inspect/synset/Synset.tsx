@@ -6,6 +6,7 @@ import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSenseOrSynset } from "./PlainSenseOrSynset"
 
+
 export const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
   if (!synset) {
     return null

@@ -5636,6 +5636,11 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
+shallowequal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -6383,6 +6388,13 @@ use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.5"
   resolved "https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.2.5.tgz"
   integrity sha512-gN3vgMISAgacF7sqsLPByqoePooY3n2emTH59Ur5d/M8eg4WTWu1xp8i8DHjohftIyEx0S08RiYxbffr4j8Peg==
+
+use-intersection@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/use-intersection/-/use-intersection-0.2.1.tgz#bd21a0008507ee24388a720f5e66ef84c5f231f8"
+  integrity sha512-qx5cY2P0IIgvPAOReQPPtGTNZFn4qos5jboroaZm7JJ5nWIXM0fRcEbiW1HdhTGA3+zXhfal5AuBvkbPlOng2w==
+  dependencies:
+    shallowequal "^1.1.0"
 
 use-sidecar@^1.0.1:
   version "1.0.4"

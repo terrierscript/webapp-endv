@@ -56,8 +56,11 @@ const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
 export const SearchableText: FC<{ children: string } & TextProps & HighlightProps> = ({ children, isHighlight, ...props }) => {
   const [terms, setTerms] = useState<any[]>()
   useEffect(() => {
-    const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
-    setTerms(terms)
+    setTimeout(() => {
+
+      const terms = nlp(children).terms().json().map((t: any) => t.terms).flat()
+      setTerms(terms)
+    }, 100)
   }, [children])
   if (!terms || !isHighlight) {
     return <Text {...props}>{children}</Text>

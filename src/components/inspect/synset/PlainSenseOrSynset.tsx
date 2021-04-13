@@ -1,11 +1,12 @@
 import { Box } from "@chakra-ui/react"
-import React, { FC, useMemo } from "react"
+import React, { FC, useEffect, useMemo, useRef, useState } from "react"
 import { BBlock } from "../Block"
 import { RelationAccordion } from "../relation/RelationAccordion"
 import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
 import { LazyLoadingAccordion } from "../../LazyLoadAccordion"
+import { useIntersection } from 'use-intersection'
 
 const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => {
 
@@ -18,6 +19,15 @@ const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => 
 }
 
 export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const intersecting = useIntersection(ref)
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    if (intersecting) {
+      setShow(true)
+    }
+  }, [intersecting])
+
   const [sense, synset] = useMemo(() => {
     // @ts-ignore
     const maybeSynset = item?.synset
@@ -26,13 +36,17 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, 
     }
     return [null, item]
   }, [item?.id])
+  console.log(intersecting)
 
   // const synset = sense?.synset
   const senseRelation = sense?.relations
   const synsetRelation = synset?.relations
-  return <BBlock >
-
-    {synset && <PlainSynset synset={synset} />}
-    <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
-  </BBlock>
+  return <div ref={ref}>
+    <BBlock>
+      {show ? <>
+        {synset && <PlainSynset synset={synset} />}
+        <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
+      </> : <Box h="100"></Box>}
+    </BBlock>
+  </div>
 }

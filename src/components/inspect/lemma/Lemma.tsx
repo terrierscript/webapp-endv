@@ -74,8 +74,8 @@ const LemmaTab: FC<LemmaProps> = (props) => {
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
   return <Tabs
-  // defaultIndex={1}
-  // isLazy
+    // defaultIndex={1}
+    isLazy
   // variant="soft-rounded"
 
   >
