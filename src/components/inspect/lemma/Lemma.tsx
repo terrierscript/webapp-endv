@@ -75,9 +75,8 @@ const LemmaTab: FC<LemmaProps> = (props) => {
   const formsCount = (data?.form?.length ?? 0)
   return <Tabs
     // defaultIndex={1}
-    isLazy
-  // variant="soft-rounded"
-
+    // isLazy
+    variant="soft-rounded"
   >
     <TabList>
       <Tab>Definitions</Tab>
