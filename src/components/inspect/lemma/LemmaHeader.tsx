@@ -10,11 +10,11 @@ export const LemmaHeader = ({ word }: { word: string }) => {
   //.terms.syllables()
   const s = terms.map(({ syllables }: any) => syllables.join("-")).join(" ")
   return <Box p={4} position="sticky" top="0" bg="white">
-    <HStack>
-      <Heading size="sm">
+    <HStack verticalAlign="middle">
+      <Heading >
         {word}
       </Heading>
-      <Text fontSize="xs" color="gray">
+      <Text fontSize="sm" color="gray">
         {s}
       </Text>
     </HStack>
