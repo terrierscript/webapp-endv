@@ -6,7 +6,7 @@ import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
 
 
-export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData, definitionNum?: number }> = ({ word, definitionNum = 3, initialData }) => {
+export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData }> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
   const allSynsets = useMemo(() => {
     return data?.lexicalEntry?.map(lex => lex.sense?.map(s => {
@@ -20,6 +20,20 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
       ...new Set(syns)
     ]
   }, [allSynsets])
+
+  return <Box>
+    <Heading size="sm">Synonymus</Heading>
+    <Words words={synonymus ?? []} />
+  </Box>
+
+}
+export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData, definitionNum?: number }> = ({ word, definitionNum = 3, initialData }) => {
+  const { data } = useNestedLemma(word, initialData)
+  const allSynsets = useMemo(() => {
+    return data?.lexicalEntry?.map(lex => lex.sense?.map(s => {
+      return s?.synset
+    })).flat()
+  }, [JSON.stringify(data)])
   const definitions = useMemo(() => {
     return allSynsets?.map(s => s?.definition.join(" / ")).flat()
   }, [allSynsets])
@@ -45,9 +59,6 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
         {length > definitionNum && `and (${length - definitionNum} definitions)`}
       </Box>
     </Box>
-    <Box>
-      <Heading size="sm">Synonymus</Heading>
-      <Words words={synonymus ?? []} />
-    </Box>
+    <CompactSynonymus {...{ word, initialData }} />
   </Stack>
 }
