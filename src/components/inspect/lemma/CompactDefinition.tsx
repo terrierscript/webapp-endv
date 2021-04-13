@@ -62,3 +62,4 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
     <CompactSynonymus {...{ word, initialData }} />
   </Stack>
 }
+

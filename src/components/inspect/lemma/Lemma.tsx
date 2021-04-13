@@ -93,12 +93,12 @@ export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
   return <LemmaInner key={word} word={word} initialData={initialData} />
 }
 
-export const LemmaInner: FC<LemmaProps> = (props) => {
+const LemmaInner: FC<LemmaProps> = (props) => {
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
   return <Tabs
-    variant="soft-rounded"
+  // variant="soft-rounded"
 
   >
     <TabList>
