@@ -18,15 +18,15 @@ const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => 
   </LazyLoadingAccordion>
 }
 
-export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
+const Intersecting: FC<{}> = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null)
-  const intersecting = useIntersection(ref)
-  const [show, setShow] = useState(false)
-  useEffect(() => {
-    if (intersecting) {
-      setShow(true)
-    }
-  }, [intersecting])
+  const intersecting = useIntersection(ref, {
+    rootMargin: '250px',
+    once: true,
+  })
+  return <div ref={ref}>{intersecting ? children : <Box h="250" />}</div>
+}
+export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
 
   const [sense, synset] = useMemo(() => {
     // @ts-ignore
@@ -36,17 +36,14 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, 
     }
     return [null, item]
   }, [item?.id])
-  console.log(intersecting)
 
   // const synset = sense?.synset
   const senseRelation = sense?.relations
   const synsetRelation = synset?.relations
-  return <div ref={ref}>
-    <BBlock>
-      {show ? <>
-        {synset && <PlainSynset synset={synset} />}
-        <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
-      </> : <Box h="100"></Box>}
-    </BBlock>
-  </div>
+  return <BBlock>
+    <Intersecting>
+      {synset && <PlainSynset synset={synset} />}
+      <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
+    </Intersecting>
+  </BBlock>
 }

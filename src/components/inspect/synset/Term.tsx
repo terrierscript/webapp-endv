@@ -62,7 +62,7 @@ export const SearchableText: FC<{ children: string } & TextProps & HighlightProp
       setTerms(terms)
     }, 100)
   }, [children])
-  if (!terms || !isHighlight) {
+  if (!terms) {
     return <Text {...props}>{children}</Text>
   }
   return <>{terms.map((t: any, i: number) => {

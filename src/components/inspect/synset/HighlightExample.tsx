@@ -33,7 +33,7 @@ export const HighlightExample: FC<HighlightExampleProps> = ({ sentence, words, i
       setTerms(terms)
     }, 1000)
   }, [])
-  if (!terms || !isHighlight) {
+  if (!terms) {
     return <>{sentence}</>
   }
 
