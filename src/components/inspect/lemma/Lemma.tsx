@@ -66,16 +66,16 @@ const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
 
 
 export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
-  return <LemmaInner key={word} {...{ word, initialData }} />
+  return <LemmaTab key={word} {...{ word, initialData }} />
 }
 
-const LemmaInner: FC<LemmaProps> = (props) => {
+const LemmaTab: FC<LemmaProps> = (props) => {
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
   return <Tabs
-    // defaultIndex={1}
-    isLazy
+  // defaultIndex={1}
+  // isLazy
   // variant="soft-rounded"
 
   >

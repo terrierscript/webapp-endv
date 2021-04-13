@@ -1,5 +1,5 @@
 import { Text, Box, Wrap, TextProps, HStack } from "@chakra-ui/react"
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, useEffect, useMemo, useState } from "react"
 import nlp from "compromise"
 import { Lemma } from "../lemma/Lemma"
 import { SearchableText } from "./Term"
@@ -48,10 +48,10 @@ const HighlightTerm: FC<any> = ({ targets, text, pre, post }) => {
 const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence, words }) => {
   const [terms, setTerms] = useState<any[]>()
   const targetText = words.join(" ")
-  useEffect(() => {
-    const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
-    setTerms(terms)
-  }, [])
+  // useEffect(() => {
+  //   const terms = nlp(sentence).terms().json().map((t: any) => t.terms).flat()
+  //   setTerms(terms)
+  // }, [])
   if (!terms) {
     return <>{sentence}</>
   }
@@ -73,19 +73,20 @@ const HighlightExample: FC<{ sentence: string, words: string[] }> = ({ sentence,
 }
 
 const Examples: FC<Pick<GlossaryProps, "example" | "lemma">> = ({ lemma, example }) => {
-  const examples = example?.map(l => typeof l === "string" ? l : l["#text"])
-  return <Wrap lineHeight="1">{examples.map((ex, i) => [
-    i > 0 && <Text key={`sep-${i}`} as="small">/</Text>,
-    <Text as="small" key={ex}>
-      <HighlightExample
-        sentence={ex} words={lemma}
-      />
-    </Text>])}</Wrap>
+  const examples = useMemo(() => example?.map(l => typeof l === "string" ? l : l["#text"]), [example])
+  return <Wrap lineHeight="1">{
+    examples.map((ex, i) => [
+      i > 0 && <Text key={`sep-${i}`} as="small">/</Text>,
+      <Text as="small" key={ex}>
+        <HighlightExample
+          sentence={ex} words={lemma}
+        />
+      </Text>])}</Wrap>
 }
 
 export const Glossaries = ({ lemma, definition, example }: GlossaryProps) => {
   return <Box p={2}>
-    {definition && <Definitions definition={definition} />}
+    {/* {definition && <Definitions definition={definition} />} */}
     {example && <Examples lemma={lemma} example={example} />}
   </Box>
 }
