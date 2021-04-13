@@ -98,6 +98,8 @@ const LemmaInner: FC<LemmaProps> = (props) => {
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
   return <Tabs
+    defaultIndex={1}
+    isLazy
   // variant="soft-rounded"
 
   >
@@ -106,13 +108,13 @@ const LemmaInner: FC<LemmaProps> = (props) => {
       <Tab>Relations</Tab>
       <Tab>Forms ({formsCount})</Tab>
     </TabList>
-    <TabPanels>
+    <TabPanels >
       <TabPanel>
         <DefinitionTab {...props} />
       </TabPanel>
-      <TabPanel>
+      {/* <TabPanel >
         <RelationTab {...props} />
-      </TabPanel>
+      </TabPanel> */}
       <TabPanel >
         <FormsTab {...props} />
       </TabPanel>
