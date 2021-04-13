@@ -5,7 +5,7 @@ import { Loading } from "../../../Loading"
 import { useNestedLemma } from "../useNestedLemma"
 import { LemmaProps, NotFound } from "../Lemma"
 
-const RelationTab: FC<LemmaProps> = ({ word, initialData }) => {
+export const RelationTab: FC<LemmaProps> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
 
   if (!data) {

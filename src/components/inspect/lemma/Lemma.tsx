@@ -6,6 +6,7 @@ import { CompactDefinition } from "./CompactDefinition"
 import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
+import { RelationTab } from "./tabs/RelationTab"
 
 export type LemmaProps = {
   word: string
