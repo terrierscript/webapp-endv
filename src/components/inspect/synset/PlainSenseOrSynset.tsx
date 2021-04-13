@@ -27,10 +27,10 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, 
     {synset && <PlainSynset synset={synset} />}
     {/* <ItemAccordion title="more"> */}
 
-    <Box p={2}>
+    {/* <Box p={2}>
       {synset && synsetRelation && <RelationAccordion sourceId={synset.id} relations={synsetRelation} />}
       {sense && senseRelation && <RelationAccordion sourceId={sense.id} relations={senseRelation} />}
-    </Box>
+    </Box> */}
 
     {/* </ItemAccordion> */}
   </BBlock>
