@@ -87,9 +87,9 @@ const LemmaInner: FC<LemmaProps> = (props) => {
       <TabPanel>
         <DefinitionTab {...props} />
       </TabPanel>
-      {/* <TabPanel >
+      <TabPanel >
         <RelationTab {...props} />
-      </TabPanel> */}
+      </TabPanel>
       <TabPanel >
         <FormsTab {...props} />
       </TabPanel>
