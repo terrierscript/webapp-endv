@@ -62,6 +62,10 @@ const digSynset = (rel: NestedLemmaData) => {
   return pc
 }
 
+const intersect = (targetArr: string[], filterSet: Set<string>) => {
+  return targetArr.filter(item => !filterSet.has(item))
+}
+
 const levelIntersect = (targets: string[][]) => {
   const dups = new Set()
   const results: string[][] = []
@@ -87,7 +91,8 @@ const addSet = (set: Set<string>, append: string[]) => {
   append.map(a => set.add(a))
   return set
 }
-const relatedWords = (words: string[]) => {
+
+const kinderWords = (words: string[]) => {
   const m: { [k in string]: Set<string> } = {
     word: new Set(),
     synonym: new Set(),
@@ -107,10 +112,6 @@ const relatedWords = (words: string[]) => {
   }))
 }
 
-const digCousinWords = (words: string[]) => {
-  const c = relatedWords(words)
-  return c.children
-}
 
 function random(arr: string[]) {
   return arr[Math.floor(Math.random() * arr.length)]
@@ -126,15 +127,32 @@ const relatedWord = (word: string) => {
   ]
   return levelIntersect(levels)
 }
-const handler: NextApiHandler = async (req, res) => {
-  const { word } = req.query
+const generateQuiz = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
-
-  res.json({
+  return {
     word: w,
     answer: random(l1),
     diff: random(l2)
-  })
+  }
+}
+
+const shuffle = (arr: string[]) => arr.sort(() => Math.random() - .5)
+
+const generateQuizzes = (seedWord: string) => {
+  const { parents } = getRelatedWords(seedWord)
+  const kinder = kinderWords(parents)
+
+  const cousinWords = shuffle([...new Set([...kinder.children])])
+  const words = cousinWords.slice(0, 10)
+
+  return words.map(w => generateQuiz(w))
+}
+
+const handler: NextApiHandler = async (req, res) => {
+  const { word } = req.query
+  const quiz = generateQuizzes(word.toString())
+
+  res.json(quiz)
 }
 
 export default handler
