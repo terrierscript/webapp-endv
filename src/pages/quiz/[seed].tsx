@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { fetcher } from "../../components/inspect/lemma/fetcher"
-import { InspectWordLink } from "../../components/Link"
+import { InspectWordLink, QuizLink } from "../../components/Link"
 import { Loading } from "../../components/Loading"
 import { generateQuizzes, QuizSet } from "../../lib/quiz/quiz"
 import { WordPopover } from "../../components/WordPopover"
@@ -82,18 +82,28 @@ export default function QuizPage({ word }: { word: string }) {
   useEffect(() => {
     setCurrentQuizSet(data)
   }, [data])
+  const nextWord = useMemo(() => {
+    return currentQuizSet?.[0].word
+  }, [currentQuizSet])
   const executeNextRound = () => {
     setCurrentQuizSet(null)
     if (currentQuizSet?.[0].word) {
       setCurentWord(currentQuizSet?.[0].word)
     }
   }
+
   return (
     <Stack>
       <Heading>Quiz</Heading>
       {currentQuizSet ? <QuizRound quizSets={currentQuizSet} /> : <Loading>Generate QuizSet</Loading>}
-      <Button onClick={executeNextRound}>Next Round
-      </Button>
+      {nextWord && <QuizLink word={nextWord}>
+        <Button w="100%" colorScheme="teal">Next Round</Button>
+      </QuizLink>}
+
+      {/* <Button onClick={executeNextRound}>
+
+        Next Round
+      </Button> */}
     </Stack>
   )
 }
