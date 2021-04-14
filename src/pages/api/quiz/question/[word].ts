@@ -143,7 +143,7 @@ const generateQuizzes = (seedWord: string) => {
   const kinder = kinderWords(parents)
 
   const cousinWords = shuffle([...new Set([...kinder.children])])
-  const words = cousinWords.slice(0, 10)
+  const words = cousinWords.slice(0, 20)
 
   return words.map(w => generateQuiz(w))
 }
