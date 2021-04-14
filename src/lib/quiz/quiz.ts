@@ -128,7 +128,7 @@ const generateQuiz = (word: string): QuizSet | null => {
   const n = nlp(word)
   const collects = l1.filter(l => {
     // @ts-ignore
-    const fuzzyMatch: number = n.match(l, { fuzzy: 0.7 }).length
+    const fuzzyMatch: number = n.match(l, { fuzzy: 0.5 }).length
     return fuzzyMatch == 0
   })
   const incollects = intersect(l2, new Set([...l1, ...w]))

@@ -4,6 +4,7 @@ import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
 import { HighlightProps } from "./Glossaries"
+import { WordPopover } from "../../WordPopover"
 
 const termType = (term: any) => {
   const { tags } = term
@@ -23,26 +24,11 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
   if (termType(term) === "Other") {
     return <>{children}</>
   }
-  return <Popover isLazy>
-    <PopoverTrigger>
-      <Text as="span" color="green.700" _hover={{ textDecoration: "underline" }} cursor="pointer">
-        {children}
-      </Text>
-    </PopoverTrigger>
-    <Portal>
-      <PopoverContent>
-        <PopoverArrow />
-        <PopoverCloseButton />
-        <PopoverHeader>
-          <InspectWordLink word={term.text} />
-        </PopoverHeader>
-        <PopoverBody>
-          <CompactDefinition word={term.text} />
-          {/* <Lemma word={term.text} /> */}
-        </PopoverBody>
-      </PopoverContent>
-    </Portal>
-  </Popover>
+  return <WordPopover word={term.text}>
+    <Text as="span" color="green.700" _hover={{ textDecoration: "underline" }} cursor="pointer">
+      {children}
+    </Text>
+  </WordPopover>
 }
 const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
   return <>
