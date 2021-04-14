@@ -71,9 +71,10 @@ export default function QuizPage({ word }: { word: string }) {
   const [currentQuizSet, setCurrentQuizSet] = useState<QuizSet[] | null>(null)
   const [currentWord, setCurentWord] = useState<string>(word)
 
+
   const { data } = useSWR(() => `/api/quiz/question/${currentWord}`, fetcher, {
     refreshWhenHidden: false,
-    refreshInterval: false,
+    refreshInterval: 0,
     refreshWhenOffline: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false
