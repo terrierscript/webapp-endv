@@ -1,16 +1,12 @@
+import { isTruthy } from "typesafe-utils"
 import * as dictionary from "../dictionary/dictionary"
 import { getNestedSense, NestedSenseData } from "./sense"
-
-// const filter = <T>(items: (T | null | undefined)[]): T[] => {
-//   return items.filter((item): item is T => {
-//     return item !== null && item !== undefined
-//   })
-// }
 
 const senseObj = (senseIds?: string[]): NestedSenseData[] => {
   if (!senseIds) {
     return []
   }
+
   return senseIds?.map(lexId => {
     return getNestedSense(lexId)
   }).filter(isTruthy)
@@ -33,6 +29,3 @@ export type NestedLexicaEntryData = ReturnType<typeof getNestedLexicaEntry> & {
   sense?: undefined
 }
 
-function isTruthy(isTruthy: any) {
-  throw new Error("Function not implemented.")
-}

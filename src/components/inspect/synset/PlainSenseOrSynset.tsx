@@ -24,7 +24,7 @@ const isSenseData = (item: NestedSynsetData | NestedSenseData): item is NestedSe
 
 export const PlainSenseOrSynset: FC<{ item: NestedSynsetData | NestedSenseData, more?: boolean }> = ({ item, more = true }) => {
 
-  const [sense, synset]: [NestedSenseData, NestedSynsetData | null] = useMemo(() => {
+  const [sense, synset]: [NestedSenseData, NestedSynsetData] = useMemo(() => {
     if (item === null) {
       return [null, null]
     }

@@ -3,8 +3,9 @@ import { RelationRecord } from "../../../../lib/dictionary/types"
 import { getNestedLemma, NestedLemmaData } from "../../../../lib/nested/lemma"
 import { getNestedSynset } from "../../../../lib/nested/synset"
 import { isTruthy } from 'typesafe-utils'
-
+console.log(isTruthy, isTruthy.toString())
 const getWordSynonyms = (word: string, rel: NestedLemmaData) => {
+  console.log("isTruthy", isTruthy)
   const _currentLemmas: string[] = rel.lexicalEntry?.map(l => l.senses.map(se => {
     return se?.synset?.lemmas
   })).flat(2).filter(isTruthy) ?? []
@@ -55,15 +56,14 @@ const dig = (rel: NestedLemmaData) => {
 const relatedWord = (word: string) => {
   const lemma = getNestedLemma(word)
   const currentLemmas = getWordSynonyms(word, lemma)
-  const rels = dig(lemma)
+  const lv1 = dig(lemma)
   // rel.senses.map(s => {
   //   s.
   // })
   // console.log(word)
   return {
-    currentLemmas,
-    rels,
-    lemma,
+    lv0: currentLemmas,
+    lv1,
   }
 }
 const handler: NextApiHandler = async (req, res) => {
