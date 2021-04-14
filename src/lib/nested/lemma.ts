@@ -34,6 +34,6 @@ export const getNestedLemma = (word: string) => {
   return expandLemma(lemma)
 }
 
-type NestedLemmaDataRT = ReturnType<typeof getNestedLemma>
-export type NestedLemmaData = NestedLemmaDataRT
+export type NestedLemmaData = ReturnType<typeof getNestedLemma>
+
 // export interface NestedLemmaData extends NestedLemmaDataRT {}

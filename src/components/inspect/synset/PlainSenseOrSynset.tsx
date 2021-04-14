@@ -18,13 +18,20 @@ const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => 
   // </LazyLoadingAccordion>
 }
 
-export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
+const isSenseData = (item: NestedSynsetData | NestedSenseData): item is NestedSenseData => {
+  return item !== null && "synset" in item
+}
 
-  const [sense, synset] = useMemo(() => {
-    // @ts-ignore
-    const maybeSynset = item?.synset
-    if (maybeSynset) {
-      return [item, maybeSynset]
+export const PlainSenseOrSynset: FC<{ item: NestedSynsetData | NestedSenseData, more?: boolean }> = ({ item, more = true }) => {
+
+  const [sense, synset]: [NestedSenseData, NestedSynsetData | null] = useMemo(() => {
+    if (item === null) {
+      return [null, null]
+    }
+    if (isSenseData(item)) {
+      // if ("synset" in item) {
+      const maybeSynset = item?.synset
+      return [item, maybeSynset ?? null]
     }
     return [null, item]
   }, [item?.id])
@@ -34,7 +41,7 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, 
   const synsetRelation = synset?.relations
   return <BBlock>
     <LazyElement>
-      {synset && <PlainSynset synset={synset} />}
+      {synset ? <PlainSynset synset={synset} /> : null}
       <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
     </LazyElement>
   </BBlock>
