@@ -3,6 +3,7 @@ import { getNestedLemma, NestedLemmaData } from "../nested/lemma"
 import { getNestedSynset } from "../nested/synset"
 import { isTruthy } from 'typesafe-utils'
 import nlp from "compromise"
+import { shuffle } from "./shuffle"
 
 const isQuizWord = (f: string) => {
   if (!f) return false
@@ -139,8 +140,6 @@ const generateQuiz = (word: string): QuizSet | null => {
     incollect: random(incollects)
   }
 }
-
-const shuffle = (arr: string[]) => arr.sort(() => Math.random() - .5)
 
 export const generateQuizzes = (seedWord: string) => {
   const { parents } = getRelatedWords(seedWord)
