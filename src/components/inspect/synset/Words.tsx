@@ -1,6 +1,6 @@
 import { Box, Wrap } from "@chakra-ui/react"
 import React, { FC } from "react"
-import { InspectWordLink } from "../Link"
+import { InspectWordLink } from "../../Link"
 
 
 export const Words: FC<{ words: string[] }> = ({ words }) => {

@@ -1,6 +1,6 @@
 import { Text, TextProps, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, PopoverHeader, Portal } from "@chakra-ui/react"
 import React, { FC, useEffect, useState } from "react"
-import { InspectWordLink } from "../Link"
+import { InspectWordLink } from "../../Link"
 import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
 import { HighlightProps } from "./Glossaries"

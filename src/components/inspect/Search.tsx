@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Button, HStack, Input } from "@chakra-ui/react"
-import { InspectWordLink } from "./Link"
+import { InspectWordLink } from "../Link"
 import { useRouter } from 'next/router'
 
 export const Search = () => {

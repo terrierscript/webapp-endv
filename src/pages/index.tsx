@@ -4,7 +4,7 @@ import dictionary from "@terrierscript/wordnet-dictionary"
 import { Box, Heading, HStack, Stack, Wrap } from '@chakra-ui/react'
 import NextLink from "next/link"
 import nlp from "compromise"
-import { InspectWordLink } from '../components/inspect/Link'
+import { InspectWordLink } from '../components/Link'
 
 const getRandomWord = () => {
   // @ts-ignore

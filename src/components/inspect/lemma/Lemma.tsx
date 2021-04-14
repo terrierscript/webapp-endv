@@ -1,5 +1,5 @@
 import React, { FC, useRef } from "react"
-import { Box, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
+import { Box, Button, HStack, Link, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Wrap } from "@chakra-ui/react"
 import { CompactDefinition } from "./CompactDefinition"
 import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
@@ -7,6 +7,7 @@ import { useNestedLemma } from "./useNestedLemma"
 import { RelationTab } from "./tabs/RelationTab"
 import { NotFound } from "./NotFound"
 import { isTruthy } from 'typesafe-utils'
+import { QuizLink } from "../../Link"
 
 export type LemmaProps = {
   word: string
@@ -32,7 +33,31 @@ const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
 
 
 export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
-  return <LemmaTab key={word} {...{ word, initialData }} />
+  return <Stack>
+    <LemmaTab key={word} {...{ word, initialData }} />
+    <Wrap>
+
+      <Box>
+        <QuizLink word={word}>
+          <Button colorScheme="teal">Start Quiz</Button>
+        </QuizLink>
+      </Box>
+      <Box>
+        <Link href={`https://en-word.net/lemma/${word}`} >
+          <Button>
+            en-word.net
+          </Button>
+        </Link>
+      </Box>
+      <Box>
+        <Link href={`https://www.dictionary.com/browse/${word}`} >
+          <Button>
+            dictionary.com
+          </Button>
+        </Link>
+      </Box>
+    </Wrap>
+  </Stack>
 }
 
 

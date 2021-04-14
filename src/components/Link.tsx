@@ -13,3 +13,11 @@ export const InspectWordLink: FC<{ word: string } & LinkProps> = ({ word, color 
     }
   </NextLink>
 }
+
+export const QuizLink: FC<{ word: string } & LinkProps> = ({ word, children, ...linkProps }) => {
+  return <NextLink key={word} href={`/quiz/${word}`} passHref >
+    <Link  {...linkProps}>
+      {children}
+    </Link>
+  </NextLink>
+}

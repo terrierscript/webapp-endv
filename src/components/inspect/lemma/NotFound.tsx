@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react"
 import { Box, Heading, HStack, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
-import { InspectWordLink } from "../Link"
+import { InspectWordLink } from "../../Link"
 
 const patterns = (word: string) => {
   const comp = nlp(word)
