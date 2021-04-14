@@ -2,12 +2,11 @@ import { Skeleton, Box, Stack, SkeletonText } from "@chakra-ui/react"
 import React, { FC, useRef } from "react"
 import { useIntersection } from "use-intersection"
 
-const LoadingSkelton = () => {
-  return <Stack>
-    <SkeletonText />
-    <SkeletonText />
-  </Stack>
-}
+const LoadingSkelton = () => <Stack>
+  <Skeleton height="20px" />
+  <Skeleton height="20px" />
+  <Skeleton height="20px" />
+</Stack>
 
 export const LazyElement: FC<{}> = ({ children, }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -15,14 +14,12 @@ export const LazyElement: FC<{}> = ({ children, }) => {
     rootMargin: '250px',
     once: true,
   })
-  // const intersecting = false
 
-  // return 
   return <div ref={ref}>
-    {/* <Skeleton isLoaded={intersecting}>
-    {children}
-  </Skeleton>
- */}
-    {intersecting ? children : <LoadingSkelton />}
+    <Skeleton isLoaded={intersecting}>
+      {children}
+    </Skeleton>
+
+    {/* {intersecting ? children : <LoadingSkelton />} */}
   </div>
 }

@@ -10,12 +10,12 @@ import { LazyElement } from "../LazyElement"
 
 const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => {
 
-  return <LazyLoadingAccordion title="more">
-    <Box p={2}>
-      {synset && synsetRelation && <RelationAccordion sourceId={synset.id} relations={synsetRelation} />}
-      {sense && senseRelation && <RelationAccordion sourceId={sense.id} relations={senseRelation} />}
-    </Box>
-  </LazyLoadingAccordion>
+  // return <LazyLoadingAccordion title="more">
+  return <Box p={2}>
+    {synset && synsetRelation && <RelationAccordion sourceId={synset.id} relations={synsetRelation} />}
+    {sense && senseRelation && <RelationAccordion sourceId={sense.id} relations={senseRelation} />}
+  </Box>
+  // </LazyLoadingAccordion>
 }
 
 export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
