@@ -144,6 +144,7 @@ export const getQuizCandidate = (word: string) => {
   return {
     collects,
     incollects,
+    debug: { l1, l2 }
   }
 }
 const generateQuiz = (word: string): QuizSet | null => {
