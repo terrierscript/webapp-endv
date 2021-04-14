@@ -28,7 +28,7 @@ export const getServerSideProps = () => {
 export default function Home({ randoms }) {
   return (
     <Stack>
-      <Heading>Random pickup</Heading>
+      <Heading>404 Not found</Heading>
       <Wrap>
         {randoms.map((r: string) => {
           return <Box key={r}>
