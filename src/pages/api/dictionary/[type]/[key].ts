@@ -5,7 +5,6 @@ import { getNestedLexicaEntry } from "../../../../lib/nested/lexicaEntry"
 import { getNestedLemma } from "../../../../lib/nested/lemma"
 import { getNestedSense } from "../../../../lib/nested/sense"
 import { getNestedSynset } from "../../../../lib/nested/synset"
-import { getSynsetRelationExpand } from "../../../../lib/nested/expandRelation"
 
 const getNestedResource = (type: string, key: string) => {
   switch (type) {
