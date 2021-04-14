@@ -31,32 +31,42 @@ const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
   </Stack>
 }
 
+const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
+  <Box>
+    <Link href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(`${word}`)}`} target="_blank">
+      <Button>
+        Google Image
+          </Button>
+    </Link>
+  </Box>
+  <Box>
+    <Link href={`https://en-word.net/lemma/${word}`} target="_blank">
+      <Button>
+        en-word.net
+      </Button>
+    </Link>
+  </Box>
+  <Box>
+    <Link href={`https://www.dictionary.com/browse/${word}`} target="_blank">
+      <Button>
+        dictionary.com
+      </Button>
+    </Link>
+  </Box>
+</Wrap>
 
 export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
   return <Stack>
     <LemmaTab key={word} {...{ word, initialData }} />
-    <Wrap>
-
+    <Stack>
       <Box>
         <QuizLink word={word}>
           <Button colorScheme="teal">Start Quiz</Button>
         </QuizLink>
       </Box>
-      <Box>
-        <Link href={`https://en-word.net/lemma/${word}`} >
-          <Button>
-            en-word.net
-          </Button>
-        </Link>
-      </Box>
-      <Box>
-        <Link href={`https://www.dictionary.com/browse/${word}`} >
-          <Button>
-            dictionary.com
-          </Button>
-        </Link>
-      </Box>
-    </Wrap>
+    </Stack>
+    <Externals word={word} />
+
   </Stack>
 }
 
