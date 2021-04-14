@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from "react"
-import { Box, Stack } from "@chakra-ui/react"
+import { Box, Heading, HStack, Stack } from "@chakra-ui/react"
 import nlp from "compromise"
 import { InspectWordLink } from "../Link"
 
@@ -23,15 +23,16 @@ export const NotFound: FC<{ word: string; appendCandidates?: string[] }> = ({ wo
       ...appendCandidates,
       ...patterns(word),
       ...splitsCandidate.flat()
-    ])].filter(x => x && x.length > 0)
+    ])]
+      .filter(x => x && x.length > 0 && x !== word)
   }, [word])
-  console.log(candidates)
   return <Box>
-    <Box>😵</Box>
-    <Stack>
+    <Box>Not Found... 😵</Box>
+    <Heading size="sm">Did you mean...</Heading>
+    <HStack>
       {candidates.map(pp => {
         return <InspectWordLink key={pp} word={pp} />
       })}
-    </Stack>
+    </HStack>
   </Box>
 }
