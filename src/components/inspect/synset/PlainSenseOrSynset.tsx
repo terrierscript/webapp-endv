@@ -6,7 +6,7 @@ import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
 import { LazyLoadingAccordion } from "../../LazyLoadAccordion"
-import { useIntersection } from 'use-intersection'
+import { LazyElement } from "../Intersecting"
 
 const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => {
 
@@ -18,14 +18,6 @@ const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => 
   </LazyLoadingAccordion>
 }
 
-const Intersecting: FC<{}> = ({ children }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const intersecting = useIntersection(ref, {
-    rootMargin: '250px',
-    once: true,
-  })
-  return <div ref={ref}>{intersecting ? children : <Box h="250" />}</div>
-}
 export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, more?: boolean }> = ({ item, more = true }) => {
 
   const [sense, synset] = useMemo(() => {
@@ -41,9 +33,9 @@ export const PlainSenseOrSynset: FC<{ item: NestedSenseData | NestedSynsetData, 
   const senseRelation = sense?.relations
   const synsetRelation = synset?.relations
   return <BBlock>
-    <Intersecting>
+    <LazyElement>
       {synset && <PlainSynset synset={synset} />}
       <Relation {...{ synset, synsetRelation, sense, senseRelation }} />
-    </Intersecting>
+    </LazyElement>
   </BBlock>
 }
