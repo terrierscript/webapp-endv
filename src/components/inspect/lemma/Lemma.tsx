@@ -78,7 +78,7 @@ const LemmaTab: FC<LemmaProps> = (props) => {
 
   // @ts-ignore
   const formLemma: string[] = data?.form?.map(f => f.lemma?.writtenForm)
-  if (!data?.lexicalEntry) {
+  if (data && !data?.lexicalEntry) {
     return <NotFound word={word} appendCandidates={formLemma} />
   }
 

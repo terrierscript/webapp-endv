@@ -7,8 +7,9 @@ import { Search } from "../../components/inspect/Search"
 import { getNestedLemma, NestedLemmaData } from "../../lib/nested/lemma"
 
 export const Page: FC<{ word: string, initialWordLemmaData: NestedLemmaData }> = ({ word, initialWordLemmaData, ...rest }) => {
-  // console.log("init", initialWordLemmaData)
-  // console.log("init", rest)
+  console.log("init", word)
+  console.log("init", initialWordLemmaData)
+  console.log("init", rest)
   return <>
     <Search />
     <LemmaHeader word={word} />
@@ -43,10 +44,10 @@ function getProps(query: ParsedUrlQuery): Result {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const result = getProps(ctx.params ?? {})
-  // console.log("gSP", result)
+  
   return {
     ...result,
-    revalidate: 1
+    // revalidate: 1
   }
 }
 
