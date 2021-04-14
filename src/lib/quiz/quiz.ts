@@ -69,6 +69,7 @@ const levelIntersect = (targets: string[][]) => {
   })
   return results
 }
+
 const getRelatedWords = (word: string) => {
   const lemma = getNestedLemma(word)
   const synonym = getWordSynonyms(word, lemma)
@@ -120,16 +121,23 @@ export type QuizSet = {
   collect: string,
   incollect: string,
 }
-const generateQuiz = (word: string): QuizSet | null => {
-  const [w, l1, l2] = relatedWord(word.toString())
+
+const filterFuzzyUnmatch = (word: string, target: string[]) => {
   const n = nlp(word)
-  const collects = l1.filter(l => {
-    const fuzzyMatch = l.split(" ").every(ll =>
+  const collects = target.filter(l => {
+    const fuzzyMatch = l.split(" ").every(ll => {
+      const match = n.match(ll, { fuzzy: 0.3 })
       // @ts-ignore
-      n.match(ll, { fuzzy: 0.5 }).length > 0
-    )
+      return match.length > 0
+    })
     return !fuzzyMatch
   })
+  return collects
+}
+const generateQuiz = (word: string): QuizSet | null => {
+  console.log("xxx", filterFuzzyUnmatch("mixture", ["mixed bag"]))
+  const [w, l1, l2] = relatedWord(word.toString())
+  const collects = filterFuzzyUnmatch(word, l1)
   const incollects = intersect(l2, new Set([...l1, ...w]))
   if (collects.length === 0 || incollects.length === 0) {
     return null
