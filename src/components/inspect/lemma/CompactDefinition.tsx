@@ -10,7 +10,7 @@ export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData 
   const { data } = useNestedLemma(word, initialData)
   const allSynsets = useMemo(() => {
     return data?.lexicalEntry?.map(lex => lex?.senses?.map(s => {
-      return s?.synsets
+      return s?.synset
     })).flat()
   }, [JSON.stringify(data)])
   // @ts-ignore
@@ -31,7 +31,7 @@ export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData
   const { data } = useNestedLemma(word, initialData)
   const allSynsets = useMemo(() => {
     return data?.lexicalEntry?.map(lex => lex.senses?.map(s => {
-      return s?.synsets
+      return s?.synset
     })).flat()
   }, [JSON.stringify(data)])
   const definitions = useMemo(() => {
