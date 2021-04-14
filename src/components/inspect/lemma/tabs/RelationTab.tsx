@@ -3,7 +3,8 @@ import { LexicalEntries } from "../../lexicalEntry/LexicalEntries"
 import { Stack } from "@chakra-ui/react"
 import { Loading } from "../../../Loading"
 import { useNestedLemma } from "../useNestedLemma"
-import { LemmaProps, NotFound } from "../Lemma"
+import { LemmaProps } from "../Lemma"
+import { NotFound } from "../NotFound"
 
 export const RelationTab: FC<LemmaProps> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)

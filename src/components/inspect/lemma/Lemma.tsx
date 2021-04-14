@@ -1,45 +1,15 @@
 import React, { FC, useRef } from "react"
 import { Box, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
-import nlp from "compromise"
-import { InspectWordLink } from "../Link"
 import { CompactDefinition } from "./CompactDefinition"
 import useSWR from "swr"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
 import { RelationTab } from "./tabs/RelationTab"
+import { NotFound } from "./NotFound"
 
 export type LemmaProps = {
   word: string
   initialData: NestedLemmaData
-}
-
-const patterns = (word: string, appendCandidates: string[]) => {
-  const comp = nlp(word)
-  const { conjugations } = comp.verbs().json()?.[0] ?? {}
-  const verbForm: string[] = Object.values(conjugations ?? {})
-  const noun = comp.nouns()
-  const primary = [
-    ...appendCandidates,
-    ...noun.toSingular().out("array"),
-    conjugations?.Infinitive
-  ]
-  return [...new Set([
-    ...primary,
-    ...verbForm,
-  ])].filter(x => x && x.length > 0)
-
-}
-export const NotFound: FC<{ word: string, appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
-  const candidates = patterns(word, appendCandidates)
-  return <Box>
-    <Box>😵</Box>
-    <Stack>
-      {candidates.map(pp => {
-        return <InspectWordLink key={pp} word={pp} />
-      })}
-    </Stack>
-  </Box>
-
 }
 
 // const lexicalEntryIdToLemma = (lexId: string) => {
