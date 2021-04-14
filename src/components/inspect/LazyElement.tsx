@@ -9,7 +9,7 @@ const LoadingSkelton = () => {
   </Stack>
 }
 
-export const LazyElement: FC<{}> = ({ children }) => {
+export const LazyElement: FC<{}> = ({ children, }) => {
   const ref = useRef<HTMLDivElement>(null)
   const intersecting = useIntersection(ref, {
     rootMargin: '250px',

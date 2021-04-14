@@ -6,7 +6,7 @@ import { NestedSenseData } from "../../../lib/nested/sense"
 import { NestedSynsetData } from "../../../lib/nested/synset"
 import { PlainSynset } from "./Synset"
 import { LazyLoadingAccordion } from "../../LazyLoadAccordion"
-import { LazyElement } from "../Intersecting"
+import { LazyElement } from "../LazyElement"
 
 const Relation: FC<any> = ({ synset, synsetRelation, sense, senseRelation }) => {
 
