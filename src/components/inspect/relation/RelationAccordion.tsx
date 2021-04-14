@@ -17,10 +17,14 @@ export const RelationLoader: FC<{ type: string, sourceId: string, relType: strin
   if (!data) {
     return <Loading>Loading</Loading>
   }
-  return <Stack>{data.map((d) => <PlainSenseOrSynset
-    key={d?.id} item={d}
-    more={false}
-  />)}</Stack>
+  return <Stack>{data.map((d) => {
+    if (d === null) return
+    console.log(d)
+    return <PlainSenseOrSynset
+      key={d?.id} item={d}
+      more={false}
+    />
+  })}</Stack>
 }
 
 export const RelationAccordion: FC<{ sourceId: string, relations: RelationRecord[] }> = ({ sourceId, relations }) => {

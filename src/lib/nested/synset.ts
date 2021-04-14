@@ -1,5 +1,5 @@
 import * as dictionary from "../dictionary/dictionary"
-import { SynsetLemmas } from "../dictionary/types"
+import { Synset, SynsetLemmas } from "../dictionary/types"
 import { getSynsetRelation } from "./relations"
 
 
@@ -11,14 +11,10 @@ const getSynsetLemma = (synsetId: string): SynsetLemmas => {
   return lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s).filter(v => !!v)
 }
 
-export const getNestedSynset = (synsetId: string) => {
-  const synset = dictionary.getSynset(synsetId)
-  if (!synset) {
-    return null
-  }
+const expandSynset = (synset: Synset) => {
   const { synsetRelation, ...rest } = synset
-  const synsetLemma = getSynsetLemma(synsetId)
-  const relations = getSynsetRelation(synsetId)
+  const synsetLemma = getSynsetLemma(synset.id)
+  const relations = getSynsetRelation(synset.id)
 
   return {
     ...rest,
@@ -26,5 +22,17 @@ export const getNestedSynset = (synsetId: string) => {
     relations,
     // synsetRelation 
   }
+
 }
+export const getNestedSynset = (synsetId: string): NestedSense | null => {
+  const synset = dictionary.getSynset(synsetId)
+  if (!synset) {
+    return null
+  }
+  return expandSynset(synset)
+}
+
+type ExpandSynsetData = ReturnType<typeof expandSynset>
+type NestedSense = ExpandSynsetData
+
 export type NestedSynsetData = ReturnType<typeof getNestedSynset>

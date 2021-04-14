@@ -4,6 +4,7 @@ import { getNestedSense } from "./sense"
 import { getNestedSynset } from "./synset"
 
 
+
 export const getExpandRelation = (relations: RelationRecord[], targetRelType: string) => {
 
   return relations.filter(({ relType }) => {

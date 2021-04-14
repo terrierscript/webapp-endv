@@ -9,7 +9,7 @@ import { useNestedLemma } from "./useNestedLemma"
 export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData }> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
   const allSynsets = useMemo(() => {
-    return data?.lexicalEntry?.map(lex => lex.senses?.map(s => {
+    return data?.lexicalEntry?.map(lex => lex?.senses?.map(s => {
       return s?.synsets
     })).flat()
   }, [JSON.stringify(data)])

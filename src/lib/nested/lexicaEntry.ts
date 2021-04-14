@@ -1,14 +1,19 @@
 import * as dictionary from "../dictionary/dictionary"
-import { getNestedSense } from "./sense"
+import { getNestedSense, NestedSenseData } from "./sense"
 
+const filter = <T>(items: (T | null | undefined)[]): T[] => {
+  return items.filter((item): item is T => {
+    return item !== null && item !== undefined
+  })
+}
 
 const senseObj = (senseIds?: string[]) => {
   if (!senseIds) {
-    return null
+    return []
   }
-  return senseIds?.map(lexId => {
+  return filter(senseIds?.map(lexId => {
     return getNestedSense(lexId)
-  })
+  }))
   // return Object.fromEntries(senseIds?.map(lexId => {
   //   return [lexId, getNestedSense(lexId)]
   // }))
@@ -20,8 +25,10 @@ export const getNestedLexicaEntry = (lexId: string) => {
   const senses = senseObj(sense)
   return {
     ...rest,
-    senses: senses // overwrite sense
+    senses // overwrite sense
   }
 }
 
-export type NestedLexicaEntryData = ReturnType<typeof getNestedLexicaEntry>
+export type NestedLexicaEntryData = ReturnType<typeof getNestedLexicaEntry> & {
+  sense?: undefined
+}
