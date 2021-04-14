@@ -11,6 +11,7 @@ const isQuizWord = (f: string) => {
   // if (f.split(" ").length !== 1) return false
   if (f.split("-").length !== 1) return false
   if (/[A-Z]/.test(f)) return false
+  if (/[0-9]/.test(f)) return false
   return true
 
 }
@@ -134,16 +135,24 @@ const filterFuzzyUnmatch = (word: string, target: string[]) => {
   })
   return collects
 }
-const generateQuiz = (word: string): QuizSet | null => {
-  console.log("xxx", filterFuzzyUnmatch("mixture", ["mixed bag"]))
+export const getQuizCandidate = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
+  const d1 = kinderWords(l2)
+
   const collects = filterFuzzyUnmatch(word, l1)
-  const incollects = intersect(l2, new Set([...l1, ...w]))
+  const incollects = intersect(d1.children, new Set([...l1, ...l2, ...w]))
+  return {
+    collects,
+    incollects,
+  }
+}
+const generateQuiz = (word: string): QuizSet | null => {
+  const { collects, incollects } = getQuizCandidate(word)
   if (collects.length === 0 || incollects.length === 0) {
     return null
   }
   return {
-    word: w[0],
+    word: word,
     collect: random(collects),
     incollect: random(incollects)
   }
