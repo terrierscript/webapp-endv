@@ -1,10 +1,10 @@
 import * as dictionary from "../dictionary/dictionary"
-import { SynsetLemma } from "../dictionary/types"
+import { SynsetLemmas } from "../dictionary/types"
 import { getSynsetRelation } from "./relations"
 
 
 
-const getSynsetLemma = (synsetId: string): SynsetLemma => {
+const getSynsetLemma = (synsetId: string): SynsetLemmas => {
   const { lexicalEntry } = dictionary.getSynsetIndex(synsetId) ?? {}
   const lexs = lexicalEntry?.map(l => dictionary.getLexicalEntry(l))
   // @ts-ignore
@@ -22,7 +22,7 @@ export const getNestedSynset = (synsetId: string) => {
 
   return {
     ...rest,
-    lemma: synsetLemma,
+    lemmas: synsetLemma,
     relations,
     // synsetRelation 
   }

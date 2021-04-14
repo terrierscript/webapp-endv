@@ -1,6 +1,6 @@
 // @ts-ignore
 import dictionary from "@terrierscript/normalized-global-wordnet-en"
-import { LexicalEntry, Sense, Synset, LemmaIndex, Behavior, SenseIndexRelation } from "./types"
+import { LexicalEntry, Sense, Synset, LemmaIndex, Behaviors, SenseIndexRelation } from "./types"
 
 export const getLemma = (id: string | undefined): LemmaIndex | undefined => id && dictionary.getLemma(id)
 export const getLexicalEntry = (id: string | undefined): LexicalEntry | undefined => id && dictionary.getLexicalEntry(id)
@@ -14,4 +14,4 @@ export const getSynset = (id: string | undefined): Synset | undefined => id && d
 
 export const getSynsetIndex = (id: string | undefined): LemmaIndex | undefined => id && dictionary.getSynsetIndex(id)
 
-export const getSyntacticBehaviour = (id: string | undefined): Behavior | undefined => id && dictionary.getSyntacticBehaviour(id)
+export const getSyntacticBehaviour = (id: string | undefined): Behaviors | undefined => id && dictionary.getSyntacticBehaviour(id)

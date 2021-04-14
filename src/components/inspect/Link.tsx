@@ -8,7 +8,7 @@ export const InspectWordLink: FC<{ word: string } & LinkProps> = ({ word, color 
   return <NextLink key={word} href={`/inspect/${word}`} passHref >
     {children ??
       <Link color={color} {...linkProps} textDecoration="underline">
-        {word.replaceAll("_", " ")}
+        {word && word.replaceAll("_", " ")}
       </Link>
     }
   </NextLink>

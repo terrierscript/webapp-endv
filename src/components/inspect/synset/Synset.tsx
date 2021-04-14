@@ -11,7 +11,7 @@ export const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
   if (!synset) {
     return null
   }
-  const lemma = synset?.lemma
+  const lemma = synset?.lemmas
   const { definition, example } = synset ?? {}
 
   return <Box id={`sysnet-${synset.id}`} boxShadow="xs" rounded={"xs"} p={2} m={2}>

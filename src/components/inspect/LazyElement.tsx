@@ -3,7 +3,7 @@ import React, { FC, useRef } from "react"
 import { useIntersection } from "use-intersection"
 
 
-const LoadingSkelton = () => <Stack>
+const LoadingSkeleton = () => <Stack>
   <Skeleton height="20px" />
   <Skeleton height="20px" />
   <Skeleton height="20px" />
@@ -17,6 +17,6 @@ export const LazyElement: FC<{}> = ({ children, }) => {
   })
 
   return <div ref={ref}>
-    {intersecting ? children : <LoadingSkelton />}
+    {intersecting ? children : <LoadingSkeleton />}
   </div>
 }

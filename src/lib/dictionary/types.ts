@@ -48,9 +48,9 @@ export type LemmaIndex = {
   lexicalEntry?: string[]
   form?: string[]
 }
-export type Behavior = string[]
+export type Behaviors = string[]
 
-export type SynsetLemma = string[]
+export type SynsetLemmas = string[]
 // {
 //   id: string,
 //   lemma: string[]

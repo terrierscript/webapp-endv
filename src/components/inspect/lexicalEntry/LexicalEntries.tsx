@@ -13,7 +13,7 @@ export const LexicalEntries: FC<{ lexicalEntry: NestedLexicaEntryData }> = ({ le
   if (!lex) {
     return <Loading>Loading {lexicalEntry.id}</Loading>
   }
-  const { lemma, sense } = lex
+  const { lemma, senses: sense } = lex
   return <Box p={4}>
     {lemma?.partOfSpeech && logPartOfSpeech(lemma?.partOfSpeech)}
     <Stack>

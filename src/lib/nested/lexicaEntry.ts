@@ -16,10 +16,11 @@ const senseObj = (senseIds?: string[]) => {
 
 export const getNestedLexicaEntry = (lexId: string) => {
   const lex = dictionary.getLexicalEntry(lexId)
-  const sense = senseObj(lex?.sense)
+  const { sense, ...rest } = lex ?? {}
+  const senses = senseObj(sense)
   return {
-    ...lex,
-    sense // overwrite sense
+    ...rest,
+    senses: senses // overwrite sense
   }
 }
 
