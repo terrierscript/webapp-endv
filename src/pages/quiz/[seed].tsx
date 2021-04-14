@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { InspectWordLink } from "../../components/inspect/Link"
+import { Loading } from "../../components/Loading"
 import { generateQuizzes, QuizSet } from "../../lib/quiz/quiz"
 
 const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
@@ -52,7 +53,7 @@ export default function QuizPage({ word }: { word: string }) {
   return (
     <Stack>
       <Heading>Quiz</Heading>
-      {currentQuizSet && <QuizRound quizSets={currentQuizSet} />}
+      {currentQuizSet ? <QuizRound quizSets={currentQuizSet} /> : <Loading>Generate QuizSet</Loading>}
       <Button onClick={executeNextRound}>Next Round
       </Button>
     </Stack>
@@ -60,11 +61,9 @@ export default function QuizPage({ word }: { word: string }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
-  const word: string = req.query.word?.toString() ?? ""
-
-  const quizSets = generateQuizzes(word)
+  const seed: string = req.query.seed?.toString() ?? ""
 
   return {
-    props: { word, quizSets }
+    props: { word: seed }
   }
 }
