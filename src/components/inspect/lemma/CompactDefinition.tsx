@@ -27,14 +27,12 @@ export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData 
 }
 export const CompactDefinition: FC<{ word: string, initialData?: NestedLemmaData, definitionNum?: number }> = ({ word, definitionNum = 3, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
-  const allSynsets = useMemo(() => {
+  const definitions = useMemo(() => {
     return data?.lexicalEntry?.map(lex => lex.senses?.map(s => {
       return s?.synset
     })).flat()
+      .map(s => s?.definition.join(" / ")).flat()
   }, [JSON.stringify(data)])
-  const definitions = useMemo(() => {
-    return allSynsets?.map(s => s?.definition.join(" / ")).flat()
-  }, [allSynsets])
 
   const length = definitions?.length ?? 0
 
