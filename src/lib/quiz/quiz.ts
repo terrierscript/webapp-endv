@@ -5,15 +5,11 @@ import { isTruthy } from 'typesafe-utils'
 import nlp from "compromise"
 
 const isQuizWord = (f: string) => {
-  if (!f)
-    return false
+  if (!f) return false
   // if (f === word) return false
-  if (f.split(" ").length !== 1)
-    return false
-  if (f.split("-").length !== 1)
-    return false
-  if (/[A-Z]/.test(f))
-    return false
+  // if (f.split(" ").length !== 1) return false
+  if (f.split("-").length !== 1) return false
+  if (/[A-Z]/.test(f)) return false
   return true
 
 }
