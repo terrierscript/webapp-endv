@@ -8,7 +8,7 @@ const getSynsetLemma = (synsetId: string): SynsetLemmas => {
   const { lexicalEntry } = dictionary.getSynsetIndex(synsetId) ?? {}
   const lexs = lexicalEntry?.map(l => dictionary.getLexicalEntry(l))
   // @ts-ignore
-  return lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s).filter(v => !!v)
+  return lexs?.map(l => l?.lemma.writtenForm).filter(s => !!s)
 }
 
 const expandSynset = (synset: Synset) => {

@@ -23,7 +23,7 @@ export const RelType = ({ relType }: { relType?: string }) => {
     return null
   }
   // @ts-ignore
-  const label = relTypeDescriptions[relType]
+  const label = relTypeDescriptions?.[relType]
   const color = getStyleProps(relType)
   return <Tooltip hasArrow label={label} fontSize="sm" placement="top-start">
     <Badge {...color}>{relType.replaceAll("_", " ")}</Badge>

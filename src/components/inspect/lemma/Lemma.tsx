@@ -6,6 +6,7 @@ import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
 import { RelationTab } from "./tabs/RelationTab"
 import { NotFound } from "./NotFound"
+import { isTruthy } from 'typesafe-utils'
 
 export type LemmaProps = {
   word: string
@@ -45,9 +46,7 @@ const LemmaTab: FC<LemmaProps> = (props) => {
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
-
-  // @ts-ignore
-  const formLemma: string[] = data?.form?.map(f => f.lemma?.writtenForm)
+  const formLemma: string[] = data?.form?.map(f => f.lemma?.writtenForm).filter(isTruthy) ?? []
   if (data && !data?.lexicalEntry) {
     return <NotFound word={word} appendCandidates={formLemma} />
   }

@@ -4,11 +4,10 @@ import { Loading } from "../../Loading"
 import { Words } from "../synset/Words"
 import { NestedLemmaData } from "../../../lib/nested/lemma"
 import { useNestedLemma } from "./useNestedLemma"
-
+import { isTruthy } from 'typesafe-utils'
 
 export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData }> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
-  // @ts-ignore
   const synonymus: string[] = useMemo(() => {
     const allSynsets = data?.lexicalEntry?.map(lex => lex.senses?.map(s => {
       return s?.synset
@@ -16,7 +15,7 @@ export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData 
     const syns = allSynsets?.map(s => s?.lemmas).flat()
     return [
       ...new Set(syns)
-    ]
+    ].filter(isTruthy)
   }, [JSON.stringify(data)])
 
   return <Box>

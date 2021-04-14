@@ -15,7 +15,6 @@ export const RelationTab: FC<LemmaProps> = ({ word, initialData }) => {
     </Loading>
   }
   const lexs = data?.lexicalEntry
-  // @ts-ignore
 
   return <Stack>
     {lexs?.map(l => {

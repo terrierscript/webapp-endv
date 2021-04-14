@@ -1,19 +1,19 @@
 import * as dictionary from "../dictionary/dictionary"
 import { getNestedSense, NestedSenseData } from "./sense"
 
-const filter = <T>(items: (T | null | undefined)[]): T[] => {
-  return items.filter((item): item is T => {
-    return item !== null && item !== undefined
-  })
-}
+// const filter = <T>(items: (T | null | undefined)[]): T[] => {
+//   return items.filter((item): item is T => {
+//     return item !== null && item !== undefined
+//   })
+// }
 
-const senseObj = (senseIds?: string[]) => {
+const senseObj = (senseIds?: string[]): NestedSenseData[] => {
   if (!senseIds) {
     return []
   }
-  return filter(senseIds?.map(lexId => {
+  return senseIds?.map(lexId => {
     return getNestedSense(lexId)
-  }))
+  }).filter(isTruthy)
   // return Object.fromEntries(senseIds?.map(lexId => {
   //   return [lexId, getNestedSense(lexId)]
   // }))
@@ -31,4 +31,8 @@ export const getNestedLexicaEntry = (lexId: string) => {
 
 export type NestedLexicaEntryData = ReturnType<typeof getNestedLexicaEntry> & {
   sense?: undefined
+}
+
+function isTruthy(isTruthy: any) {
+  throw new Error("Function not implemented.")
 }
