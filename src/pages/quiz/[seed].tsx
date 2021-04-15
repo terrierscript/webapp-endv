@@ -67,7 +67,7 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
 
 const QuizRound: FC<{ quizSets: QuizSet[] }> = ({ quizSets }) => {
   return <Center>
-    <Stack width={"lg"}>
+    <Stack width={"md"}>
       {quizSets.map(q => {
         return <QuizBox key={q.word} quiz={q} />
       })}
