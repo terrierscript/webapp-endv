@@ -151,7 +151,7 @@ export const getQuizCandidate = (word: string) => {
   const d1 = kinderWords(l2)
   const incollectCandidates = d1.children
   const collects = l1.length > 10 ? l1 : filterFuzzyUnmatch(word, l1)
-  const incollects = incollectCandidates.length > 10 ? filterFuzzyUnmatch(word, intersect(d1.children, new Set([...l1, ...l2, ...w])))
+  const incollects = incollectCandidates.length > 10 ? incollectCandidates : filterFuzzyUnmatch(word, intersect(d1.children, new Set([...l1, ...l2, ...w])))
   return {
     word,
     collects,
