@@ -1,4 +1,4 @@
-import { Stack, Text, Heading, Box, HStack, Button, Center, SimpleGrid, Tabs, TabList, Tab, TabPanel, TabPanels, Wrap } from "@chakra-ui/react"
+import { Stack, Text, Heading, Box, HStack, Button, Center, SimpleGrid, Tabs, TabList, Tab, TabPanel, TabPanels, Wrap, Divider } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
@@ -21,9 +21,10 @@ const AnswerTabs: FC<{ words: string[] }> = ({ words }) => {
     <TabList >
       <Wrap>
 
-        {words.map(w => <Tab fontSize="sm">{w}</Tab>)}
+        {words.map(w => <Tab >{w}</Tab>)}
       </Wrap>
     </TabList>
+    <Divider p={2} />
     <TabPanels>
       {words.map(w => <TabPanel>
         <InspectWordLink word={w} />
