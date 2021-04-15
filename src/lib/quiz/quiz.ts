@@ -162,7 +162,6 @@ const generateQuiz = (word: string): QuizSet | null => {
   return {
     word: word,
     collect: collect,
-    incollect: incollects[0],
     incollects: incollectChoose
   }
 }

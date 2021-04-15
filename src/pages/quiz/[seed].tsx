@@ -1,18 +1,32 @@
-import { Stack, Text, Heading, Box, HStack, Button, Center, SimpleGrid } from "@chakra-ui/react"
+import { Stack, Text, Heading, Box, HStack, Button, Center, SimpleGrid, Tabs, TabList, Tab, TabPanel, TabPanels, Wrap } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { fetcher } from "../../components/inspect/lemma/fetcher"
-import { QuizLink } from "../../components/Link"
+import { InspectWordLink, QuizLink } from "../../components/Link"
 import { Loading } from "../../components/Loading"
 import { QuizSet } from "../../lib/quiz/quiz"
 import { WordPopover } from "../../components/WordPopover"
 import { shuffle } from "../../lib/quiz/shuffle"
+import { CompactDefinition } from "../../components/inspect/lemma/CompactDefinition"
 
 const Answer: FC<{ word: string }> = ({ word }) => {
   return <WordPopover word={word}>
     <Text cursor={"pointer"}>{word}</Text>
   </WordPopover>
+}
+const AnswerTabs: FC<{ words: string[] }> = ({ words }) => {
+  return <Tabs isFitted >
+    <TabList >
+      {words.map(w => <Tab fontSize="sm">{w}</Tab>)}
+    </TabList>
+    <TabPanels>
+      {words.map(w => <TabPanel>
+        <InspectWordLink word={w} />
+        <CompactDefinition word={w} />
+      </TabPanel>)}
+    </TabPanels>
+  </Tabs>
 }
 const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
   const choose = useMemo(() => {
@@ -39,17 +53,15 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
         })}
       </SimpleGrid>
     </Stack>
-    {answer && <HStack w="100%">{
-      [quiz.word, ...choose].map(c => <Box w="100%" textAlign="center" key={c} >
-        <Answer word={c} />
-      </Box>)
-    }</HStack>}
+    {answer &&
+      <AnswerTabs words={[quiz.word, ...choose]} />
+    }
   </Stack>
 }
 
 const QuizRound: FC<{ quizSets: QuizSet[] }> = ({ quizSets }) => {
   return <Center>
-    <Stack width={"md"}>
+    <Stack width={"lg"}>
       {quizSets.map(q => {
         return <QuizBox key={q.word} quiz={q} />
       })}
