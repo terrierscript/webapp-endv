@@ -7,6 +7,7 @@ import { InspectWordLink, QuizLink } from "../../components/Link"
 import { Loading } from "../../components/Loading"
 import { generateQuizzes, QuizSet } from "../../lib/quiz/quiz"
 import { WordPopover } from "../../components/WordPopover"
+import { shuffle } from "../../lib/quiz/shuffle"
 
 const Answer: FC<{ word: string }> = ({ word }) => {
   return <WordPopover word={word}>
@@ -15,38 +16,28 @@ const Answer: FC<{ word: string }> = ({ word }) => {
 }
 const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
   const choose = useMemo(() => {
-    return Math.random() < 0.5
-      ? [quiz.incollect, quiz.collect]
-      : [quiz.collect, quiz.incollect]
+    return shuffle([quiz.collect, ...quiz.incollects])
   }, [JSON.stringify(quiz)])
   const [answer, setAnswer] = useState<string>()
   return <Stack boxShadow="base" p={4}>
     <Stack alignItems="center">
       <Heading size="lg">{quiz.word}</Heading>
-      <HStack w="100%">
+      <Wrap w="100%">
         {choose.map(w => {
           const openColor = (w === quiz.collect) ? "green" : "red"
           const color = !!answer ? openColor : "blue"
           const selected = answer === w
-          const borderProps: ButtonProps = selected ? {
-            borderColor: "blue.500",
-            border: "2px"
-          } : {}
           const opacity = answer && !selected ? 0.7 : 1
           return <Button
             outline={"solid"}
             opacity={opacity}
-            // border={selected ? "4px" : 0}
-            // borderColor="yellow.500"
-            // {...borderProps}
-            // opacity={opacity}
             w="100%" size="lg" fontSize="lg"
             key={w} colorScheme={color}
             onClick={() => !answer && setAnswer(w)}>
             {w}
           </Button>
         })}
-      </HStack>
+      </Wrap>
     </Stack>
     {answer && <HStack w="100%">{
       [quiz.word, ...choose].map(c => <Box w="100%" textAlign="center" key={c} >

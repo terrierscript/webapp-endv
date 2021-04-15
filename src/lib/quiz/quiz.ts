@@ -120,17 +120,21 @@ const relatedWord = (word: string) => {
 export type QuizSet = {
   word: string,
   collect: string,
-  incollect: string,
+  // incollect: string,
+  incollects: string[]
 }
 
 const filterFuzzyUnmatch = (word: string, target: string[]) => {
   const n = nlp(word)
   const collects = target.filter(l => {
-    const fuzzyMatch = l.split(" ").every(ll => {
+    const fuzzyMatch = l.split(" ").some(ll => {
+
       const match = n.match(ll, { fuzzy: 0.3 })
+      console.log({ l, ll, match, m: match.length })
       // @ts-ignore
       return match.length > 0
     })
+    console.log(fuzzyMatch)
     return !fuzzyMatch
   })
   return collects
@@ -142,6 +146,7 @@ export const getQuizCandidate = (word: string) => {
   const collects = filterFuzzyUnmatch(word, l1)
   const incollects = intersect(d1.children, new Set([...l1, ...l2, ...w]))
   return {
+    word,
     collects,
     incollects,
     debug: { l1, l2 }
@@ -152,10 +157,13 @@ const generateQuiz = (word: string): QuizSet | null => {
   if (collects.length === 0 || incollects.length === 0) {
     return null
   }
+  const collect = random(collects)
+  const incollectChoose = shuffle(incollects).slice(0, 3)
   return {
     word: word,
-    collect: random(collects),
-    incollect: random(incollects)
+    collect: collect,
+    incollect: incollects[0],
+    incollects: incollectChoose
   }
 }
 
