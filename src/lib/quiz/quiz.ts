@@ -139,8 +139,15 @@ const filterFuzzyUnmatch = (word: string, target: string[]) => {
   return collects
 }
 
+export const getQuizCandidateDebug = (word: string) => {
+  const [w, l1, l2] = relatedWord(word.toString())
+  return {
+    debug: { l1, l2 }
+  }
+}
 export const getQuizCandidate = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
+  console.log(l2.length)
   const d1 = kinderWords(l2)
 
   const collects = filterFuzzyUnmatch(word, l1)

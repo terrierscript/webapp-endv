@@ -16,9 +16,13 @@ const Answer: FC<{ word: string }> = ({ word }) => {
   </WordPopover>
 }
 const AnswerTabs: FC<{ words: string[] }> = ({ words }) => {
-  return <Tabs isFitted >
+  return <Tabs variant="soft-rounded"
+  >
     <TabList >
-      {words.map(w => <Tab fontSize="sm">{w}</Tab>)}
+      <Wrap>
+
+        {words.map(w => <Tab fontSize="sm">{w}</Tab>)}
+      </Wrap>
     </TabList>
     <TabPanels>
       {words.map(w => <TabPanel>
