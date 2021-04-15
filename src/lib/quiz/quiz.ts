@@ -129,8 +129,8 @@ const filterFuzzyUnmatch = (word: string, target: string[]) => {
 
   const collects = target.filter(l => {
     const fuzzyMatch = l.split(" ").some(ll => {
-      const match = n.match(ll, { fuzzy: 0.5 })
-      console.log({ match, word, l, ll })
+      const match = n.match(ll, { fuzzy: 0.3 })
+      // console.log({ match, word, l, ll })
       // @ts-ignore
       return match.length > 0
     })
