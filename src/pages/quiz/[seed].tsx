@@ -1,11 +1,11 @@
-import { Stack, Text, Heading, Wrap, Box, HStack, Button, Center, ButtonProps } from "@chakra-ui/react"
+import { Stack, Text, Heading, Box, HStack, Button, Center, SimpleGrid } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import useSWR from "swr"
 import { fetcher } from "../../components/inspect/lemma/fetcher"
-import { InspectWordLink, QuizLink } from "../../components/Link"
+import { QuizLink } from "../../components/Link"
 import { Loading } from "../../components/Loading"
-import { generateQuizzes, QuizSet } from "../../lib/quiz/quiz"
+import { QuizSet } from "../../lib/quiz/quiz"
 import { WordPopover } from "../../components/WordPopover"
 import { shuffle } from "../../lib/quiz/shuffle"
 
@@ -22,7 +22,7 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
   return <Stack boxShadow="base" p={4}>
     <Stack alignItems="center">
       <Heading size="lg">{quiz.word}</Heading>
-      <Wrap w="100%">
+      <SimpleGrid columns={2} w="100%" gap={2}>
         {choose.map(w => {
           const openColor = (w === quiz.collect) ? "green" : "red"
           const color = !!answer ? openColor : "blue"
@@ -37,7 +37,7 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
             {w}
           </Button>
         })}
-      </Wrap>
+      </SimpleGrid>
     </Stack>
     {answer && <HStack w="100%">{
       [quiz.word, ...choose].map(c => <Box w="100%" textAlign="center" key={c} >

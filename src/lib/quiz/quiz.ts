@@ -126,9 +126,11 @@ export type QuizSet = {
 
 const filterFuzzyUnmatch = (word: string, target: string[]) => {
   const n = nlp(word)
+
   const collects = target.filter(l => {
     const fuzzyMatch = l.split(" ").some(ll => {
-      const match = n.match(ll, { fuzzy: 0.3 })
+      const match = n.match(ll, { fuzzy: 0.5 })
+      console.log({ match, word, l, ll })
       // @ts-ignore
       return match.length > 0
     })
@@ -136,12 +138,13 @@ const filterFuzzyUnmatch = (word: string, target: string[]) => {
   })
   return collects
 }
+
 export const getQuizCandidate = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
   const d1 = kinderWords(l2)
 
   const collects = filterFuzzyUnmatch(word, l1)
-  const incollects = intersect(d1.children, new Set([...l1, ...l2, ...w]))
+  const incollects = filterFuzzyUnmatch(word, intersect(d1.children, new Set([...l1, ...l2, ...w])))
   return {
     word,
     collects,
