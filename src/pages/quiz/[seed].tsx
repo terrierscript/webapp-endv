@@ -60,9 +60,8 @@ const QuizRound: FC<{ quizSets: QuizSet[] }> = ({ quizSets }) => {
 
 export default function QuizPage({ word }: { word: string }) {
   const [currentQuizSet, setCurrentQuizSet] = useState<QuizSet[] | null>(null)
-  const [currentWord, setCurentWord] = useState<string>(word)
 
-  const { data } = useSWR(() => `/api/quiz/question/${currentWord}`, fetcher, {
+  const { data } = useSWR(() => `/api/quiz/question/${word}`, fetcher, {
     refreshWhenHidden: false,
     refreshInterval: 0,
     refreshWhenOffline: false,

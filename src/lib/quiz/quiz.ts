@@ -128,13 +128,10 @@ const filterFuzzyUnmatch = (word: string, target: string[]) => {
   const n = nlp(word)
   const collects = target.filter(l => {
     const fuzzyMatch = l.split(" ").some(ll => {
-
       const match = n.match(ll, { fuzzy: 0.3 })
-      console.log({ l, ll, match, m: match.length })
       // @ts-ignore
       return match.length > 0
     })
-    console.log(fuzzyMatch)
     return !fuzzyMatch
   })
   return collects
