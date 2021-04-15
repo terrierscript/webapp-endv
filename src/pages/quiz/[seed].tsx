@@ -32,6 +32,7 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
   const choose = useMemo(() => {
     return shuffle([quiz.collect, ...quiz.incollects])
   }, [JSON.stringify(quiz)])
+  const [select, setSelect] = useState<string>()
   const [answer, setAnswer] = useState<string>()
   return <Stack boxShadow="base" p={4}>
     <Stack alignItems="center">
@@ -47,7 +48,12 @@ const QuizBox: FC<{ quiz: QuizSet }> = ({ quiz }) => {
             opacity={opacity}
             w="100%" size="lg" fontSize="lg"
             key={w} colorScheme={color}
-            onClick={() => !answer && setAnswer(w)}>
+            onClick={() => {
+              setSelect(w)
+              if (!answer) {
+                setAnswer(w)
+              }
+            }}>
             {w}
           </Button>
         })}
