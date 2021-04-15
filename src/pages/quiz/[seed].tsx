@@ -71,7 +71,6 @@ export default function QuizPage({ word }: { word: string }) {
   const [currentQuizSet, setCurrentQuizSet] = useState<QuizSet[] | null>(null)
   const [currentWord, setCurentWord] = useState<string>(word)
 
-
   const { data } = useSWR(() => `/api/quiz/question/${currentWord}`, fetcher, {
     refreshWhenHidden: false,
     refreshInterval: 0,
@@ -83,14 +82,8 @@ export default function QuizPage({ word }: { word: string }) {
     setCurrentQuizSet(data)
   }, [data])
   const nextWord = useMemo(() => {
-    return currentQuizSet?.[0].word
+    return currentQuizSet?.[0]?.word
   }, [currentQuizSet])
-  const executeNextRound = () => {
-    setCurrentQuizSet(null)
-    if (currentQuizSet?.[0].word) {
-      setCurentWord(currentQuizSet?.[0].word)
-    }
-  }
 
   return (
     <Stack>
