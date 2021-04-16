@@ -2,8 +2,9 @@ import { RelationRecord } from "../dictionary/types"
 import { getNestedLemma, NestedLemmaData } from "../nested/lemma"
 import { getNestedSynset } from "../nested/synset"
 import { isTruthy } from 'typesafe-utils'
-import nlp from "compromise"
 import { shuffle } from "./shuffle"
+import { filterFuzzyUnmatch } from "./filterFuzzyUnmatch"
+import { QuizSet } from "./QuizSet"
 
 const isQuizWord = (f: string) => {
   if (!f) return false
@@ -116,27 +117,6 @@ const relatedWord = (word: string) => {
     // d1.children, d2.children
   ]
   return levelIntersect(levels)
-}
-export type QuizSet = {
-  word: string,
-  collect: string,
-  // incollect: string,
-  incollects: string[]
-}
-
-const filterFuzzyUnmatch = (word: string, target: string[]) => {
-  const n = nlp(word)
-
-  const collects = target.filter(l => {
-    const fuzzyMatch = l.split(" ").some(ll => {
-      const match = n.match(ll, { fuzzy: 0.3 })
-      // console.log({ match, word, l, ll })
-      // @ts-ignore
-      return match.length > 0
-    })
-    return !fuzzyMatch
-  })
-  return collects
 }
 
 export const getQuizCandidate = (word: string) => {
