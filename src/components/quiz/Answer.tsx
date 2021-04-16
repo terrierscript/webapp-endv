@@ -21,7 +21,7 @@ export const AnswerTabs: FC<{ words: string[] }> = ({ words }) => {
     <Divider p={2} />
     <TabPanels>
       {words.map(w => <TabPanel key={w}>
-        <InspectWordLink word={w} />
+        <InspectWordLink word={w} withExternal={true} />
         <CompactDefinition word={w} />
       </TabPanel>)}
     </TabPanels>
