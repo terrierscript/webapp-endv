@@ -70,7 +70,7 @@ export const Quiz: FC<{ word: string }> = ({ word }) => {
   return (
     <Stack>
       <Heading>Quiz</Heading>
-      <QuizRound quizSets={[currentQuizSet]} onNext={() => next()} />
+      <QuizRound key={currentQuizSet.word} quizSets={[currentQuizSet]} onNext={() => next()} />
 
     </Stack>
   )

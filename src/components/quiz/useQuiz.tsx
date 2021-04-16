@@ -27,6 +27,7 @@ const useQuizRound = (word: string): Result => {
   })
   useEffect(() => {
     setIsError(false)
+    setCurrentQuizSet(undefined)
   }, [word])
   useEffect(() => {
     if (!word || !data) {
@@ -71,17 +72,17 @@ export const useQuiz = (seed: string) => {
   const addStacks = (words: string[]) => {
     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
   }
-  const popStack = () => {
+  const createNextRound = () => {
     const [next, ...rest] = stacks
-    console.log(next, rest)
     setCurrentSeed(next)
     setStacks(rest)
+
   }
 
   useEffect(() => {
     if (round?.error) {
       console.log(round?.word, "ERROR")
-      popStack()
+      createNextRound()
     }
   }, [JSON.stringify(round)])
 
@@ -94,6 +95,6 @@ export const useQuiz = (seed: string) => {
   return {
     currentSeed,
     quizSet: roundResult?.quizSet,
-    next: () => { popStack() }
+    next: () => { createNextRound() }
   }
 }
