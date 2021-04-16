@@ -193,16 +193,8 @@ export default function QuizPage({ word }: { word: string }) {
   return (
     <Stack>
       <Heading>Quiz</Heading>
-      <Text>{currentSeed}</Text>
-      <Button onClick={() => {
-        next()
-      }} w="100%" colorScheme="teal">Next Round</Button>
-      {currentQuizSet ? <QuizRound quizSets={[currentQuizSet]} /> : <Loading>Generate QuizSet</Loading>}
-
-      {/* <Button onClick={executeNextRound}>
-
-        Next Round
-      </Button> */}
+      <QuizRound quizSets={[currentQuizSet]} />
+      <Button onClick={() => { next() }} w="100%" colorScheme="teal">Next Round</Button>
     </Stack>
   )
 }
