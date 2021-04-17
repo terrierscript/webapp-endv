@@ -3,7 +3,8 @@ import useSWR from "swr"
 import { fetcher } from "../inspect/lemma/fetcher"
 import { QuizSet } from "../../lib/quiz/QuizSet"
 import { shuffle } from "../../lib/quiz/shuffle"
-import { filterFuzzyUnmatch } from "../../lib/quiz/filterFuzzyUnmatch"
+import { filterFuzzyUnmatch, filterFuzzyUnmatchGenerator, filterFuzzyUnmatchNum } from "../../lib/quiz/filterFuzzyUnmatch"
+import { arrayIntersect } from "../../lib/quiz/arrayIntersect"
 
 type RoundResult = {
   quizSet?: QuizSet
@@ -40,11 +41,13 @@ const useQuizRound = (word: string, chooses = 4): Result => {
       setIsError(true)
       return
     }
-    const filterdCollect = shuffle(filterFuzzyUnmatch(word, data.collects))
-    const filterdIncollect = shuffle(filterFuzzyUnmatch(word, data.incollects))
-    const [answer, ...restCollect] = filterdCollect
-    const incollects = filterdIncollect.splice(0, chooses - 1)
-    const rest = shuffle([...restCollect, ...filterdIncollect])
+    const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
+    const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
+    const answer = filterdCollect[0]
+    const rest = arrayIntersect(
+      [...data.collects, ...data.incollects],
+      new Set([...filterdCollect, ...incollects])
+    )
     if (!answer || incollects.length !== chooses - 1) {
       setIsError(true)
       return
@@ -52,7 +55,7 @@ const useQuizRound = (word: string, chooses = 4): Result => {
     setCurrentQuizSet({
       quizSet: {
         word: word,
-        collect: answer,
+        collect: filterdCollect[0],
         incollects: incollects
       },
       nextCandidates: rest
