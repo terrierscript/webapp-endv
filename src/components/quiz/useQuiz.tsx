@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useDebugValue, useEffect, useState } from "react"
 import useSWR from "swr"
 import { fetcher } from "../inspect/lemma/fetcher"
 import { QuizSet } from "../../lib/quiz/QuizSet"
@@ -45,19 +45,25 @@ const generateRound = async (word: string, chooses: number): Promise<RoundResult
 type ResultCache = { [key in string]: QuizSet | null }
 const useCachedQuizRound = (chooseNum: number) => {
   const [results, setResults] = useState<ResultCache>({})
+  const [loaded, setLoaded] = useState<any>({})
   const [stacks, setStacks] = useState<string[]>([])
   const addStacks = (words: string[]) => {
     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
   }
-  const removeStack = (word: string) => {
+  const removeFromStack = (word: string) => {
     setStacks(s => s.filter(w => w !== word))
   }
 
   const search = (word: string) => {
     if (results[word]) {
-      console.log("::::cache hit", word,)
+      console.log("::::cache hit", word)
       return
     }
+    if (loaded[word]) {
+      return
+    }
+    setLoaded((r: any) => ({ ...r, [word]: true }))
+    console.log("::::cache nothit", word)
     generateRound(word, chooseNum).then(round => {
       const { quizSet, nextCandidates } = round
       setResults(r => ({ ...r, [word]: quizSet ?? null }))
@@ -70,51 +76,72 @@ const useCachedQuizRound = (chooseNum: number) => {
     search,
     results,
     stacks,
-    removeStack
+    removeFromStack
   }
 }
 
 export const useQuiz = (initialWord: string) => {
-  const { search, results, stacks, removeStack } = useCachedQuizRound(4)
+  const { search, results, stacks, removeFromStack } = useCachedQuizRound(4)
   const [preloads, setPreloads] = useState<string[]>([])
-  const [currentWord, setCurrentWord] = useState<string>(initialWord)
+  const [currentWord, setCurrentWord] = useState<string>()
   const [currentRound, setCurrentRound] = useState<QuizSet>()
   const [done, setDone] = useState<boolean>(false)
-  useEffect(() => {
 
-    const preloadNUm = 10
-    if (stacks.length === 0) {
-      return
-    }
-    if (preloads.length > 3) {
-      return
-    }
-    setPreloads(p => [...p, ...stacks.slice(0, preloadNUm)].slice(0, preloadNUm))
-  }, [stacks])
+  const preloadNum = 10
+  // console.log(results, stacks, preloads, currentWord, currentRound)
+  const setPre = (preloads: string[]) => {
+    setPreloads(preloads)
+    preloads.map(w => {
+      search(w)
+    })
+  }
+  // stack -> preload
+  useEffect(() => {
+    if (stacks.length === 0) { return }
+    if (preloads.length > 3) { return }
+    setPre([...preloads, ...stacks.slice(0, preloadNum)].slice(0, preloadNum))
+  }, [preloads.join("/"), stacks.join("/")])
+
+  const setCurrent = (next: string) => {
+    setCurrentWord(next)
+    search(next)
+    removeFromStack(next)
+  }
+  useEffect(() => {
+    setCurrent(initialWord)
+  }, [initialWord])
 
   const next = () => {
     const [next, ...rest] = preloads
-    console.log("NEXT:", next)
+    if (!next && stacks.length === 0) {
+      setDone(true)
+      return
+    }
     console.time(next)
+    // reset
     setCurrentRound(undefined)
-    setCurrentWord(next)
-    removeStack(next)
-    setPreloads(rest)
+    // set current
+    setCurrent(next)
+
+    // preload
+    setPre(rest)
   }
   useEffect(() => {
     preloads.map(w => {
       search(w)
     })
-  }, [preloads])
+  }, [preloads.join("/")])
+
   useEffect(() => {
-    if (!currentWord && stacks.length === 0) {
-      setDone(true)
+    if (currentWord || preloads.length === 0) {
       return
     }
-    search(currentWord)
-
-  }, [currentWord])
+    next()
+  }, [preloads, currentWord])
   useEffect(() => {
+    if (!currentWord) {
+      return
+    }
     const r = results[currentWord]
     if (r === undefined) {
       return
@@ -127,8 +154,7 @@ export const useQuiz = (initialWord: string) => {
 
     setCurrentRound(r)
     console.timeEnd(currentWord)
-
-  }, [results[currentWord]])
+  }, [currentWord, results])
 
   return {
     currentSeed: currentWord,
