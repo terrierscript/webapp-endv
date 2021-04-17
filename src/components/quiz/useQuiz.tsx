@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import useSWR from "swr"
 import { fetcher } from "../inspect/lemma/fetcher"
 import { QuizSet } from "../../lib/quiz/QuizSet"
@@ -76,37 +76,108 @@ const useQuizRound = (word: string, chooses = 4): Result => {
   }
 }
 
-export const useQuiz = (initialSeed: string) => {
-  const [currentSeed, setCurrentSeed] = useState<string>(initialSeed)
+type ResultCache = { [key in string]: RoundResult | null }
+const useCachedQuizRound = (chooseNum: number) => {
+  const [results, setResults] = useState<ResultCache>({})
+  const search = (word: string) => {
+    if (results[word]) {
+      console.log("::::cache hit", word,)
+      return
+    }
+    generateRound(word, chooseNum).then(round => {
+      setResults(r => ({ ...r, [word]: round }))
+    }).catch(e => {
+      setResults(r => ({ ...r, [word]: null }))
+    })
+  }
+  return {
+    search,
+    results
+  }
+}
+
+export const useQuiz = (initialWord: string) => {
+  const { search, results } = useCachedQuizRound(4)
   const [stacks, setStacks] = useState<string[]>([])
-  const round = useQuizRound(currentSeed)
-  const roundResult = round.roundResult
+  const [currentWord, setCurrentWord] = useState<string>(initialWord)
+  const [currentRound, setCurrentRound] = useState<QuizSet>()
   const addStacks = (words: string[]) => {
     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
   }
-  const createNextRound = () => {
+
+  const next = () => {
     const [next, ...rest] = stacks
-    setCurrentSeed(next)
+    console.log("NEXT:", next)
+    console.time(next)
+    setCurrentRound(undefined)
+    setCurrentWord(next)
     setStacks(rest)
-
   }
-
   useEffect(() => {
-    if (round?.error) {
-      console.log(round?.word, "ERROR")
-      createNextRound()
-    }
-  }, [JSON.stringify(round)])
-
+    stacks.slice(1, 10).map(w => {
+      search(w)
+    })
+  }, [stacks[0]])
   useEffect(() => {
-    if (roundResult?.nextCandidates) {
-      addStacks(roundResult?.nextCandidates)
+    search(currentWord)
+  }, [currentWord])
+  useEffect(() => {
+    const r = results[currentWord]
+    console.log(currentWord, r)
+    if (r === undefined) {
+      return
     }
-  }, [roundResult?.nextCandidates?.join("/")])
+    if (r === null) {
+      console.log(currentWord, " -> NULL")
+      next()
+      return
+    }
+
+    setCurrentRound(r.quizSet)
+    addStacks(r.nextCandidates ?? [])
+    console.timeEnd(currentWord)
+
+  }, [results[currentWord]])
 
   return {
-    currentSeed,
-    quizSet: roundResult?.quizSet,
-    next: () => { createNextRound() }
+    currentSeed: currentWord,
+    quizSet: currentRound,
+    done: stacks.length === 0,
+    next
   }
 }
+
+// export const useQuiz = (initialSeed: string) => {
+//   const [currentSeed, setCurrentSeed] = useState<string>(initialSeed)
+//   const [stacks, setStacks] = useState<string[]>([])
+//   const round = useQuizRound(currentSeed)
+//   const roundResult = round.roundResult
+//   const addStacks = (words: string[]) => {
+//     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
+//   }
+//   const createNextRound = () => {
+//     const [next, ...rest] = stacks
+//     setCurrentSeed(next)
+//     setStacks(rest)
+
+//   }
+
+//   useEffect(() => {
+//     if (round?.error) {
+//       console.log(round?.word, "ERROR")
+//       createNextRound()
+//     }
+//   }, [JSON.stringify(round)])
+
+//   useEffect(() => {
+//     if (roundResult?.nextCandidates) {
+//       addStacks(roundResult?.nextCandidates)
+//     }
+//   }, [roundResult?.nextCandidates?.join("/")])
+
+//   return {
+//     currentSeed,
+//     quizSet: roundResult?.quizSet,
+//     next: () => { createNextRound() }
+//   }
+// }

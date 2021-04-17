@@ -59,11 +59,14 @@ const QuizRound: FC<{ quizSets: QuizSet[], onNext: Function }> = ({ quizSets, on
 
 }
 export const Quiz: FC<{ word: string }> = ({ word }) => {
-  const { quizSet: currentQuizSet, next, currentSeed } = useQuiz(word)
+  const { quizSet: currentQuizSet, next, currentSeed, done } = useQuiz(word)
   const router = useRouter()
   useEffect(() => {
     router.push(`/quiz/${currentSeed}`)
   }, [currentSeed])
+  if (done) {
+    return <Stack>Finished</Stack>
+  }
   if (!currentQuizSet) {
     return <Loading>Generate QuizSet</Loading>
   }
