@@ -16,8 +16,26 @@ type Result = {
   roundResult: RoundResult | null
   error: boolean
 }
-const filterAndRetrieve = (word: string, candidate: string[], choose: number) => {
 
+const generateRound = (word: string, chooses: number, data: any): RoundResult | null => {
+  const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
+  const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
+  const answer = filterdCollect[0]
+  const rest = arrayIntersect(
+    [...data.collects, ...data.incollects],
+    new Set([...filterdCollect, ...incollects])
+  )
+  if (!answer || incollects.length !== chooses - 1) {
+    return null
+  }
+  return {
+    quizSet: {
+      word: word,
+      collect: filterdCollect[0],
+      incollects: incollects
+    },
+    nextCandidates: rest
+  }
 }
 const useQuizRound = (word: string, chooses = 4): Result => {
   const [quizSet, setCurrentQuizSet] = useState<RoundResult>()
@@ -42,25 +60,13 @@ const useQuizRound = (word: string, chooses = 4): Result => {
       setIsError(true)
       return
     }
-    const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
-    const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
-    const answer = filterdCollect[0]
-    const rest = arrayIntersect(
-      [...data.collects, ...data.incollects],
-      new Set([...filterdCollect, ...incollects])
-    )
-    if (!answer || incollects.length !== chooses - 1) {
+    const result = generateRound(word, chooses, data)
+
+    if (!result) {
       setIsError(true)
       return
     }
-    setCurrentQuizSet({
-      quizSet: {
-        word: word,
-        collect: filterdCollect[0],
-        incollects: incollects
-      },
-      nextCandidates: rest
-    })
+    setCurrentQuizSet(result)
     console.timeEnd(word)
 
   }, [data])
