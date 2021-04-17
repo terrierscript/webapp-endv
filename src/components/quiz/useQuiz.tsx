@@ -100,7 +100,7 @@ export const useQuiz = (initialWord: string) => {
     if (stacks.length === 0) { return }
     if (preloads.length > 3) { return }
     setPre([...preloads, ...stacks.slice(0, preloadNum)].slice(0, preloadNum))
-  }, [preloads.join("/"), stacks.join("/")])
+  }, [preloads, stacks])
 
   const setCurrent = (next: string) => {
     setCurrentWord(next)
@@ -133,6 +133,7 @@ export const useQuiz = (initialWord: string) => {
     }
     next()
   }, [preloads, currentWord])
+
   useEffect(() => {
     if (!currentWord) { return }
     const r = results[currentWord]
@@ -143,7 +144,6 @@ export const useQuiz = (initialWord: string) => {
     }
 
     setCurrentRound(r)
-    console.timeEnd(currentWord)
   }, [currentWord, results])
 
   return {
