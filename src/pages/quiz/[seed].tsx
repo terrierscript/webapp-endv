@@ -1,7 +1,5 @@
-import { Box, HStack } from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
-import React, { VFC } from "react"
-import { QuizLink } from "../../components/Link"
+import React from "react"
 import { Quiz } from "../../components/quiz/Quiz"
 
 export default function QuizPage({ word }: { word: string }) {

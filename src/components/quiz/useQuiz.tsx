@@ -99,25 +99,41 @@ const useCachedQuizRound = (chooseNum: number) => {
 export const useQuiz = (initialWord: string) => {
   const { search, results } = useCachedQuizRound(4)
   const [stacks, setStacks] = useState<string[]>([])
+  const [preloads, setPreloads] = useState<string[]>([])
   const [currentWord, setCurrentWord] = useState<string>(initialWord)
   const [currentRound, setCurrentRound] = useState<QuizSet>()
   const addStacks = (words: string[]) => {
-    setStacks(s => [...new Set([...s, ...words])].slice(0, 50))
+    setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
   }
+  const removeStack = (word: string) => {
+    setStacks(s => s.filter(w => w !== word))
+  }
+  console.log(currentWord, currentRound, preloads, stacks)
+  useEffect(() => {
+    const preloadNUm = 10
+    if (stacks.length === 0) {
+      return
+    }
+    if (preloads.length > 3) {
+      return
+    }
+    setPreloads(p => [...p, ...stacks.slice(0, preloadNUm)].slice(0, preloadNUm))
+  }, [stacks])
 
   const next = () => {
-    const [next, ...rest] = stacks
+    const [next, ...rest] = preloads
     console.log("NEXT:", next)
     console.time(next)
     setCurrentRound(undefined)
     setCurrentWord(next)
-    setStacks(rest)
+    removeStack(next)
+    setPreloads(rest)
   }
   useEffect(() => {
-    stacks.slice(1, 10).map(w => {
+    preloads.map(w => {
       search(w)
     })
-  }, [stacks[0]])
+  }, [preloads])
   useEffect(() => {
     search(currentWord)
   }, [currentWord])
