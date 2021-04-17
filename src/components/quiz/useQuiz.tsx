@@ -42,25 +42,19 @@ const generateRound = async (word: string, chooses: number): Promise<RoundResult
 const useQuizRound = (word: string, chooses = 4): Result => {
   const [quizSet, setCurrentQuizSet] = useState<RoundResult>()
   const [isError, setIsError] = useState<boolean>(false)
-  const [data, setData] = useState()
+  const [data, setData] = useState<RoundResult | null>()
   const [error, setError] = useState()
-  useEffect(() => {
-    generateRound(word, chooses).then(round => {
-      setData(round)
-    }).catch(e => setError(e))
-  }, [word])
-  // const { data, error } = useSWR(() => word ? `/api/quiz/chooses/${word}` : null, fetcher, {
-  //   refreshWhenHidden: false,
-  //   refreshInterval: 0,
-  //   refreshWhenOffline: false,
-  //   revalidateOnFocus: false,
-  //   revalidateOnReconnect: false
-  // })
+
   useEffect(() => {
     console.time(word)
     setIsError(false)
     setCurrentQuizSet(undefined)
+
+    generateRound(word, chooses).then(round => {
+      setData(round)
+    }).catch(e => setError(e))
   }, [word])
+
   useEffect(() => {
     if (!word) { return }
     if (error) {
