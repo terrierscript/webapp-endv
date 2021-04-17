@@ -30,6 +30,7 @@ const useQuizRound = (word: string, chooses = 4): Result => {
     revalidateOnReconnect: false
   })
   useEffect(() => {
+    console.time(word)
     setIsError(false)
     setCurrentQuizSet(undefined)
   }, [word])
@@ -60,6 +61,8 @@ const useQuizRound = (word: string, chooses = 4): Result => {
       },
       nextCandidates: rest
     })
+    console.timeEnd(word)
+
   }, [data])
 
   return {
