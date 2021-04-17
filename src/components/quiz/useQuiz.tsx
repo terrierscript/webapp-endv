@@ -126,11 +126,6 @@ export const useQuiz = (initialWord: string) => {
     // preload
     setPre(rest)
   }
-  useEffect(() => {
-    preloads.map(w => {
-      search(w)
-    })
-  }, [preloads.join("/")])
 
   useEffect(() => {
     if (currentWord || preloads.length === 0) {
@@ -139,15 +134,10 @@ export const useQuiz = (initialWord: string) => {
     next()
   }, [preloads, currentWord])
   useEffect(() => {
-    if (!currentWord) {
-      return
-    }
+    if (!currentWord) { return }
     const r = results[currentWord]
-    if (r === undefined) {
-      return
-    }
+    if (r === undefined) { return }
     if (r === null) {
-      console.log(currentWord, " -> NULL", stacks)
       next()
       return
     }
