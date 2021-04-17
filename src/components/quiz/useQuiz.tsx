@@ -17,7 +17,8 @@ type Result = {
   error: boolean
 }
 
-const generateRound = (word: string, chooses: number, data: any): RoundResult | null => {
+const generateRound = async (word: string, chooses: number): Promise<RoundResult | null> => {
+  const data = await fetch(`/api/quiz/chooses/${word}`).then(res => res.json())
   const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
   const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
   const answer = filterdCollect[0]
@@ -37,39 +38,42 @@ const generateRound = (word: string, chooses: number, data: any): RoundResult | 
     nextCandidates: rest
   }
 }
+
 const useQuizRound = (word: string, chooses = 4): Result => {
   const [quizSet, setCurrentQuizSet] = useState<RoundResult>()
   const [isError, setIsError] = useState<boolean>(false)
-  const { data, error } = useSWR(() => word ? `/api/quiz/chooses/${word}` : null, fetcher, {
-    refreshWhenHidden: false,
-    refreshInterval: 0,
-    refreshWhenOffline: false,
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false
-  })
+  const [data, setData] = useState()
+  const [error, setError] = useState()
+  useEffect(() => {
+    generateRound(word, chooses).then(round => {
+      setData(round)
+    }).catch(e => setError(e))
+  }, [word])
+  // const { data, error } = useSWR(() => word ? `/api/quiz/chooses/${word}` : null, fetcher, {
+  //   refreshWhenHidden: false,
+  //   refreshInterval: 0,
+  //   refreshWhenOffline: false,
+  //   revalidateOnFocus: false,
+  //   revalidateOnReconnect: false
+  // })
   useEffect(() => {
     console.time(word)
     setIsError(false)
     setCurrentQuizSet(undefined)
   }, [word])
   useEffect(() => {
-    if (!word || !data) {
-      return
-    }
+    if (!word) { return }
     if (error) {
       setIsError(true)
       return
     }
-    const result = generateRound(word, chooses, data)
-
-    if (!result) {
+    if (data === null) {
       setIsError(true)
       return
     }
-    setCurrentQuizSet(result)
+    setCurrentQuizSet(data)
     console.timeEnd(word)
-
-  }, [data])
+  }, [data, error])
 
   return {
     word,
