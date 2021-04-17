@@ -5,6 +5,7 @@ import { isTruthy } from 'typesafe-utils'
 import { shuffle } from "./shuffle"
 import { filterFuzzyUnmatch } from "./filterFuzzyUnmatch"
 import { QuizSet } from "./QuizSet"
+import { arrayIntersect } from "./arrayIntersect"
 
 const isQuizWord = (f: string) => {
   if (!f) return false
@@ -58,9 +59,7 @@ const digSynset = (rel: NestedLemmaData) => {
   const pc = filterParentAndChildren(rels)
   return pc
 }
-const intersect = (targetArr: string[], filterSet: Set<string>) => {
-  return targetArr.filter(item => !filterSet.has(item))
-}
+
 const levelIntersect = (targets: string[][]) => {
   const dups = new Set()
   const results: string[][] = []
@@ -124,7 +123,7 @@ export const getQuizCandidate = (word: string) => {
   const d1 = kinderWords(l2)
   const incollectCandidates = d1.children
   const collects = l1.length > 10 ? l1 : filterFuzzyUnmatch(word, l1)
-  const incollects = incollectCandidates.length > 10 ? incollectCandidates : filterFuzzyUnmatch(word, intersect(d1.children, new Set([...l1, ...l2, ...w])))
+  const incollects = incollectCandidates.length > 10 ? incollectCandidates : filterFuzzyUnmatch(word, arrayIntersect(d1.children, new Set([...l1, ...l2, ...w])))
   return {
     word,
     collects,
@@ -137,7 +136,7 @@ export const getQuizCandidateRaw = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
   const d1 = kinderWords(l2)
   const collects = l1
-  const incollects = intersect(d1.children, new Set([...l1, ...l2, ...w]))
+  const incollects = arrayIntersect(d1.children, new Set([...l1, ...l2, ...w]))
   return {
     word,
     collects,
