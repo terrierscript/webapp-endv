@@ -15,7 +15,10 @@ type Result = {
   roundResult: RoundResult | null
   error: boolean
 }
-const useQuizRound = (word: string): Result => {
+const filterAndRetrieve = (word: string, candidate: string[], choose: number) => {
+
+}
+const useQuizRound = (word: string, chooses = 4): Result => {
   const [quizSet, setCurrentQuizSet] = useState<RoundResult>()
   const [isError, setIsError] = useState<boolean>(false)
   const { data, error } = useSWR(() => word ? `/api/quiz/chooses/${word}` : null, fetcher, {
@@ -40,11 +43,9 @@ const useQuizRound = (word: string): Result => {
     const filterdCollect = shuffle(filterFuzzyUnmatch(word, data.collects))
     const filterdIncollect = shuffle(filterFuzzyUnmatch(word, data.incollects))
     const [answer, ...restCollect] = filterdCollect
-    const chooses = 4
     const incollects = filterdIncollect.splice(0, chooses - 1)
     const rest = shuffle([...restCollect, ...filterdIncollect])
-    const errorQuiz = !answer || incollects.length !== chooses - 1
-    if (errorQuiz) {
+    if (!answer || incollects.length !== chooses - 1) {
       setIsError(true)
       return
     }
@@ -64,9 +65,10 @@ const useQuizRound = (word: string): Result => {
     error: isError
   }
 }
-export const useQuiz = (seed: string) => {
+
+export const useQuiz = (initialSeed: string) => {
+  const [currentSeed, setCurrentSeed] = useState<string>(initialSeed)
   const [stacks, setStacks] = useState<string[]>([])
-  const [currentSeed, setCurrentSeed] = useState<string>(seed)
   const round = useQuizRound(currentSeed)
   const roundResult = round.roundResult
   const addStacks = (words: string[]) => {

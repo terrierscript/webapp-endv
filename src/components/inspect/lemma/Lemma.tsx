@@ -33,7 +33,7 @@ const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
 
 const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
   <Box>
-    <Link href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(`${word}`)}`} target="_blank">
+    <Link href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(`${word} image`)}`} target="_blank">
       <Button>
         Google Image
           </Button>
