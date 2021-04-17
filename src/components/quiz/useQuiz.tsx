@@ -7,7 +7,7 @@ import { filterFuzzyUnmatch, filterFuzzyUnmatchGenerator, filterFuzzyUnmatchNum 
 import { arrayIntersect } from "../../lib/quiz/arrayIntersect"
 
 type RoundResult = {
-  quizSet?: QuizSet
+  quizSet?: QuizSet | null
   nextCandidates?: string[]
 
 }
@@ -17,7 +17,7 @@ type Result = {
   error: boolean
 }
 
-const generateRound = async (word: string, chooses: number): Promise<RoundResult | null> => {
+const generateRound = async (word: string, chooses: number): Promise<RoundResult> => {
   const data = await fetch(`/api/quiz/chooses/${word}`).then(res => res.json())
   const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
   const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
@@ -27,7 +27,10 @@ const generateRound = async (word: string, chooses: number): Promise<RoundResult
     new Set([...filterdCollect, ...incollects])
   )
   if (!answer || incollects.length !== chooses - 1) {
-    return null
+    return {
+      quizSet: null,
+      nextCandidates: rest
+    }
   }
   return {
     quizSet: {
@@ -39,77 +42,46 @@ const generateRound = async (word: string, chooses: number): Promise<RoundResult
   }
 }
 
-const useQuizRound = (word: string, chooses = 4): Result => {
-  const [quizSet, setCurrentQuizSet] = useState<RoundResult>()
-  const [isError, setIsError] = useState<boolean>(false)
-  const [data, setData] = useState<RoundResult | null>()
-  const [error, setError] = useState()
-
-  useEffect(() => {
-    console.time(word)
-    setIsError(false)
-    setCurrentQuizSet(undefined)
-
-    generateRound(word, chooses).then(round => {
-      setData(round)
-    }).catch(e => setError(e))
-  }, [word])
-
-  useEffect(() => {
-    if (!word) { return }
-    if (error) {
-      setIsError(true)
-      return
-    }
-    if (data === null) {
-      setIsError(true)
-      return
-    }
-    setCurrentQuizSet(data)
-    console.timeEnd(word)
-  }, [data, error])
-
-  return {
-    word,
-    roundResult: quizSet ?? null,
-    error: isError
-  }
-}
-
-type ResultCache = { [key in string]: RoundResult | null }
+type ResultCache = { [key in string]: QuizSet | null }
 const useCachedQuizRound = (chooseNum: number) => {
   const [results, setResults] = useState<ResultCache>({})
-  const search = (word: string) => {
-    if (results[word]) {
-      console.log("::::cache hit", word,)
-      return
-    }
-    generateRound(word, chooseNum).then(round => {
-      setResults(r => ({ ...r, [word]: round }))
-    }).catch(e => {
-      setResults(r => ({ ...r, [word]: null }))
-    })
-  }
-  return {
-    search,
-    results
-  }
-}
-
-export const useQuiz = (initialWord: string) => {
-  const { search, results } = useCachedQuizRound(4)
   const [stacks, setStacks] = useState<string[]>([])
-  const [preloads, setPreloads] = useState<string[]>([])
-  const [currentWord, setCurrentWord] = useState<string>(initialWord)
-  const [currentRound, setCurrentRound] = useState<QuizSet>()
   const addStacks = (words: string[]) => {
     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
   }
   const removeStack = (word: string) => {
     setStacks(s => s.filter(w => w !== word))
   }
-  console.log(currentWord, currentRound, preloads, stacks)
+
+  const search = (word: string) => {
+    if (results[word]) {
+      console.log("::::cache hit", word,)
+      return
+    }
+    generateRound(word, chooseNum).then(round => {
+      const { quizSet, nextCandidates } = round
+      setResults(r => ({ ...r, [word]: quizSet ?? null }))
+      addStacks(nextCandidates ?? [])
+    }).catch(e => {
+      setResults(r => ({ ...r, [word]: null }))
+    })
+  }
+  return {
+    search,
+    results,
+    stacks,
+    removeStack
+  }
+}
+
+export const useQuiz = (initialWord: string) => {
+  const { search, results, stacks, removeStack } = useCachedQuizRound(4)
+  const [preloads, setPreloads] = useState<string[]>([])
+  const [currentWord, setCurrentWord] = useState<string>(initialWord)
+  const [currentRound, setCurrentRound] = useState<QuizSet>()
+  const [done, setDone] = useState<boolean>(false)
   useEffect(() => {
+
     const preloadNUm = 10
     if (stacks.length === 0) {
       return
@@ -135,22 +107,25 @@ export const useQuiz = (initialWord: string) => {
     })
   }, [preloads])
   useEffect(() => {
+    if (!currentWord && stacks.length === 0) {
+      setDone(true)
+      return
+    }
     search(currentWord)
+
   }, [currentWord])
   useEffect(() => {
     const r = results[currentWord]
-    console.log(currentWord, r)
     if (r === undefined) {
       return
     }
     if (r === null) {
-      console.log(currentWord, " -> NULL")
+      console.log(currentWord, " -> NULL", stacks)
       next()
       return
     }
 
-    setCurrentRound(r.quizSet)
-    addStacks(r.nextCandidates ?? [])
+    setCurrentRound(r)
     console.timeEnd(currentWord)
 
   }, [results[currentWord]])
@@ -158,42 +133,7 @@ export const useQuiz = (initialWord: string) => {
   return {
     currentSeed: currentWord,
     quizSet: currentRound,
-    done: stacks.length === 0,
+    done,
     next
   }
 }
-
-// export const useQuiz = (initialSeed: string) => {
-//   const [currentSeed, setCurrentSeed] = useState<string>(initialSeed)
-//   const [stacks, setStacks] = useState<string[]>([])
-//   const round = useQuizRound(currentSeed)
-//   const roundResult = round.roundResult
-//   const addStacks = (words: string[]) => {
-//     setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
-//   }
-//   const createNextRound = () => {
-//     const [next, ...rest] = stacks
-//     setCurrentSeed(next)
-//     setStacks(rest)
-
-//   }
-
-//   useEffect(() => {
-//     if (round?.error) {
-//       console.log(round?.word, "ERROR")
-//       createNextRound()
-//     }
-//   }, [JSON.stringify(round)])
-
-//   useEffect(() => {
-//     if (roundResult?.nextCandidates) {
-//       addStacks(roundResult?.nextCandidates)
-//     }
-//   }, [roundResult?.nextCandidates?.join("/")])
-
-//   return {
-//     currentSeed,
-//     quizSet: roundResult?.quizSet,
-//     next: () => { createNextRound() }
-//   }
-// }

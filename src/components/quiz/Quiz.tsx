@@ -1,4 +1,4 @@
-import { Stack, Heading, Button, Center, SimpleGrid } from "@chakra-ui/react"
+import { Stack, Heading, Button, Center, SimpleGrid, Box } from "@chakra-ui/react"
 import React, { FC, useEffect, useMemo, useState } from "react"
 import { Loading } from "../Loading"
 import { QuizSet } from "../../lib/quiz/QuizSet"
@@ -65,7 +65,7 @@ export const Quiz: FC<{ word: string }> = ({ word }) => {
     router.push(`/quiz/${currentSeed}`)
   }, [currentSeed])
   if (done) {
-    return <Stack>Finished</Stack>
+    return <Box>Finished</Box>
   }
   if (!currentQuizSet) {
     return <Loading>Generate QuizSet</Loading>
