@@ -102,7 +102,7 @@ export const useQuiz = (initialWord: string) => {
   const [currentWord, setCurrentWord] = useState<string>(initialWord)
   const [currentRound, setCurrentRound] = useState<QuizSet>()
   const addStacks = (words: string[]) => {
-    setStacks(s => shuffle([...new Set([...s, ...words])]).slice(0, 50))
+    setStacks(s => [...new Set([...s, ...words])].slice(0, 50))
   }
 
   const next = () => {
