@@ -21,6 +21,7 @@ export function* filterFuzzyUnmatchGenerator(word: string, target: string[]) {
 
   for (let i = 0;i < target.length;i++) {
     const l = target[i]
+    // console.log(i, target[i])
     const fuzzyMatch = l.split(" ").some(ll => {
       const match = n.match(ll, { fuzzy: 0.3 })
       // console.log({ match, word, l, ll })

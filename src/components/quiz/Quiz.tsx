@@ -25,8 +25,8 @@ const QuizBox: FC<{ quiz: QuizSet, onNext: Function }> = ({ quiz, onNext }) => {
           const opacity = answer && !selected ? 0.7 : 1
           return <Button
             outline={"solid"}
+            whiteSpace={"normal"}
             opacity={opacity}
-            // wordBreak={"breakAll"}
             w="100%" size="lg" fontSize="lg"
             key={w} colorScheme={color}
             onClick={() => {

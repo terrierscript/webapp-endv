@@ -19,6 +19,7 @@ type Result = {
 
 const generateRound = async (word: string, chooses: number): Promise<RoundResult> => {
   const data = await fetch(`/api/quiz/chooses/${word}`).then(res => res.json())
+  console.log(data)
   const filterdCollect = filterFuzzyUnmatchNum(word, data.collects, 1)
   const incollects = filterFuzzyUnmatchNum(word, data.incollects, chooses - 1)
   const answer = filterdCollect[0]
