@@ -42,7 +42,7 @@ const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
     <Link href={`https://www.google.com/search?tbm=isch&cr=countryUS&lr=lang_en&q=${encodeURIComponent(`${word} image`)}`} target="_blank">
       <Button>
         Google Image
-          </Button>
+      </Button>
     </Link>
   </Box>
   <Box>
@@ -64,13 +64,6 @@ const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
 export const Lemma: FC<LemmaProps> = ({ word, initialData }) => {
   return <Stack>
     <LemmaTab key={word} {...{ word, initialData }} />
-    <Stack>
-      <Box>
-        <QuizLink word={word}>
-          <Button colorScheme="teal">Start Quiz</Button>
-        </QuizLink>
-      </Box>
-    </Stack>
     <Externals word={word} />
 
   </Stack>
@@ -92,27 +85,36 @@ const LemmaTab: FC<LemmaProps> = (props) => {
     return <NotFound word={word} appendCandidates={formLemma} />
   }
 
-  return <Tabs
-    // defaultIndex={1}
-    // isLazy
-    variant="soft-rounded"
-  >
-    <TabList >
-      <Tab>Definitions</Tab>
-      <Tab>Relations</Tab>
-      <Tab>Forms ({formsCount})</Tab>
-    </TabList>
-    <TabPanels >
-      <TabPanel>
-        <DefinitionTab {...props} />
-      </TabPanel>
-      <TabPanel >
-        <RelationTab {...props} />
-      </TabPanel>
+  return <>
+    <Tabs
+      // defaultIndex={1}
+      // isLazy
+      variant="soft-rounded"
+    >
+      <TabList >
+        <Tab>Definitions</Tab>
+        <Tab>Relations</Tab>
+        <Tab>Forms ({formsCount})</Tab>
+      </TabList>
+      <TabPanels >
+        <TabPanel>
+          <DefinitionTab {...props} />
+        </TabPanel>
+        <TabPanel >
+          <RelationTab {...props} />
+        </TabPanel>
 
-      <TabPanel >
-        <FormsTab {...props} />
-      </TabPanel>
-    </TabPanels>
-  </Tabs>
+        <TabPanel >
+          <FormsTab {...props} />
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+    <Stack>
+      <Box>
+        <QuizLink word={word}>
+          <Button colorScheme="teal">Start Quiz</Button>
+        </QuizLink>
+      </Box>
+    </Stack>
+  </>
 }
