@@ -15,9 +15,13 @@ export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData 
     const syns = allSynsets?.map(s => s?.lemmas).flat()
     return [
       ...new Set(syns)
-    ].filter(isTruthy)
+    ]
+      .filter(w => w !== word)
+      .filter(isTruthy)
   }, [JSON.stringify(data)])
-
+  if (synonymus.length === 0) {
+    return null
+  }
   return <Box>
     <Heading size="sm">Synonymus</Heading>
     <Words words={synonymus ?? []} />
