@@ -7,7 +7,7 @@ import { useNestedLemma } from "./useNestedLemma"
 import { RelationTab } from "./tabs/RelationTab"
 import { NotFound } from "./NotFound"
 import { isTruthy } from 'typesafe-utils'
-import { QuizLink } from "../../Link"
+import { InspectWordLink, QuizLink } from "../../Link"
 
 export type LemmaProps = {
   word: string
@@ -26,8 +26,14 @@ const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
   if (!data?.form) {
     return <Box>No forms</Box>
   }
+  const forms = data.form?.map(f => f.lemma?.writtenForm)
+    .filter(f => !!f)
+    .filter(isTruthy)
+
   return <Stack>
-    {data?.form?.map(f => <Box>{f}</Box>)}
+    {forms?.map(f => <Box key={f}>
+      <InspectWordLink word={f} />
+    </Box>)}
   </Stack>
 }
 
@@ -103,6 +109,7 @@ const LemmaTab: FC<LemmaProps> = (props) => {
       <TabPanel >
         <RelationTab {...props} />
       </TabPanel>
+
       <TabPanel >
         <FormsTab {...props} />
       </TabPanel>
