@@ -5,6 +5,7 @@ import { Box, Heading, HStack, Stack, Wrap } from '@chakra-ui/react'
 import NextLink from "next/link"
 import nlp from "compromise"
 import { InspectWordLink } from '../components/Link'
+import { Search } from '../components/inspect/Search'
 
 const getRandomWord = () => {
   // @ts-ignore
@@ -28,6 +29,7 @@ export const getServerSideProps = () => {
 export default function Home({ randoms }) {
   return (
     <Stack>
+      <Search />
       <Heading>Random pickup</Heading>
       <Wrap>
         {randoms.map((r: string) => {
