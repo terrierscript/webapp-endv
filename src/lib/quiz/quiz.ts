@@ -60,6 +60,7 @@ const digSynset = (rel: NestedLemmaData) => {
   return pc
 }
 
+
 const levelIntersect = (targets: string[][]) => {
   const dups = new Set()
   const results: string[][] = []
