@@ -39,15 +39,26 @@ const TabBody: FC<TabProps & LemmaProps> = ({ type, ...lemmaProps }) => {
 
 export const LemmaTab: FC<LemmaProps> = (props) => {
   const router = useRouter()
-  const initialTab: number = useMemo(() => {
-    try {
-      const name = location.hash.split("#")?.[1]
-      // @ts-ignore
-      return tabTypes.indexOf(name) ?? 0
-    } catch {
-      return 0
-    }
+  useEffect(() => {
+    console.log("xxx")
+    router.events.on("hashChangeStart", () => {
+      console.log("hashChangeStart")
+    })
+    router.events.on("hashChangeComplete", () => {
+      console.log("hashChangeComplete")
+    })
   }, [])
+  console.log(router)
+  const initialTab: number = 0
+  // useMemo(() => {
+  //   try {
+  //     const name = location.hash.split("#")?.[1]
+  //     // @ts-ignore
+  //     return Math.max(tabTypes.indexOf(name), 0)
+  //   } catch {
+  //     return 0
+  //   }
+  // }, [])
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
