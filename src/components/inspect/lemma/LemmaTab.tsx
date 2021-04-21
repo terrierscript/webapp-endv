@@ -58,6 +58,7 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
 
   return <>
     <Tabs
+      onChange={(idx) => { location.hash = `#${tabTypes[idx]}` }}
       defaultIndex={initialTab}
       // isLazy
       variant="soft-rounded"
