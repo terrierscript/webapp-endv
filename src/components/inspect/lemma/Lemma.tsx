@@ -39,25 +39,19 @@ export const FormsTab: FC<LemmaProps> = ({ word, initialData }) => {
 
 const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
   <Box>
-    <Link href={`https://www.google.com/search?tbm=isch&cr=countryUS&lr=lang_en&q=${encodeURIComponent(`${word} image`)}`} target="_blank">
-      <Button>
-        Google Image
+    <Button as="a" href={`https://www.google.com/search?tbm=isch&cr=countryUS&lr=lang_en&q=${encodeURIComponent(`${word} image`)}`} target="_blank">
+      Google Image
       </Button>
-    </Link>
   </Box>
   <Box>
-    <Link href={`https://en-word.net/lemma/${word}`} target="_blank">
-      <Button>
-        en-word.net
+    <Button as="a" href={`https://en-word.net/lemma/${word}`} target="_blank">
+      en-word.net
       </Button>
-    </Link>
   </Box>
   <Box>
-    <Link href={`https://www.dictionary.com/browse/${word}`} target="_blank">
-      <Button>
-        dictionary.com
+    <Button as="a" href={`https://www.dictionary.com/browse/${word}`} target="_blank">
+      dictionary.com
       </Button>
-    </Link>
   </Box>
 </Wrap>
 
