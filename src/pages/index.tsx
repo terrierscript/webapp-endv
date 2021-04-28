@@ -7,6 +7,7 @@ import nlp from "compromise"
 import { InspectWordLink } from '../components/Link'
 import { Search } from '../components/inspect/Search'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 
 const getRandomWord = () => {
   // @ts-ignore
@@ -42,10 +43,4 @@ export default function Home({ randoms }) {
       </Wrap>
     </Stack>
   )
-}
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: "blocking"
-  }
 }
