@@ -27,7 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-
 // @ts-ignore
 export default function Home({ randoms }) {
   return (
