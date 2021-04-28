@@ -21,7 +21,8 @@ export const getStaticProps: GetStaticProps = async () => {
     ...Array.from(Array(10), () => getRandomWord()),
   ]
   return {
-    props: { randoms }
+    props: { randoms },
+    revalidate: 60
   }
 }
 
