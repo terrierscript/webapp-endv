@@ -6,6 +6,8 @@ import NextLink from "next/link"
 import nlp from "compromise"
 import { InspectWordLink } from '../components/Link'
 import { Search } from '../components/inspect/Search'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 
 const getRandomWord = () => {
   // @ts-ignore
@@ -14,16 +16,16 @@ const getRandomWord = () => {
   return words[rand]
 }
 
-export const getServerSideProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
   const randoms = [
     ...Array.from(Array(10), () => dictionary.getRandomWord()),
     ...Array.from(Array(10), () => getRandomWord()),
   ]
   return {
-    props: { randoms }
+    props: { randoms },
+    revalidate: 60
   }
 }
-
 
 // @ts-ignore
 export default function Home({ randoms }) {
