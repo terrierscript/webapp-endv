@@ -5,8 +5,10 @@ import { RelationTab } from "./tabs/RelationTab"
 import { NotFound } from "./NotFound"
 import { isTruthy } from 'typesafe-utils'
 import { QuizLink } from "../../Link"
-import { LemmaProps, DefinitionTab, FormsTab } from "./Lemma"
+import { LemmaProps } from "./Lemma"
+import { FormsTab } from "./tabs/FormsTab"
 import { useRouter } from "next/router"
+import { DefinitionTab } from "./tabs/DefinitionTab"
 
 const tabTypes = ["definitions", "relations", "forms"] as const
 
