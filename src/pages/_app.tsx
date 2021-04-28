@@ -5,7 +5,6 @@ import React from "react"
 
 const Footer = () => {
   return <Box>
-    <Divider />
     <Box textAlign="right" px={10} color="gray.500">
       <Stack>
         <Box>
@@ -22,11 +21,15 @@ const Footer = () => {
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
     <NextNprogress />
-    <Box bg="gray.100" minHeight="90vh">
-      <Container bg="white" maxW="8xl" p={4}>
-        <Component {...pageProps} />
-      </Container>
-      <Footer />
+    <Box bg="gray.100" minHeight="100vh">
+      <Box bg="white" minHeight="90vh">
+        <Container bg="white" maxW="8xl" p={4}>
+          <Component {...pageProps} />
+        </Container>
+      </Box>
+      <Box py={4}>
+        <Footer />
+      </Box>
     </Box>
   </ChakraProvider>
 }
