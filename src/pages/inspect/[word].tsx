@@ -1,13 +1,34 @@
-import { GetServerSideProps, GetServerSidePropsResult } from "next"
+import { GetServerSidePropsResult, GetStaticPaths, GetStaticProps } from "next"
 import { getProps, InspectPage } from "../../components/inspect/InspectPage"
+import { useRouter } from "next/router"
+import React from "react"
+import { Box, Spinner } from "@chakra-ui/react"
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const props: GetServerSidePropsResult<any> = await getProps(ctx.query)
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  if (!ctx.params) {
+    return { notFound: true }
+  }
+  const props: GetServerSidePropsResult<any> = await getProps(ctx.params)
   // const { word } = ctx.query
-  return props
+  return {
+    props,
+    revalidate: 60
+  }
 }
 
-// 激重メモリリーク？
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking"
+  }
+}
 
-export default InspectPage
-// export default (props: any) => <InspectPage {...props} />
+const Page = (props: any) => {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <Box><Spinner /></Box>
+  }
+  return <InspectPage {...props} />
+}
+
+export default Page
