@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Heading, HStack, Icon, Text } from "@chakra-ui/react"
+import { Box, Heading, HStack, Icon, Text, Wrap } from "@chakra-ui/react"
 import nlp from "compromise"
 import compromiesSyllables from 'compromise-syllables'
 // @ts-ignore

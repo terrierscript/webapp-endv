@@ -8,6 +8,7 @@ import { getNestedLemma, NestedLemmaData } from "../../lib/nested/lemma"
 import { useRouter } from "next/router"
 import { Spinner } from "@chakra-ui/react"
 
+
 export const Page: FC<{ word: string, initialWordLemmaData: NestedLemmaData }> = ({ word, initialWordLemmaData, ...rest }) => {
   const router = useRouter()
   if (router.isFallback) {

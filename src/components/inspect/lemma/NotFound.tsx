@@ -13,8 +13,32 @@ const patterns = (word: string) => {
     conjugations?.Infinitive,
     ...verbForms
   ]
-
 }
+
+const Candidates: FC<{ word: string; appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
+  const candidates = useMemo(() => {
+    const splits = word.split(" ")
+    const splitsCandidate = splits.length > 1 ? splits.map(w => patterns(w)).flat() : []
+    return [...new Set([
+      ...appendCandidates,
+      ...patterns(word),
+      ...splitsCandidate.flat()
+    ])]
+      .filter(x => x && x.length > 0 && x !== word)
+  }, [word])
+  if (candidates.length === 0) {
+    return null
+  }
+  return <Box>
+    <Heading size="sm">Did you mean...</Heading>
+    <HStack>
+      {candidates.map(pp => {
+        return <InspectWordLink key={pp} word={pp} />
+      })}
+    </HStack>
+  </Box>
+}
+
 export const NotFound: FC<{ word: string; appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
   const candidates = useMemo(() => {
     const splits = word.split(" ")
@@ -28,11 +52,6 @@ export const NotFound: FC<{ word: string; appendCandidates?: string[] }> = ({ wo
   }, [word])
   return <Box>
     <Box>Not Found... 😵</Box>
-    <Heading size="sm">Did you mean...</Heading>
-    <HStack>
-      {candidates.map(pp => {
-        return <InspectWordLink key={pp} word={pp} />
-      })}
-    </HStack>
+    <Candidates {...{ word, appendCandidates }} />
   </Box>
 }

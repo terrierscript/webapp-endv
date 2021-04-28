@@ -18,8 +18,8 @@ const getRandomWord = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const randoms = [
-    ...Array.from(Array(10), () => dictionary.getRandomWord()),
-    ...Array.from(Array(10), () => getRandomWord()),
+    ...Array.from(Array(20), () => dictionary.getRandomWord()),
+    // ...Array.from(Array(10), () => getRandomWord()),
   ]
   return {
     props: { randoms },
