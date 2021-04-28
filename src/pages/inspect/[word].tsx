@@ -19,14 +19,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: "blocking"
+    fallback: true
   }
 }
 
 const Page = (props: any) => {
   const router = useRouter()
   if (router.isFallback) {
-    return <Box><Spinner /></Box>
+    return <Box><Spinner />Loading</Box>
   }
   return <InspectPage {...props} />
 }
