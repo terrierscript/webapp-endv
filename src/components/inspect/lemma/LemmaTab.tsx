@@ -82,7 +82,7 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
     <Stack>
       <Box>
         <QuizLink word={word}>
-          <Button colorScheme="teal">Start Quiz</Button>
+          <Button as="a" colorScheme="teal">Start Quiz</Button>
         </QuizLink>
       </Box>
     </Stack>
