@@ -35,7 +35,7 @@ function getProps(query: ParsedUrlQuery): Result {
   // console.log(initialWordLemmaData)
   return {
     props: {
-      word: word.toLowerCase(),
+      word,
       initialWordLemmaData
       // , entry
     },
