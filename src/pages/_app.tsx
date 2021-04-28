@@ -22,10 +22,12 @@ const Footer = () => {
 function MyApp({ Component, pageProps }) {
   return <ChakraProvider>
     <NextNprogress />
-    <Box bg="gray.100" minHeight="90vh">
-      <Container bg="white" maxW="8xl" p={4}>
-        <Component {...pageProps} />
-      </Container>
+    <Box bg="gray.100" minHeight="100vh">
+      <Box bg="white" minHeight="90vh">
+        <Container bg="white" maxW="8xl" p={4}>
+          <Component {...pageProps} />
+        </Container>
+      </Box>
       <Footer />
     </Box>
   </ChakraProvider>
