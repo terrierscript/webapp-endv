@@ -37,7 +37,8 @@ function getProps(query: ParsedUrlQuery): Result {
       word,
       initialWordLemmaData
       // , entry
-    }
+    },
+    revalidate: 300
   }
 }
 
