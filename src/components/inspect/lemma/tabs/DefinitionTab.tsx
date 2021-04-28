@@ -63,7 +63,7 @@ export const DefinitionTab: FC<{ word: string, initialData?: NestedLemmaData }> 
       <Heading size="sm">Definitions</Heading>
       <UnorderedList>
         {definitions?.map(def => {
-          return <ListItem key={def}><Def def={def} /></ListItem>
+          return def && <ListItem key={def}><Def def={def} /></ListItem>
         })}
       </UnorderedList>
 
