@@ -8,7 +8,6 @@ export default function QuizPage({ word }: { word: string }) {
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
   const seed: string = req.query.seed?.toString() ?? ""
-
   return {
     props: { word: seed }
   }

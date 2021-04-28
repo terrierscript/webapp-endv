@@ -65,7 +65,7 @@ export const Quiz: FC<{ word: string }> = ({ word }) => {
     if (!currentSeed) {
       return
     }
-    router.push(`/quiz/${currentSeed}`)
+    router.push(`/quiz/${currentSeed}`, undefined, { shallow: true })
   }, [currentSeed])
 
   if (!currentSeed || !currentQuizSet) {
