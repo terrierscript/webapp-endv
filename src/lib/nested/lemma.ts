@@ -21,8 +21,10 @@ const expandLemma = (lemma?: LemmaIndex) => {
   }
   const lexIds = lemma.lexicalEntry
   const formLexIds = lemma.form
-  const lexs = lexicalEntriesObj(lexIds)
-  const formLex = lexicalEntriesObj(formLexIds)
+  // const lexs = lexicalEntriesObj(lexIds)
+  // const formLex = lexicalEntriesObj(formLexIds)
+  const lexs = null // lexicalEntriesObj(lexIds)
+  const formLex = null
   return {
     ...(lexs && { lexicalEntry: lexs }),
     ...(formLex && { form: formLex }),

@@ -16,8 +16,10 @@ export const InspectPage: FC<{ word: string; initialWordLemmaData: NestedLemmaDa
     <Lemma word={word} initialData={initialWordLemmaData} />
   </>
 }
-type Result = GetStaticPropsResult<any> | GetServerSidePropsResult<any>
-export function getProps(query: ParsedUrlQuery): Result {
+
+type GetProps = GetStaticPropsResult<any> | GetServerSidePropsResult<any>
+
+export function getProps(query: ParsedUrlQuery): GetProps {
   const { word } = query
   if (typeof word !== "string") {
     return {
