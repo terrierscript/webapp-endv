@@ -52,5 +52,5 @@ export const getStaticPaths = async () => ({
   fallback: true,
 })
 
-export default InspectPage
+export default (props: any) => <InspectPage {...props} />
 

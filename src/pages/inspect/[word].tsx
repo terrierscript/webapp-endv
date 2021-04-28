@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsResult, GetStaticProps } from "next"
+import { GetServerSideProps, GetServerSidePropsResult } from "next"
 import { getProps, InspectPage } from "../../components/inspect/InspectPage"
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -7,5 +7,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return props
 }
 
-export default InspectPage
+// 激重メモリリーク？
 
+export default InspectPage
+// export default (props: any) => <InspectPage {...props} />
