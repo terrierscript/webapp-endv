@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from "react"
 import { InspectWordLink } from "../../Link"
 import { CompactDefinition } from "../lemma/CompactDefinition"
 import nlp from "compromise"
-import { HighlightProps } from "./Glossaries"
+// import { HighlightProps } from "./Glossaries"
 import { WordPopover } from "../../WordPopover"
 
 const termType = (term: any) => {
@@ -19,7 +19,7 @@ const termType = (term: any) => {
   // console.log(term.text, tags)
   return "Other"
 }
-const TermPopover: FC<{ term: any }> = ({ term, children }) => {
+export const TermPopover: FC<{ term: any }> = ({ term, children }) => {
   // return <>{children}</>
   if (termType(term) === "Other") {
     return <>{children}</>
@@ -30,7 +30,7 @@ const TermPopover: FC<{ term: any }> = ({ term, children }) => {
     </Text>
   </WordPopover>
 }
-const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
+export const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
   return <>
     <Text {...props}>{term.pre}</Text>
     <TermPopover term={term}>
@@ -39,7 +39,11 @@ const Term: FC<{ term: any } & TextProps> = ({ term, ...props }) => {
     <Text {...props}>{term.post}</Text>
   </>
 }
-export const SearchableText: FC<{ children: string } & TextProps & HighlightProps> = ({ children, isHighlight, ...props }) => {
+export const SearchableText: FC<{ children: string } & TextProps> = ({ children, ...props }) => {
+  const textProps: TextProps = {
+    as: "span",
+    ...props
+  }
   const [terms, setTerms] = useState<any[]>()
   useEffect(() => {
     setTimeout(() => {
@@ -49,9 +53,9 @@ export const SearchableText: FC<{ children: string } & TextProps & HighlightProp
     }, 100)
   }, [children])
   if (!terms) {
-    return <Text {...props}>{children}</Text>
+    return <Text {...textProps}>{children}</Text>
   }
   return <>{terms.map((t: any, i: number) => {
-    return <Term key={i} term={t} {...props} />
+    return <Term key={i} term={t} {...textProps} />
   })}</>
 }

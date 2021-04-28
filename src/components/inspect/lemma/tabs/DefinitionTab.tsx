@@ -1,10 +1,11 @@
-import { Box, Heading, ListItem, Stack, UnorderedList } from "@chakra-ui/react"
-import React, { FC, useMemo } from "react"
+import { Text, Box, Heading, ListItem, Stack, UnorderedList } from "@chakra-ui/react"
+import React, { FC, useMemo, useState } from "react"
 import { Loading } from "../../../Loading"
 import { Words } from "../../synset/Words"
 import { NestedLemmaData } from "../../../../lib/nested/lemma"
 import { useNestedLemma } from "../useNestedLemma"
 import { isTruthy } from 'typesafe-utils'
+import { SearchableText, Term, TermPopover } from "../../synset/Term"
 
 export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData }> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
@@ -30,8 +31,17 @@ export const CompactSynonymus: FC<{ word: string, initialData?: NestedLemmaData 
 }
 
 const Def: FC<{ def: string }> = ({ def }) => {
-  return <Box>{def}</Box>
+  const [searchable, setSearchable] = useState(false)
+  return <Box
+    onClick={() => { setSearchable(true) }}
+    onMouseOver={() => { setSearchable(true) }}
+  >
+    {searchable ?
+      <SearchableText>{def}</SearchableText> : def
+    }
+  </Box>
 }
+
 export const DefinitionTab: FC<{ word: string, initialData?: NestedLemmaData }> = ({ word, initialData }) => {
   const { data } = useNestedLemma(word, initialData)
   const definitions = useMemo(() => {

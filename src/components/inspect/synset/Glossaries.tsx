@@ -19,10 +19,10 @@ type GlossaryProps = {
 
 type DefinitionProps = Pick<GlossaryProps, "definition"> & HighlightProps
 
-const Definitions: FC<DefinitionProps> = ({ definition, isHighlight }) => {
+const Definitions: FC<DefinitionProps> = ({ definition }) => {
   return <Wrap align="center">
     {definition.map(def => <Box key={def}>
-      <SearchableText isHighlight={isHighlight} as="b">{def}</SearchableText>
+      <SearchableText as="b">{def}</SearchableText>
     </Box>)}
   </Wrap>
 }
