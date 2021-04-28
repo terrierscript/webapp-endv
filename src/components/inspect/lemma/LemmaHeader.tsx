@@ -16,7 +16,7 @@ export const LemmaHeader = ({ word }: { word: string }) => {
   const s = terms.map(({ syllables }: any) => syllables.join("-")).join(" ")
   // @ts-ignore
   const pron = n.pronounce().map(o => o.pronounce).join(" ")
-  console.log("p", pron)
+  // console.log("p", pron)
   return <Box p={4} position="sticky" top="0" bg="white">
     <HStack verticalAlign="middle">
       <Heading >

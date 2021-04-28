@@ -48,7 +48,7 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
       console.log("hashChangeComplete")
     })
   }, [])
-  console.log(router)
+  // console.log(router)
   const initialTab: number = 0
   // useMemo(() => {
   //   try {
