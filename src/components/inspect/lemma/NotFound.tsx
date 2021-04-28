@@ -40,16 +40,6 @@ const Candidates: FC<{ word: string; appendCandidates?: string[] }> = ({ word, a
 }
 
 export const NotFound: FC<{ word: string; appendCandidates?: string[] }> = ({ word, appendCandidates = [] }) => {
-  const candidates = useMemo(() => {
-    const splits = word.split(" ")
-    const splitsCandidate = splits.length > 1 ? splits.map(w => patterns(w)).flat() : []
-    return [...new Set([
-      ...appendCandidates,
-      ...patterns(word),
-      ...splitsCandidate.flat()
-    ])]
-      .filter(x => x && x.length > 0 && x !== word)
-  }, [word])
   return <Box>
     <Box>Not Found... 😵</Box>
     <Candidates {...{ word, appendCandidates }} />
