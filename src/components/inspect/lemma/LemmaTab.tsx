@@ -50,7 +50,9 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
       console.log("hashChangeComplete")
     })
   }, [])
-  const initialTab: number = 0
+  // @ts-ignore
+  const initialTab = Math.max(tabTypes.indexOf(location.hash.replace("#", "")), 0)
+
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
   const formsCount = (data?.form?.length ?? 0)
