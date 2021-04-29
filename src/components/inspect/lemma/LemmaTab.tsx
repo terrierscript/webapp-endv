@@ -51,7 +51,7 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
     })
   }, [])
   const initialTab = useMemo(() => {
-    if (!location) {
+    if (typeof location === "undefined" || !location) {
       return 0
     }
     // @ts-ignore
