@@ -50,8 +50,13 @@ export const LemmaTab: FC<LemmaProps> = (props) => {
       console.log("hashChangeComplete")
     })
   }, [])
-  // @ts-ignore
-  const initialTab = Math.max(tabTypes.indexOf(location.hash.replace("#", "")), 0)
+  const initialTab = useMemo(() => {
+    if (!location) {
+      return 0
+    }
+    // @ts-ignore
+    return Math.max(tabTypes.indexOf(location?.hash?.replace("#", "")), 0)
+  }, [])
 
   const { word, initialData } = props
   const { data } = useNestedLemma(word, initialData)
