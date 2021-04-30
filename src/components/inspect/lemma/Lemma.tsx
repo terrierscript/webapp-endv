@@ -13,7 +13,7 @@ export type LemmaProps = {
 
 const Externals: FC<{ word: string }> = ({ word }) => <Wrap>
   <Box>
-    <Button as="a" href={`https://www.google.com/search?nfpr=1&tbm=isch&cr=countryUS&lr=lang_en&q=${encodeURIComponent(`${word} OR "${word} image" OR "${word} meaning"`)}`} target="_blank">
+    <Button as="a" href={`https://www.google.com/search?safe=active&nfpr=1&tbm=isch&cr=countryUS&lr=lang_en&q=${encodeURIComponent(`${word} OR "${word} image" OR "${word} meaning"`)}`} target="_blank">
       Google Image
       </Button>
   </Box>
