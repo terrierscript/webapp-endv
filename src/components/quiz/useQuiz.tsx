@@ -71,6 +71,7 @@ const useCachedQuizRound = (chooseNum: number) => {
       addStacks(nextCandidates ?? [])
     }).catch(e => {
       setResults(r => ({ ...r, [word]: null }))
+
     })
   }
   return {
