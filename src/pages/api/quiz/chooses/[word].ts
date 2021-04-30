@@ -1,9 +1,9 @@
 import { NextApiHandler } from "next"
-import {  getQuizCandidateRaw } from "../../../../lib/quiz/quiz"
+import {  getQuizCandidate } from "../../../../lib/quiz/quiz"
 
 const handler: NextApiHandler = async (req, res) => {
   const { word } = req.query
-  const quiz = getQuizCandidateRaw(word.toString())
+  const quiz = getQuizCandidate(word.toString())
 
   res.json(quiz)
 }
