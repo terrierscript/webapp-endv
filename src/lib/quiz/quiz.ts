@@ -119,25 +119,32 @@ const relatedWord = (word: string) => {
   return levelIntersect(levels)
 }
 
-export const getQuizCandidate = (word: string) => {
-  const [w, l1, l2] = relatedWord(word.toString())
-  const d1 = kinderWords(l2)
-  const incollectCandidates = d1.children
-  const collects = l1.length > 10 ? l1 : filterFuzzyUnmatch(word, l1)
-  const incollects = incollectCandidates.length > 10 ? incollectCandidates : filterFuzzyUnmatch(word, arrayIntersect(d1.children, new Set([...l1, ...l2, ...w])))
-  return {
-    word,
-    collects,
-    incollects,
-    debug: { l1, l2 }
-  }
-}
+// export const getQuizCandidate = (word: string) => {
+//   const [w, l1, l2] = relatedWord(word.toString())
+//   const d1 = kinderWords(l2)
+//   const incollectCandidates = d1.children
+//   const collects = l1.length > 10 ? l1 : filterFuzzyUnmatch(word, l1)
+//   const incollects = incollectCandidates.length > 10 ? incollectCandidates : filterFuzzyUnmatch(word, arrayIntersect(d1.children, new Set([...l1, ...l2, ...w])))
+  
+//   return {
+//     word,
+//     collects,
+//     incollects,
+//     debug: { l1, l2 }
+//   }
+// }
 
 export const getQuizCandidateRaw = (word: string) => {
+  console.time("1")
   const [w, l1, l2] = relatedWord(word.toString())
-  const d1 = kinderWords(l2)
+  console.timeEnd("1")
+  console.time("2")
+  const d1 = kinderWords(shuffle(l2).slice(0,5))
+  console.timeEnd("2")
+  console.time("3")
   const collects = l1
   const incollects = arrayIntersect(d1.children, new Set([...l1, ...l2, ...w]))
+  console.timeEnd("3")
   return {
     word,
     collects,
@@ -145,27 +152,27 @@ export const getQuizCandidateRaw = (word: string) => {
     debug: { l1, l2 }
   }
 }
-const generateQuiz = (word: string): QuizSet | null => {
-  const { collects, incollects } = getQuizCandidate(word)
-  if (collects.length === 0 || incollects.length === 0) {
-    return null
-  }
-  const collect = random(collects)
-  const incollectChoose = shuffle(incollects).slice(0, 3)
-  return {
-    word: word,
-    collect: collect,
-    incollects: incollectChoose
-  }
-}
+// const generateQuiz = (word: string): QuizSet | null => {
+//   const { collects, incollects } = getQuizCandidate(word)
+//   if (collects.length === 0 || incollects.length === 0) {
+//     return null
+//   }
+//   const collect = random(collects)
+//   const incollectChoose = shuffle(incollects).slice(0, 3)
+//   return {
+//     word: word,
+//     collect: collect,
+//     incollects: incollectChoose
+//   }
+// }
 
-export const generateQuizzes = (seedWord: string) => {
-  const { parents } = getRelatedWords(seedWord)
-  const kinder = kinderWords(parents)
+// export const generateQuizzes = (seedWord: string) => {
+//   const { parents } = getRelatedWords(seedWord)
+//   const kinder = kinderWords(parents)
 
-  const cousinWords = shuffle([...new Set([...kinder.children])])
-  const words = cousinWords.slice(0, 10)
+//   const cousinWords = shuffle([...new Set([...kinder.children])])
+//   const words = cousinWords.slice(0, 10)
 
-  return words.map(w => generateQuiz(w)).filter(isTruthy).slice(0, 10)
-}
+//   return words.map(w => generateQuiz(w)).filter(isTruthy).slice(0, 10)
+// }
 
