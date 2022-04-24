@@ -29,7 +29,7 @@ const filterParentAndChildren = (rels: RelationRecord[]) => {
 }
 
 export const digSynset = (rel: NestedLemmaData) => {
-  const rels = rel.lexicalEntry?.map(l => l.senses.map(se => {
+  const rels = rel?.lexicalEntry?.map(l => l.senses.map(se => {
     return se?.synset?.relations
   })).flat(2).filter(rel => !!rel)
     // @ts-ignore
