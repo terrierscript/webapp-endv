@@ -16,7 +16,7 @@ export const PlainSynset: FC<{ synset: NestedSynsetData }> = ({ synset }) => {
 
   return <Box id={`sysnet-${synset.id}`} boxShadow="xs" rounded={"xs"} p={2} m={2}>
     <Words words={lemma} />
-    <Glossaries {...{ lemma, definition, example }} />
+    <Glossaries {...{ lemma, definition, example } as any} />
   </Box>
 }
 
