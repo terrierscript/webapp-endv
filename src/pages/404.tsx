@@ -6,8 +6,6 @@ import NextLink from "next/link"
 import nlp from "compromise"
 import { InspectWordLink } from '../components/Link'
 
-
-
 // @ts-ignore
 export default function Home({ randoms }) {
   return (
