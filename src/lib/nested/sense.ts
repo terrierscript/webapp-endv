@@ -1,5 +1,5 @@
-import * as dictionary from "../dictionary/dictionary"
-import { Sense } from "../dictionary/types"
+import { Sense } from "@terrierscript/normalized-global-wordnet-en"
+import { dictionary } from "../dictionary/dictionary"
 import { getSenseRelation } from "./relations"
 import { getNestedSynset } from "./synset"
 

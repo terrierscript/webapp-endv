@@ -1,5 +1,6 @@
-import * as dictionary from "../dictionary/dictionary"
-import { Relation, Sense, RelationRecord, RelationType } from "../dictionary/types"
+import { Sense } from "@terrierscript/normalized-global-wordnet-en"
+import { dictionary } from "../dictionary/dictionary"
+import { Relation, RelationRecord, RelationType } from "../dictionary/types"
 
 const groupingRelationMap = (relations: Relation[] = []) => {
   const map = new Map<string, Set<string>>()
