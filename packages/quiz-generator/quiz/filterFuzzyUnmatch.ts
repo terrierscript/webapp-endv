@@ -6,7 +6,8 @@ export const filterFuzzyUnmatch = (word: string, target: string[]) => {
   const n = nlp(word)
   const collects = target.filter(l => {
     const fuzzyMatch = l.split(" ").some(ll => {
-      const match = n.match(`~${ll}~`, null, { fuzzy: 0.3 })
+      // const match = n.match(`~${ll}~`, null, { fuzzy: 0.3 })
+      const match = n.match(ll, { fuzzy: 0.3 })
       // console.log({ match, word, l, ll })
       // @ts-ignore
       return match.length > 0
@@ -23,7 +24,7 @@ export function* filterFuzzyUnmatchGenerator(word: string, target: string[]) {
     const l = target[i]
     // console.log(i, target[i])
     const fuzzyMatch = l.split(" ").some(ll => {
-      const match = n.match(`~${ll}~`, null, { fuzzy: 0.3 })
+      const match = n.match(ll, { fuzzy: 0.3 })
 
       // console.log({ match, word, l, ll })
       // @ts-ignore
