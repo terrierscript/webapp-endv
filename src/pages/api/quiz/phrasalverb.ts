@@ -1,8 +1,7 @@
-// @ts-ignore
-import dictionary from "@terrierscript/normalized-global-wordnet-en"
 
 import nlp from "compromise"
 import { NextApiHandler } from "next"
+import { dictionary } from "../../../lib/dictionary/dictionary"
 
 const isMaybePhrasalVerb = (word: string) => {
   if (word.split(" ").length != 2) {
@@ -27,6 +26,7 @@ const isMaybePhrasalVerb = (word: string) => {
 }
 
 const handler: NextApiHandler = async (req, res) => {
+  // @ts-ignore
   const aw = dictionary.getAllWords()
   const pv = aw.slice(10000, 50000).filter((a: string) => isMaybePhrasalVerb(a))
 

@@ -1,5 +1,5 @@
 import { isTruthy } from "typesafe-utils"
-import * as dictionary from "../dictionary/dictionary"
+import { dictionary } from "../dictionary/dictionary"
 import { getNestedSense, NestedSenseData } from "./sense"
 
 const senseObj = (senseIds?: string[]): NestedSenseData[] => {

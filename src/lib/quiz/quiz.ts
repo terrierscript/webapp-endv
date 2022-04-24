@@ -18,6 +18,7 @@ const isQuizWord = (f: string) => {
 
 }
 const getWordSynonyms = (word: string, rel: NestedLemmaData) => {
+  // @ts-ignore
   const _currentLemmas: string[] = rel.lexicalEntry?.map(l => l.senses.map(se => {
     return se?.synset?.lemmas
   })).flat(2)
@@ -44,6 +45,7 @@ const filterParentAndChildren = (rels: RelationRecord[]) => {
   }
 }
 const digSynset = (rel: NestedLemmaData) => {
+  // @ts-ignore
   const rels = rel.lexicalEntry?.map(l => l.senses.map(se => {
     return se?.synset?.relations
   })).flat(2).filter(rel => !!rel)
@@ -122,7 +124,7 @@ export const getQuizCandidate = (word: string) => {
   const [w, l1, l2] = relatedWord(word.toString())
   console.timeEnd("1")
   console.time("2")
-  const d1 = kinderWords(shuffle(l2).slice(0,5))
+  const d1 = kinderWords(shuffle(l2).slice(0, 5))
   console.timeEnd("2")
   console.time("3")
   const collects = l1

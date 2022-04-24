@@ -1,4 +1,4 @@
-import * as dictionary from "../dictionary/dictionary"
+import { dictionary } from "../dictionary/dictionary"
 import { LemmaIndex } from "../dictionary/types"
 import { getNestedLexicaEntry } from "./lexicaEntry"
 

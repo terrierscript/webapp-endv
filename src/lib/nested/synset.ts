@@ -1,6 +1,7 @@
-import * as dictionary from "../dictionary/dictionary"
-import { Synset, SynsetLemmas } from "../dictionary/types"
-import { getSynsetRelation } from "./relations"
+import { Synset } from "@terrierscript/normalized-global-wordnet-en"
+import { dictionary } from "../dictionary/dictionary"
+import { SynsetLemmas } from "../dictionary/types"
+// import { SynsetLemmas } from "../dictionary/types"
 
 
 
@@ -14,7 +15,8 @@ const getSynsetLemma = (synsetId: string): SynsetLemmas => {
 const expandSynset = (synset: Synset) => {
   const { synsetRelation, ...rest } = synset
   const synsetLemma = getSynsetLemma(synset.id)
-  const relations = getSynsetRelation(synset.id)
+  // @ts-ignore
+  const relations = dictionary.getSynsetRelation(synset.id)
 
   return {
     ...rest,
