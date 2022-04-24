@@ -11,7 +11,9 @@ export const LexicalEntries: FC<{ lexicalEntry: NestedLexicaEntryData }> = ({ le
 
   const lex = lexicalEntry
   if (!lex) {
-    return <Loading>Loading {lexicalEntry.id}</Loading>
+    return <Loading>Loading...
+      {/* {lexicalEntry.id} */}
+    </Loading>
   }
   const { lemma, senses } = lex
   return <Box p={4}>
