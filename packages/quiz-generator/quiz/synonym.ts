@@ -3,7 +3,7 @@ import { isQuizWord } from "./isQuizWord"
 import { getNestedLemma, NestedLemmaData } from "../nested/lemma"
 
 export const getWordSynonyms = (word: string, rel: NestedLemmaData) => {
-  const _currentLemmas: string[] = rel.lexicalEntry?.map(l => l.senses.map(se => {
+  const _currentLemmas: string[] = rel?.lexicalEntry?.map(l => l.senses.map(se => {
     return se?.synset?.lemmas
   })).flat(2)
     .filter(isTruthy) ?? []
